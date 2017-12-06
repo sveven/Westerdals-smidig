@@ -2,3 +2,4 @@
 Hei
 gjhg
 dfgdg
+Hei, jeg elsker smidig
