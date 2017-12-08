@@ -1,0 +1,10 @@
+Installer nodejs.
+git clone
+cd 'gitdirectory'
+npm install
+
+
+moduler: express, request
+
+npm -g express
+npm -g express-generator

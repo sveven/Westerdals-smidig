@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+  </head>
+  <body>
+    <script src="/reload/reload.js"></script>
+    <h1><%= title %></h1>
+    <p>Velkommen til <%= title %></p>
+    <p>Du har søkt etter: <%= search %></p>
+
+    <% if (data.products){ %>
+
+    <table>
+      <% for (i in data.products){ %>
+        <tr>
+          <td><img src="<%= data.products[i].images[0].thumbnail.url %>" alt=""></td>
+          <td><p><%= data.products[i].name %></p></td>
+          <td><p><%= data.products[i].gross_price %></p></td>
+        </tr>
+      <% } %>
+
+    </table>
+    <% } %>
+
+  </body>
+</html>

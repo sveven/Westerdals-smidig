@@ -1,0 +1,9 @@
+module.exports = {
+
+  secretusername: function(){
+    return 'CLIENT USERNAME HERE';},
+
+  secrettoken: function(){
+    return 'SECRET TOKEN HERE';}
+
+}
