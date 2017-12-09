@@ -2,4 +2,4 @@
 
 ### K-Planleggeren
 
-Se om siden er oppe ->[her](www.hektisk.no)<-
+Se om siden er oppe på testserveren [her](www.hektisk.no).
