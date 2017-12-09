@@ -6,12 +6,12 @@ Se om siden er oppe på testserveren [her](www.hektisk.no).
 
 #### Installasjonsveiledning
 
-#####**1.** Installer alle modulene
+1. Installer alle modulene
 
   "npm install"
 
-#####**2.** Fyll inn autorisasjonsinfo
+1. Fyll inn autorisasjonsinfo
 
-  **a.** Bytt navn på 'config.js.eksempel' til 'config.js'.
-  **b.** Få brukernavn og passord av Bjørn Olav eller Henrik.
-  **c.** Sett inn brukernavn og passord(token) i configfilen.
+  1. Bytt navn på 'config.js.eksempel' til 'config.js'.
+  1. Få brukernavn og passord av Bjørn Olav eller Henrik.
+  1. Sett inn brukernavn og passord(token) i configfilen.
