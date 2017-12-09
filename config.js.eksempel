@@ -1,9 +1,11 @@
-module.exports = {
 
-  secretusername: function(){
-    return 'CLIENT USERNAME HERE';},
+/*
+    ./config.js
+    Contains secret username and token for API requests
+    to kolonial.no's API
 
-  secrettoken: function(){
-    return 'SECRET TOKEN HERE';}
+*/
 
-}
+exports.secretusername = 'SECRETUSERNAME HERE';
+
+exports.secrettoken = 'SECRETTOKEN HERE';
