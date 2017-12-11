@@ -2,7 +2,7 @@
 
 ### K-Planleggeren
 
-Se om siden er oppe på testserveren [her](www.hektisk.no).
+Se om siden er oppe på testserveren [her](http://www.hektisk.no).
 
 #### Installasjonsveiledning
 
