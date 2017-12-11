@@ -17,9 +17,6 @@ router.get('/', function(req, res, next) {
     data: list });
 });
 
-
-
-
 //Parameters for API search.
 
 let options = {

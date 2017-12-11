@@ -1,10 +1,10 @@
 # GRUPPE 20
 
-### K-Planleggeren
+## K-Planleggeren
 
 Se om siden er oppe på testserveren [her](www.hektisk.no).
 
-#### Installasjonsveiledning
+### Installasjonsveiledning
 
 1. Installer alle modulene med "npm install".
 1. Bytt navn på 'config.js.eksempel' til 'config.js'.
