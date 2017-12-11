@@ -8,16 +8,30 @@
   <body>
     <script src="/reload/reload.js"></script>
     <h1><%= title %></h1>
-    <p>Søk:</p>
 
     <form id = "" class="" action="search" method="post">
       <div>
         <label for="sok">Søk: </label>
-        <input type="text" id="sok" name="formsearch"><br>
+        <input type="text" id="sok" name="formsearch" value="<%= search %>"><br>
       </div>
 
       <input type="submit" value="Søk">
     </form>
+
+
+    <% if (data.products){ %>
+
+    <table>
+      <% for (i in data.products){ %>
+        <tr>
+          <td><img src="<%= data.products[i].images[0].thumbnail.url %>" alt=""></td>
+          <td><p><%= data.products[i].name %></p></td>
+          <td><p><%= data.products[i].gross_price %></p></td>
+        </tr>
+      <% } %>
+
+    </table>
+    <% } %>
 
 
 

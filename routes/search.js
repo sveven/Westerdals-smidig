@@ -15,8 +15,6 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res){
   search = req.body.formsearch;
 
-
-
   console.log("Formsearch: " + search);
 
   res.render('search', {
