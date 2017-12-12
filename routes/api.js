@@ -1,14 +1,9 @@
-const express = require('express');
+const https = require("http");
 const router = express.Router();
-const https = require('https');
-const config = require('../config');
-//const connection = require('../components/kolonialapi/connection');
-var jsonResponse = require('../components/kolonialapi/connection').jsonResponse;
+const config = require('config.js');
 
-//let list;
-
-
-/*
+let list;
+let search = "";
 
 //Parameters for API search.
 
@@ -21,12 +16,8 @@ let options = {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       "User-Agent": config.secretusername,
-      "X-Client-Token": config.secrettoken
-    }
+      "X-Client-Token": config.secrettoken}
 };
-
-*/
-
 
 /*
 
@@ -34,7 +25,7 @@ let options = {
   This should be a module
 
 */
-/*
+
 const req = https.request(options, (res) => {
   console.log('statusCode:', res.statusCode);
   console.log('headers:', res.headers);
@@ -45,7 +36,6 @@ const req = https.request(options, (res) => {
   res.on('data', (d) => {
     chunks.push(d);
   });
-
 // Piece together chunks in array and parse.
   res.on('end', () => {
     let data = Buffer.concat(chunks);
@@ -58,24 +48,5 @@ req.on('error', (e) => {
 });
 
 req.end();
-*/
+
 // API request to kolonial.no ends here.
-
-//let list = connection.jsonResponses(search);
-
-let search = "sjokolade";
-let list;
-
-
-
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-
-  res.render('index', {
-    title: 'K-Planleggeren',
-    search: search,
-    data: list });
-});
-
-module.exports = router;
