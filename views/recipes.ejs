@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+
+    <body>
+        <script src="/reload/reload.js"></script>
+
+        <h1><%= title %></h1>
+        <p>Oppskriftssøk: <%= search%></p>
+
+        <form id = "" class="" action="recipes" method="POST">
+            <div>
+                <label for="sok">Søk: </label>
+                <input type="text" id="sok" name="formsearch"><br>
+            </div>
+
+            <input type="submit" value="Søk">
+        </form>
+
+
+        <% if (data.results){ %>
+
+        <table>
+            <tr>
+            <td>Bilde</td>
+            <td>Navn</td>
+            <td>Vanskelighetsgrad</td>
+            </tr>
+            
+            <% for (i in data.results){ %>
+            <tr>
+                <td><img src="<%= data.results[i].feature_image_url %>" alt="Bilde av matrett"></td>
+                <td><p><%= data.results[i].title %></p></td>
+                <td><p><%= data.results[i].difficulty_string %></p></td>
+            </tr>
+            <% } %>
+
+        </table>
+        <% } %>
+
+    </body>
+</html>

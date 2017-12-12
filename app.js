@@ -13,6 +13,7 @@ var reload = require('reload');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var search = require('./routes/search');
+var recipes = require('./routes/recipes');
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/search', search);
 app.use('/users', users);
+app.use('/recipes', recipes);
 
 reload(app);
 
