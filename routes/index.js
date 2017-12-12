@@ -7,8 +7,9 @@ var jsonResponse = require('../components/kolonialapi/connection').jsonResponse;
 
 //let list;
 
+let search = "sjokolade";
+let list;
 
-/*
 
 //Parameters for API search.
 
@@ -25,16 +26,16 @@ let options = {
     }
 };
 
-*/
 
 
 /*
+
 
   API request to kolonial.no
   This should be a module
 
 */
-/*
+
 const req = https.request(options, (res) => {
   console.log('statusCode:', res.statusCode);
   console.log('headers:', res.headers);
@@ -58,13 +59,12 @@ req.on('error', (e) => {
 });
 
 req.end();
-*/
+
 // API request to kolonial.no ends here.
 
 //let list = connection.jsonResponses(search);
 
-let search = "sjokolade";
-let list;
+
 
 
 
