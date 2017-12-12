@@ -19,27 +19,7 @@
 
             <input type="submit" value="Søk">
         </form>
-
-
-        <% if (data.results){ %>
-
-        <table>
-            <tr>
-            <td>Bilde</td>
-            <td>Navn</td>
-            <td>Vanskelighetsgrad</td>
-            </tr>
-            
-            <% for (i in data.results){ %>
-            <tr>
-                <td><img src="<%= data.results[i].feature_image_url %>" alt="Bilde av matrett"></td>
-                <td><p><%= data.results[i].title %></p></td>
-                <td><p><%= data.results[i].difficulty_string %></p></td>
-            </tr>
-            <% } %>
-
-        </table>
-        <% } %>
-
+        
+        <% include ./partials/recipesSearchResult %>
     </body>
 </html>

@@ -2,10 +2,10 @@ let express = require('express');
 let router = express.Router();
 let https = require('https');
 let config = require('../config');
-let app = express();
 
 let list = "";
 let search = "";
+
 
 /* GET recipes page. */
 router.get('/', function(req, res, next) {
@@ -13,6 +13,8 @@ router.get('/', function(req, res, next) {
         title: 'K-Planleggeren',
         search: search,
         data: list});
+    
+    
 });
 
 router.post('/', function(req, res){
@@ -22,6 +24,7 @@ router.post('/', function(req, res){
     if(search !== "") {
         onSearch();
     }
+
     res.render('recipes', {
         title: 'K-Planleggeren',
         search: search,
@@ -29,7 +32,6 @@ router.post('/', function(req, res){
 });
 
 //Parameters for API search.
-
 
 function onSearch() {
 
@@ -50,12 +52,10 @@ function onSearch() {
         console.log('statusCode:', res.statusCode);
         console.log('headers:', res.headers);
         let chunks = [];
-        //STOPS HERE?
         // Datachunks sent back is incrementally pushed into an array.
         res.on('data', (d) => {
 
             //d == error, no information comes through. does options need an update?
-            process.stdout.write(d);
             chunks.push(d);
         });
 
@@ -66,7 +66,8 @@ function onSearch() {
             list = JSON.parse(data);
 
         });
-    });
+    }).end;
+
 }
 
 let options = {
