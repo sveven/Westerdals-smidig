@@ -11,7 +11,7 @@
     <p>Velkommen til <%= title %></p>
     <p>Du har søkt etter: <%= search %></p>
 
-    <% if (data.products){ %>
+    <% if (data){ %>
 
     <table>
       <% for (i in data.products){ %>
@@ -23,7 +23,9 @@
       <% } %>
 
     </table>
+    <% } else {%>
+      <p>No data.</p>
     <% } %>
-
+    
   </body>
 </html>
