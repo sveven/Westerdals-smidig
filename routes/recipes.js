@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res){
     let search = req.body.formsearch;
-
+    
     connection.kolonialRecipes(search, function(list){
 
         res.render('recipes', {
