@@ -8,12 +8,10 @@ router.get('/', function(req, res, next) {
 
   let search = "ost";
 
-  connection.kolonialSearch(search, function(list){
+  connection.kolonialRecipes(search, function(list){
 
-  res.render('index', {
-    title: 'K-Planleggeren',
-    search: search,
-    data: list });
+    console.log(list);
+
   });
 
 });
