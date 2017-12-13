@@ -4,7 +4,7 @@ const https = require('https');
 const config = require('../config')
 
 let data = "";
-let search = "ost";
+//let search = "";
 let list;
 
 
@@ -12,15 +12,19 @@ let list;
 /* GET search page. */
 router.get('/', function(req, res, next) {
 
-    res.render('search', {
-        title: 'K-Planleggeren',
-        search: search,
-        data: list});
+
+  let search = "";
+
+  res.render('search', {
+    title: 'K-Planleggeren',
+    search: search,
+    data: list});
+
 });
 
 
 router.post('/', function(req, res){
-    search = req.body.formsearch;
+  let search = req.body.formsearch;
 
     let options = {
         host: 'kolonial.no',
@@ -52,26 +56,31 @@ router.post('/', function(req, res){
             chunks.push(d);
         });
 // Piece together chunks in array and parse.
-        apires.on('end', () => {
-            let data = Buffer.concat(chunks);
-            list = JSON.parse(data);
-            console.log(list);
-            //res.json(list);
-            //res.send(list);
-            res.render('search', {
-                title: 'K-Planleggeren',
-                search: search,
-                data: list});
-        });
-    });
+  apires.on('end', () => {
+    let data = Buffer.concat(chunks);
+    list = JSON.parse(data);
+    //console.log(list);
 
-    apireq.on('error', (e) => {
-        console.error(e);
-    });
+    //res.send(data);
 
-    apireq.end();
+    res.render('search', {
+      title: 'K-Planleggeren',
+      search: search,
+      data: list});
+
+  });
+});
+
+apireq.on('error', (e) => {
+  console.error(e);
+});
+
+apireq.end();
+
 
 });
+
+
 
 
 module.exports = router;
