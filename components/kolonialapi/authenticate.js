@@ -11,8 +11,7 @@ let options = {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         "User-Agent": config.secretusername,
-        "X-Client-Token": config.secrettoken,
-        'Cookie': 'sessionid='
+        "X-Client-Token": config.secrettoken
     }
 };
 

@@ -4,18 +4,15 @@ const https = require('https');
 const config = require('../config')
 const connection = require('../components/kolonialapi/requestHandler');
 
-let data = "";
-//let search = "";
-let list;
-
-
 
 /* GET search page. */
 router.get('/', function(req, res, next) {
 
 
   let search = "";
-
+  let list;
+  let data = "";
+  
   res.render('search', {
     title: 'K-Planleggeren',
     search: search,
