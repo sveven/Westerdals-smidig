@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const https = require('https');
 const config = require('../config')
-const connection = require('../components/kolonialapi/connection');
+const connection = require('../components/kolonialapi/requestHandler');
 
 let data = "";
 //let search = "";
