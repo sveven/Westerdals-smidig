@@ -29,7 +29,18 @@ const recipes = '/api/v1/recipes/';
 const recipeByID = '/api/v1/recipes/';
 // Vet ikke helt hva dette er
 const recipesCurrentPlan = '/api/v1/recipes/plans/current/';
-
+//Recipes liked
+const recipesLikedByUser = '/api/v1/recipes/likes/';
+//recipes purchased
+const recipesPurchasedByUser = '/api/v1/recipes/purchased';
+//Toggle like on recipe by ID
+const recipeToggleLike = '/like-toggle/';
+//getting the user's cart
+const userCart = '/api/v1/cart/';
+//Adjusting a carts items
+const alterCartContent = '/api/v1/cart/items/';
+//Clear the cart
+const clearCartItems = '/api/v1/cart/clear/';
 
 
 /*
@@ -38,7 +49,7 @@ Endpoints that require login.
 
 GET  /api/v1/recipes/likes/
 GET  /api/v1/recipes/purchased/
-POST /api/v1/recipes/<recipe_id>/like-toggle/
+POST /api/v1/recipes/<recipe_id>
 
 GET /api/v1/cart/
 
@@ -128,6 +139,11 @@ module.exports = {
         })
     },
 
+    /**
+     * Returns extended information about a product by id
+     * @param productId
+     * @param callback
+     */
     getExtendedInformationAboutSpecificProduct: function(productId, callback) {
         options.path = productInformation + productId;
         request.kolonialAPIRequest(options, function (list) {
@@ -138,6 +154,10 @@ module.exports = {
 
     //start of recipes endpoint
 
+    /**
+     * Returns all recipes
+     * @param callback
+     */
     getAllRecipes: function(callback) {
         options.path = recipes;
         request.kolonialAPIRequest(options, function (list) {
@@ -145,20 +165,82 @@ module.exports = {
         })
     },
 
+    /**
+     * Gets a recipe by ID
+     * @param recipeId
+     * @param callback
+     */
     getRecipeById: function(recipeId, callback) {
-        options.path = recipes + recipeId;
+        options.path = recipeByID + recipeId;
         request.kolonialAPIRequest(options, function (list) {
             callback(list);
         })
     },
 
-    getRecipesFromCurrentPlan: function( callback) {
+    /**
+     * Gets recipes from the current plan
+     * @param callback
+     */
+    getRecipesFromCurrentPlan: function(callback) {
         options.path = recipesCurrentPlan;
         request.kolonialAPIRequest(options, function (list) {
             callback(list);
         })
+    },
+
+    //Start of endpoint for user specific recipes
+    //TODO add token needed for options so that user auth is OK
+    getRecipesLikedByUser: function(callback) {
+        options.path = recipesCurrentPlan;
+        request.kolonialAPIRequest(options, function (list) {
+            callback(list);
+        })
+    },
+
+    /**
+     * Toggles a like on the recipe
+     * @param recipeId
+     * @param callback
+     */
+    toggleLikeOnRecipe: function(recipeId, callback) {
+        options.path = recipeByID + recipeId + recipeToggleLike;
+        request.kolonialAPIRequest(options, function (list) {
+            callback(list);
+        })
+    },
+
+    /**
+     * Returns the contents in the cart
+     * @param callback
+     */
+    getCartContent: function(callback) {
+        options.path = userCart;
+        request.kolonialAPIRequest(options, function (list) {
+            callback(list);
+        })
+    },
+
+    /**
+     * Adjusts the carts contents.
+     * Callback sends an object
+     * @param callback
+     */
+    adjustCartContents: function(callback) {
+        options.path = alterCartContent;
+        request.kolonialAPIRequest(options, function (list) {
+            callback(list);
+        })
+    },
+
+    /**
+     * Clears all the items in the cart
+     * @param callback
+     */
+    clearAllCartItems: function(callback) {
+        options.path = clearCartItems;
+        request.kolonialAPIRequest(options, function (list) {
+            callback(list);
+        })
     }
-
-
 };
 
