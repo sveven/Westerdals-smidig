@@ -31,7 +31,7 @@ router.post('/', function(req, res){
 
     res.render('search', {
       title: 'K-Planleggeren',
-      search: req.body.formsearch,
+      search: search,
       data: list});
 
   });
