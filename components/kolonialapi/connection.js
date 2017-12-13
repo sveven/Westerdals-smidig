@@ -10,7 +10,7 @@ var request = require('./request.js');
 */
 
 //Search for products
-const search = '/api/v1/search/?q=';
+const itemSearch = '/api/v1/search/?q=';
 
 //Search for recipes
 const recipeSearch = '/api/v1/search/recipes/?q=';
@@ -92,7 +92,7 @@ module.exports = {
      */
     searchForProduct: function(search, callback){
 
-        options.path = search + search;
+        options.path = itemSearch + search;
 
         request.kolonialAPIRequest(options, function(list){
 
