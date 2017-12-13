@@ -12,47 +12,49 @@ let list;
 /* GET search page. */
 router.get('/', function(req, res, next) {
 
+
   let search = "";
 
   res.render('search', {
     title: 'K-Planleggeren',
     search: search,
     data: list});
+
 });
 
 
 router.post('/', function(req, res){
   let search = req.body.formsearch;
 
-  let options = {
-    host: 'kolonial.no',
-    port: 443,
-    path: '/api/v1/search/?q=' + search,
-    method: 'GET',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        "User-Agent": config.secretusername,
-        "X-Client-Token": config.secrettoken
-      }
-  };
+    let options = {
+        host: 'kolonial.no',
+        port: 443,
+        path: '/api/v1/search/?q=' + search,
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "User-Agent": config.secretusername,
+            "X-Client-Token": config.secrettoken
+        }
+    };
 
 
-  /*
-    API
-  */
+    /*
+      API
+    */
 
-  const apireq = https.get(options, (apires) =>{
-    //console.log('statusCode', apires.statusCode);
-    //console.log('headers:', apires.headers);
-    //console.log("API:" + search);
+    const apireq = https.get(options, (apires) =>{
+        //console.log('statusCode', apires.statusCode);
+        //console.log('headers:', apires.headers);
+        //console.log("API:" + search);
 
-  let chunks = [];
+        let chunks = [];
 
 // Datachunks sent back is incrementally pushed into an array.
-  apires.on('data', (d) => {
-    chunks.push(d);
-  });
+        apires.on('data', (d) => {
+            chunks.push(d);
+        });
 // Piece together chunks in array and parse.
   apires.on('end', () => {
     let data = Buffer.concat(chunks);
