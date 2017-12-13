@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const https = require('https');
 const config = require('../config')
+const connection = require('../components/kolonialapi/connection');
 
 let data = "";
 //let search = "";
@@ -26,6 +27,17 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res){
   let search = req.body.formsearch;
 
+  connection.kolonialSearch(search, function(list){
+
+    res.render('search', {
+      title: 'K-Planleggeren',
+      search: req.body.formsearch,
+      data: list});
+
+  });
+
+
+/*
     let options = {
         host: 'kolonial.no',
         port: 443,
@@ -38,12 +50,12 @@ router.post('/', function(req, res){
             "X-Client-Token": config.secrettoken
         }
     };
-
+*/
 
     /*
       API
     */
-
+/*
     const apireq = https.get(options, (apires) =>{
         //console.log('statusCode', apires.statusCode);
         //console.log('headers:', apires.headers);
@@ -56,6 +68,7 @@ router.post('/', function(req, res){
             chunks.push(d);
         });
 // Piece together chunks in array and parse.
+
   apires.on('end', () => {
     let data = Buffer.concat(chunks);
     list = JSON.parse(data);
@@ -65,7 +78,7 @@ router.post('/', function(req, res){
 
     res.render('search', {
       title: 'K-Planleggeren',
-      search: search,
+      search: req.body.formsearch,
       data: list});
 
   });
@@ -76,6 +89,7 @@ apireq.on('error', (e) => {
 });
 
 apireq.end();
+*/
 
 
 });

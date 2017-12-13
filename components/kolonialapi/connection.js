@@ -7,63 +7,83 @@ var config = require('../../config');
     kolonial.no api. Sould return a connection or
     just the json file?
 */
-let list;
+const searchPath = '/api/v1/search/?q=';
+const recipeSearchPath = '/api/v1/search/recipes/?q=';
 
-
-
-exports.jsonResponse = function (search) {
-
-
-
-  let options = {
+let options = {
     host: 'kolonial.no',
     port: 443,
-    path: '/api/v1/search/?q=' + search,
+    path: "",
     method: 'GET',
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         "User-Agent": config.secretusername,
         "X-Client-Token": config.secrettoken
-      }
-  };
-
-  const req = https.request(options, (res) => {
-    console.log('statusCode:', res.statusCode);
-    console.log('headers:', res.headers);
-
-    let chunks = [];
-
-  // Datachunks sent back is incrementally pushed into an array.
-    res.on('data', (d) => {
-      chunks.push(d);
-    });
-
-  // Piece together chunks in array and parse.
-    res.on('end', () => {
-      let data = Buffer.concat(chunks);
-      list = JSON.parse(data);
-      return list;
-    });
-  });
-
-  req.on('error', (e) => {
-    console.error(e);
-  });
-
-  req.end();
-
+    }
 };
 
 
+module.exports = {
 
+  kolonialRecipes: function(search, callback){
 
+    options.path = recipeSearchPath + search;
 
+    kolonialAPIRequest(options, function(list){
 
-/*
-module.exports.jsonResponse = (search) => {
-  return {
+      callback(list);
+
+    });
+
+  },
+
+  kolonialSearch: function(search, callback){
+
+    options.path = searchPath + search;
+
+    kolonialAPIRequest(options, function(list){
+
+      callback(list);
+
+    });
 
   }
+};
+
+function kolonialAPIRequest(options, apicallback){
+
+  /*
+    API
+  */
+
+  const req = https.get(options, (res) =>{
+      //console.log('statusCode', apires.statusCode);
+      //console.log('headers:', apires.headers);
+      //console.log("API:" + search);
+
+      let chunks = [];
+
+// Datachunks sent back is incrementally pushed into an array.
+      res.on('data', (d) => {
+          chunks.push(d);
+      });
+
+// Piece together chunks in array and parse.
+
+res.on('end', () => {
+  let data = Buffer.concat(chunks);
+  let list = JSON.parse(data);
+
+  apicallback(list);
+
+  });
+});
+
+req.on('error', (e) => {
+console.error(e);
+});
+
+req.end();
+
 }
-*/
