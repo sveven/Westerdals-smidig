@@ -164,7 +164,7 @@ module.exports = {
         request.kolonialAPIRequest(options, function (list) {
             callback(list);
         })
-    },
+    }
 
 
 };
