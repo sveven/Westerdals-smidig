@@ -89,7 +89,11 @@ var req = https.get(options, (res) => {
 
     res.on('end', () => {
         let data = Buffer.concat(chunks);
-        resultList = JSON.parse(data);
+        let resultList = JSON.parse(data);
+        res.render('recipes', {
+            title: 'K-Planleggeren',
+            search: searchWord,
+            data: resultList});
     });
 });
 
