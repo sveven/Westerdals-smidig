@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+  </head>
+  <body>
+    <script src="/reload/reload.js"></script>
+    <h1><%= title %></h1>
+
+    <form id = "" class="" action="authenticate" method="post">
+      <div>
+        <label for="sok">Søk: </label>
+        <input type="text" id="username" name="username"><br>
+        <input type="text" id="pass" name="pass"> <br>
+      </div>
+
+      <input type="submit" value="Logg Inn">
+    </form>
+
+    <% if (data) { %>
+
+    <table>
+      <% for (i in data.products){ %>
+        <tr>
+          <td><img src="<%= data.products[i].images[0].thumbnail.url %>" alt=""></td>
+          <td><p><%= data.products[i].name %></p></td>
+          <td><p><%= data.products[i].gross_price %></p></td>
+        </tr>
+      <% } %>
+
+    </table>
+    <% } else {%>
+      <p>No data.</p>
+    <% } %>
+
+
+  </body>
+</html>
