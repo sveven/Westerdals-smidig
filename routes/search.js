@@ -4,13 +4,15 @@ const https = require('https');
 const config = require('../config')
 
 let data = "";
-let search = "ost";
+//let search = "";
 let list;
 
 
 
 /* GET search page. */
 router.get('/', function(req, res, next) {
+
+  let search = "";
 
   res.render('search', {
     title: 'K-Planleggeren',
@@ -20,7 +22,7 @@ router.get('/', function(req, res, next) {
 
 
 router.post('/', function(req, res){
-  search = req.body.formsearch;
+  let search = req.body.formsearch;
 
   let options = {
     host: 'kolonial.no',
@@ -55,13 +57,15 @@ router.post('/', function(req, res){
   apires.on('end', () => {
     let data = Buffer.concat(chunks);
     list = JSON.parse(data);
-    console.log(list);
-    //res.json(list);
-    //res.send(list);
+    //console.log(list);
+
+    //res.send(data);
+
     res.render('search', {
       title: 'K-Planleggeren',
       search: search,
       data: list});
+
   });
 });
 
@@ -71,7 +75,10 @@ apireq.on('error', (e) => {
 
 apireq.end();
 
+
 });
+
+
 
 
 module.exports = router;
