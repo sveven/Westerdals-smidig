@@ -10,25 +10,25 @@ var request = require('./request.js');
 */
 
 //Search for products
-const searchPath = '/api/v1/search/?q=';
+const search = '/api/v1/search/?q=';
 
 //Search for recipes
-const recipeSearchPath = '/api/v1/search/recipes/?q=';
+const recipeSearch = '/api/v1/search/recipes/?q=';
 
 //Get productcategories
 const productCategories = '/api/v1/productcategories/';
 //Get products from product category
-const productCategoriesId = '/api/v1/productcategories/<product_category_id>/';
+const productCategoriesId = '/api/v1/productcategories/';
 
 //Get extended info on single product
-const productInfo = '/api/v1/productcategories/<product_category_id>/';
+const productInformation = '/api/v1/productcategories/';
 
-// Get recipes
+// Get all recipes
 const recipes = '/api/v1/recipes/';
 // Get recipes by id
-const recipesID = '/api/v1/recipes/<recipe_id>/';
+const recipeByID = '/api/v1/recipes/';
 // Vet ikke helt hva dette er
-const recipesPlans = '/api/v1/recipes/plans/current/';
+const recipesCurrentPlan = '/api/v1/recipes/plans/current/';
 
 
 
@@ -68,27 +68,104 @@ let options = {
 
 module.exports = {
 
-  kolonialRecipes: function(search, callback){
+    /**
+     * Returns a list of recipes based on search value
+     * @param search
+     * @param callback
+     */
+    searchForRecipe: function(search, callback){
 
-    options.path = recipeSearchPath + search;
+        options.path = recipeSearch + search;
 
-    request.kolonialAPIRequest(options, function(list){
+        request.kolonialAPIRequest(options, function(list){
 
-      callback(list);
+            callback(list);
 
-    });
+        });
 
-  },
+    },
 
-  kolonialSearch: function(search, callback){
+    /**
+     * Returns a list of items based on a search value
+     * @param search
+     * @param callback
+     */
+    searchForProduct: function(search, callback){
 
-    options.path = searchPath + search;
+        options.path = search + search;
 
-    request.kolonialAPIRequest(options, function(list){
+        request.kolonialAPIRequest(options, function(list){
 
-      callback(list);
+            callback(list);
 
-    });
+        });
 
-  }
+    },
+
+    // Start of products endpoint
+    /**
+     * Returns all product categories
+     * @param callback
+     */
+    getAllProductCategories: function(callback) {
+        options.path = productCategories;
+
+        request.kolonialAPIRequest(options, function (list) {
+            callback(list);
+        })
+    },
+
+    /**
+     * Returns all products in a given product category id
+     * @param productCategoryId
+     * @param callback
+     */
+    getAllProductsFromCategory: function(productCategoryId, callback) {
+        options.path = productCategoriesId + productCategoryId;
+
+        request.kolonialAPIRequest(options, function (list) {
+            callback(list);
+        })
+    },
+
+    getExtendedInformationAboutSpecificProduct: function(productId, callback) {
+        options.path = productInformation + productId;
+        request.kolonialAPIRequest(options, function (list) {
+            callback(list);
+        })
+    },
+    //End of products endpoint
+
+    //start of recipes endpoint
+
+    getAllRecipes: function(callback) {
+        options.path = recipes;
+        request.kolonialAPIRequest(options, function (list) {
+            callback(list);
+        })
+    },
+
+    getRecipeById: function(recipeId, callback) {
+        options.path = recipes + recipeId;
+        request.kolonialAPIRequest(options, function (list) {
+            callback(list);
+        })
+    },
+
+    getRecipeById: function(recipeId, callback) {
+        options.path = recipeByID + recipeId;
+        request.kolonialAPIRequest(options, function (list) {
+            callback(list);
+        })
+    },
+
+    getRecipesFromCurrentPlan: function( callback) {
+        options.path = recipesCurrentPlan;
+        request.kolonialAPIRequest(options, function (list) {
+            callback(list);
+        })
+    },
+
+
 };
+

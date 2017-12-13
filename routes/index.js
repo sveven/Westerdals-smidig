@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
   let search = "ost";
 
-  connection.kolonialSearch(search, function(list){
+  connection.searchForProduct(search, function(list){
 
   res.render('index', {
     title: 'K-Planleggeren',

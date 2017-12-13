@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
   let search = "ost";
 
-  connection.kolonialRecipes(search, function(list){
+  connection.searchForRecipe(search, function(list){
 
     console.log(list);
 

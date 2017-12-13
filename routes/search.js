@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res){
   let search = req.body.formsearch;
 
-  connection.kolonialSearch(search, function(list){
+  connection.searchForProduct(search, function(list){
 
     res.render('search', {
       title: 'K-Planleggeren',

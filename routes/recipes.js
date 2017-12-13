@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res){
     let search = req.body.formInput;
-    connection.kolonialRecipes(search, function(list){
+    connection.searchForRecipe(search, function(list){
 
         res.render('recipes', {
             title: 'K-Planleggeren',
