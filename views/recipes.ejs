@@ -2,7 +2,7 @@
 <html>
     <head>
         <title><%= title %></title>
-        <link rel='stylesheet' href='../public/stylesheets/style.css' />
+        <link rel='stylesheet' href="/stylesheets/style.css" type="text/css" />
         <meta charset="UTF-8">
     </head>
 
@@ -15,12 +15,12 @@
         <form id = "" class="" action="recipes" method="POST">
             <div>
                 <label for="sok">Søk: </label>
-                <input type="text" id="sok" name="formsearch"><br>
+                <input type="text" id="sok" name="formInput"><br>
             </div>
 
             <input type="submit" value="Søk">
         </form>
         
-        <% include ./partials/recipesSearchResult.ejs %>
+        <% include ../views/partials/recipesSearchResult %>
     </body>
 </html>
