@@ -152,13 +152,6 @@ module.exports = {
         })
     },
 
-    getRecipeById: function(recipeId, callback) {
-        options.path = recipeByID + recipeId;
-        request.kolonialAPIRequest(options, function (list) {
-            callback(list);
-        })
-    },
-
     getRecipesFromCurrentPlan: function( callback) {
         options.path = recipesCurrentPlan;
         request.kolonialAPIRequest(options, function (list) {
