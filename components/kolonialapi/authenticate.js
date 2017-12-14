@@ -5,7 +5,7 @@ var config = require('../../config');
 let options = {
     host: 'kolonial.no',
     port: 443,
-    path: "/api/v1/user/login",
+    path: "/api/v1/user/login/",
     method: 'POST',
     headers: {
         'Accept': 'application/json',
