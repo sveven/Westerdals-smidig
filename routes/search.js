@@ -2,12 +2,7 @@ const express = require('express');
 const router = express.Router();
 const https = require('https');
 const config = require('../config')
-const connection = require('../components/kolonialapi/connection');
-
-let data = "";
-//let search = "";
-let list;
-
+const connection = require('../components/kolonialapi/requestHandler');
 
 
 /* GET search page. */
@@ -15,7 +10,9 @@ router.get('/', function(req, res, next) {
 
 
   let search = "";
-
+  let list;
+  let data = "";
+  
   res.render('search', {
     title: 'K-Planleggeren',
     search: search,

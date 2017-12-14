@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const connection = require('../components/kolonialapi/connection');
+const connection = require('../components/kolonialapi/requestHandler');
 
 
 /* GET search page. */
