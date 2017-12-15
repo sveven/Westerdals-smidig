@@ -1,3 +1,6 @@
+//torhen16@student.westerdals.no
+//smidigprosjekt
+
 const express = require('express');
 const router = express.Router();
 const https = require('https');
@@ -25,6 +28,8 @@ router.post('/', function(req, res){
     "username": "req.body.username",
     "password": "req.body.pass"
   }
+
+  console.log("Callback!!");
 
   authenticate.authenticate(obj, function(token){
 

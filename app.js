@@ -1,22 +1,28 @@
 //SET DEBUG=kolonial:* & npm start
 
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var reload = require('reload');
+let express = require('express');
+let path = require('path');
+let favicon = require('serve-favicon');
+let logger = require('morgan');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
+let reload = require('reload');
 
 //var config = require('./config');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-var search = require('./routes/search');
-var recipes = require('./routes/recipes');
-var authenticate = require('./routes/authenticate');
+const index = require('./routes/index');
+const users = require('./routes/users');
+const search = require('./routes/search');
+const recipes = require('./routes/recipes');
+const authenticate = require('./routes/authenticate');
+const basicProducts = require('./routes/basic-products');
+const introduction = require('./routes/introduction');
+const shoppingCart = require('./routes/shopping-cart');
+const weekPlannerCurrent = require('./routes/week-planner-current');
 
-var app = express();
+
+
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,25 +41,29 @@ app.use('/search', search);
 app.use('/users', users);
 app.use('/recipes', recipes);
 app.use('/authenticate', authenticate);
+app.use('/basic-products', basicProducts);
+app.use('/introduction', introduction);
+app.use('/shopping-cart', shoppingCart);
+app.use('/week-planner', weekPlannerCurrent);
 
 reload(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;
