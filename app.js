@@ -1,6 +1,7 @@
 //SET DEBUG=kolonial:* & npm start
 
 let express = require('express');
+let session = require('express-session')
 let path = require('path');
 let favicon = require('serve-favicon');
 let logger = require('morgan');
@@ -37,6 +38,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret:"The secret itself"}));
 
 app.use('/', index);
 app.use('/search', search);

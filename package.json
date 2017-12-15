@@ -6,12 +6,13 @@
     "start": "supervisor ./bin/www"
   },
   "dependencies": {
+    "beautify": "0.0.8",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
     "express": "~4.15.5",
-    "express-partials": "^0.3.0",
+    "express-session": "^1.7.6",
     "morgan": "~1.9.0",
     "q": "^1.5.1",
     "request": "^2.83.0",

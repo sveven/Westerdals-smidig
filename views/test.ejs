@@ -17,6 +17,8 @@
     <input type="radio" name="apiQueryType" id="productCategoriesId" value="productCategoriesId"> Produkter i prod.kat<br>
     <input type="radio" name="apiQueryType" id="productInformation" value="productInformation"> Produktinformasjon<br>
     <input type="radio" name="apiQueryType" id="recipes" value="recipes"> Oppskrifter<br>
+    <input type="radio" name="apiQueryType" id="recipes" value="recipesByID"> Oppskrift - ID<br>
+    <input type="radio" name="apiQueryType" id="recipes" value="currentPlan"> Plan(?) <br>
     <input type="radio" name="apiQueryType" id="userCart" value="userCart"> Brukers handlevogn<br>
 
     <div>
@@ -26,24 +28,15 @@
 
     <input type="submit" value="Søk">
 </form>
-<!--End searchform -->
 
 <% if (data) { %>
+<p><%- JSON.stringify(data, null, 2).replace(/{/g, "{<br>")
+    .replace(/,/g, ",<br>")
+    .replace(/}/g, "<br>}")%></p>
 
-<table>
-    <% for (i in data.products){ %>
-    <tr>
-        <td><img src="<%= data.products[i].images[0].thumbnail.url %>" alt=""></td>
-        <td><p><%= data.products[i].name %></p></td>
-        <td><p><%= data.products[i].gross_price %></p></td>
-    </tr>
-    <% } %>
-
-</table>
 <% } else {%>
 <p>No data.</p>
 <% } %>
-
 
 </body>
 </html>

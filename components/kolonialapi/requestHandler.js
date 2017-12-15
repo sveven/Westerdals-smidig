@@ -21,7 +21,7 @@ const productCategories = '/api/v1/productcategories/';
 const productCategoriesId = '/api/v1/productcategories/';
 
 //Get extended info on single product
-const productInformation = '/api/v1/productcategories/';
+const productInformation = '/api/v1/products/';
 
 // Get all recipes
 const recipes = '/api/v1/recipes/';
@@ -132,7 +132,7 @@ module.exports = {
      * @param callback
      */
     getAllProductsFromCategory: function(productCategoryId, callback) {
-        options.path = productCategoriesId + productCategoryId;
+        options.path = productCategoriesId + productCategoryId + "/";
 
         request.kolonialAPIRequest(options, function (list) {
             callback(list);
@@ -145,7 +145,7 @@ module.exports = {
      * @param callback
      */
     getExtendedInformationAboutSpecificProduct: function(productId, callback) {
-        options.path = productInformation + productId;
+        options.path = productInformation + productId +"/";
         request.kolonialAPIRequest(options, function (list) {
             callback(list);
         })
@@ -171,7 +171,7 @@ module.exports = {
      * @param callback
      */
     getRecipeById: function(recipeId, callback) {
-        options.path = recipeByID + recipeId;
+        options.path = recipeByID + recipeId + "/";
         request.kolonialAPIRequest(options, function (list) {
             callback(list);
         })
