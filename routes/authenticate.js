@@ -10,30 +10,37 @@ const cookieparser = require('cookie-parser');
 router.get('/', function(req, res, next) {
 
 
-  let loggedin = false;
-  
-  res.render('search', {
+  let signedin = false;
+
+  res.render('authenticate', {
     title: 'K-Planleggeren',
-    loggedin: loggedin});
+    signedin: signedin});
 
 });
 
 
 router.post('/', function(req, res){
-  let username = req.body.username;
-  let pass = req.body.pass;
+  let signedin = false;
+  let obj = {
+    "username": "req.body.username",
+    "password": "req.body.pass"
+  }
 
-  authenticate.authenticate(username,pass, function(token){
+  authenticate.authenticate(obj, function(token){
+
+    (token != "") ? signedin = true : signedin = false;
+
+    //Cookie: sessionid=<token>
 
 
     res.render('authenticate', {
       title: 'K-Planleggeren',
-      search: search,
-      data: list});
+      signedin: signedin});
 
   });
-
 });
+
+
 
 
 

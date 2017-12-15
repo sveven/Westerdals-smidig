@@ -14,6 +14,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var search = require('./routes/search');
 var recipes = require('./routes/recipes');
+var authenticate = require('./routes/authenticate');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use('/', index);
 app.use('/search', search);
 app.use('/users', users);
 app.use('/recipes', recipes);
+app.use('/authenticate', authenticate);
 
 reload(app);
 

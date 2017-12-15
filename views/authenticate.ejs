@@ -11,28 +11,29 @@
 
     <form id = "" class="" action="authenticate" method="post">
       <div>
-        <label for="sok">Søk: </label>
-        <input type="text" id="username" name="username"><br>
-        <input type="text" id="pass" name="pass"> <br>
+        <table>
+          <tr>
+            <td>  <label for="username">Brukernavn: </label> </td>
+            <td> <input type="text" id="username" name="username"><br> </td>
+          </tr>
+          <tr>
+            <td> <label for="pass">Passord: </label> </td>
+            <td> <input type="password" id="pass" name="pass"><br> </td>
+          </tr>
+        </table>
       </div>
 
       <input type="submit" value="Logg Inn">
     </form>
 
-    <% if (data) { %>
+    <% if (signedin === true) { %>
 
-    <table>
-      <% for (i in data.products){ %>
-        <tr>
-          <td><img src="<%= data.products[i].images[0].thumbnail.url %>" alt=""></td>
-          <td><p><%= data.products[i].name %></p></td>
-          <td><p><%= data.products[i].gross_price %></p></td>
-        </tr>
-      <% } %>
+      <p>Du er logget inn.</p>
 
-    </table>
     <% } else {%>
-      <p>No data.</p>
+
+      <p>Ikke logget in.</p>
+
     <% } %>
 
 

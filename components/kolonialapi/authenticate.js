@@ -17,13 +17,13 @@ let options = {
 
 module.exports = {
 
-  authenticate: function(options, apicallback){
+  authenticate: function(obj, apicallback){
 
     /*
       API
     */
 
-    const req = https.get(options, (res) =>{
+    const req = https.get(options, obj, (res) =>{
 
         let chunks = [];
 
