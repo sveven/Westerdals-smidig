@@ -15,6 +15,7 @@ const users = require('./routes/users');
 const search = require('./routes/search');
 const recipes = require('./routes/recipes');
 const authenticate = require('./routes/authenticate');
+const test = require('./routes/test');
 /*
 const basicProducts = require('./routes/basic-products');
 const introduction = require('./routes/introduction');
@@ -42,6 +43,7 @@ app.use('/search', search);
 app.use('/users', users);
 app.use('/recipes', recipes);
 app.use('/authenticate', authenticate);
+app.use('/test', test);
 /*
 app.use('/basic-products', basicProducts);
 app.use('/introduction', introduction);

@@ -2,18 +2,38 @@ const express = require('express');
 const router = express.Router();
 const connection = require('../components/kolonialapi/requestHandler');
 
+/* GET search page. */
+router.get('/', function(req, res) {
+    let search = "";
+    let list = [];
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-
-  let search = "ost";
-
-  connection.searchForRecipe(search, function(list){
-
-    console.log(list);
-
-  });
+    res.render('test', {
+        title: 'K-Planleggeren',
+        search: search,
+        data: list});
 
 });
+
+
+router.post('/', function(req, res){
+    let search = req.body.formInput;
+
+    connection.searchForRecipe(search, function(list){
+
+        res.render('test', {
+            title: 'K-Planleggeren',
+            search: search,
+            data: list});
+
+    })
+});
+
+function checkWhichIsChecked() {
+    
+}
+
+
+
+
 
 module.exports = router;

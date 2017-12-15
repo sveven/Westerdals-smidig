@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+</head>
+<body>
+<script src="/reload/reload.js"></script>
+<h1><%= title %></h1>
+
+<!--RadioButtonForm-->
+<form action="">
+    <input type="radio" name="apiQueryType" value="searchForProduct"> Søk<br>
+    <input type="radio" name="apiQueryType" value="searchForRecipe"> Oppskriftssøk<br>
+    <input type="radio" name="apiQueryType" value="productCategories"> Produktkategorier<br>
+    <input type="radio" name="apiQueryType" value="productCategoriesId"> Produkter i prod.kat<br>
+    <input type="radio" name="apiQueryType" value="productInformation"> Produktinformasjon<br>
+    <input type="radio" name="apiQueryType" value="recipes"> Oppskrifter<br>
+    <input type="radio" name="apiQueryType" value="userCart"> Brukers handlevogn<br>
+</form>
+<!--EndRadioButtonForm-->
+
+<!--Searchform -->
+<form id = "" class="" action="search" method="post">
+    <div>
+        <label for="sok">Søk: </label>
+        <input type="text" id="sok" name="formsearch" value="<%= search %>"><br>
+    </div>
+
+    <input type="submit" value="Søk">
+</form>
+<!--End searchform -->
+</body>
+</html>
