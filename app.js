@@ -1,7 +1,6 @@
 //SET DEBUG=kolonial:* & npm start
 
 let express = require('express');
-let session = require('express-session')
 let path = require('path');
 let favicon = require('serve-favicon');
 let logger = require('morgan');
@@ -17,12 +16,14 @@ const search = require('./routes/search');
 const recipes = require('./routes/recipes');
 const authenticate = require('./routes/authenticate');
 const test = require('./routes/test');
+const weekPlannerCurrent = require('./routes/week-planner-current');
+
 /*
 const basicProducts = require('./routes/basic-products');
 const introduction = require('./routes/introduction');
 const shoppingCart = require('./routes/shopping-cart');
-const weekPlannerCurrent = require('./routes/week-planner-current');
 */
+
 
 
 const app = express();
@@ -38,7 +39,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret:"The secret itself"}));
 
 app.use('/', index);
 app.use('/search', search);
@@ -50,8 +50,9 @@ app.use('/test', test);
 app.use('/basic-products', basicProducts);
 app.use('/introduction', introduction);
 app.use('/shopping-cart', shoppingCart);
-app.use('/week-planner', weekPlannerCurrent);
 */
+app.use('/week-planner', weekPlannerCurrent);
+
 reload(app);
 
 // catch 404 and forward to error handler

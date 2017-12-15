@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const connection = require('../components/kolonialapi/requestHandler');
-const beautify = require('beautify');
-/* GET search page. */
+
 router.get('/', function(req, res) {
     let search = "";
     let list = [];
@@ -14,7 +13,6 @@ router.get('/', function(req, res) {
     });
 
 });
-
 
 router.post('/', function(req, res){
     runPostRequestAccordingToRadioChoice(req.body.apiQueryType, req.body.formInput, res);
@@ -108,22 +106,5 @@ function runPostRequestAccordingToRadioChoice(radioButton, searchWord, res) {
             break;
     }
 }
-
-// function formatJsonString(data) {
-//     let formattedString = "";
-//     var stringedObject = JSON.stringify(data);
-//
-//     while(stringedObject.next()) {
-//         console.log(stringedObject.next);
-//         formattedString += stringedObject.next;
-//         if(stringedObject.next.equal("," || stringedObject.next.equal("{") || stringedObject.next.equal("}"))) {
-//             formattedString += "\n";
-//         }
-//     }
-//     return formattedString;
-// }
-
-
-
 
 module.exports = router;
