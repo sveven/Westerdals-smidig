@@ -1,54 +1,40 @@
-var https = require('https');
-var config = require('../../config');
-
-
-let options = {
-    host: 'kolonial.no',
-    port: 443,
-    path: "/api/v1/user/login/",
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        "User-Agent": config.secretusername,
-        "X-Client-Token": config.secrettoken
-    }
-};
+const config = require('../../config');
+const request = require('request');
 
 module.exports = {
 
   authenticate: function(obj, apicallback){
 
-    /*
-      API
-    */
+    const options = {
+        uri: 'https://kolonial.no/api/v1/user/login/',
+        port: 443,
+        form: { 'username': obj.username,
+                'password': obj.password
+              },
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'User-Agent': config.secretusername,
+            'X-Client-Token': config.secrettoken
+        }
+    };
 
-    const req = https.get(options, obj, (res) =>{
+    let token, res;
 
-        let chunks = [];
+    function callback(error, response, body){
+      console.log('error:', error);
+      console.log('statusCode:', response && response.statusCode);
+      console.log('body:', body);
 
-  // Datachunks sent back is incrementally pushed into an array.
-    res.on('data', (d) => {
-        chunks.push(d);
-    });
+      if(!error && response.statusCode == 200){
+        let data = JSON.parse(body);
 
-  // Piece together chunks in array and parse.
+        apicallback(data);
+      }
 
-    res.on('end', () => {
-      let data = Buffer.concat(chunks);
-      let token = data.toString('utf8');
+    }
 
-      apicallback(token);
-
-      });
-    });
-
-  req.on('error', (e) => {
-  console.error(e);
-  });
-
-  req.end();
+    request.post(options, callback);
 
   }
-
 }
