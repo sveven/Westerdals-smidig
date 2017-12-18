@@ -14,10 +14,12 @@ router.get('/', function(req, res, next) {
   //console.log(req.cookies);
   //console.log("Sesh: " + req.cookies.data);
   if(req.cookies){
-    let cookiedata = JSON.parse(req.cookies.data);
-    console.log("Cookiedata" + JSON.stringify(cookiedata));
-    let sessionid = cookiedata.sessionid;
-    console.log("SessionID: " + sessionid);
+    if(req.cookies.data){
+      let cookiedata = JSON.parse(req.cookies.data);
+      //console.log("Cookiedata" + JSON.stringify(cookiedata));
+      let sessionid = cookiedata.sessionid;
+      console.log("SessionID: " + sessionid);
+    };
   };
 
 
