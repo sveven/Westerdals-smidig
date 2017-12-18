@@ -7,11 +7,17 @@ router.post('/', function(req, res){
 
 authenticate.logout(req, function(data){
 
+  console.log(data);
+
+  let first_name;
+  let last_name;
+  let cart;
   res.render('authenticate', {
     title: 'K-Planleggeren',
     signedin: data.is_authenticated,
-    first_name: data.user.first_name,
-    last_name: data.user.last_name});
+    first_name: first_name,
+    last_name: last_name,
+    cart: cart});
 
   });
 });
