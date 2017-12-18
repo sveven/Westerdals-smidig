@@ -2,7 +2,9 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <link rel="stylesheet" href="/stylesheets/normalize.css">
+    <link rel='stylesheet' href="/stylesheets/searchstyle.css" />
 
   </head>
   <body>
@@ -47,6 +49,40 @@
          <p> <%= cart.items[i].product.full_name %> </p>
 
       <% } %>
+
+      <div class="container">
+    	<div class="header">
+
+    	  <form id="" class="" action="search" method="post">
+    		<div>
+    		  <label for="sok">Søk: </label>
+    		  <input type="text" id="sok" name="formsearch" value="<%= search %>">
+    		  <br>
+    		</div>
+
+    		<input type="submit" value="Søk">
+    	  </form>
+    	</div>
+    	<div class="sidebar"></div>
+    	<div class="content">
+    		<ul class="search-result">
+    		<% if (data) { %>
+    			<% for (i in data.products){ %>
+    				<li class="search-item">
+    					<div class="img-container">
+    					<img class="img-thumb img-thumbnail img-fluid" src="<%= data.products[i].images[0].thumbnail.url %>" alt="">
+    				</div>
+    					<p id="item-name">	<%= data.products[i].name %> </p>
+    					<p id="item-price">	<%= data.products[i].gross_price %> </p>
+    				</li>
+    			<% } %>
+    		  <% } else {%>
+    				<p>No data.</p>
+    			<% } %>
+
+    		</ul>
+    	</div>
+      </div>
 
     <% } %>
 
