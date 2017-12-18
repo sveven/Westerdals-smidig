@@ -1,20 +1,15 @@
 //torhen16@student.westerdals.no
 //smidigprosjekt
-
 const express = require('express');
 const router = express.Router();
-const https = require('https');
-const config = require('../config')
 const authenticate = require('../components/kolonialapi/authenticate');
 const cookieparser = require('cookie-parser');
-const request = require('request');
-
-
 
 
 /* GET search page. */
 router.get('/', function(req, res, next) {
 
+  res.cookieparser
 
   let signedin = false;
 
@@ -27,21 +22,15 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res){
 
-  let obj = {
-    "username": req.body.username,
-    "password": req.body.pass
-  };
-
-  authenticate.authenticate(obj, function(data){
+  authenticate.authenticate(req, function(data){
 
     (data.is_authenticated === true) ? signedin = 1 : signedin = 0;
 
-    //res.cookie(cookie_name , 'cookie_calue').send('Cookie is set');
-
     res.render('authenticate', {
       title: 'K-Planleggeren',
-      signedin: signedin,
-      first_name: data.user.first_name});
+      signedin: data.is_authenticated,
+      first_name: data.user.first_name,
+      last_name: data.user.last_name});
 
   });
 });
