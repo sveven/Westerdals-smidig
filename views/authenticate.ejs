@@ -30,10 +30,22 @@
 
       <p>Hei <%= first_name %> <%= last_name %>!, du er logget inn.</p>
 
-    <% } else {%>
+    <% } else { %>
 
       <p>Ikke logget in.</p>
 
+    <% } %>
+
+    <% if (cart) { %>
+
+      <% for (i in cart.items) { %>
+
+         <p> <%= cart.items[i].product.full_name %> </p>
+
+      <% } %>
+
+    <% } else { %>
+      <p> Her var det ingen ting. </p>
     <% } %>
 
 

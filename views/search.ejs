@@ -32,9 +32,11 @@
 		<% if (data) { %>
 			<% for (i in data.products){ %>
 				<li class="search-item">
-					<img class="img-thumb" src="<%= data.products[i].images[0].thumbnail.url %>" alt="">
-					<p>	<%= data.products[i].name %> </p>
-					<p>	<%= data.products[i].gross_price %> </p>
+					<div class="img-container">
+					<img class="img-thumb img-thumbnail img-fluid" src="<%= data.products[i].images[0].thumbnail.url %>" alt="">
+				</div>
+					<p id="item-name">	<%= data.products[i].name %> </p>
+					<p id="item-price">	<%= data.products[i].gross_price %> </p>
 				</li>
 			<% } %>
 		  <% } else {%>

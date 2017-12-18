@@ -1,7 +1,7 @@
 .container {
     display: grid;
-    grid-template-columns: 25% 1fr;
-    grid-template-rows: 50px 50px 1fr;
+    grid-template-columns: 15% 1fr;
+    grid-template-rows: 50px 100px 1fr;
     grid-template-areas: 
     "header header"
     "sidebar sidebar"
@@ -11,50 +11,53 @@
 
 .header     {
     grid-area: header;
+    background-color: orange;
 }
 
 .sidebar    {
     grid-area: sidebar;
+    background-color: orange;
 }
 
 .content    {
     grid-area: content;
     display: grid;
-    grid-template-columns: 1fr 1fr;
 }
 
 .search-result  {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));    
     list-style-type: none;
-
+    grid-gap: 10px;
 }
 
- .img-thumb {
-     height: 15rem;
-    max-width: 300px;
-     
+.search-item {
+    border: 1px solid black;
+    display: grid;
+    height: 270px;
+    grid-template-rows: 60% 20% 20%;
+    grid-template-areas: 
+    "image"
+    "item"
+    "price";
+    
+}
+.img-container {
+    height: 140px;
+    width: auto;
+    margin: auto;
+}
+.img-thumb {
+    max-height: 140px;
+    max-width: 140px;
+    grid-area: image;
+      
  }
 
-@media screen and (min-width: 736px)    {
+ #item-name {
+     grid-area: item;
+ }
 
-    .container {
-        display: grid;
-        grid-template-columns: 15% 1fr;
-        grid-template-rows: 75px 1fr;
-        grid-template-areas: 
-        "header header"
-        "sidebar content";
-    }
-
-    .content    {
-        grid-area: content;
-    }
-
-    .search-result  {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-
-    }
-
-}
+ #item-price {
+     grid-area: price;   
+ }

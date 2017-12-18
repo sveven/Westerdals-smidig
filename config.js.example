@@ -9,3 +9,5 @@
 exports.secretusername = "user";
 
 exports.secrettoken = "token";
+
+exports.secret = "secret for signing cookies";

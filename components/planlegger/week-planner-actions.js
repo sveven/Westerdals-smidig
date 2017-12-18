@@ -1,4 +1,3 @@
-const cookieParser = require('cookie-parser');
 const fs = require('fs');
 
 function getJsonWeek(req) {
