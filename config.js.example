@@ -6,6 +6,6 @@
 
 */
 
-exports.secretusername = 'SECRETUSERNAME HERE';
+exports.secretusername = "user";
 
-exports.secrettoken = 'SECRETTOKEN HERE';
+exports.secrettoken = "token";
