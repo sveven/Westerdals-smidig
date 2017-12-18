@@ -1,6 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const connection = require('../components/kolonialapi/requestHandler');
+const jsonWeek = require('../components/planlegger/week.json');
+const plannerActions = require('../components/planlegger/week-planner-actions');
+const cookieParser = require('cookie-parser');
+const fs = require('fs');
+
 
 router.get('/', function(req, res) {
     let search = "";
@@ -12,99 +17,19 @@ router.get('/', function(req, res) {
         data: list
     });
 
-});
-
-router.post('/', function(req, res){
-    runPostRequestAccordingToRadioChoice(req.body.apiQueryType, req.body.formInput, res);
 
 });
 
-function runPostRequestAccordingToRadioChoice(radioButton, searchWord, res) {
-    switch(radioButton) {
-        case "searchRadio":
-            connection.searchForProduct(searchWord, function(list){
+router.post('/', function (req,res) {
+    res.cookie("planner",
+        JSON.stringify(jsonWeek),
+        {maxAge: 900000, httpOnly:true});
 
-                res.render('test', {
-                    title: 'K-Planleggeren',
-                    search: searchWord,
-                    data: list,
-                });
-            });
-            break;
-        case "recipeRadio":
-            connection.searchForRecipe(searchWord, function(list){
-                res.render('test', {
-                    title: 'K-Planleggeren',
-                    search: searchWord,
-                    data: list,
-                });
-            });
-            break;
-        case "productCategories":
-            connection.getAllProductCategories(function(list) {
-                res.render('test', {
-                    title: 'K-Planleggeren',
-                    search: searchWord,
-                    data: list,
-                });
-            });
-            break;
-        case "productCategoriesId":
-            connection.getAllProductsFromCategory(searchWord, function(list) {
-                res.render('test', {
-                    title: 'K-Planleggeren',
-                    search: searchWord,
-                    data: list,
-                });
-            });
-            break;
-        case "productInformation":
-            connection.getExtendedInformationAboutSpecificProduct(searchWord, function(list) {
-                res.render('test', {
-                    title: 'K-Planleggeren',
-                    search: searchWord,
-                    data: list,
-                });
-            });
-            break;
-        case "recipes":
-            connection.getAllRecipes(function(list) {
-                res.render('test', {
-                    title: 'K-Planleggeren',
-                    search: searchWord,
-                    data: list,
-                });
-            });
-            break;
-        case "recipesByID":
-            connection.getRecipeById(searchWord, function(list) {
-                console.log("###"+list);
-                res.render('test', {
-                    title: 'K-Planleggeren',
-                    search: searchWord,
-                    data: list,
-                });
-            });
-            break;
-        case "currentPlan":
-            connection.getRecipesFromCurrentPlan(function(list) {
-                res.render('test', {
-                    title: 'K-Planleggeren',
-                    search: searchWord,
-                    data: list,
-                });
-            });
-            break;
-        case "userCart":
-            connection.getCartContent(function(list) {
-                res.render('test', {
-                    title: 'K-Planleggeren',
-                    search: searchWord,
-                    data: list,
-                });
-            });
-            break;
-    }
-}
+    res.render('week-planner-current', {
+        title: 'K-Planleggeren',
+    });
+    plannerActions.writeCookieToJsonFileOnServerSide(req, 1);
+
+});
 
 module.exports = router;

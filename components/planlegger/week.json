@@ -1,0 +1,130 @@
+{
+  "days": [
+    {
+      "monday": {
+        "meals": [
+          {
+            "type": "breakfast",
+            "information": []
+          },
+          {
+            "type": "lunch",
+            "information": []
+          },
+          {
+            "type": "dinner",
+            "information": []
+          }
+        ]
+      }
+    },
+    {
+      "tuesday": {
+        "meals": [
+          {
+            "type": "breakfast",
+            "information": []
+          },
+          {
+            "type": "lunch",
+            "information": []
+          },
+          {
+            "type": "dinner",
+            "information": []
+          }
+        ]
+      }
+    },
+    {
+      "wednesday": {
+        "meals": [
+          {
+            "type": "breakfast",
+            "information": []
+          },
+          {
+            "type": "lunch",
+            "information": []
+          },
+          {
+            "type": "dinner",
+            "information": []
+          }
+        ]
+      }
+    },
+    {
+      "thursday": {
+        "meals": [
+          {
+            "type": "breakfast",
+            "information": []
+          },
+          {
+            "type": "lunch",
+            "information": []
+          },
+          {
+            "type": "dinner",
+            "information": []
+          }
+        ]
+      }
+    },
+    {
+      "friday": {
+        "meals": [
+          {
+            "type": "breakfast",
+            "information": []
+          },
+          {
+            "type": "lunch",
+            "information": []
+          },
+          {
+            "type": "dinner",
+            "information": []
+          }
+        ]
+      }
+    },
+    {
+      "saturday": {
+        "meals": [
+          {
+            "type": "breakfast",
+            "information": []
+          },
+          {
+            "type": "lunch",
+            "information": []
+          },
+          {
+            "type": "dinner",
+            "information": []
+          }
+        ]
+      }
+    },
+    {
+      "sunday": {
+        "meals": [
+          {
+            "type": "breakfast",
+            "information": []
+          },
+          {
+            "type": "lunch",
+            "information": []
+          },
+          {
+            "type": "dinner",
+            "information": []
+          }
+        ]
+      }
+    }
+  ]
+}

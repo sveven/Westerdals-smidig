@@ -15,6 +15,7 @@ const users = require('./routes/users');
 const search = require('./routes/search');
 const recipes = require('./routes/recipes');
 const authenticate = require('./routes/authenticate');
+const logout = require('./routes/logout');
 const test = require('./routes/test');
 const weekPlannerCurrent = require('./routes/week-planner-current');
 
@@ -46,12 +47,13 @@ app.use('/users', users);
 app.use('/recipes', recipes);
 app.use('/authenticate', authenticate);
 app.use('/test', test);
+app.use('/logout', logout);
 /*
 app.use('/basic-products', basicProducts);
 app.use('/introduction', introduction);
 app.use('/shopping-cart', shoppingCart);
 */
-app.use('/week-planner', weekPlannerCurrent);
+app.use('/week-planner-current', weekPlannerCurrent);
 
 reload(app);
 
