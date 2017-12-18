@@ -15,12 +15,15 @@ const users = require('./routes/users');
 const search = require('./routes/search');
 const recipes = require('./routes/recipes');
 const authenticate = require('./routes/authenticate');
+const test = require('./routes/test');
+const weekPlannerCurrent = require('./routes/week-planner-current');
+
 /*
 const basicProducts = require('./routes/basic-products');
 const introduction = require('./routes/introduction');
 const shoppingCart = require('./routes/shopping-cart');
-const weekPlannerCurrent = require('./routes/week-planner-current');
 */
+
 
 
 const app = express();
@@ -42,12 +45,14 @@ app.use('/search', search);
 app.use('/users', users);
 app.use('/recipes', recipes);
 app.use('/authenticate', authenticate);
+app.use('/test', test);
 /*
 app.use('/basic-products', basicProducts);
 app.use('/introduction', introduction);
 app.use('/shopping-cart', shoppingCart);
-app.use('/week-planner', weekPlannerCurrent);
 */
+app.use('/week-planner', weekPlannerCurrent);
+
 reload(app);
 
 // catch 404 and forward to error handler
