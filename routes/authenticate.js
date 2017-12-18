@@ -37,8 +37,10 @@ router.post('/', function(req, res){
   let sessionid;
 
   if(req.cookies){
-    let cookiedata = JSON.parse(req.cookies.data);
-    sessionid = cookiedata.sessionid;
+    if(req.cookies.data){
+      let cookiedata = JSON.parse(req.cookies.data);
+      sessionid = cookiedata.sessionid;
+    };
   };
 
   authenticate.authenticate(req, function(data){
