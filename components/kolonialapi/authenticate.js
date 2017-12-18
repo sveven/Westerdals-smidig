@@ -22,9 +22,9 @@ module.exports = {
     let token, res;
 
     function callback(error, response, body){
-      console.log('error:', error);
-      console.log('statusCode:', response && response.statusCode);
-      console.log('body:', body);
+      //console.log('error:', error);
+      //console.log('statusCode:', response && response.statusCode);
+      //console.log('body:', body);
 
       if(!error && response.statusCode == 200){
         let data = JSON.parse(body);
@@ -55,9 +55,9 @@ module.exports = {
     let token, res;
 
     function callback(error, response, body){
-      console.log('error:', error);
-      console.log('statusCode:', response && response.statusCode);
-      console.log('body:', body);
+      //console.log('error:', error);
+      //console.log('statusCode:', response && response.statusCode);
+      //console.log('body:', body);
 
       if(!error && response.statusCode == 200){
         let data = JSON.parse(body);
