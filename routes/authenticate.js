@@ -36,29 +36,28 @@ router.post('/', function(req, res){
 
   let sessionid;
 
-  if(req.cookies){
-    if(req.cookies.data){
-      let cookiedata = JSON.parse(req.cookies.data);
-      sessionid = cookiedata.sessionid;
-    };
-  };
 
   authenticate.authenticate(req, function(data){
 
     res.cookie("data", `${JSON.stringify(data)}`);
 
-
+    if(req.cookies){
+      if(req.cookies.data){
+        let cookiedata = JSON.parse(req.cookies.data);
+        sessionid = cookiedata.sessionid;
+      };
+    };
 
     connection.getCartContent(sessionid, function(list){
 
-    res.render('authenticate', {
-      title: 'K-Planleggeren',
-      signedin: data.is_authenticated,
-      first_name: data.user.first_name,
-      last_name: data.user.last_name,
-      cart: list});
+      res.render('authenticate', {
+        title: 'K-Planleggeren',
+        signedin: data.is_authenticated,
+        first_name: data.user.first_name,
+        last_name: data.user.last_name,
+        cart: list});
 
-      console.log("LIST: " + JSON.stringify(list));
+      //console.log("LIST: " + JSON.stringify(list));
     });
 
   });
