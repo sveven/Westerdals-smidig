@@ -17,11 +17,14 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function (req,res) {
-    console.log("####");
-    res.cookie('meals',
-        cookieParser.JSONCookies(jsonWeek),
-        {maxAge: 900000, httpOnly: true});
+    res.cookie("meals",
+        jsonWeek,
+        {maxAge: 900000, httpOnly:true});
     console.log(req.cookies);
+
+    res.render('week-planner-current', {
+        title: 'K-Planleggeren',
+    });
 });
 
 module.exports = router;
