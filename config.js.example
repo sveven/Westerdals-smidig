@@ -1,0 +1,11 @@
+
+/*
+    ./config.js
+    Contains secret username and token for API requests
+    to kolonial.no's API
+
+*/
+
+exports.secretusername = "user";
+
+exports.secrettoken = "token";
