@@ -32,7 +32,9 @@
 		<% if (data) { %>
 			<% for (i in data.products){ %>
 				<li class="search-item">
-					<img class="img-thumb" src="<%= data.products[i].images[0].thumbnail.url %>" alt="">
+					<div class="img-container">
+					<img class="img-thumb img-fluid" src="<%= data.products[i].images[0].thumbnail.url %>" alt="">
+				</div>
 					<p>	<%= data.products[i].name %> </p>
 					<p>	<%= data.products[i].gross_price %> </p>
 				</li>
