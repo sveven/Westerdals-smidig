@@ -53,7 +53,7 @@ app.use('/basic-products', basicProducts);
 app.use('/introduction', introduction);
 app.use('/shopping-cart', shoppingCart);
 */
-app.use('/week-planner', weekPlannerCurrent);
+app.use('/week-planner-current', weekPlannerCurrent);
 
 reload(app);
 
