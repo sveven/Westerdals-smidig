@@ -8,8 +8,38 @@ a {
 }
 
 .addMealButton {
-    width:40px;
-    height:100px;
+    width:200px;
+    height:300px;
     border: 2px solid orange;
+    border-radius: 2%;
+}
 
+.plusIcon {
+    position: relative;
+    width:45px;
+    height:45px;
+    background-color: orange;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    left: 77.5px;
+    top: 122.5px;
+}
+
+.diag-line {
+    position: relative;
+    height: 50%;
+    width: 10%;
+    background-color: #FFF;
+    left:45%;
+    top:25%;
+}
+
+.hori-line {
+    position: relative;
+    height: 10%;
+    width: 50%;
+    background-color: #FFF;
+    left:25%;
+    top:-5%;
 }
