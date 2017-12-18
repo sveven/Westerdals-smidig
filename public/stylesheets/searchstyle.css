@@ -26,18 +26,38 @@
 
 .search-result  {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));    
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));    
     list-style-type: none;
     grid-gap: 10px;
 }
 
 .search-item {
     border: 1px solid black;
+    display: grid;
+    height: 270px;
+    grid-template-rows: 60% 20% 20%;
+    grid-template-areas: 
+    "image"
+    "item"
+    "price";
     
 }
+.img-container {
+    height: 140px;
+    width: auto;
+    margin: auto;
+}
+.img-thumb {
+    max-height: 140px;
+    max-width: 140px;
+    grid-area: image;
+      
+ }
 
- .img-thumb {
-     max-width: 100%;
-     height: auto;
-     
+ #item-name {
+     grid-area: item;
+ }
+
+ #item-price {
+     grid-area: price;   
  }
