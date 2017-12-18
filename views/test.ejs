@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+</head>
+<body>
+<script src="/reload/reload.js"></script>
+<h1><%= title %></h1>
+
+<!--RadioButtonForm-->
+<form action="test" method="post">
+    <input type="radio" name="apiQueryType" id="searchForItem" value="searchRadio"> Søk<br>
+    <input type="radio" name="apiQueryType" id="searchForRecipe" value="recipeRadio"> Oppskriftssøk<br>
+    <input type="radio" name="apiQueryType" id="productCategories" value="productCategories"> Produktkategorier<br>
+    <input type="radio" name="apiQueryType" id="productCategoriesId" value="productCategoriesId"> Produkter i prod.kat<br>
+    <input type="radio" name="apiQueryType" id="productInformation" value="productInformation"> Produktinformasjon<br>
+    <input type="radio" name="apiQueryType" id="recipes" value="recipes"> Oppskrifter<br>
+    <input type="radio" name="apiQueryType" id="recipes" value="recipesByID"> Oppskrift - ID<br>
+    <input type="radio" name="apiQueryType" id="recipes" value="currentPlan"> Plan(?) <br>
+    <input type="radio" name="apiQueryType" id="userCart" value="userCart"> Brukers handlevogn<br>
+
+    <div>
+        <label for="sok">Søk: </label>
+        <input type="text" id="sok" name="formInput" value="<%= search %>"><br>
+    </div>
+
+    <input type="submit" value="Søk">
+</form>
+
+<% if (data) { %>
+<p><%- JSON.stringify(data, null, 2).replace(/{/g, "{<br>")
+    .replace(/,/g, ",<br>")
+    .replace(/}/g, "<br>}")%></p>
+
+<% } else {%>
+<p>No data.</p>
+<% } %>
+
+</body>
+</html>

@@ -7,6 +7,9 @@ const https = require('https');
 const config = require('../config')
 const authenticate = require('../components/kolonialapi/authenticate');
 const cookieparser = require('cookie-parser');
+const request = require('request');
+
+
 
 
 /* GET search page. */
@@ -23,31 +26,25 @@ router.get('/', function(req, res, next) {
 
 
 router.post('/', function(req, res){
-  let signedin = false;
+
   let obj = {
-    "username": "req.body.username",
-    "password": "req.body.pass"
-  }
+    "username": req.body.username,
+    "password": req.body.pass
+  };
 
-  console.log("Callback!!");
+  authenticate.authenticate(obj, function(data){
 
-  authenticate.authenticate(obj, function(token){
+    (data.is_authenticated === true) ? signedin = 1 : signedin = 0;
 
-    (token != "") ? signedin = true : signedin = false;
-
-    //Cookie: sessionid=<token>
-
+    //res.cookie(cookie_name , 'cookie_calue').send('Cookie is set');
 
     res.render('authenticate', {
       title: 'K-Planleggeren',
-      signedin: signedin});
+      signedin: signedin,
+      first_name: data.user.first_name});
 
   });
 });
-
-
-
-
 
 
 module.exports = router;
