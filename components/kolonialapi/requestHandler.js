@@ -213,8 +213,10 @@ module.exports = {
      * Returns the contents in the cart
      * @param callback
      */
-    getCartContent: function(callback) {
+    getCartContent: function(sessionid, callback) {
         options.path = userCart;
+        options.headers.cookie = "sessionid=" + sessionid;
+        console.log(options);
         request.kolonialAPIRequest(options, function (list) {
             callback(list);
         })
@@ -243,4 +245,3 @@ module.exports = {
         })
     }
 };
-
