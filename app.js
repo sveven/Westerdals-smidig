@@ -1,12 +1,13 @@
 //SET DEBUG=kolonial:* & npm start
 
-let express = require('express');
-let path = require('path');
-let favicon = require('serve-favicon');
-let logger = require('morgan');
-let cookieParser = require('cookie-parser');
-let bodyParser = require('body-parser');
-let reload = require('reload');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const reload = require('reload');
+const session = require('express-session')
 
 //var config = require('./config');
 
@@ -15,6 +16,7 @@ const users = require('./routes/users');
 const search = require('./routes/search');
 const recipes = require('./routes/recipes');
 const authenticate = require('./routes/authenticate');
+const login = require('./routes/login')
 const logout = require('./routes/logout');
 const test = require('./routes/test');
 const weekPlannerCurrent = require('./routes/week-planner-current');
@@ -24,8 +26,6 @@ const basicProducts = require('./routes/basic-products');
 const introduction = require('./routes/introduction');
 const shoppingCart = require('./routes/shopping-cart');
 */
-
-
 
 const app = express();
 
@@ -40,6 +40,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret: 'kolonial', saveUninitialized: true, resave: false}))
 
 app.use('/', index);
 app.use('/search', search);
@@ -47,6 +48,7 @@ app.use('/users', users);
 app.use('/recipes', recipes);
 app.use('/authenticate', authenticate);
 app.use('/test', test);
+app.use('/login', login);
 app.use('/logout', logout);
 /*
 app.use('/basic-products', basicProducts);
