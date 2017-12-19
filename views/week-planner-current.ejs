@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href="/stylesheets/style.css" type="text/css"/>
-    <meta charset="UTF-8">
+	<title><%= title %></title>
+	<link rel='stylesheet' href="/stylesheets/style.css" type="text/css"/>
+	<meta charset="UTF-8">
 </head>
 
 <body>
 <script src="/reload/reload.js"></script>
-<form action="week-planner-current" method="post">
-    <div class = "addMealButton" id="1-3">
-        <div class = "plusIcon">
-            <div class="diag-line"></div>
-            <div class="hori-line"></div>
-        </div>
-    </div>
-    <input type="submit" value="Submit">
-</form>
+<div class="wrapper">
+<!--breakfast-->
+<div class="breakfast b-monday"></div>
+<div class="breakfast b-tuesday"></div>
+<div class="breakfast b-wednesday"></div>
+<div class="breakfast b-thursday"></div>
+<div class="breakfast b-friday"></div>
+<div class="breakfast b-saturday"></div>
+<div class="breakfast b-sunday"></div>
+<!--Lunch-->
+<div class="lunch l-monday"></div>
+<div class="lunch l-tuesday"></div>
+<div class="lunch l-wednesday"></div>
+<div class="lunch l-thursday"></div>
+<div class="lunch l-friday"></div>
+<div class="lunch l-saturday"></div>
+<div class="lunch l-sunday"></div>
+<!--Dinner-->
+<div class="dinner d-monday"></div>
+<div class="dinner d-tuesday"></div>
+<div class="dinner d-wednesday"></div>
+<div class="dinner d-thursday"></div>
+<div class="dinner d-friday"></div>
+<div class="dinner d-saturday"></div>
+<div class="dinner d-sunday"></div>
+
+
+
+</div>
 
 </body>
 </html>
