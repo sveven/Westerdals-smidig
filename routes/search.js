@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const router = express.Router();
 const https = require('https');
@@ -23,14 +25,21 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res){
   let search = req.body.formsearch;
-
+  let ajax = req.body.ajax;
+    
   connection.searchForProduct(search, function(list){
 
-    res.render('search', {
-      title: 'K-Planleggeren',
-      search: search,
-      data: list});
 
+    if(ajax === "true"){
+        res.send(list);
+    
+    } else { 
+        res.render('search', {
+            title: 'K-Planleggeren',
+            search: search,
+            data: list});
+    
+    };
   });
 
 
