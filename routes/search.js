@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
   let search = "";
   let list;
   let data = "";
-  
+
   res.render('search', {
     title: 'K-Planleggeren',
     search: search,
@@ -23,6 +23,8 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res){
   let search = req.body.formsearch;
+
+
 
   connection.searchForProduct(search, function(list){
 

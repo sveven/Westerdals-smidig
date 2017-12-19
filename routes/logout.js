@@ -5,20 +5,40 @@ const cookieparser = require('cookie-parser');
 
 router.post('/', function(req, res){
 
+  console.log("Skal være logget inn: " + req.cookies.data.is_authenticated);
+
 authenticate.logout(req, function(data){
 
-  console.log(data);
+  //console.log("kolonial: " + JSON.stringify(data));
 
-  let first_name;
-  let last_name;
-  let cart;
-  res.render('authenticate', {
-    title: 'K-Planleggeren',
-    signedin: data.is_authenticated,
-    first_name: first_name,
-    last_name: last_name,
-    cart: cart});
+  res.clearCookie("data");
+  res.cookie("data", data);
+  //console.log("Skal være logget ut: " + JSON.stringify(res.cookies));
 
+  //console.log("Skal være logget ut: " + res.cookies);
+/*
+  if(req.cookies){
+    if(req.cookies.data){
+      let cookiedata = JSON.parse(req.cookies.data);
+      sessionid = cookiedata.sessionid;
+      console.log("HER:" + JSON.stringify(cookiedata));
+    };
+  };
+*/
+  /*
+  if(req.cookies){
+    if(req.cookies.data){
+      let cookiedata = JSON.parse(req.cookies.data);
+      sessionid = cookiedata.sessionid;
+      console.log(JSON.stringify(cookiedata));
+    };
+  };
+  */
+
+    res.render('login', {
+      title: 'K-Planleggeren',
+      signedin: false
+    });
   });
 });
 
