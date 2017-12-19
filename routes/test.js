@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const connection = require('../components/kolonialapi/requestHandler');
+const plannerActions = require('../components/planlegger/week-planner-actions');
 
 router.get('/', function(req, res) {
     let search = "";
@@ -16,6 +17,11 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res){
     runPostRequestAccordingToRadioChoice(req.body.apiQueryType, req.body.formInput, res);
+
+    //Rest of it
+    let jsonFile = plannerActions.getWeekAsJsonObject(req);
+
+    console.log(plannerActions.testingFunction());
 
 });
 
@@ -78,7 +84,6 @@ function runPostRequestAccordingToRadioChoice(radioButton, searchWord, res) {
             break;
         case "recipesByID":
             connection.getRecipeById(searchWord, function(list) {
-                console.log("###"+list);
                 res.render('test', {
                     title: 'K-Planleggeren',
                     search: searchWord,

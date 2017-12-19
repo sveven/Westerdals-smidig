@@ -1,4 +1,6 @@
 const fs = require('fs');
+const connection = require('../../components/kolonialapi/requestHandler');
+
 
 function getAllDaysFromWeekPlanner(jsonFile) {
     let jsonData = JSON.parse(jsonFile);
@@ -54,10 +56,19 @@ function getAllRecipeIDsFromAllMeals(jsonFile) {
     return allRecipeIDs;
 }
 
-function getAllItemsInRecipe(recipeID) {
-    
+//TODO does not work, due to callbck hell, needs to figure out callback function
+//TODO possible to use async await, how to is unclear and needs to be checked
+function getAllIngredientsFromRecipe(recipeID) {
+    let ingredients;
+    connection.getRecipeById(recipeID, function(recipe) {
+        ingredients = recipe.ingredients;
+    });
+
 }
 
+function getAllIngredientIdsFromRecipe(recipeId) {
+
+}
 
 
 module.exports = {
@@ -76,8 +87,8 @@ module.exports = {
         })
     },
 
-    testingFunction: function(jsonFile) {
-        getAllRecipeIDsFromAllMeals(jsonFile);
+    testingFunction: function() {
+        getAllIngredientIdsFromRecipe(2399);
     }
 
 
