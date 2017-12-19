@@ -41,7 +41,7 @@ module.exports = {
   logout: function(req, apicallback){
 
     const options = {
-        uri: 'https://kolonial.no/api/v1/user/login/',
+        uri: 'https://kolonial.no/api/v1/user/logout/',
         port: 443,
         headers: {
             'Accept': 'application/json',
