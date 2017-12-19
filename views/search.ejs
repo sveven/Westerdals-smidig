@@ -36,7 +36,7 @@
 					<img class="img-thumb img-thumbnail img-fluid" src="<%= data.products[i].images[0].thumbnail.url %>" alt="">
 				</div>
 					<p id="item-name">	<%= data.products[i].name %> </p>
-					<p id="item-price">	<%= data.products[i].gross_price %> </p>
+					<p id="item-price">	Kr <%= data.products[i].gross_price %>,- </p>
 				</li>
 			<% } %>
 		  <% } else {%>
@@ -44,6 +44,9 @@
 			<% } %>
 
 		</ul>	
+	</div>
+	<div class="footer">
+
 	</div>
   </div>
 

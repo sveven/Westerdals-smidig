@@ -25,11 +25,13 @@ router.post('/', function(req, res){
   let search = req.body.formsearch;
 
   connection.searchForProduct(search, function(list){
-
+  
     res.render('search', {
       title: 'K-Planleggeren',
       search: search,
       data: list});
+
+      console.log(list.products);
 
   });
 
