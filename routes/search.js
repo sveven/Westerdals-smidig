@@ -31,7 +31,9 @@ router.post('/', function(req, res){
 
 
     if(ajax === "true"){
-        res.send(list);
+        let data = list;        
+        res.send(data);
+
     
     } else { 
         res.render('search', {
