@@ -1,6 +1,6 @@
 const fs = require('fs');
 const connection = require('../../components/kolonialapi/requestHandler');
-
+const promise = require('promise');
 
 function getAllDaysFromWeekPlanner(jsonFile) {
     let jsonData = JSON.parse(jsonFile);
@@ -56,18 +56,32 @@ function getAllRecipeIDsFromAllMeals(jsonFile) {
     return allRecipeIDs;
 }
 
-//TODO does not work, due to callbck hell, needs to figure out callback function
-//TODO possible to use async await, how to is unclear and needs to be checked
-function getAllIngredientsFromRecipe(recipeID) {
-    let ingredients;
-    connection.getRecipeById(recipeID, function(recipe) {
-        ingredients = recipe.ingredients;
-    });
-
+function getAllIngredientsFromRecipe(recipeId) {
+    return new Promise(function(resolve, reject) {
+        connection.getRecipeById(recipeId, (recipe, err) => {
+            if(err) {
+                reject(err);
+            } else {
+                resolve(recipe.ingredients);
+            }
+        })
+    })
 }
 
-function getAllIngredientIdsFromRecipe(recipeId) {
+function getAllIngredientIds(recipeId) {
+    let ingredientIds = [];
 
+    return new Promise( (resolve) => {
+        getAllIngredientsFromRecipe(recipeId).then((res) => {
+            for(let i in res) {
+                ingredientIds.push(res[i].product.id);
+            }
+            resolve(ingredientIds);
+
+        }).catch((err) => {
+            console.log(err);
+        });
+    });
 }
 
 
@@ -88,7 +102,7 @@ module.exports = {
     },
 
     testingFunction: function() {
-        getAllIngredientIdsFromRecipe(2399);
+        getAllIngredientIds(2399).then(console.log, console.err);
     }
 
 
