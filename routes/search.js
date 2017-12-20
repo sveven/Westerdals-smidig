@@ -27,7 +27,7 @@ router.post('/', function(req, res){
 
 
   connection.searchForProduct(search, function(list){
-  
+
     res.render('search', {
       title: 'K-Planleggeren',
       search: search,
