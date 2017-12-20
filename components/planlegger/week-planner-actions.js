@@ -58,7 +58,7 @@ function getAllRecipeIDsFromAllMeals(jsonFile) {
 
 function getAllIngredientsFromRecipe(recipeId) {
     return new Promise(function(resolve, reject) {
-        connection.getRecipeById(recipeId, function (recipe, err) {
+        connection.getRecipeById(recipeId, (recipe, err) => {
             if(err) {
                 reject(err);
             } else {
@@ -68,14 +68,20 @@ function getAllIngredientsFromRecipe(recipeId) {
     })
 }
 
-function getAllIngredientIdsFromIngredients(recipeId) {
+function getAllIngredientIds(recipeId) {
+    let ingredientIds = [];
 
-    getAllIngredientsFromRecipe(recipeId).then((res) => {
-        console.log(res);
-    }).catch((err) => {
-        console.log(err);
+    return new Promise( (resolve) => {
+        getAllIngredientsFromRecipe(recipeId).then((res) => {
+            for(let i in res) {
+                ingredientIds.push(res[i].product.id);
+            }
+            resolve(ingredientIds);
+
+        }).catch((err) => {
+            console.log(err);
+        });
     });
-
 }
 
 
@@ -96,7 +102,7 @@ module.exports = {
     },
 
     testingFunction: function() {
-        getAllIngredientIdsFromIngredients(2399);
+        getAllIngredientIds(2399).then(console.log, console.err);
     }
 
 

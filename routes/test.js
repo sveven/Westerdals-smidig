@@ -3,6 +3,7 @@ const router = express.Router();
 const connection = require('../components/kolonialapi/requestHandler');
 const plannerActions = require('../components/planlegger/week-planner-actions');
 
+
 router.get('/', function(req, res) {
     let search = "";
     let list = [];
@@ -21,7 +22,7 @@ router.post('/', function(req, res){
     //Rest of it
     let jsonFile = plannerActions.getWeekAsJsonObject(req);
 
-    console.log(plannerActions.testingFunction());
+    plannerActions.testingFunction();
 
 });
 
