@@ -15,7 +15,6 @@ a {
     grid-template-columns: repeat(7, 10vmax);
     grid-template-rows: repeat(3, 14vmax);
     overflow: auto;
-    
 }
 
 .breakfast {
@@ -33,10 +32,9 @@ a {
     border-radius: 10px;
 }
 
-
 .addMealButton {
-    width:200px;
-    height:300px;
+    width: 200px;
+    height: 300px;
     border: 2px solid orange;
     border-radius: 2%;
     -webkit-border-radius: 2%;
@@ -47,8 +45,8 @@ a {
 
 .plusIcon {
     position: relative;
-    width:45px;
-    height:45px;
+    width: 45px;
+    height: 45px;
     background-color: orange;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
@@ -64,8 +62,8 @@ a {
     height: 50%;
     width: 10%;
     background-color: #FFF;
-    left:45%;
-    top:25%;
+    left: 45%;
+    top: 25%;
 }
 
 .hori-line {
@@ -73,6 +71,6 @@ a {
     height: 10%;
     width: 50%;
     background-color: #FFF;
-    left:25%;
-    top:-5%;
+    left: 25%;
+    top: -5%;
 }
