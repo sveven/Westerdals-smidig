@@ -1,60 +1,60 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const authenticate = require('../components/kolonialapi/authenticate');
-const cookieParser = require('cookie-parser');
+const authenticate = require("../components/kolonialapi/authenticate");
+const cookieParser = require("cookie-parser");
 
-router.get('/', function(req, res, next){
+router.get("/", function(req, res, next){
 
-  let signedin = false;
+	let signedin = false;
 
-  if (!req.cookies.data || !req.cookies.data.is_authenticated === "undefined" || req.cookies.data.is_authenticated === false){
-    res.render('login', {
-      title: 'K-Planleggeren',
-      signedin: signedin
-    });
-  } else if (req.cookies.data.is_authenticated === true){
+	if (!req.cookies.data || !req.cookies.data.is_authenticated === "undefined" || req.cookies.data.is_authenticated === false){
+		res.render("login", {
+			title: "K-Planleggeren",
+			signedin: signedin
+		});
+	} else if (req.cookies.data.is_authenticated === true){
 
-      res.render('login', {
-        title: 'K-Planleggeren',
-        signedin: true,
-        first_name: req.cookies.data.user.first_name,
-        last_name: req.cookies.data.user.last_name
-      });
+		res.render("login", {
+			title: "K-Planleggeren",
+			signedin: true,
+			first_name: req.cookies.data.user.first_name,
+			last_name: req.cookies.data.user.last_name
+		});
 
-      //res.redirect(req.cookies.redirectPath);
-    };
+		//res.redirect(req.cookies.redirectPath);
+	}
 
-  //next();
+	//next();
 });
 
-router.post('/', function(req, res, next){
-  var username = req.body.username;
-  var password = req.body.pass;
+router.post("/", function(req, res, next){
+	var username = req.body.username;
+	var password = req.body.pass;
 
-  //console.log("Skal være logget ut: " + JSON.stringify(req.cookies.data.is_authenticated));
+	//console.log("Skal være logget ut: " + JSON.stringify(req.cookies.data.is_authenticated));
 
-  authenticate.login(username, password, function(data){
+	authenticate.login(username, password, function(data){
 
-    res.cookie("data", data);
+		res.cookie("data", data);
 
-    if(res.cookies){
-      if(res.cookies.data){
-        let cookiedata = JSON.parse(res.cookies.data);
-        sessionid = cookiedata.sessionid;
-        console.log(JSON.stringify(cookiedata));
-      };
-    };
+		if(res.cookies){
+			if(res.cookies.data){
+				let cookiedata = JSON.parse(res.cookies.data);
+				sessionid = cookiedata.sessionid;
+				console.log(JSON.stringify(cookiedata));
+			}
+		}
 
-    //console.log(req.cookies.requestPath);
+		//console.log(req.cookies.requestPath);
 
-    res.render('login', {
-      title: 'K-Planleggeren',
-      signedin: true,
-      first_name: data.user.first_name,
-      last_name: data.user.last_name});
+		res.render("login", {
+			title: "K-Planleggeren",
+			signedin: true,
+			first_name: data.user.first_name,
+			last_name: data.user.last_name});
 
 
-  });
+	});
 
 });
 
