@@ -1,48 +1,48 @@
 
 
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const https = require('https');
-const config = require('../config')
-const connection = require('../components/kolonialapi/requestHandler');
+const https = require("https");
+const config = require("../config");
+const connection = require("../components/kolonialapi/requestHandler");
 
 
 /* GET search page. */
-router.get('/', function(req, res, next) {
+router.get("/", function(req, res, next) {
 
 
-  let search = "";
-  let list;
-  let data = "";
+	let search = "";
+	let list;
+	let data = "";
 
-  res.render('search', {
-    title: 'K-Planleggeren',
-    search: search,
-    data: list});
+	res.render("search", {
+		title: "K-Planleggeren",
+		search: search,
+		data: list});
 
 });
 
 
-router.post('/', function(req, res){
-  let search = req.body.formsearch;
-  let ajax = req.body.ajax;
+router.post("/", function(req, res){
+	let search = req.body.formsearch;
+	let ajax = req.body.ajax;
     
-  connection.searchForProduct(search, function(list){
+	connection.searchForProduct(search, function(list){
 
 
-    if(ajax === "true"){
-        let data = list;        
-        res.send(data);
+		if(ajax === "true"){
+			let data = list;        
+			res.send(data);
 
     
-    } else { 
-        res.render('search', {
-            title: 'K-Planleggeren',
-            search: search,
-            data: list});
+		} else { 
+			res.render("search", {
+				title: "K-Planleggeren",
+				search: search,
+				data: list});
     
-    };
-  });
+		}
+	});
 
 
 /*
@@ -60,7 +60,7 @@ router.post('/', function(req, res){
     };
 */
 
-    /*
+	/*
       API
     */
 /*
