@@ -7,11 +7,47 @@ a {
     color: #00B7FF;
 }
 
+.wrapper {
+    display: grid;
+    position: relative;
+    grid-gap: 5px;
+    margin: auto;
+    grid-template-columns: repeat(7, 10vw);
+    grid-template-rows: repeat(3, 30vh);
+    /*
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));    
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+    "b-monday b-tuesday b-wednesday b-thursday b-friday b-saturday b-sunday"
+    "l-monday l-tuesday l-wednesday l-thursday l-friday l-saturday l-sunday"
+    "d-monday d-tuesday d-wednesday d-thursday d-friday d-saturday d-sunday";*/
+}
+
+.breakfast {
+    border: 2px solid orange;
+    border-radius: 10px;
+}
+
+.lunch {
+    border: 2px solid orange;
+    border-radius: 10px;
+}
+
+.dinner {
+    border: 2px solid orange;
+    border-radius: 10px;
+}
+
+
 .addMealButton {
     width:200px;
     height:300px;
     border: 2px solid orange;
     border-radius: 2%;
+    -webkit-border-radius: 2%;
+    -moz-border-radius: 2%;
+    -ms-border-radius: 2%;
+    -o-border-radius: 2%;
 }
 
 .plusIcon {
@@ -24,6 +60,8 @@ a {
     border-radius: 100%;
     left: 77.5px;
     top: 122.5px;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
 }
 
 .diag-line {

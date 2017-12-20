@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
   let search = "";
   let list;
   let data = "";
-  
+
   res.render('search', {
     title: 'K-Planleggeren',
     search: search,

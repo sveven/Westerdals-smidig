@@ -20,16 +20,5 @@ router.get('/', function(req, res) {
 
 });
 
-router.post('/', function (req,res) {
-    res.cookie("planner",
-        JSON.stringify(jsonWeek),
-        {maxAge: 900000, httpOnly:true});
-
-    res.render('week-planner-current', {
-        title: 'K-Planleggeren',
-    });
-    plannerActions.writeCookieToJsonFileOnServerSide(req, 1);
-
-});
 
 module.exports = router;

@@ -1,63 +1,85 @@
+html, body {
+	height: 100%;
+  }
+  body {
+	display: flex;
+	flex-direction: column;
+  }
+
 .container {
-    display: grid;
-    grid-template-columns: 15% 1fr;
-    grid-template-rows: 50px 100px 1fr;
-    grid-template-areas: 
-    "header header"
-    "sidebar sidebar"
-    "content content";
+	display: grid;
+	position: relative;
+	height: 100%;
+	grid-template-columns: 12% 1fr;
+	grid-template-rows: 3.3rem 1fr 3rem;
+	grid-template-areas:
+	"header header"
+	"sidebar content"
+	"footer footer";
 }
 
 
 .header     {
-    grid-area: header;
-    background-color: orange;
+	grid-area: header;
+	background-color: orange;
 }
 
 .sidebar    {
-    grid-area: sidebar;
-    background-color: orange;
+	grid-area: sidebar;
+	background-color: orange;
 }
 
 .content    {
-    grid-area: content;
-    display: grid;
+	grid-area: content;
+	display: grid;
+	overflow-y: scroll;
+}
+
+.footer {
+	grid-area: footer;
+	background-color: orange;	
 }
 
 .search-result  {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));    
-    list-style-type: none;
-    grid-gap: 10px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));    
+	list-style-type: none;
+	grid-gap: 10px;
 }
 
 .search-item {
-    border: 1px solid black;
-    display: grid;
-    height: 270px;
-    grid-template-rows: 60% 20% 20%;
-    grid-template-areas: 
-    "image"
-    "item"
-    "price";
-    
+	display: grid;
+	border: 2px solid orange;
+	border-radius: 10px;
+	padding: 1rem;
+	height: 270px;
+	grid-template-rows: 75% 12.5% 12.5%;
+	grid-template-areas: 	"image"	"item"	"price";
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
 }
 .img-container {
-    height: 140px;
-    width: auto;
-    margin: auto;
+	height: 140px;
+	width: auto;
+	margin: auto;
+
 }
 .img-thumb {
-    max-height: 140px;
-    max-width: 140px;
-    grid-area: image;
-      
+	max-height: 140px;
+	max-width: 140px;
+	grid-area: image;
+	margin: auto;
+	  
  }
 
  #item-name {
-     grid-area: item;
+	 grid-area: item;
+	 margin: auto;
  }
 
  #item-price {
-     grid-area: price;   
+	 grid-area: price; 
+	 margin: auto;  
  }

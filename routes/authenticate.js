@@ -11,8 +11,6 @@ const connection = require('../components/kolonialapi/requestHandler');
 /* GET authenticate page. */
 router.get('/', function(req, res, next) {
 
-  //console.log(req.cookies);
-  //console.log("Sesh: " + req.cookies.data);
   if(req.cookies){
     if(req.cookies.data){
       let cookiedata = JSON.parse(req.cookies.data);
@@ -24,17 +22,21 @@ router.get('/', function(req, res, next) {
 
 
   let signedin = false;
-  let cart;
+  let cart, search;
+  
   res.render('authenticate', {
     title: 'K-Planleggeren',
     signedin: signedin,
-    cart: cart});
+    cart: cart,
+    search: search});
 });
 
 
 router.post('/', function(req, res){
 
-  let sessionid;
+  console.log(req);
+
+  let sessionid, search, data;
 
 
   authenticate.authenticate(req, function(data){
@@ -55,7 +57,9 @@ router.post('/', function(req, res){
         signedin: data.is_authenticated,
         first_name: data.user.first_name,
         last_name: data.user.last_name,
-        cart: list});
+        cart: list,
+        search: search,
+        data: data});
 
       //console.log("LIST: " + JSON.stringify(list));
     });

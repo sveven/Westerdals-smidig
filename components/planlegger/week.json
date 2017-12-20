@@ -1,130 +1,137 @@
 {
   "days": [
     {
-      "monday": {
-        "meals": [
-          {
-            "type": "breakfast",
-            "information": []
-          },
-          {
-            "type": "lunch",
-            "information": []
-          },
-          {
-            "type": "dinner",
-            "information": []
-          }
-        ]
-      }
+      "monday": [
+        {
+          "type": "breakfast",
+          "recipeID": "",
+          "contents": ""
+        },
+        {
+          "type": "lunch",
+          "recipeID": "",
+          "contents": ""
+        },
+        {
+          "type": "dinner",
+          "recipeID": "2399",
+          "contents": ""
+        }
+      ]
     },
     {
-      "tuesday": {
-        "meals": [
-          {
-            "type": "breakfast",
-            "information": []
-          },
-          {
-            "type": "lunch",
-            "information": []
-          },
-          {
-            "type": "dinner",
-            "information": []
-          }
-        ]
-      }
+      "tuesday": [
+        {
+          "type": "breakfast",
+          "recipeID": "",
+          "contents": ""
+        },
+        {
+          "type": "lunch",
+          "recipeID": "",
+          "contents": ""
+        },
+        {
+          "type": "dinner",
+          "recipeID": "",
+          "contents": ""
+        }
+      ]
     },
     {
-      "wednesday": {
-        "meals": [
-          {
-            "type": "breakfast",
-            "information": []
-          },
-          {
-            "type": "lunch",
-            "information": []
-          },
-          {
-            "type": "dinner",
-            "information": []
-          }
-        ]
-      }
+      "wednesday": [
+        {
+          "type": "breakfast",
+          "recipeID": "",
+          "contents": ""
+        },
+        {
+          "type": "lunch",
+          "recipeID": "",
+          "contents": ""
+        },
+        {
+          "type": "dinner",
+          "recipeID": "",
+          "contents": ""
+        }
+      ]
     },
     {
-      "thursday": {
-        "meals": [
-          {
-            "type": "breakfast",
-            "information": []
-          },
-          {
-            "type": "lunch",
-            "information": []
-          },
-          {
-            "type": "dinner",
-            "information": []
-          }
-        ]
-      }
+      "thursday": [
+        {
+          "type": "breakfast",
+          "recipeID": "",
+          "contents": ""
+        },
+        {
+          "type": "lunch",
+          "recipeID": "",
+          "contents": ""
+        },
+        {
+          "type": "dinner",
+          "recipeID": "",
+          "contents": ""
+        }
+      ]
     },
     {
-      "friday": {
-        "meals": [
-          {
-            "type": "breakfast",
-            "information": []
-          },
-          {
-            "type": "lunch",
-            "information": []
-          },
-          {
-            "type": "dinner",
-            "information": []
-          }
-        ]
-      }
+      "friday": [
+        {
+          "type": "breakfast",
+          "recipeID": "",
+          "contents": ""
+        },
+        {
+          "type": "lunch",
+          "recipeID": "",
+          "contents": ""
+        },
+        {
+          "type": "dinner",
+          "recipeID": "",
+          "contents": ""
+        }
+      ]
     },
     {
-      "saturday": {
-        "meals": [
-          {
-            "type": "breakfast",
-            "information": []
-          },
-          {
-            "type": "lunch",
-            "information": []
-          },
-          {
-            "type": "dinner",
-            "information": []
-          }
-        ]
-      }
+      "saturday": [
+        {
+          "type": "breakfast",
+          "recipeID": "",
+          "contents": ""
+        },
+        {
+          "type": "lunch",
+          "recipeID": "",
+          "contents": ""
+        },
+        {
+          "type": "dinner",
+          "recipeID": "",
+          "contents": ""
+        }
+      ]
     },
     {
-      "sunday": {
-        "meals": [
-          {
-            "type": "breakfast",
-            "information": []
-          },
-          {
-            "type": "lunch",
-            "information": []
-          },
-          {
-            "type": "dinner",
-            "information": []
-          }
-        ]
-      }
+      "sunday": [
+        {
+          "type": "breakfast",
+          "recipeID": "",
+          "contents": ""
+        },
+        {
+          "type": "lunch",
+          "recipeID": "",
+          "contents": ""
+        },
+        {
+          "type": "dinner",
+          "recipeID": "",
+          "contents": ""
+        }
+      ]
     }
   ]
 }
