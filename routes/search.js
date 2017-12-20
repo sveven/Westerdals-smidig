@@ -2,18 +2,15 @@
 
 const express = require("express");
 const router = express.Router();
-const https = require("https");
-const config = require("../config");
 const connection = require("../components/kolonialapi/requestHandler");
 
 
 /* GET search page. */
-router.get("/", function(req, res, next) {
+router.get("/", function(req, res) {
 
 
 	let search = "";
 	let list;
-	let data = "";
 
 	res.render("search", {
 		title: "K-Planleggeren",
@@ -26,21 +23,21 @@ router.get("/", function(req, res, next) {
 router.post("/", function(req, res){
 	let search = req.body.formsearch;
 	let ajax = req.body.ajax;
-    
+
 	connection.searchForProduct(search, function(list){
 
 
 		if(ajax === "true"){
-			let data = list;        
+			let data = list;
 			res.send(data);
 
-    
-		} else { 
+
+		} else {
 			res.render("search", {
 				title: "K-Planleggeren",
 				search: search,
 				data: list});
-    
+
 		}
 	});
 

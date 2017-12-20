@@ -21,6 +21,16 @@ router.get("/", function(req, res, next) {
 	}
 
 
+<<<<<<< HEAD
+  let signedin = false;
+  let cart, search;
+
+  res.render('authenticate', {
+    title: 'K-Planleggeren',
+    signedin: signedin,
+    cart: cart,
+    search: search});
+=======
 	let signedin = false;
 	let cart, search;
   
@@ -29,6 +39,7 @@ router.get("/", function(req, res, next) {
 		signedin: signedin,
 		cart: cart,
 		search: search});
+>>>>>>> 84f5db5562aecfa05eb77d300c1c6ed16d4a2a67
 });
 
 

@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const authenticate = require("../components/kolonialapi/authenticate");
-const cookieParser = require("cookie-parser");
 
-router.get("/", function(req, res, next){
+router.get("/", function(req, res){
 
 	let signedin = false;
 
@@ -27,7 +26,7 @@ router.get("/", function(req, res, next){
 	//next();
 });
 
-router.post("/", function(req, res, next){
+router.post("/", function(req, res){
 	var username = req.body.username;
 	var password = req.body.pass;
 
@@ -52,10 +51,7 @@ router.post("/", function(req, res, next){
 			signedin: true,
 			first_name: data.user.first_name,
 			last_name: data.user.last_name});
-
-
 	});
-
 });
 
 module.exports = router;

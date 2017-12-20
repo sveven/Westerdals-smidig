@@ -9,3 +9,6 @@ node_modules/
 #we
 
 tmp/week-planner/*
+
+# Local log file
+npm-debug.log
