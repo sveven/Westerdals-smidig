@@ -68,7 +68,7 @@ function getAllIngredientsFromRecipe(recipeId) {
     })
 }
 
-function getAllIngredientIds(recipeId) {
+function getAllIngredientIdsFromRecipe(recipeId) {
     let ingredientIds = [];
 
     return new Promise( (resolve) => {
@@ -82,6 +82,27 @@ function getAllIngredientIds(recipeId) {
             console.log(err);
         });
     });
+}
+
+function getPortionQuantityOfIngredientInRecipe(recipeId, ingredientId) {
+    let ingredientQuantity;
+    return new Promise( (resolve) => {
+        getAllIngredientsFromRecipe(recipeId).then((res) =>{
+            for(let i in res) {
+                if(res[i].product.id === ingredientId) {
+
+                    ingredientQuantity = res[i].portion_quantity;
+                }
+            }
+            resolve(ingredientQuantity);
+        }).catch((err) => {
+            console.log(err);
+        });
+    })
+}
+
+function addProductToListFileWithQuantity(recipeId, ingredientId) {
+    getPortionQuantityOfIngredientInRecipe(recipeId, ingredientId);
 }
 
 
@@ -102,7 +123,7 @@ module.exports = {
     },
 
     testingFunction: function() {
-        getAllIngredientIds(2399).then(console.log, console.err);
+        getPortionQuantityOfIngredientInRecipe(2399, 26255).then(console.log, console.err);
     }
 
 
