@@ -29,6 +29,13 @@
     <input type="submit" value="Søk">
 </form>
 
+
+<form action="test" method="post">
+    <br><br><br>
+    <input type="submit" value="Kjør testPOST">
+</form>
+
+
 <% if (data) { %>
 <p><%- JSON.stringify(data, null, 2).replace(/{/g, "{<br>")
     .replace(/,/g, ",<br>")
