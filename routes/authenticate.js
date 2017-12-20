@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
 
   let signedin = false;
   let cart, search;
-  
+
   res.render('authenticate', {
     title: 'K-Planleggeren',
     signedin: signedin,
