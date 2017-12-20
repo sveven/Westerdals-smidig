@@ -1,4 +1,6 @@
 const fs = require('fs');
+const connection = require('../../components/kolonialapi/requestHandler');
+const promise = require('promise');
 
 function getAllDaysFromWeekPlanner(jsonFile) {
     let jsonData = JSON.parse(jsonFile);
@@ -54,10 +56,33 @@ function getAllRecipeIDsFromAllMeals(jsonFile) {
     return allRecipeIDs;
 }
 
-function getAllItemsInRecipe(recipeID) {
-    
+function getAllIngredientsFromRecipe(recipeId) {
+    return new Promise(function(resolve, reject) {
+        connection.getRecipeById(recipeId, (recipe, err) => {
+            if(err) {
+                reject(err);
+            } else {
+                resolve(recipe.ingredients);
+            }
+        })
+    })
 }
 
+function getAllIngredientIds(recipeId) {
+    let ingredientIds = [];
+
+    return new Promise( (resolve) => {
+        getAllIngredientsFromRecipe(recipeId).then((res) => {
+            for(let i in res) {
+                ingredientIds.push(res[i].product.id);
+            }
+            resolve(ingredientIds);
+
+        }).catch((err) => {
+            console.log(err);
+        });
+    });
+}
 
 
 module.exports = {
@@ -76,8 +101,8 @@ module.exports = {
         })
     },
 
-    testingFunction: function(jsonFile) {
-        getAllRecipeIDsFromAllMeals(jsonFile);
+    testingFunction: function() {
+        getAllIngredientIds(2399).then(console.log, console.err);
     }
 
 

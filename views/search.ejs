@@ -19,29 +19,18 @@
 	  <form id="" class="" action="search" method="post">
 		<div>
 		  <label for="sok">Søk: </label>
-		  <input type="text" id="sok" name="formsearch" value="<%= search %>">
+		  <input type="text" id="field-search" name="formsearch" value="<%= search %>">
+			
 		  <br>
 		</div>
 
-		<input type="submit" value="Søk">
-	  </form>
+		<input id="btn-search" type="submit" value="Søk">
+		</form>
+		<p class="message"></p>
 	</div>
 	<div class="sidebar"></div>
 	<div class="content">
 		<ul class="search-result">
-		<% if (data) { %>
-			<% for (i in data.products){ %>
-				<li class="search-item">
-					<div class="img-container">
-					<img class="img-thumb img-thumbnail img-fluid" src="<%= data.products[i].images[0].thumbnail.url %>" alt="">
-				</div>
-					<p id="item-name">	<%= data.products[i].name %> </p>
-					<p id="item-price">	Kr <%= data.products[i].gross_price %>,- </p>
-				</li>
-			<% } %>
-		  <% } else {%>
-				<p>No data.</p>
-			<% } %>
 
 		</ul>	
 	</div>
@@ -51,40 +40,11 @@
   </div>
 
 
-
-
+<script src="/javascripts/jquery.min.js"></script>
+<script src="/javascripts/search-ajax.js"></script>
 </body>
 
 </html>
 
 
 
-<!--
-
-/*
-
-<% if (data) { %>
-  <table>
-	<% for (i in data.products){ %>
-	  <tr>
-		<td>
-		  <img src="<%= data.products[i].images[0].thumbnail.url %>" alt="">
-		</td>
-		<td>
-		  <p>
-			<%= data.products[i].name %>
-		  </p>
-		</td>
-		<td>
-		  <p>
-			<%= data.products[i].gross_price %>
-		  </p>
-		</td>
-	  </tr>
-	  <% } %>
-  </table>
-  <% } else {%>
-	<p>No data.</p>
-	<% } %>
-*/
--->

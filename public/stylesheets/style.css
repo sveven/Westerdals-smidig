@@ -1,5 +1,4 @@
 body {
-    padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -7,23 +6,55 @@ a {
     color: #00B7FF;
 }
 
+.wrapper {
+    display: grid;
+    position: relative;
+    grid-gap: 5px;
+    justify-content: center;
+    text-align: center;
+    grid-template-columns: repeat(7, 10vmax);
+    grid-template-rows: repeat(3, 14vmax);
+    overflow: auto;
+}
+
+.breakfast {
+    border: 2px solid orange;
+    border-radius: 10px;
+}
+
+.lunch {
+    border: 2px solid orange;
+    border-radius: 10px;
+}
+
+.dinner {
+    border: 2px solid orange;
+    border-radius: 10px;
+}
+
 .addMealButton {
-    width:200px;
-    height:300px;
+    width: 200px;
+    height: 300px;
     border: 2px solid orange;
     border-radius: 2%;
+    -webkit-border-radius: 2%;
+    -moz-border-radius: 2%;
+    -ms-border-radius: 2%;
+    -o-border-radius: 2%;
 }
 
 .plusIcon {
     position: relative;
-    width:45px;
-    height:45px;
+    width: 45px;
+    height: 45px;
     background-color: orange;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     border-radius: 100%;
     left: 77.5px;
     top: 122.5px;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
 }
 
 .diag-line {
@@ -31,8 +62,8 @@ a {
     height: 50%;
     width: 10%;
     background-color: #FFF;
-    left:45%;
-    top:25%;
+    left: 45%;
+    top: 25%;
 }
 
 .hori-line {
@@ -40,6 +71,6 @@ a {
     height: 10%;
     width: 50%;
     background-color: #FFF;
-    left:25%;
-    top:-5%;
+    left: 25%;
+    top: -5%;
 }
