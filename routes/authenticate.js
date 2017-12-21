@@ -21,7 +21,6 @@ router.get("/", function(req, res, next) {
 	}
 
 
-
 	let signedin = false;
 	let cart, search;
 
@@ -30,7 +29,6 @@ router.get("/", function(req, res, next) {
 		signedin: signedin,
 		cart: cart,
 		search: search});
-		
 });
 
 
