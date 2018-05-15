@@ -32,6 +32,7 @@ const app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
+app.engine("ejs", engine);
 app.set("view engine", "ejs");
 
 // uncomment after placing your favicon in /public
@@ -45,7 +46,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(authentication);
 
-app.engine("engine", engine);
+
 // app.use("view engine", "ejs");
 
 app.use("/", index);
