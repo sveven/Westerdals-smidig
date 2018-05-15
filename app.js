@@ -47,7 +47,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(authentication);
 
 app.engine("engine", engine);
+<<<<<<< HEAD
+//app.use("view engine", "ejs");
+=======
 // app.use("view engine", "ejs");
+>>>>>>> be6e2215cc201c1faf1bf96ebe727f629992619e
 
 app.use("/", index);
 app.use("/search", search);
