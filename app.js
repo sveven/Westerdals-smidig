@@ -47,16 +47,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(authentication);
 
 app.engine("engine", engine);
-<<<<<<< HEAD
-//app.use("view engine", "ejs");
-=======
 // app.use("view engine", "ejs");
->>>>>>> be6e2215cc201c1faf1bf96ebe727f629992619e
 
 app.use("/", index);
 app.use("/search", search);
 app.use("/users", users);
 app.use("/recipes", recipes);
+app.use("/authenticate", authenticate);
 app.use("/test", test);
 app.use("/login", login);
 app.use("/logout", logout);
