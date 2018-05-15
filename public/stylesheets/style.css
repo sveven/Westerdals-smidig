@@ -21,24 +21,33 @@ a {
 }
 
 .breakfast {
-    border: 1.5px solid orange;
-    border-radius: 2px;
+    border: 1.5px solid rgb(255, 165, 20);
+    border-radius: 3px;
 }
 
 .lunch {
-    border: 1.5px solid orange;
-    border-radius: 2px;
+    border: 1.5px solid rgb(255, 165, 20);
+    border-radius: 3px;
 }
 
 .dinner {
-    border: 1.5px solid orange;
-    border-radius: 2px;
+    border: 1.5px solid rgb(255, 165, 20);
+    border-radius: 3px;
 }
 
 .button {
-    height: 55px;
-    width: 55px;
+    position: relative;
+    top: 30px;
+    height: 45px;
+    width: 45px;
     border-radius: 50%;
-    border: 1px solid red;
-    
+    background-color: rgb(255, 165, 20);
+    font-size: 1.5rem;
+    color: white;
+    border-style: none;
+}
+
+.button:hover {
+    background-color: rgb(250, 154, 0);
+    border: 1px solid orange;
 }
