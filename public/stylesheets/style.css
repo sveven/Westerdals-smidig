@@ -10,6 +10,8 @@ a {
     display: grid;
     position: relative;
     top: 30px;
+    height: 100vh;
+    width: 100vw;
     grid-gap: 5px;
     justify-content: center;
     text-align: center;
@@ -34,11 +36,9 @@ a {
 }
 
 .button {
-    border-style: none;
-    background-color: orange;
-    height: 25px;
-    width: 50px;
-    margin: 5px;
-    border: 1.5px solid orange;
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    border: 1px solid red;
     
 }
