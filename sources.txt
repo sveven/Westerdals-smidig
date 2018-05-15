@@ -1,0 +1,4 @@
+Hei saft
+
+https://hackernoon.com/getting-started-with-sequelize-for-nodejs-applications-2854c58ffb8c
+https://github.com/sequelize/express-example/blob/master/models/index.js
