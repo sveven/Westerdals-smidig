@@ -53,7 +53,6 @@ app.use("/", index);
 app.use("/search", search);
 app.use("/users", users);
 app.use("/recipes", recipes);
-app.use("/authenticate", authenticate);
 app.use("/test", test);
 app.use("/login", login);
 app.use("/logout", logout);
