@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title><%= title %></title>
-        <link rel='stylesheet' href="/stylesheets/style.css" type="text/css" />
-        <meta charset="UTF-8">
-    </head>
-
-    <body>
-        <script src="/reload/reload.js"></script>
+<% layout("layout") -%>
 
         <h1><%= title %></h1>
         <p>Oppskriftssøk: <%= search%></p>
@@ -22,5 +13,3 @@
         </form>
         
         <% include ../views/partials/recipesSearchResult %>
-    </body>
-</html>

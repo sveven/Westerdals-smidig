@@ -9,6 +9,7 @@ a {
 .wrapper {
     display: grid;
     position: relative;
+    top: 30px;
     grid-gap: 5px;
     justify-content: center;
     text-align: center;
@@ -18,28 +19,26 @@ a {
 }
 
 .breakfast {
-    border: 2px solid orange;
-    border-radius: 10px;
+    border: 1.5px solid orange;
+    border-radius: 2px;
 }
 
 .lunch {
-    border: 2px solid orange;
-    border-radius: 10px;
+    border: 1.5px solid orange;
+    border-radius: 2px;
 }
 
 .dinner {
-    border: 2px solid orange;
-    border-radius: 10px;
+    border: 1.5px solid orange;
+    border-radius: 2px;
 }
 
 .button {
     border-style: none;
-    background-color: white;
+    background-color: orange;
     height: 25px;
     width: 50px;
-    border: 2px solid orange;
-    -webkit-border-radius: 2%;
-    -moz-border-radius: 2%;
-    -ms-border-radius: 2%;
-    -o-border-radius: 2%;
+    margin: 5px;
+    border: 1.5px solid orange;
+    
 }
