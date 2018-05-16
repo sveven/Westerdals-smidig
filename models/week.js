@@ -1,32 +1,10 @@
-export default function(sequelize, DataTypes) {
-  const Week = sequelize.define("week", {
-    weekId: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
-    }
-  });
-
-  Week.associate = models => {
-    models.Week.hasOne(models.User, {
-      onDelete: "CASCADE",
-      foreignKey: {
-        allowNull: true
-      }
-    });
-
-    models.Week.belongsTo(models.Day, {
-      onDelete: "CASCADE",
-      foreignKey: {
-        allowNull: false
-      }
-    });
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  var Week = sequelize.define('Week', {
+    dayId: DataTypes.INTEGER
+  }, {});
+  Week.associate = function(models) {
+    // associations can be defined here
   };
-
-  //TODO: Check if this is required after setting associations
-  sequelize.sync({
-    force: true
-  });
-
   return Week;
-}
+};

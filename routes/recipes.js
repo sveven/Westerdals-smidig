@@ -28,4 +28,16 @@ router.post("/", function(req, res){
 	});
 });
 
+router.post("/", function(req, res){
+	let recipeId = req.body.formInput;
+	connection.getRecipeById(recipeId, function(list){
+
+		res.render("recipes", {
+			title: "K-Planleggeren",
+			search: recipeId,
+			data: list});
+
+	});
+});
+
 module.exports = router;
