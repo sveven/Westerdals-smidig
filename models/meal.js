@@ -11,5 +11,9 @@ export default function (sequelize, DataTypes) {
         },
         portions: DataTypes.FLOAT
     });
+
+
+    Meal.belongsToMany(Product, {through: ProductInMeal})
+    
     return Meal;
 }

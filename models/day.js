@@ -1,3 +1,4 @@
+
 export default function (sequelize, DataTypes) {
     const Day = sequelize.define("day", {
         dayID: {
@@ -38,5 +39,8 @@ export default function (sequelize, DataTypes) {
             }
         }
     });
+
+    Day.belongsToMany(Product, {through: ProductInDay})
+    Day.h
     return day;
 }

@@ -1,10 +1,14 @@
 export default function (sequelize, DataTypes) {
-    const product = sequelize.define("product", {
+    const Product = sequelize.define("product", {
         kolonialId: {
             type: DataTypes.INTEGER,
             primaryKey: true
         }
     });
-    //TODO: Add association for day, meal, and user here.
-    return product;
+    
+    Product.belongsToMany(Meal, {through: ProductInMeal});
+    Product.belongsToMany(Day, {through: ProductInDay});
+    Product.belongsToMany(User, {through: ProductForUser});
+
+    return Product;
 }
