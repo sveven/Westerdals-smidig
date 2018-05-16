@@ -8,26 +8,11 @@ router.get("/", function(req, res) {
 	let search = "";
 	let list = [];
 
-	res.render("recipes", {
+	res.render("singleRecipe", {
 		title: "K-Planleggeren",
 		search: search,
 		data: list});
 
 });
-
-
-router.post("/", function(req, res){
-	let search = req.body.formInput;
-	connection.searchForRecipe(search, function(list){
-
-		res.render("recipes", {
-			title: "K-Planleggeren",
-			search: search,
-			data: list});
-
-	});
-});
-
-
 
 module.exports = router;

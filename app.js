@@ -17,6 +17,7 @@ const index = require("./routes/index");
 const users = require("./routes/users");
 const search = require("./routes/search");
 const recipes = require("./routes/recipes");
+const singleRecipe = require("./routes/singleRecipe");
 const login = require("./routes/login");
 const logout = require("./routes/logout");
 const test = require("./routes/test");
@@ -54,6 +55,8 @@ app.use("/recipes", recipes);
 app.use("/test", test);
 app.use("/login", login);
 app.use("/logout", logout);
+//TODO: Needs fixing
+app.use("/recipes/single", singleRecipe);
 /*
 app.use('/basic-products', basicProducts);
 app.use('/introduction', introduction);
