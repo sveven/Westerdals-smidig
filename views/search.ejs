@@ -1,28 +1,50 @@
 <% layout("layout") %>
 
-  <div class="container">
-	<div class="header">
+	<div class="container container-fluid">
+		<div class="header">
 
-	  <form id="search-form" class="" action="search" method="post">
-		<div>
-		  <label for="sok">Søk: </label>
-			<input type="text" id="field-search" name="formsearch" value="<%= search %>">
-			<input id="btn-search" type="submit" value="Søk">
-		
+			<form id="search-form" class="" action="search" method="post">
+				<div>
+					<input type="text" id="field-search" name="formsearch" placeholder="Søk.." value="<%= search %>">
+					<input id="btn-search" type="submit" value="Søk">
+
+				</div>
+
+			</form>
+			<p class="message"></p>
 		</div>
+		<div class="sidebar">
+			<b><h2>Varer</h2></b>
+			<ul id="category-placeholder">
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+				<li>Kategorier</li>
+			</ul>
+		</div>
+		<div class="content">
+			<ul class="search-result">
 
-		</form>
-		<p class="message"></p>
+			</ul>
+		</div>
+		<div class="footer">
+
+		</div>
 	</div>
-	<div class="sidebar"></div>
-	<div class="content">
-		<ul class="search-result">
-
-		</ul>	
-	</div>
-	<div class="footer">
-
-	</div>
-  </div>
-
-
