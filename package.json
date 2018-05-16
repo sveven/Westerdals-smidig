@@ -25,7 +25,9 @@
     "q": "^1.5.1",
     "request": "^2.83.0",
     "sequelize": "^4.37.7",
-    "serve-favicon": "~2.4.5"
+    "sequelize-cli": "^4.0.0",
+    "serve-favicon": "~2.4.5",
+    "sqlite3": "^4.0.0"
   },
   "devDependencies": {
     "modernizr": "^3.5.0",
