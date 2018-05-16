@@ -1,3 +1,8 @@
+html {
+    overflow-y: scroll;
+
+}
+
 body {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -6,20 +11,63 @@ a {
     color: #00B7FF;
 }
 
+p {
+    margin-top: 1vh;
+}
+
+
+#title-text {
+    display: inline-block;
+    position: relative;
+    text-decoration: underline;
+    margin: auto;
+    left: 50%;
+    margin-left: -104px;
+    margin-bottom: 1.7vh;
+}
 
 .wrapper {
     display: grid;
     position: absolute;
-    top: 30px;
+    top: 20px;
+}
+
+.breakfast-wrapper {
+    display: grid;
+    position: relative;
     grid-gap: 5px;
-    height: 100vh;
+    height: 23vh;
     justify-content: center;
     text-align: center;
     grid-template-columns: repeat(7, 10vmax);
-    grid-template-rows: repeat(3, 13.5vmax);
-    overflow: auto;
-    margin: auto;
+    grid-template-rows: repeat(3, 10vmax);
+    
 }
+
+.lunch-wrapper {
+    display: grid;
+    position: relative;
+    grid-gap: 5px;
+    height: 23vh;
+    justify-content: center;
+    text-align: center;
+    grid-template-columns: repeat(7, 10vmax);
+    grid-template-rows: repeat(3, 10vmax);
+}
+
+.dinner-wrapper {
+    display: grid;
+    position: relative;
+    grid-gap: 5px;
+    flex-basis: 100%;
+    height: 23vh;
+    justify-content: center;
+    text-align: center;
+    grid-template-columns: repeat(7, 10vmax);
+    grid-template-rows: repeat(3, 10vmax);
+    
+}
+
 
 .breakfast {
     border: 1.5px solid rgb(255, 165, 20);
@@ -36,28 +84,36 @@ a {
     border-radius: 3px;
 }
 
-.button-add {
+.btn-collapse {
+    display: grid;
+    background-color: rgb(255, 165, 20);
+    border: none;
+    margin: auto;
+    height: 4.5vh;
+    margin-top: -1vh;
+    border-radius: 3px;
     position: relative;
-    top: 30px;
-    height: 20%;
-    width: 28%;
+    width: 72vw;
+}
+
+.button-add {
+    text-align: center;
+    display: inline-block;
+    flex-wrap: wrap;
+    position: relative;
+    margin-bottom: 5vmax;
+    height: 3vmax;
+    width: 3vmax;
     border-radius: 50%;
+    top: 0;
     background-color: rgb(255, 165, 20);
     font-size: 1.5vmax;
     color: white;
     border-style: none;
 }
 
-.button-add:hover {
-    background-color: rgb(250, 154, 0);
-}
 
-.button-add:active {
-    background-color: rgb(209, 129, 0);
-
-}
-
-#complete-btn {
+.complete-btn {
     position: relative;
     background-color: rgb(255, 165, 20);
     border-style: none;
@@ -66,16 +122,10 @@ a {
     border-radius: 3px;
     width: 170px;
     height: 70px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
     margin-left: -85px;
     left: 50%;
     
 }
 
-#complete-btn:hover {
-    background-color: rgb(250, 154, 0);
-}
-
-#complete-btn:active {
-    background-color: rgb(209, 129, 0);
-
-}
