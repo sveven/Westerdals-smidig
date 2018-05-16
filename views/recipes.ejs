@@ -1,15 +1,23 @@
 <% layout("layout") -%>
 
-        <h1><%= title %></h1>
-        <p>Oppskriftssøk: <%= search%></p>
 
-        <form id = "" class="" action="recipes" method="POST">
-            <div>
-                <label for="sok">Søk: </label>
-                <input type="text" id="sok" name="formInput"><br>
+	<section id="search-header">
+		<div id="recipe-header-text">
+        	<h1>Oppskriftssøk med et klikk</h1>
+       		<p>Oppskriftssøk: <%= search%></p>	
+		</div>
+
+        <form id ="recipe-search-form" class="" action="recipes" method="POST">
+            <div id="recipe-search-input">
+                <input type="text" id="sok" name="formInput" placeholder="Søk i hundrevis av oppskrifter!">
+				<label id="search-icon" for="recipe-search-btn" class="fas fa-search"></label>
             </div>
-
-            <input type="submit" value="Søk">
+            <input id="recipe-search-btn" type="submit" value="Søk">
         </form>
+
+		<section class="recipe-tags-section">
+			<!-- Section for recipe tags -->
+		</section>
         
+	</section>
         <% include ../views/partials/recipesSearchResult %>
