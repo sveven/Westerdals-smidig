@@ -1,10 +1,14 @@
-'use strict';
+"use strict";
 module.exports = (sequelize, DataTypes) => {
-  var ProductInday = sequelize.define('ProductInday', {
-    dayId: DataTypes.INTEGER
-  }, {});
-  ProductInday.associate = function(models) {
+  var ProductInDays = sequelize.define(
+    "ProductInDays",
+    {
+      dayId: DataTypes.INTEGER
+    },
+    {}
+  );
+  ProductInDays.associate = function(models) {
     // associations can be defined here
   };
-  return ProductInday;
+  return ProductInDays;
 };

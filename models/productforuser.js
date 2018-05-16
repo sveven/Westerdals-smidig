@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 module.exports = (sequelize, DataTypes) => {
-  var ProductForUser = sequelize.define('ProductForUser', {
-    dayId: DataTypes.INTEGER
-  }, {});
+  const ProductForUser = sequelize.define("ProductForUser", {
+    productQuantity: DataTypes.FLOAT
+  });
   ProductForUser.associate = function(models) {
     // associations can be defined here
   };
