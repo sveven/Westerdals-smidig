@@ -14,13 +14,14 @@ export default function(sequelize, DataTypes) {
     }
   });
 
-  Week.associate = function(models) {
+  Week.associate = models => {
     models.Week.belongsTo(models.User, {
       onDelete: "CASCADE",
       foreignKey: {
         allowNull: true
       }
     });
+
     models.Week.belongsTo(models.Day, {
       onDelete: "CASCADE",
       foreignKey: {
