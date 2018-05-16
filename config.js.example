@@ -11,3 +11,11 @@ exports.secretusername = "user";
 exports.secrettoken = "token";
 
 exports.secret = "secret for signing cookies";
+
+exports.development = {
+  username: "sqlbrukernavn",
+  password: "sqlpassord",
+  database: "dtabasenavn",
+  host: "ipadresse til databasen med portnummer",
+  dialect: 'mysql'
+}
