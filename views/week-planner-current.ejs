@@ -1,9 +1,18 @@
 <% layout("layout") -%>
 
+<h1 id="title-text">K-planleggeren</h1>
+	<!--Frokost-->
+	<div id="wrapper">
 
-	<div class="container">
-		<div class="wrapper">
-			<!--breakfast-->
+	<p>
+		<button class="btn btn-primary btn-collapse" type="button" data-toggle="collapse" data-target="#breakfast-row" aria-expanded="true"
+		    aria-controls="breakfast-row">
+			Frokost
+		</button>
+
+	</p>
+	<div class="collapse" id="breakfast-row">
+		<div class="breakfast-wrapper">
 			<div class="breakfast" id="breakfast-monday">
 				<p>Frokost</p>
 				<input type="submit" class="button-add" value="+">
@@ -32,7 +41,20 @@
 				<p>Frokost</p>
 				<input type="submit" class="button-add" value="+">
 			</div>
-			<!--Lunch-->
+		</div>
+	</div>
+	</div>
+
+	<!--Lunsj-->
+
+	<p>
+		<button class="btn btn-primary btn-collapse" type="button" data-toggle="collapse" data-target="#lunch-row" aria-expanded="true"
+		    aria-controls="lunch-row">
+			Lunsj
+		</button>
+	</p>
+	<div class="collapse" id="lunch-row">
+		<div class="lunch-wrapper">
 			<div class="lunch" id="lunch-monday">
 				<p>Lunsj</p>
 				<input type="submit" class="button-add" value="+">
@@ -61,7 +83,19 @@
 				<p>Lunsj</p>
 				<input type="submit" class="button-add" value="+">
 			</div>
-			<!--Dinner-->
+		</div>
+	</div>
+	</div>
+
+	<!--Dinner-->
+	<p>
+		<button class="btn btn-primary btn-collapse" type="button" data-toggle="collapse" data-target="#dinner-row" aria-expanded="true"
+		    aria-controls="dinner-row">
+			Middag
+		</button>
+	</p>
+	<div class="collapse" id="dinner-row">
+		<div class="dinner-wrapper">
 			<div class="dinner" id="dinner-monday">
 				<p>Middag</p>
 				<input type="submit" class="button-add" value="+">
@@ -90,8 +124,10 @@
 				<p>Middag</p>
 				<input type="submit" value="+" class="button-add">
 			</div>
-			
-			<input type="submit" value="Fullfør" id="complete-btn">
-
 		</div>
+
 	</div>
+	</div>
+	</div>
+</div>
+	<input class="btn btn-primary complete-btn" type="submit" value="Fullfør">
