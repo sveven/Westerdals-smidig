@@ -4,18 +4,11 @@ export default function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
-    },
-    userId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: User,
-        key: "userId"
-      }
     }
   });
 
   Week.associate = models => {
-    models.Week.belongsTo(models.User, {
+    models.Week.hasOne(models.User, {
       onDelete: "CASCADE",
       foreignKey: {
         allowNull: true

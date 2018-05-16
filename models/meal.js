@@ -15,6 +15,8 @@ export default function(sequelize, DataTypes) {
   Meal.associate = (models) => {
       //TODO: Should this be hasMany?
     models.Meal.belongsToMany(models.Product, { through: ProductInMeal });
+    //TODO: add FK, constraints etc
+    models.Meal.belongsTo(models.Day);
   };
 
   return Meal;
