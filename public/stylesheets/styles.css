@@ -639,7 +639,7 @@ input[type=submit] {
   margin-left: -1vw;
   grid-template-columns: 15vw 83.8vw;
   grid-template-rows: 5rem 1fr;
-  grid-template-areas: "header header" "sidebar content";
+  grid-template-areas: "header header" "sidebar content";
 }
 
 .header {
