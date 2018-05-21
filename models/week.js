@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     Week.belongsTo(models.Day, {
       onDelete: "CASCADE",
       foreignKey: {
+        name: models.Day.Id,
         allowNull: false
       }
     });

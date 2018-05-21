@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   Meal.associate = models => {
     Meal.belongsToMany(models.Product, {
       through: { model: models.ProductInMeal },
-      foreignKey: models.Meal
+      foreignKey: models.Meal.Id
     });
     //TODO: add FK, constraints etc
     Meal.belongsTo(models.Day);
