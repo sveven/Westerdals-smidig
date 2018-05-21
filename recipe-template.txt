@@ -1,0 +1,411 @@
+
+{
+"id": 2577,
+"title": "Bolognese med grønnsaker",
+"front_url": "https://kolonial.no/oppskrifter/2577-spoon-bolognese-med-gronnsaker/",
+"feature_image_url": "https://kolonial.no/media/uploads/public/219/123/654923-72743-recipe_feature.jpg",
+"difficulty_string": "Lett",
+"cooking_duration_string": "20 min",
+"concept_icons": [ {
+"name": "Barnevennlig",
+"image_url": "https://kolonial.no/static/recipes/img/icon-child-friendly-recipe-app.465cbc79476e.png" 
+} ],
+"is_liked_by_user": null,
+"provider_name": "Silje Feiring",
+"lead": "Bolognese med paprika og spinat som vil falle i smak hos hele familien.",
+"portion_price": "64.85",
+"default_num_portions": 4,
+"instructions_html": "
+
+Bolognese med paprika og spinat som vil falle i smak hos hele familien.
+
+Vask,
+rens og del paprika i skiver. Kok pasta etter anvisning på pakken.
+Stek kjøttdeigen i en dyp stekepanne,
+så tilsetter du tomatsaus,
+vann og paprika. Smak til med salt og pepper. 
+Legg over spinaten og rør rundt i pannen til spinaten faller sammen. 
+Server pasta med bolognese og nyt!
+
+
+
+\n",
+"ingredient_list_html": "
+Til 4 porsjoner
+400 g	tagliatelle
+400 g	kjøttdeig,
+storfe
+500 g	tomatsaus,
+ferdig
+250 g	spinat,
+fersk
+2 stk	paprika,
+rød
+Basisvarer
+2 ss	olivenolje
+1 klype	salt,
+havsalt
+1 klype	pepper,
+m/kvern
+2 dl	vann
+\n",
+"ingredients": [ {
+"id": 29271,
+"product": {
+"id": 690,
+"full_name": "Barilla Tagliatelle 500 g",
+"brand": "Barilla",
+"name": "Tagliatelle",
+"name_extra": "500 g",
+"front_url": "https://kolonial.no/produkter/690-barilla-tagliatelle-gul-500g/",
+"images": [ {
+"thumbnail": {
+"url": "https://kolonial.no/media/uploads/public/159/196/686596-df5b9-product_detail.jpg" 
+},
+"large": {
+"url": "https://kolonial.no/media/uploads/public/159/196/686596-df5b9-product_large.jpg" 
+} 
+} ],
+"gross_price": "43.30",
+"gross_unit_price": "86.60",
+"unit_price_quantity_abbreviation": "kg",
+"unit_price_quantity_name": "Kilogram",
+"discount": null,
+"promotion": null,
+"availability": {
+"is_available": true,
+"code": "available",
+"description": "",
+"description_short": "" 
+},
+"category_items": [ {
+"id": 20761,
+"product_category_id": 313,
+"ordering": 400 
+} ],
+"client_classifiers": [] 
+},
+"portion_quantity": "0.200",
+"is_basic": false,
+"has_alternative_products": true 
+},
+{
+"id": 29272,
+"product": {
+"id": 3853,
+"full_name": "Nordfjord Kjøttdeig av Storfe 14%,
+400 g",
+"brand": "Nordfjord",
+"name": "Kjøttdeig av Storfe",
+"name_extra": "14%,
+400 g",
+"front_url": "https://kolonial.no/produkter/3853-nordfjord-kvernet-deig-av-storfe-14-400g/",
+"images": [ {
+"thumbnail": {
+"url": "https://kolonial.no/media/uploads/public/135/57/684857-592c2-product_detail.jpg" 
+},
+"large": {
+"url": "https://kolonial.no/media/uploads/public/135/57/684857-592c2-product_large.jpg" 
+} 
+} ],
+"gross_price": "47.60",
+"gross_unit_price": "119.00",
+"unit_price_quantity_abbreviation": "kg",
+"unit_price_quantity_name": "Kilogram",
+"discount": null,
+"promotion": null,
+"availability": {
+"is_available": true,
+"code": "available",
+"description": "",
+"description_short": "" 
+},
+"category_items": [ {
+"id": 20449,
+"product_category_id": 304,
+"ordering": 30 
+} ],
+"client_classifiers": [ {
+"name": "Holdbarhetsgaranti i 5 dager",
+"image_url": "https://kolonial.no/static/products/img/expiry-5-20x20@3x.503f47d76f75.png",
+"is_important": true 
+},
+{
+"name": "Nyt Norge",
+"image_url": "https://kolonial.no/static/products/img/nytnorge53x60.aac84641427c.png",
+"is_important": false 
+} ] 
+},
+"portion_quantity": "0.250",
+"is_basic": false,
+"has_alternative_products": true 
+},
+{
+"id": 29273,
+"product": {
+"id": 2134,
+"full_name": "Superbra Tomatsaus med soltørket tomat og basilikum,
+390 g",
+"brand": "Superbra",
+"name": "Tomatsaus",
+"name_extra": "med soltørket tomat og basilikum,
+390 g",
+"front_url": "https://kolonial.no/produkter/2134-superbra-tomatsaus-med-soltorket-tomat-og-basiliku/",
+"images": [ {
+"thumbnail": {
+"url": "https://kolonial.no/media/uploads/public/0/61/2461-f1160-product_detail.jpg" 
+},
+"large": {
+"url": "https://kolonial.no/media/uploads/public/0/61/2461-f1160-product_large.jpg" 
+} 
+} ],
+"gross_price": "62.80",
+"gross_unit_price": "161.03",
+"unit_price_quantity_abbreviation": "kg",
+"unit_price_quantity_name": "Kilogram",
+"discount": null,
+"promotion": null,
+"availability": {
+"is_available": true,
+"code": "available",
+"description": "",
+"description_short": "" 
+},
+"category_items": [ {
+"id": 3918,
+"product_category_id": 8,
+"ordering": 30 
+} ],
+"client_classifiers": [ {
+"name": "Økologisk",
+"image_url": "https://kolonial.no/static/products/img/okologisk20x20@3x.ce61374c5376.png",
+"is_important": false 
+},
+{
+"name": "EU-økologisk",
+"image_url": "https://kolonial.no/static/products/img/euroleaf60x60.e0546fc9eb96.png",
+"is_important": false 
+} ] 
+},
+"portion_quantity": "0.321",
+"is_basic": false,
+"has_alternative_products": true 
+},
+{
+"id": 29274,
+"product": {
+"id": 26252,
+"full_name": "Babyspinat Uvasket Italia,
+100 g",
+"brand": null,
+"name": "Babyspinat",
+"name_extra": "Uvasket Italia,
+100 g",
+"front_url": "https://kolonial.no/produkter/26252-babyspinat-uvasket-italia/",
+"images": [ {
+"thumbnail": {
+"url": "https://kolonial.no/media/uploads/public/206/123/508523-5c342-product_detail.jpg" 
+},
+"large": {
+"url": "https://kolonial.no/media/uploads/public/206/123/508523-5c342-product_large.jpg" 
+} 
+} ],
+"gross_price": "27.90",
+"gross_unit_price": "279.00",
+"unit_price_quantity_abbreviation": "kg",
+"unit_price_quantity_name": "Kilogram",
+"discount": null,
+"promotion": null,
+"availability": {
+"is_available": true,
+"code": "available",
+"description": "",
+"description_short": "" 
+},
+"category_items": [ {
+"id": 27309,
+"product_category_id": 391,
+"ordering": 150 
+} ],
+"client_classifiers": [] 
+},
+"portion_quantity": "0.625",
+"is_basic": false,
+"has_alternative_products": true 
+},
+{
+"id": 29275,
+"product": {
+"id": 27626,
+"full_name": "Paprika Rød Holland,
+2 stk",
+"brand": null,
+"name": "Paprika Rød",
+"name_extra": "Holland,
+2 stk",
+"front_url": "https://kolonial.no/produkter/27626-paprika-rod-holland/",
+"images": [ {
+"thumbnail": {
+"url": "https://kolonial.no/media/uploads/public/122/76/713676-c4c3f-product_detail.jpg" 
+},
+"large": {
+"url": "https://kolonial.no/media/uploads/public/122/76/713676-c4c3f-product_large.jpg" 
+} 
+} ],
+"gross_price": "26.90",
+"gross_unit_price": "53.80",
+"unit_price_quantity_abbreviation": "kg",
+"unit_price_quantity_name": "Kilogram",
+"discount": null,
+"promotion": null,
+"availability": {
+"is_available": true,
+"code": "available",
+"description": "",
+"description_short": "" 
+},
+"category_items": [ {
+"id": 29196,
+"product_category_id": 22,
+"ordering": 610 
+} ],
+"client_classifiers": [] 
+},
+"portion_quantity": "0.250",
+"is_basic": false,
+"has_alternative_products": true 
+},
+{
+"id": 29364,
+"product": {
+"id": 9893,
+"full_name": "Iliada Kalamata Olivenolje Extra Virgin 500 ml",
+"brand": "Iliada",
+"name": "Kalamata Olivenolje Extra Virgin",
+"name_extra": "500 ml",
+"front_url": "https://kolonial.no/produkter/9893-iliada-kalamata-olivenolje-extra-virgin-500ml/",
+"images": [ {
+"thumbnail": {
+"url": "https://kolonial.no/media/uploads/public/0/104/13304-63d5c-product_detail.jpg" 
+},
+"large": {
+"url": "https://kolonial.no/media/uploads/public/0/104/13304-63d5c-product_large.jpg" 
+} 
+} ],
+"gross_price": "126.30",
+"gross_unit_price": "252.60",
+"unit_price_quantity_abbreviation": "l",
+"unit_price_quantity_name": "Liter",
+"discount": null,
+"promotion": null,
+"availability": {
+"is_available": true,
+"code": "available",
+"description": "",
+"description_short": "" 
+},
+"category_items": [ {
+"id": 9690,
+"product_category_id": 38,
+"ordering": 10 
+} ],
+"client_classifiers": [ {
+"name": "Økologisk",
+"image_url": "https://kolonial.no/static/products/img/okologisk20x20@3x.ce61374c5376.png",
+"is_important": false 
+},
+{
+"name": "EU-økologisk",
+"image_url": "https://kolonial.no/static/products/img/euroleaf60x60.e0546fc9eb96.png",
+"is_important": false 
+} ] 
+},
+"portion_quantity": "0.015",
+"is_basic": true,
+"has_alternative_products": true 
+},
+{
+"id": 29365,
+"product": {
+"id": 6088,
+"full_name": "Toro Havsalt Med Kvern,
+150 g",
+"brand": "Toro",
+"name": "Havsalt",
+"name_extra": "Med Kvern,
+150 g",
+"front_url": "https://kolonial.no/produkter/6088-toro-havsalt-med-kvern-150g/",
+"images": [ {
+"thumbnail": {
+"url": "https://kolonial.no/media/uploads/public/197/393/679593-7c0ab-product_detail.jpg" 
+},
+"large": {
+"url": "https://kolonial.no/media/uploads/public/197/393/679593-7c0ab-product_large.jpg" 
+} 
+} ],
+"gross_price": "57.00",
+"gross_unit_price": "380.00",
+"unit_price_quantity_abbreviation": "kg",
+"unit_price_quantity_name": "Kilogram",
+"discount": null,
+"promotion": null,
+"availability": {
+"is_available": true,
+"code": "available",
+"description": "",
+"description_short": "" 
+},
+"category_items": [ {
+"id": 6546,
+"product_category_id": 39,
+"ordering": 700 
+} ],
+"client_classifiers": [] 
+},
+"portion_quantity": "0.008",
+"is_basic": true,
+"has_alternative_products": true 
+},
+{
+"id": 29366,
+"product": {
+"id": 6211,
+"full_name": "Toro Sort Pepper Hel Med Kvern,
+65 g",
+"brand": "Toro",
+"name": "Sort Pepper Hel",
+"name_extra": "Med Kvern,
+65 g",
+"front_url": "https://kolonial.no/produkter/6211-toro-sort-pepper-hel-med-kvern-65g/",
+"images": [ {
+"thumbnail": {
+"url": "https://kolonial.no/media/uploads/public/202/205/687005-f8691-product_detail.jpg" 
+},
+"large": {
+"url": "https://kolonial.no/media/uploads/public/202/205/687005-f8691-product_large.jpg" 
+} 
+} ],
+"gross_price": "48.70",
+"gross_unit_price": "749.23",
+"unit_price_quantity_abbreviation": "kg",
+"unit_price_quantity_name": "Kilogram",
+"discount": null,
+"promotion": null,
+"availability": {
+"is_available": true,
+"code": "available",
+"description": "",
+"description_short": "" 
+},
+"category_items": [ {
+"id": 6669,
+"product_category_id": 39,
+"ordering": 680 
+} ],
+"client_classifiers": [] 
+},
+"portion_quantity": "0.019",
+"is_basic": true,
+"has_alternative_products": true 
+} ] 
+}
