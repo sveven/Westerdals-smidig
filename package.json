@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-	"start-supervisor": "supervisor ./bin/www",
+    "start-supervisor": "supervisor ./bin/www",
     "start-sass": "node ./tasks/sass.js",
-    "start":  "npm run start-sass && npm run start-supervisor"
+    "start": "npm run start-sass && npm run start-supervisor"
   },
   "dependencies": {
     "beautify": "0.0.8",
