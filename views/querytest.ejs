@@ -1,0 +1,26 @@
+<% layout("layout") %>
+
+  <h1>KWERITEST</h1>
+
+	<div class="container container-fluid">
+		<div class="header">
+
+			<form id="search-form" class="" action="querytest" method="post">
+				<div>
+					<input type="text" id="field-search" name="formfield" placeholder="Søk.." >
+					<input type="submit" value="Søk">
+
+				</div>
+
+			</form>
+  
+      <%if (returnData){%>
+        <p>returnData = <%= returnData %></p>
+
+      
+      <%}%>
+
+	
+  </div>
+  
+	</div>
