@@ -28,6 +28,7 @@ var server = http.createServer(app);
 
  /**
   * Added to create all tables if they do not exist.
+  * TODO: Remove if not required.
   */
 models.sequelize.sync().then(function () {
   server.listen(port);
@@ -35,7 +36,7 @@ models.sequelize.sync().then(function () {
   server.on('listening', onListening);
 });
 /**
- * Normalize a port into a number, string, or false.
+ * Normalize a port into a number, string, or false.4
  */
 
 function normalizePort(val) {

@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       foreignKey: {
         allowNull: true,
-        name: models.User
+        name: 'Users'
       }
     });
 
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       through: { model: models.Day },
       foreignKey: {
-        name: models.User,
+        name: 'Users',
         allowNull: false
       }
     });
