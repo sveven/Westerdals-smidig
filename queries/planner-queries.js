@@ -1,12 +1,6 @@
 const models = require("../models");
 
-<<<<<<< HEAD
 module.exports = {
-=======
-module.exports = function createProductQuery(kolonialId) {
-  models.Product.create({ kolonialId: kolonialId });
-}
->>>>>>> 15f9942e4cf3ba77392971a6ea7454597e6fd1f6
 
   createProductQuery(kolonialId){
     models.Product.create({ kolonialId: kolonialId });
