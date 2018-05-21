@@ -1,7 +1,7 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
   const Week = sequelize.define("Week", {
-    Id: {
+    weekId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
@@ -9,8 +9,6 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Week.associate = models => {
-
-
     Week.belongsTo(models.Day, {
       onDelete: "CASCADE",
       foreignKey: {
