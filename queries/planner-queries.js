@@ -1,21 +1,27 @@
-import models from "../models";
+const models = require("../models");
 
-module.exports = function createProductQuery(kolonialId) {
-  models.Product.create({ kolonialId: kolonialId });
+module.exports = {
+
+  createProductQuery(kolonialId){
+    models.Product.create({ kolonialId: kolonialId });
+  },
+  
+  createUserQuery() {
+    models.User.create({ Id: null, kolonialUserId: null });
+  },
+  
+  createWeekQuery() {
+    models.Week.create({ weekId: null });
+  },
+  
+  createMealQuery(type, portions, dayId) {
+    models.Meal.create({ Id: null, type: type, portions: portions, day: dayId });
+  },
+  
+  createDayQuery() {
+    models.Day.create({ Id: null });
+  }
+
 }
 
-export function createUserQuery() {
-  models.User.create({ Id: null, kolonialUserId: null });
-}
 
-export function createWeekQuery() {
-  models.Week.create({ weekId: null });
-}
-
-export function createMealQuery(type, portions, dayId) {
-  models.Meal.create({ Id: null, type: type, portions: portions, day: dayId });
-}
-
-export function createDayQuery() {
-  models.Day.create({ Id: null });
-}

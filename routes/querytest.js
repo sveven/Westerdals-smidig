@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const connection = require("../components/kolonialapi/requestHandler");
+const query = require("../queries/planner-queries");
 
 
 router.get("/", function(req, res) {
@@ -17,7 +18,7 @@ router.post("/", function(req, res){
   let userInput = req.body.formfield;
 
   
-
+  query.createProductQuery(userInput);
 
 
   res.render("querytest", {
