@@ -12,10 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     portions: DataTypes.FLOAT
   });
-  Meal.associate = function(models) {
-    // Meal.belongsToMany(models.Product, {
-    //   through: { model: models.ProductInMeal }
-    // });
+  Meal.associate = models => {
+    Meal.belongsToMany(models.Product, {
+      through: { model: models.ProductInMeal },
+      foreignKey: models.Meal
+    });
     //TODO: add FK, constraints etc
     Meal.belongsTo(models.Day);
   };

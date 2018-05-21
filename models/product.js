@@ -7,15 +7,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
   Product.associate = models => {
-    // Product.belongsToMany(models.Meal, {
-    //   through: { model: models.ProductInMeal }
-    // });
-    // Product.belongsToMany(models.Meal, {
-    //   through: { model: models.ProductInDay }
-    // });
-    // Product.belongsToMany(models.Meal, {
-    //   through: { model: models.ProductForUser }
-    // });
+    models.Product.belongsToMany(models.Meal, {
+      through: { model: models.ProductInMeal },
+      foreignKey: models.Product
+    });
+    models.Product.belongsToMany(models.Meal, {
+      through: { model: models.ProductInDay },
+      foreignKey: models.Product      
+    });
+    models.Product.belongsToMany(models.Meal, {
+      through: { model: models.ProductForUser },
+      foreignKey: models.Product      
+    });
   };
 
   return Product;

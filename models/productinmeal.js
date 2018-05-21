@@ -1,10 +1,8 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const ProductInMeal = sequelize.define("roductInMeal", {
+  const ProductInMeal = sequelize.define("ProductInMeal", {
     portionQuantity: DataTypes.FLOAT
   });
-  ProductInMeal.associate = function(models) {
-    // associations can be defined here
-  };
+
   return ProductInMeal;
 };
