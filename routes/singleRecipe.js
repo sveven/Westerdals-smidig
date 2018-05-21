@@ -15,4 +15,19 @@ router.get("/", function(req, res) {
 
 });
 
+
+router.get("/:recipe_id", function(req,res) {
+
+	connection.getRecipeById(req.params.recipe_id, function (list) {
+	
+		res.render("singleRecipe", {
+			title: "K-Planleggeren",
+			data: list,
+		});
+	});
+
+});
+
+
+
 module.exports = router;

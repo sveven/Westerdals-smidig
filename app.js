@@ -45,6 +45,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 //app.use(session({secret: 'kolonial', saveUninitialized: true, resave: false}))
 
+/* app.use(
+	sass.middleware({
+		src: __dirname + "/sass", //where the sass files are 
+		dest: __dirname + "/public", //where css should go
+		debug: true // obvious
+	})
+); */
+
 app.use(authentication);
 
 

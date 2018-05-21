@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "supervisor ./bin/www"
+	"start-supervisor": "supervisor ./bin/www",
+    "start-sass": "node ./tasks/sass.js",
+    "start":  "npm run start-sass && npm run start-supervisor"
   },
   "dependencies": {
     "beautify": "0.0.8",
@@ -21,6 +23,7 @@
     "morgan": "~1.9.0",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.3",
+    "node-sass": "^4.9.0",
     "popper.js": "^1.12.9",
     "promise": "^8.0.1",
     "q": "^1.5.1",
