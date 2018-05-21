@@ -18,11 +18,11 @@ router.post("/", function(req, res){
   let userInput = req.body.formfield;
 
   
-  query.createProductQuery(userInput);
+  query.addMealToWeekQuery("Monday", userInput, "Dinner", 4, 1, 1);
 
 
   res.render("querytest", {
-    title: "K-Planleggereng",
+    title: "K-Planleggeren",
     returnData: userInput
 
   });

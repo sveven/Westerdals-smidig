@@ -8,15 +8,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  Week.associate = models => {
-    Week.belongsTo(models.Day, {
-      onDelete: "CASCADE",
-      foreignKey: {
-        name: models.Week.weekId,
-        allowNull: false
-      }
-    });
-  };
-
   return Week;
 };
