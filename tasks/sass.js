@@ -26,11 +26,6 @@ function compileSass(options = {}) {
 	console.log(" " + options.dest + " built.");
 }
 
-// Expanded
-compileSass({
-	src: "public/scss/main.scss",
-	dest: "public/stylesheets/styles.css"
-});
 
 // Minified
 compileSass({
