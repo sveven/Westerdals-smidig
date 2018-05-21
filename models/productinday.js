@@ -1,12 +1,6 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  var ProductInDay = sequelize.define(
-    "ProductInDay",
-    {
-      dayId: DataTypes.INTEGER
-    },
-    {}
-  );
- 
+  const ProductInDay = sequelize.define("ProductInDay");
+
   return ProductInDay;
 };

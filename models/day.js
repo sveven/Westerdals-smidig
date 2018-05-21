@@ -9,11 +9,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  Day.associate = models => {
-    models.Day.belongsToMany(models.Product, {
-      through: { model: models.ProductInDay },
-      foreignKey: "id"
-    });
-  };
   return Day;
 };
