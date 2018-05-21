@@ -16,6 +16,6 @@ exports.development = {
   username: "sqlbrukernavn",
   password: "sqlpassord",
   database: "dtabasenavn",
-  host: "ipadresse til databasen med portnummer",
+  host: "ipadresse til databasen",
   dialect: 'mysql'
 }
