@@ -9,12 +9,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  Day.associate = function(models) {
-    // associations can be defined here
-    // models.Day.belongsToMany(models.Product, {
-    //   through: { model: models.ProductInDay },
-    //   foreignKey: models.Day
-    // });
-  };
   return Day;
 };
