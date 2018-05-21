@@ -20,16 +20,6 @@ module.exports = (sequelize, DataTypes) => {
         name: "Users"
       }
     });
-
-    User.belongsToMany(models.Day, {
-      onDelete: "CASCADE",
-      through: { model: models.Day },
-      foreignKey: {
-        name: "Users",
-        otherKey:"Id",
-        allowNull: false
-      }
-    });
   };
   return User;
 };
