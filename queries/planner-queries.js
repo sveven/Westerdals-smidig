@@ -1,6 +1,6 @@
 import models from "../models";
 
-export function createProductQuery(kolonialId) {
+module.exports = function createProductQuery(kolonialId) {
   models.Product.create({ kolonialId: kolonialId });
 }
 
