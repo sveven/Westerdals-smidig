@@ -1,54 +1,43 @@
 /* TYPOGRAPHY */
 h1 {
-  font-size: 2.2em;
-}
+  font-size: 2.2em; }
 
 h2 {
-  font-size: 2em;
-}
+  font-size: 2em; }
 
 h3 {
-  font-size: 1.8em;
-}
+  font-size: 1.8em; }
 
 h4 {
-  font-size: 1.8em;
-}
+  font-size: 1.8em; }
 
 h5 {
-  font-size: 1.4em;
-}
+  font-size: 1.4em; }
 
 p {
-  font-size: 1.2em;
-}
+  font-size: 1.2em; }
 
 /* END TYPOGRAPHY */
 .navbar {
   background-color: #f1f1f1;
-  margin-bottom: 2vh;
-}
+  margin-bottom: 2vh; }
 
 .navbar-brand {
   padding: 0;
-  padding-bottom: 0.5rem;
-}
+  padding-bottom: 0.5rem; }
 
 .icons {
   font-size: 1.5rem;
-  padding: 0 1rem;
-}
+  padding: 0 1rem; }
 
 #logo-header {
-  width: 2rem;
-}
+  width: 2rem; }
 
 #logo-text {
   display: inline;
   position: relative;
   top: 5px;
-  margin: 0;
-}
+  margin: 0; }
 
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -64,8 +53,7 @@ html {
   -ms-text-size-adjust: 100%;
   /* 2 */
   -webkit-text-size-adjust: 100%;
-  /* 2 */
-}
+  /* 2 */ }
 
 /* Sections
      ========================================================================== */
@@ -73,8 +61,7 @@ html {
    * Remove the margin in all browsers (opinionated).
    */
 body {
-  margin: 0;
-}
+  margin: 0; }
 
 /**
    * Add the correct display in IE 9-.
@@ -85,8 +72,7 @@ footer,
 header,
 nav,
 section {
-  display: block;
-}
+  display: block; }
 
 /**
    * Correct the font size and margin on `h1` elements within `section` and
@@ -94,8 +80,7 @@ section {
    */
 h1 {
   font-size: 2em;
-  margin: 0.67em 0;
-}
+  margin: 0.67em 0; }
 
 /* Grouping content
      ========================================================================== */
@@ -107,15 +92,13 @@ figcaption,
 figure,
 main {
   /* 1 */
-  display: block;
-}
+  display: block; }
 
 /**
    * Add the correct margin in IE 8.
    */
 figure {
-  margin: 1em 40px;
-}
+  margin: 1em 40px; }
 
 /**
    * 1. Add the correct box sizing in Firefox.
@@ -127,8 +110,7 @@ hr {
   height: 0;
   /* 1 */
   overflow: visible;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
    * 1. Correct the inheritance and scaling of font size in all browsers.
@@ -138,8 +120,7 @@ pre {
   font-family: monospace, monospace;
   /* 1 */
   font-size: 1em;
-  /* 2 */
-}
+  /* 2 */ }
 
 /* Text-level semantics
      ========================================================================== */
@@ -151,8 +132,7 @@ a {
   background-color: transparent;
   /* 1 */
   -webkit-text-decoration-skip: objects;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
    * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
@@ -164,24 +144,21 @@ abbr[title] {
   text-decoration: underline;
   /* 2 */
   text-decoration: underline dotted;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
    * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
    */
 b,
 strong {
-  font-weight: inherit;
-}
+  font-weight: inherit; }
 
 /**
    * Add the correct font weight in Chrome, Edge, and Safari.
    */
 b,
 strong {
-  font-weight: bolder;
-}
+  font-weight: bolder; }
 
 /**
    * 1. Correct the inheritance and scaling of font size in all browsers.
@@ -193,30 +170,26 @@ samp {
   font-family: monospace, monospace;
   /* 1 */
   font-size: 1em;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
    * Add the correct font style in Android 4.3-.
    */
 dfn {
-  font-style: italic;
-}
+  font-style: italic; }
 
 /**
    * Add the correct background and color in IE 9-.
    */
 mark {
   background-color: #ff0;
-  color: #000;
-}
+  color: #000; }
 
 /**
    * Add the correct font size in all browsers.
    */
 small {
-  font-size: 80%;
-}
+  font-size: 80%; }
 
 /**
    * Prevent `sub` and `sup` elements from affecting the line height in
@@ -227,16 +200,13 @@ sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
-  vertical-align: baseline;
-}
+  vertical-align: baseline; }
 
 sub {
-  bottom: -0.25em;
-}
+  bottom: -0.25em; }
 
 sup {
-  top: -0.5em;
-}
+  top: -0.5em; }
 
 /* Embedded content
      ========================================================================== */
@@ -245,30 +215,26 @@ sup {
    */
 audio,
 video {
-  display: inline-block;
-}
+  display: inline-block; }
 
 /**
    * Add the correct display in iOS 4-7.
    */
 audio:not([controls]) {
   display: none;
-  height: 0;
-}
+  height: 0; }
 
 /**
    * Remove the border on images inside links in IE 10-.
    */
 img {
-  border-style: none;
-}
+  border-style: none; }
 
 /**
    * Hide the overflow in IE.
    */
 svg:not(:root) {
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 /* Forms
      ========================================================================== */
@@ -288,8 +254,7 @@ textarea {
   line-height: 1.15;
   /* 1 */
   margin: 0;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
    * Show the overflow in IE.
@@ -298,8 +263,7 @@ textarea {
 button,
 input {
   /* 1 */
-  overflow: visible;
-}
+  overflow: visible; }
 
 /**
    * Remove the inheritance of text transform in Edge, Firefox, and IE.
@@ -308,8 +272,7 @@ input {
 button,
 select {
   /* 1 */
-  text-transform: none;
-}
+  text-transform: none; }
 
 /**
    * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
@@ -321,8 +284,7 @@ html [type="button"],
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
    * Remove the inner border and padding in Firefox.
@@ -332,8 +294,7 @@ button::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner {
   border-style: none;
-  padding: 0;
-}
+  padding: 0; }
 
 /**
    * Restore the focus styles unset by the previous rule.
@@ -342,15 +303,13 @@ button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText;
-}
+  outline: 1px dotted ButtonText; }
 
 /**
    * Correct the padding in Firefox.
    */
 fieldset {
-  padding: 0.35em 0.75em 0.625em;
-}
+  padding: 0.35em 0.75em 0.625em; }
 
 /**
    * 1. Correct the text wrapping in Edge and IE.
@@ -370,8 +329,7 @@ legend {
   padding: 0;
   /* 3 */
   white-space: normal;
-  /* 1 */
-}
+  /* 1 */ }
 
 /**
    * 1. Add the correct display in IE 9-.
@@ -381,15 +339,13 @@ progress {
   display: inline-block;
   /* 1 */
   vertical-align: baseline;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
    * Remove the default vertical scrollbar in IE.
    */
 textarea {
-  overflow: auto;
-}
+  overflow: auto; }
 
 /**
    * 1. Add the correct box sizing in IE 10-.
@@ -400,16 +356,14 @@ textarea {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
    * Correct the cursor style of increment and decrement buttons in Chrome.
    */
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
-  height: auto;
-}
+  height: auto; }
 
 /**
    * 1. Correct the odd appearance in Chrome and Safari.
@@ -419,16 +373,14 @@ textarea {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
    * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
    */
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
+  -webkit-appearance: none; }
 
 /**
    * 1. Correct the inability to style clickable types in iOS and Safari.
@@ -438,8 +390,7 @@ textarea {
   -webkit-appearance: button;
   /* 1 */
   font: inherit;
-  /* 2 */
-}
+  /* 2 */ }
 
 /* Interactive
      ========================================================================== */
@@ -449,15 +400,13 @@ textarea {
    */
 details,
 menu {
-  display: block;
-}
+  display: block; }
 
 /*
    * Add the correct display in all browsers.
    */
 summary {
-  display: list-item;
-}
+  display: list-item; }
 
 /* Scripting
      ========================================================================== */
@@ -465,15 +414,13 @@ summary {
    * Add the correct display in IE 9-.
    */
 canvas {
-  display: inline-block;
-}
+  display: inline-block; }
 
 /**
    * Add the correct display in IE.
    */
 template {
-  display: none;
-}
+  display: none; }
 
 /* Hidden
      ========================================================================== */
@@ -481,44 +428,37 @@ template {
    * Add the correct display in IE 10-.
    */
 [hidden] {
-  display: none;
-}
+  display: none; }
 
 #search-header {
   background-image: url("../images/search-recipe.jpg");
   background-size: cover;
-  height: 40vh;
-}
+  height: 40vh; }
 
 #recipe-header-text {
   position: absolute;
   top: 25%;
   left: 33%;
   margin-right: -50%;
-  transform: translate(-50%, -50%);
-}
+  transform: translate(-50%, -50%); }
 
 #recipe-header-text h1 {
-  color: #f1f1f1;
-}
+  color: #f1f1f1; }
 
 #recipe-header-text p {
-  color: #f1f1f1;
-}
+  color: #f1f1f1; }
 
 #recipe-search-form {
   position: absolute;
   top: 35%;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%, -50%);
-}
+  transform: translate(-50%, -50%); }
 
 #recipe-search-input {
   position: relative;
   width: 60vw;
-  background-color: #f1f1f1;
-}
+  background-color: #f1f1f1; }
 
 #search-icon {
   position: absolute;
@@ -526,13 +466,11 @@ template {
   position: top right;
   right: 25px;
   top: 18px;
-  font-size: 1.2rem;
-}
+  font-size: 1.2rem; }
 
 #recipe-search-btn {
   position: absolute;
-  left: -9000px;
-}
+  left: -9000px; }
 
 #sok {
   position: relative;
@@ -544,30 +482,25 @@ template {
   font-size: 12pt;
   float: left;
   color: #63717f;
-  padding-left: 45px;
-}
+  padding-left: 45px; }
 
 #recipe-result-section {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 30px;
-  padding-top: 5rem;
-}
+  padding-top: 5rem; }
 
 .recipe-wrapper {
-  position: relative;
-}
+  position: relative; }
 
 .recipe-img {
   height: 200px;
   width: 100%;
-  object-fit: cover;
-}
+  object-fit: cover; }
 
 #recipe-result-section {
   max-width: 1260px;
-  margin: 0 auto 30px;
-}
+  margin: 0 auto 30px; }
 
 .recipe-title {
   position: absolute;
@@ -577,8 +510,7 @@ template {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   color: #f1f1f1;
-  background-color: rgba(255, 255, 255, 0.2);
-}
+  background-color: rgba(255, 255, 255, 0.2); }
 
 .recipe-difficulty {
   position: absolute;
@@ -587,8 +519,7 @@ template {
   padding: 10px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  color: #f1f1f1;
-}
+  color: #f1f1f1; }
 
 .recipe-duration {
   position: absolute;
@@ -598,28 +529,23 @@ template {
   padding: 10px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  color: #f1f1f1;
-}
+  color: #f1f1f1; }
 
 li {
-  margin-bottom: 5px;
-}
+  margin-bottom: 5px; }
 
 h2 {
-  margin-left: 3%;
-}
+  margin-left: 3%; }
 
 #category-placeholder {
-  margin-top: 30%;
-}
+  margin-top: 30%; }
 
 input[type=text] {
   width: 80%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  font-size: 1.2rem;
-}
+  font-size: 1.2rem; }
 
 input[type=submit] {
   background-color: #ffa514;
@@ -631,48 +557,46 @@ input[type=submit] {
   color: white;
   border-radius: 3px;
   width: 170px;
-  height: 50px;
-}
+  height: 50px; }
 
 .container {
   display: grid;
   margin-left: -1vw;
   grid-template-columns: 15vw 83.8vw;
   grid-template-rows: 5rem 1fr;
+<<<<<<< HEAD:public/stylesheets/styles.css
   grid-template-areas: "header header" "sidebar content";
 }
+=======
+  grid-template-areas: "header header" "sidebar content"; }
+>>>>>>> 15f9942e4cf3ba77392971a6ea7454597e6fd1f6:main.css
 
 .header {
-  grid-area: header;
-}
+  grid-area: header; }
 
 #search-form {
   display: grid;
   position: relative;
   top: 0%;
-  left: 5%;
-}
+  left: 5%; }
 
 .sidebar {
   grid-area: sidebar;
   height: 81.5vh;
-  background-color: #fafafa;
-}
+  background-color: #fafafa; }
 
 .content {
   margin-top: 0;
   grid-area: content;
   display: grid;
-  position: relative;
-}
+  position: relative; }
 
 .search-result {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   list-style-type: none;
   grid-gap: 10px;
-  border-top: 1.5px solid #f0f0f0;
-}
+  border-top: 1.5px solid #f0f0f0; }
 
 .search-item {
   display: grid;
@@ -680,48 +604,39 @@ input[type=submit] {
   padding: 1rem;
   height: 270px;
   grid-template-rows: 75% 12.5% 12.5%;
-  grid-template-areas: "image"	"item"	"price";
-}
+  grid-template-areas: "image"	"item"	"price"; }
 
 .img-container {
   height: 140px;
   width: auto;
-  margin: auto;
-}
+  margin: auto; }
 
 .img-thumb {
   max-height: 140px;
   max-width: 140px;
   grid-area: image;
   margin: auto;
-  border: none;
-}
+  border: none; }
 
 #item-name {
   grid-area: item;
-  margin: auto;
-}
+  margin: auto; }
 
 #item-price {
   grid-area: price;
-  margin: auto;
-}
+  margin: auto; }
 
 html {
-  overflow-y: scroll;
-}
+  overflow-y: scroll; }
 
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
-  color: #00B7FF;
-}
+  color: #00B7FF; }
 
 p {
-  margin-top: 1vh;
-}
+  margin-top: 1vh; }
 
 #title-text {
   display: inline-block;
@@ -730,14 +645,12 @@ p {
   margin: auto;
   left: 50%;
   margin-left: -104px;
-  margin-bottom: 1.7vh;
-}
+  margin-bottom: 1.7vh; }
 
 .wrapper {
   display: grid;
   position: absolute;
-  top: 20px;
-}
+  top: 20px; }
 
 .breakfast-wrapper {
   display: grid;
@@ -747,8 +660,7 @@ p {
   justify-content: center;
   text-align: center;
   grid-template-columns: repeat(7, 10vmax);
-  grid-template-rows: repeat(3, 10vmax);
-}
+  grid-template-rows: repeat(3, 10vmax); }
 
 .lunch-wrapper {
   display: grid;
@@ -758,8 +670,7 @@ p {
   justify-content: center;
   text-align: center;
   grid-template-columns: repeat(7, 10vmax);
-  grid-template-rows: repeat(3, 10vmax);
-}
+  grid-template-rows: repeat(3, 10vmax); }
 
 .dinner-wrapper {
   display: grid;
@@ -770,23 +681,19 @@ p {
   justify-content: center;
   text-align: center;
   grid-template-columns: repeat(7, 10vmax);
-  grid-template-rows: repeat(3, 10vmax);
-}
+  grid-template-rows: repeat(3, 10vmax); }
 
 .breakfast {
   border: 1.5px solid #ffa514;
-  border-radius: 3px;
-}
+  border-radius: 3px; }
 
 .lunch {
   border: 1.5px solid #ffa514;
-  border-radius: 3px;
-}
+  border-radius: 3px; }
 
 .dinner {
   border: 1.5px solid #ffa514;
-  border-radius: 3px;
-}
+  border-radius: 3px; }
 
 .btn-collapse {
   display: grid;
@@ -797,8 +704,7 @@ p {
   margin-top: -1vh;
   border-radius: 3px;
   position: relative;
-  width: 72vw;
-}
+  width: 72vw; }
 
 .button-add {
   text-align: center;
@@ -813,8 +719,7 @@ p {
   background-color: #ffa514;
   font-size: 1.5vmax;
   color: white;
-  border-style: none;
-}
+  border-style: none; }
 
 .complete-btn {
   position: relative;
@@ -828,5 +733,4 @@ p {
   margin-top: 2vh;
   margin-bottom: 2vh;
   margin-left: -85px;
-  left: 50%;
-}
+  left: 50%; }
