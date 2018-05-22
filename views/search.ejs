@@ -1,10 +1,11 @@
-  <% layout("layout") %>
+<% layout("layout") %>
 
 	<div class="container container-fluid">
 		<div class="header">
-
+			
 			<form id="search-form" class="" action="search" method="post">
 				<div>
+				<b><h1 id="h1-test">Enkeltvarer</h1></b>
 					<input type="text" id="field-search" name="formsearch" placeholder="Søk.." value="<%= search %>">
 					<input id="grocery-search-btn" type="submit" value="Søk">
 
@@ -14,9 +15,54 @@
 			<p class="message"></p>
 		</div>
 		<div class="sidebar">
-			<b>
-				<h2>Varer</h2>
+			<b> <br>
+				<h2>Kategorier</h2>
+				<br>
 			</b>
+
+			<ul>
+				<li>Alle kategorier</li>
+				<li>På tilbud</li>
+				<li>Nyheter i butikken</li>
+				<li>Frukt og grønt</li>
+				<li> Frukt</li>
+				<li> Salater og kål</li>
+				<li> Ferdig kuttede salater</li>
+				<li> Grønnsaker</li>
+				<li> Poteter</li>
+				<li> Urter og spirer</li>
+				<li> Ferdigkuttet frukt og grønt</li>
+				<li> Frø, nøtter og tørket frukt</li>
+				<li> Hermetisert frukt og grønt</li>
+				<li> Frossen frukt og grønt</li>
+				<li>Blomster og planter Ny!</li>
+				<li>Brød og frokostblandinger</li>
+				<li>Melk, meieriprodukter og egg</li>
+				<li>Kjøtt og kylling</li>
+				<li>Fisk og sjømat</li>
+				<li>Oster</li>
+				<li>Pålegg</li>
+				<li>Grill Ny!</li>
+				<li>Middager og tilbehør</li>
+				<li>Drikkevarer</li>
+				<li>Øl, cider og rusbrus</li>
+				<li>Olje og krydder</li>
+				<li>Mel og bakeingredienser</li>
+				<li>Is og desserter</li>
+				<li>Kaker, kjeks og desserter</li>
+				<li>Snacks og godteri</li>
+				<li>Barneprodukter</li>
+				<li>Shampo, såpe og krem</li>
+				<li>Trening</li>
+				<li>Hygieneartikler</li>
+				<li>Legemidler og helsekost</li>
+				<li>Tørkepapir og vask</li>
+				<li>Magasiner og bøker</li>
+				<li>Husholdning og tekstil</li>
+				<li>Dyremat</li>
+				<li>Snus og tobakk</li>
+			</ul>
+
 		</div>
 		<div class="content">
 			<ul class="search-result">
