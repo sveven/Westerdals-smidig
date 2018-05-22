@@ -1,0 +1,21 @@
+#recipe-header {
+	position: relative;
+    background-size: cover;
+    height: 60vh;
+}
+
+.concept-icon {
+    display: inline-block;
+	left: 70vw;
+	top: 10vh;
+    position: relative;
+}
+
+.concept-icon img,
+h3 {
+	
+    left: 50%;
+    margin-right: -50%;
+	transform: translate(-50%, -50%);
+	display: inline-block;
+}
