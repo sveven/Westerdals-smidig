@@ -12,27 +12,27 @@ router.get("/", function(req, res) {
 
 router.post("/", function(req, res) {
   let userInput = req.body.formfield;
-  let fetchData = "";
   
   query.addMealToDayQuery("Monday", userInput, "Dinner", 4, 1, 1);
 
-  // query.createProductQuery(userInput);
+  query.createProductQuery(userInput);
   
-  // query.fetchProductQuery( function(fetchResponse){
-  //   fetchData = JSON.stringify(fetchResponse);
-  // });
+  query.fetchProductQuery( function(fetchResponse){
+    req.allProducts = fetchResponse;
+    renderQueryTestPage(req, res)
+   });
   
-  console.log("FETCHDATA: " + fetchData);
-
-  res.render("querytest", {
-    title: "K-Planleggeren",
-    returnData: userInput,
-    allProducts: fetchData
-  });
-
+   
 });
 
-
+function renderQueryTestPage(req, res) {
+  console.log(JSON.stringify(req.allProducts));
+  res.render("querytest", {
+    title: "K-Planleggeren",
+    allProducts: req.allProducts
+  });
+  
+};
 
 
 module.exports = router;

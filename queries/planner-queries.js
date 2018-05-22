@@ -9,7 +9,6 @@ module.exports = {
   // Fetches all database entries for now. 
   fetchProductQuery(callback){
     models.Product.findAll().then(res => {
-      console.log(JSON.stringify(res));
       callback(res);
     });
   },
