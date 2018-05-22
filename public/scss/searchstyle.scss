@@ -1,3 +1,4 @@
+
 li {
 	margin-bottom: 5px;
 	list-style-type: none;
@@ -7,15 +8,18 @@ h2 {
 	margin-left: 3%;
 }
 
-#category-list {
-	position: fixed;
+#h1-test {
+	font-size: 3rem;
+	color: white;
+	position: relative;
+	top: 10%;
 }
 
 #field-search {
 	width: 80%;
-	height: 3.5vmax;
     padding: 12px 20px;
 	margin: 8px 0;
+	position: relative;
 	box-sizing: border-box;
 	font-size: 1.2rem;
 }
@@ -29,15 +33,15 @@ h2 {
 	font-size: 1.2rem;
     color: white;
     border-radius: 3px;
-	height: 3.5vmax;
-	width: 12vmax;
+	height: 3%;
+	width: 10%;
 }
 
 .container {
 	display: grid;
 	margin-left: -1vw;
 	grid-template-columns: 15vw 83.8vw;
-	grid-template-rows: 5rem 1fr;
+	grid-template-rows: 15rem 1fr;
 	grid-template-areas:
 	"header header"
 	"sidebar content"
@@ -46,12 +50,13 @@ h2 {
 
 .header  {
 	grid-area: header;
+	background-image: url(/images/search.jpg);
 }
 
 #search-form {
 	display: grid;
 	position: relative;
-	top: 0%;
+	top: 30%;
 	left: 5%;
 }
 
