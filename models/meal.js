@@ -6,16 +6,32 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true
     },
+    recipeId: {
+      type: DataTypes.INTEGER
+    },
+    day: {
+      type: DataTypes.ENUM,
+      values: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ]
+    },
     type: {
       type: DataTypes.ENUM,
       values: ["Breakfast", "Lunch", "Dinner"]
     },
     portions: DataTypes.FLOAT
   });
-  Meal.associate = function(models) {
-    // Meal.belongsToMany(models.Product, {
-    //   through: { model: models.ProductInMeal }
-    // });
+  Meal.associate = models => {
+    Meal.belongsToMany(models.Product, {
+      through: { model: models.ProductInMeal },
+      foreignKey: models.Meal.Id
+    });
     //TODO: add FK, constraints etc
     Meal.belongsTo(models.Day);
   };

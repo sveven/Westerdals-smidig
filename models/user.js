@@ -16,17 +16,10 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Week, {
       onDelete: "CASCADE",
       foreignKey: {
-        allowNull: true
+        allowNull: true,
+        name: models.Week.weekId
       }
     });
-
-    // User.belongsToMany(models.Day, {
-    //   onDelete: "CASCADE",
-    //   foreignKey: {
-    //     allowNull: false
-    //   }
-    // });
   };
-
   return User;
 };

@@ -1,6 +1,13 @@
+TODO:
+<!--
+	Further styling to the grid and components
+	Maybe add some JS into the mix
+-->
+
 <% if (data.results){ %>
 
 <section id="recipe-result-section">
+
 
 
     <% for (i in data.results){ %>
@@ -9,7 +16,7 @@
 			<h5 class="recipe-title"><%= data.results[i].title %></h5>
 			<p class="recipe-difficulty"><%= data.results[i].difficulty_string %></p>
 			<p class="recipe-duration"><%= data.results[i].cooking_duration_string %></p>
-		</div>
+		</div> 
     <% } %>
 
 </section>

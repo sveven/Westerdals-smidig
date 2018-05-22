@@ -9,13 +9,13 @@ var config = require("../config")[env];
 var db = {};
 
 if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable], config);
+  var sequelize = new Sequelize(process.env[config.use_env_variable], {host: config.host, dialect: config.dialect});
 } else {
   var sequelize = new Sequelize(
     config.database,
     config.username,
     config.password,
-    config
+    {host: config.host, dialect: config.dialect}
   );
 }
 
@@ -42,3 +42,4 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+2

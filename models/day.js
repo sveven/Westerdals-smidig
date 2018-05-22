@@ -8,13 +8,14 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     }
   });
-
-  Day.associate = function(models) {
-    // associations can be defined here
-    // models.Day.belongsToMany(models.Product, {
-    //   through: { model: models.ProductInDay },
-    //   foreignKey: models.Day
-    // });
+  Day.associate = models => {
+    Day.belongsTo(models.Week, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        name: models.Week.weekId,
+        allowNull: false
+      }
+    });
   };
   return Day;
 };

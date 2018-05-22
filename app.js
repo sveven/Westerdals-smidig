@@ -22,6 +22,7 @@ const login = require("./routes/login");
 const logout = require("./routes/logout");
 const test = require("./routes/test");
 const weekPlannerCurrent = require("./routes/week-planner-current");
+const queryTest = require("./routes/querytest");
 
 /*
 const basicProducts = require('./routes/basic-products');
@@ -45,6 +46,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 //app.use(session({secret: 'kolonial', saveUninitialized: true, resave: false}))
 
+/* app.use(
+	sass.middleware({
+		src: __dirname + "/sass", //where the sass files are 
+		dest: __dirname + "/public", //where css should go
+		debug: true // obvious
+	})
+); */
+
 app.use(authentication);
 
 
@@ -55,6 +64,10 @@ app.use("/recipes", recipes);
 app.use("/test", test);
 app.use("/login", login);
 app.use("/logout", logout);
+
+// testsite for testing queries.
+app.use("/querytest", queryTest);
+
 //TODO: Needs fixing
 app.use("/recipes/single", singleRecipe);
 /*
