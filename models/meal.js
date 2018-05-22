@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.ENUM,
       values: ["Breakfast", "Lunch", "Dinner"]
     },
-    portions: DataTypes.FLOAT
+    portions: DataTypes.FLOAT(15, 3)
   });
   Meal.associate = models => {
     Meal.belongsToMany(models.Product, {

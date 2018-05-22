@@ -6,10 +6,9 @@ module.exports = {
     models.Product.create({ kolonialId: kolonialId });
   },
 
-  // Fetches all database entries for now. 
-  fetchProductQuery(callback){
+  // Fetches all database entries for now.
+  fetchProductQuery(callback) {
     models.Product.findAll().then(res => {
-      console.log(JSON.stringify(res));
       callback(res);
     });
   },
@@ -42,7 +41,6 @@ module.exports = {
       //Round up on portionquantity of recipe
       let mealId = meal.dataValues.Id;
       addMealToDayDependingOnType(mealId, type, dayId);
-      //TODO: Add all products to this meal
       addAllProductsBasedOnRecipe(mealId, recipeId);
     });
   }
@@ -75,20 +73,43 @@ function addMealToDayDependingOnType(mealId, type, dayId) {
 }
 
 function addAllProductsBasedOnRecipe(mealId, recipeId) {
-  helper.getAllIngredientIdsFromRecipe(recipeId).then(res => {
-    console.log(res);
-    
-  });
+  helper
+    .getAllIngredientIdsFromRecipe(recipeId)
+    .then(products => {
+      addAllProductsInRecipeWithPortions(mealId, recipeId, products);
+    })
+    .catch(err => console.log(err));
 }
 
 function findOneDayQuery(dayId) {
   return models.Day.findOne({ where: (id = dayId) });
 }
 
-function createProductQuery(kolonialId) {
-  console.log("########################");
-  console.log("Id: " + kolonialId);
-  console.log("########################");
+function addAllProductsInRecipeWithPortions(mealId, recipeId, productsArr) {
+  for (let i = 0; i < productsArr.length; i++) {
+    createProductQuery(productsArr[i]);
+    addIngredientToMealWithPortions(mealId, recipeId, productsArr[i]);
+  }
+}
 
-  return models.Product.create({ kolonialId: kolonialId });
+function addIngredientToMealWithPortions(mealId, recipeId, productId) {
+  helper
+    .getPortionQuantityOfIngredientInRecipe(recipeId, productId)
+    .then(quantity => {
+      createProductInMealQuery(mealId, productId, quantity);
+    });
+}
+
+function createProductInMealQuery(mealId, productId, portionQuantity) {
+  return models.ProductInMeal.create({
+    MealId: mealId,
+    ProductKolonialId: productId,
+    portionQuantity: portionQuantity
+  });
+}
+
+function createProductQuery(productId) {
+  return models.Product.findOrCreate({
+    where: { kolonialId: productId }
+  });
 }

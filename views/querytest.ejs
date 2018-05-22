@@ -4,7 +4,7 @@
 
 	<div class="container container-fluid">
 		<div class="header">
-
+      </div>
 			<form id="search-form" class="" action="querytest" method="post">
           <div>
             <input type="text" id="field-search" name="formfield" placeholder="ProduktID" >
@@ -24,25 +24,34 @@
           
         </tr>
       
-      
-        <% if ( locals.allProducts !== 'undefined' || locals.allProducts) {%>
+          <% if (typeof allProducts == 'object' && allProducts !== 'undefined') {%>
 
-          <% for (var product in locals.allProducts) { %>
+            <p><%= allProducts.toString() %></p>
 
-            <tr>
-              <td>
-                <%= product.kolonialID %>
-              </td>
-            </tr>
+            <% for (var product in allProducts) { %>
 
-          <% } %>
+              
+              <tr>
+                <td>
+                  <%= product.kolonialId %>
+                </td>
+              </tr>
 
-        <% } %> 
+            <% } %>
+
+          <% } else { %> 
+
+            <%= console.log(locals.allProducts)%>
+
+            <p> Her var det ingen ting. </p>
+
+          <% } %> 
+
       </table>
   
 
 
 	
-  </div>
+
   
 	</div>
