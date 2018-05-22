@@ -6,14 +6,12 @@
 		<div class="header">
 
 			<form id="search-form" class="" action="querytest" method="post">
-          
+          <div>
           <input type="text" id="field-search" name="formfield" placeholder="ProduktID" >
 
         
-          <input type="submit" value="Legg til">
-
-				
-
+          <input id="grocery-search-btn" type="submit" value="Legg til">
+          </div>
       </form>
 
       
@@ -21,19 +19,17 @@
       <table>
         <tr>
 
-      
-
-            <%if (returnData){%>
+            <%if (locals.returnData){%>
               <td> <p> returnData = <%= returnData %></p> </td>
             
             <% } %>
           
         </tr>
       
-      <!--
-        <% if (allProducts || allProducts != 'undefined') {%>
+      
+        <% if ( locals.allProducts !== 'undefined' || locals.allProducts) {%>
 
-          <% for each (product) { %>
+          <% for (var product in locals.allProducts) { %>
 
             <tr>
               <td>
@@ -43,7 +39,7 @@
 
           <% } %>
 
-        <% } %> -->
+        <% } %> 
       </table>
   
 
