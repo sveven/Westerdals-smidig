@@ -22,18 +22,12 @@ router.post("/", function(req, res) {
     fetchData = JSON.stringify(fetchResponse);
   });
   
-/*
   res.render("querytest", {
     title: "K-Planleggeren",
     returnData: userInput,
     allProducts: fetchData
   });
-*/
 
-res.render("querytest", {
-  title: "K-Planleggeren",
-  returnData: userInput
-});
 });
 
 
