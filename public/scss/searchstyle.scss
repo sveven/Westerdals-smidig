@@ -9,7 +9,8 @@ h2 {
 #category-placeholder {
 	margin-top: 30%;
 }
-input[type=text] {
+
+#grocery-search-field {
     width: 80%;
     padding: 12px 20px;
 	margin: 8px 0;
@@ -17,7 +18,7 @@ input[type=text] {
 	font-size: 1.2rem;
 }
 
-input[type=submit] {
+#grocery-search-btn {
 	background-color: rgb(255, 165, 20);
 	border-style: none;
     padding: 12px 20px;
