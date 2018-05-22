@@ -16,4 +16,4 @@ tmp/week-planner/*
 # Local log file
 npm-debug.log
 
-/public/stylesheets/styles.min.css/
+public/stylesheets/styles.min.css
