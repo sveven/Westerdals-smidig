@@ -1,21 +1,45 @@
-import models from "../models";
+const models = require("../models");
 
-export function createProductQuery(kolonialId) {
-  models.Product.create({ kolonialId: kolonialId });
-}
+module.exports = {
+  createProductQuery(kolonialId) {
+    models.Product.create({ kolonialId: kolonialId });
+  },
 
-export function createUserQuery() {
-  models.User.create({ Id: null, kolonialUserId: null });
-}
+  createUserQuery() {
+    models.User.create({ Id: null, kolonialUserId: null });
+  },
 
-export function createWeekQuery() {
-  models.Week.create({ weekId: null });
-}
+  createWeekQuery() {
+    models.Week.create({ weekId: null });
+  },
 
-export function createMealQuery(type, portions, dayId) {
-  models.Meal.create({ Id: null, type: type, portions: portions, day: dayId });
-}
+  createMealQuery(type, portions, dayId) {
+    models.Meal.create({
+      Id: null,
+      type: type,
+      portions: portions,
+      day: dayId
+    });
+  },
 
-export function createDayQuery() {
-  models.Day.create({ Id: null });
-}
+  createDayQuery() {
+    models.Day.create({ Id: null });
+  },
+
+  addMealToWeekQuery(day, recipeId, type, portions, dayId, weekId) {
+
+    //TODO: Implementations needed
+    // Need to implement getting of user id from session
+    //TODO: Continue here with implementation of adding an entire meal with portion quantity (if x amount of milk, get big milk?)
+    models.Meal.create({
+      Id: null,
+      recipeId: recipeId,
+      day: day,
+      type: type,
+      portions: portions,
+      dayId: dayId
+    }).then(res => {
+        console.log(res); 
+    });
+  }
+};

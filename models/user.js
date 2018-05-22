@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       foreignKey: {
         allowNull: true,
-        name: "Users"
+        name: models.Week.weekId
       }
     });
   };
