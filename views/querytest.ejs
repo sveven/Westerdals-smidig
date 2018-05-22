@@ -6,19 +6,28 @@
 		<div class="header">
 
 			<form id="search-form" class="" action="querytest" method="post">
-				<div>
-					<input type="text" id="field-search" name="formfield" placeholder="Søk.." >
-					<input type="submit" value="Søk">
+          
+          <input type="text" id="field-search" name="formfield" placeholder="ProduktID" >
 
-				</div>
+        
+          <input type="submit" value="Legg til">
 
-			</form>
-  
-      <%if (returnData){%>
-        <p>returnData = <%= returnData %></p>
+				
 
+      </form>
       
-      <%}%>
+      <table>
+        <tr>
+
+            <%if (returnData){%>
+              <td> <p> returnData = <%= returnData %></p> </td>
+            
+            <%}%>
+          
+        </tr>
+      </table>
+  
+
 
 	
   </div>
