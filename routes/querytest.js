@@ -13,7 +13,7 @@ router.get("/", function(req, res) {
 router.post("/", function(req, res) {
   let userInput = req.body.formfield;
   
-  query.addMealToDayQuery("Monday", userInput, "Dinner", 4, 1, 1);
+  query.addMealToDayQuery(userInput, "Dinner", 4, 1);
 
   query.createProductQuery(userInput);
   
