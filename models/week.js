@@ -1,12 +1,5 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const Week = sequelize.define("Week", {
-    weekId: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
-    }
-  });
-
+  const Week = sequelize.define("Week");
   return Week;
 };

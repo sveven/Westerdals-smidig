@@ -2,20 +2,29 @@
 
 module.exports = (sequelize, DataTypes) => {
   const Day = sequelize.define("Day", {
-    Id: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
+    },
+    day: {
+      type: DataTypes.ENUM,
+      values: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ]
     }
   });
+
   Day.associate = models => {
-    Day.belongsTo(models.Week, {
-      onDelete: "CASCADE",
-      foreignKey: {
-        name: models.Week.weekId,
-        allowNull: false
-      }
-    });
+    Day.belongsTo(models.Week);
+
   };
+
   return Day;
 };
