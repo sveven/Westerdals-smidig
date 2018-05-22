@@ -9,18 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     recipeId: {
       type: DataTypes.INTEGER
     },
-    day: {
-      type: DataTypes.ENUM,
-      values: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
-      ]
-    },
     type: {
       type: DataTypes.ENUM,
       values: ["Breakfast", "Lunch", "Dinner"]

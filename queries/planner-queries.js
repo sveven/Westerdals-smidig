@@ -2,44 +2,51 @@ const models = require("../models");
 
 module.exports = {
   createProductQuery(kolonialId) {
-    models.Product.create({ kolonialId: kolonialId });
+    return models.Product.create({ kolonialId: kolonialId });
   },
 
   createUserQuery() {
-    models.User.create({ Id: null, kolonialUserId: null });
+    return models.User.create({ Id: null, kolonialUserId: null });
   },
 
   createWeekQuery() {
-    models.Week.create({ weekId: null });
+    return models.Week.create({ weekId: null });
   },
 
-  createMealQuery(type, portions, dayId) {
-    models.Meal.create({
+  createMealQuery(recipeId, type, portions, dayId) {
+    return models.Meal.create({
       Id: null,
+      recipeId: recipeId,
       type: type,
       portions: portions,
-      day: dayId
+      dayId: dayId
     });
   },
 
   createDayQuery() {
-    models.Day.create({ Id: null });
+    return models.Day.create({ Id: null });
   },
 
-  addMealToWeekQuery(day, recipeId, type, portions, dayId, weekId) {
-
-    //TODO: Implementations needed
-    // Need to implement getting of user id from session
-    //TODO: Continue here with implementation of adding an entire meal with portion quantity (if x amount of milk, get big milk?)
-    models.Meal.create({
-      Id: null,
-      recipeId: recipeId,
-      day: day,
-      type: type,
-      portions: portions,
-      dayId: dayId
-    }).then(res => {
-        console.log(res); 
+  //TODO: This has to happen after a day has been created.
+  addMealToDayQuery(recipeId, type, portions, dayId) {
+    this.createMealQuery(recipeId, type, portions, dayId).then(res => {
+      //Round up on portionquantity of recipe
+      findADayQuery(dayId);
     });
   }
 };
+
+function addMealToDayDependingOnType(mealId, type, dayId) {
+  switch (
+    type
+
+    // return models.Day.update()
+  ) {
+  }
+}
+
+function findADayQuery(dayId) {
+  return models.Day.findOne({ where: (id = dayId) }).then(res =>
+    console.log(res)
+  );
+}
