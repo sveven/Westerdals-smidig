@@ -6,19 +6,41 @@
 		<div class="header">
 
 			<form id="search-form" class="" action="querytest" method="post">
-				<div>
-					<input type="text" id="field-search" name="formfield" placeholder="Søk.." >
-					<input type="submit" value="Søk">
-
-				</div>
-
-			</form>
-  
-      <%if (returnData){%>
-        <p>returnData = <%= returnData %></p>
+          <div>
+            <input type="text" id="field-search" name="formfield" placeholder="ProduktID" >
+            <input type="submit" value="Legg til">
+          </div>
+      </form>
 
       
-      <%}%>
+      
+      <table>
+        <tr>
+
+            <%if (locals.returnData){%>
+              <td> <p> returnData = <%= returnData %></p> </td>
+            
+            <% } %>
+          
+        </tr>
+      
+      
+        <% if ( locals.allProducts !== 'undefined' || locals.allProducts) {%>
+
+          <% for (var product in locals.allProducts) { %>
+
+            <tr>
+              <td>
+                <%= product.kolonialID %>
+              </td>
+            </tr>
+
+          <% } %>
+
+        <% } %> 
+      </table>
+  
+
 
 	
   </div>
