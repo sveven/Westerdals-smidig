@@ -63,7 +63,8 @@ function addMealToDayDependingOnType(mealId, type, dayId) {
 }
 
 function addAllProductsBasedOnRecipe(mealId, recipeId) {
-  helper.getAllIngredientIdsFromRecipe(recipeId);
+  helper.getAllIngredientIdsFromRecipe(recipeId).then(res => {
+  });
 }
 
 function findOneDayQuery(dayId) {
@@ -71,5 +72,10 @@ function findOneDayQuery(dayId) {
 }
 
 function createProductQuery(kolonialId) {
+  console.log("########################");
+
+  console.log("Id: " + kolonialId);
+  console.log("########################");
+
   return models.Product.create({ kolonialId: kolonialId });
 }

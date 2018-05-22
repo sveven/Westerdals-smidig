@@ -7,7 +7,6 @@ module.exports = {
         if (err) {
           reject(err);
         } else {
-          console.log(recipe.ingredients);
 
           resolve(recipe.ingredients);
         }
@@ -19,7 +18,7 @@ module.exports = {
     let ingredientIds = [];
 
     return new Promise(resolve => {
-      getAllIngredientsFromRecipe(recipeId)
+      this.getAllIngredientsFromRecipe(recipeId)
         .then(res => {
           for (let i in res) {
             ingredientIds.push(res[i].product.id);
@@ -35,7 +34,7 @@ module.exports = {
   getPortionQuantityOfIngredientInRecipe(recipeId, ingredientId) {
     let ingredientQuantity;
     return new Promise(resolve => {
-      getAllIngredientsFromRecipe(recipeId)
+      this.getAllIngredientsFromRecipe(recipeId)
         .then(res => {
           for (let i in res) {
             if (res[i].product.id === ingredientId) {
