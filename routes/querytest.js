@@ -22,6 +22,8 @@ router.post("/", function(req, res) {
     fetchData = JSON.stringify(fetchResponse);
   });
   
+  console.log("FETCHDATA: " + fetchData);
+
   res.render("querytest", {
     title: "K-Planleggeren",
     returnData: userInput,
