@@ -5,6 +5,13 @@ module.exports = {
     models.Product.create({ kolonialId: kolonialId });
   },
 
+  // Fetches all database entries for now. 
+  fetchProductQuery(callback){
+    models.Product.findAll().then(res => {
+      callback(res);
+    });
+  },
+
   createUserQuery() {
     models.User.create({ Id: null, kolonialUserId: null });
   },
