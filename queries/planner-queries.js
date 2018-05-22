@@ -43,27 +43,43 @@ module.exports = {
       addMealToDayDependingOnType(mealId, type, dayId);
       addAllProductsBasedOnRecipe(mealId, recipeId);
     });
+  },
+
+  createProductForUser(productId, quantity, userId) {
+    return this.create({
+      ProductKolonialId: productId,
+      productQuantity: quantity,
+      UserId: userId
+    });
+  },
+
+  createProductInDay(productId, quantity, dayId) {
+    return this.create({
+      ProductKolonialId: productId,
+      productQuantity: quantity,
+      DayId: dayId
+    });
   }
 };
 
 function addMealToDayDependingOnType(mealId, type, dayId) {
   switch (type) {
     case "Breakfast":
-      return findOneDayQuery().then(day => {
+      return findSpecificDayQuery().then(day => {
         day.update({
           breakfastId: mealId
         });
       });
       break;
     case "Lunch":
-      return findOneDayQuery().then(day => {
+      return findSpecificDayQuery().then(day => {
         day.update({
           lunchId: mealId
         });
       });
       break;
     case "Dinner":
-      return findOneDayQuery().then(day => {
+      return findSpecificDayQuery().then(day => {
         day.update({
           dinnerId: mealId
         });
@@ -81,7 +97,7 @@ function addAllProductsBasedOnRecipe(mealId, recipeId) {
     .catch(err => console.log(err));
 }
 
-function findOneDayQuery(dayId) {
+function findSpecificDayQuery(dayId) {
   return models.Day.findOne({ where: (id = dayId) });
 }
 
