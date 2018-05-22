@@ -2,6 +2,17 @@ const models = require("../models");
 const helper = require("./queries-helper-methods");
 
 module.exports = {
+  createProductQuery(kolonialId) {
+    models.Product.create({ kolonialId: kolonialId });
+  },
+
+  // Fetches all database entries for now. 
+  fetchProductQuery(callback){
+    models.Product.findAll().then(res => {
+      callback(res);
+    });
+  },
+
   createUserQuery() {
     return models.User.create({ Id: null, kolonialUserId: null });
   },
