@@ -14,13 +14,13 @@ router.post("/", function(req, res) {
   let userInput = req.body.formfield;
   let fetchData = "";
   
-  //query.addMealToWeekQuery("Monday", userInput, "Dinner", 4, 1, 1);
+  query.addMealToDayQuery("Monday", userInput, "Dinner", 4, 1, 1);
 
-  query.createProductQuery(userInput);
+  // query.createProductQuery(userInput);
   
-  query.fetchProductQuery( function(fetchResponse){
-    fetchData = JSON.stringify(fetchResponse);
-  });
+  // query.fetchProductQuery( function(fetchResponse){
+  //   fetchData = JSON.stringify(fetchResponse);
+  // });
   
   console.log("FETCHDATA: " + fetchData);
 
