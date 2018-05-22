@@ -3,7 +3,7 @@
 
 	//HTML elements
 
-	let $btnSearch = $("#btn-search");
+	let $btnSearch = $("#grocery-search-btn");
 	let $searchOutput = $("#search-output");
 	let $framework;
 	let $message = $(".message");

@@ -9,18 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     recipeId: {
       type: DataTypes.INTEGER
     },
-    day: {
-      type: DataTypes.ENUM,
-      values: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
-      ]
-    },
     type: {
       type: DataTypes.ENUM,
       values: ["Breakfast", "Lunch", "Dinner"]
@@ -32,8 +20,9 @@ module.exports = (sequelize, DataTypes) => {
       through: { model: models.ProductInMeal },
       foreignKey: models.Meal.Id
     });
-    //TODO: add FK, constraints etc
-    Meal.belongsTo(models.Day);
+    Meal.hasOne(models.Day, { foreignKey: "breakfastId" });
+    Meal.hasOne(models.Day, { foreignKey: "lunchId" });
+    Meal.hasOne(models.Day, { foreignKey: "dinnerId" });
   };
   return Meal;
 };

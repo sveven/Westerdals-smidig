@@ -1,4 +1,5 @@
 const models = require("../models");
+const helper = require("./queries-helper-methods");
 
 module.exports = {
   createProductQuery(kolonialId) {
@@ -13,40 +14,73 @@ module.exports = {
   },
 
   createUserQuery() {
-    models.User.create({ Id: null, kolonialUserId: null });
+    return models.User.create({ Id: null, kolonialUserId: null });
   },
 
   createWeekQuery() {
-    models.Week.create({ weekId: null });
+    return models.Week.create({ weekId: null });
   },
 
-  createMealQuery(type, portions, dayId) {
-    models.Meal.create({
-      Id: null,
-      type: type,
-      portions: portions,
-      day: dayId
-    });
-  },
-
-  createDayQuery() {
-    models.Day.create({ Id: null });
-  },
-
-  addMealToWeekQuery(day, recipeId, type, portions, dayId, weekId) {
-
-    //TODO: Implementations needed
-    // Need to implement getting of user id from session
-    //TODO: Continue here with implementation of adding an entire meal with portion quantity (if x amount of milk, get big milk?)
-    models.Meal.create({
+  createMealQuery(recipeId, type, portions, dayId) {
+    return models.Meal.create({
       Id: null,
       recipeId: recipeId,
-      day: day,
       type: type,
       portions: portions,
       dayId: dayId
-    }).then(res => {
-        console.log(res); 
+    });
+  },
+
+  createDayQuery(weekId) {
+    return models.Day.create({ Id: null, weekId: weekId });
+  },
+
+  //TODO: This has to happen after a day has been created.
+  addMealToDayQuery(recipeId, type, portions, dayId) {
+    return this.createMealQuery(recipeId, type, portions, dayId).then(meal => {
+      //Round up on portionquantity of recipe
+      let mealId = meal.dataValues.Id;
+      addMealToDayDependingOnType(mealId, type, dayId);
+      //TODO: Add all products to this meal
+      addAllProductsBasedOnRecipe(mealId, recipeId);
     });
   }
 };
+
+function addMealToDayDependingOnType(mealId, type, dayId) {
+  switch (type) {
+    case "Breakfast":
+      findOneDayQuery().then(day => {
+        day.update({
+          breakfastId: mealId
+        });
+      });
+      break;
+    case "Lunch":
+      findOneDayQuery().then(day => {
+        day.update({
+          lunchId: mealId
+        });
+      });
+      break;
+    case "Dinner":
+      findOneDayQuery().then(day => {
+        day.update({
+          dinnerId: mealId
+        });
+      });
+      break;
+  }
+}
+
+function addAllProductsBasedOnRecipe(mealId, recipeId) {
+  helper.getAllIngredientIdsFromRecipe(recipeId);
+}
+
+function findOneDayQuery(dayId) {
+  return models.Day.findOne({ where: (id = dayId) });
+}
+
+function createProductQuery(kolonialId) {
+  return models.Product.create({ kolonialId: kolonialId });
+}
