@@ -4,6 +4,8 @@ config/config.json
 # Node modules
 node_modules/
 
+public/stylesheets/style.min.css
+
 #intellij files
 .idea
 #we
