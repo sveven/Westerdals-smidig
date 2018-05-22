@@ -3,7 +3,22 @@
 
 <% if (data.id){ %>
 
-	<p><%= data.title %></p>
+	<section id="recipe-header" style="background-image: url(<%= data.feature_image_url %>)">
+		<% for (i in data.concept_icons) { %>
+			<div class="concept-icon" title="">
+				<img src="<%= data.concept_icons[i].image_url %>" alt="<%= data.concept_icons[i].name %>">
+				<h3><%= data.concept_icons[i].name %></h3>
+			</div>
+		<% } %>
+		<h1><%= data.title %></h1>
+		<h6><%= data.provider_name %></h6>
+		<div id="add-section-top">
+			<h1>kr <%= data.portion_price %></h1>
+			<p>per posjon</p>
+			<input type="submit" name="" value="Legg til i planlegger">
+		</div>
+
+	</section>
 	
 
 <%}%>
