@@ -39,7 +39,7 @@ function renderQueryTestPage(req, res) {
 
 function pullProductInfo(raw){
 
-  let produuctInfo = "Her er det ingen ting hahahah";
+  let productInfo = "Her er det ingen ting hahahah";
   
   return productInfo;
 
