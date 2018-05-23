@@ -2,14 +2,15 @@ const models = require("../models");
 const helper = require("./queries-helper-methods");
 
 module.exports = {
-  createProductQuery(kolonialId) {
-    models.Product.create({ kolonialId: kolonialId });
+  createProductQuery(productId) {
+    return models.Product.findOrCreate({
+      where: { kolonialId: productId }
+    });
   },
 
   // Fetches all database entries for now.
   fetchProductQuery(callback) {
-    models.Product.findAll({
-    }).then(res => {
+    models.Product.findAll({}).then(res => {
       callback(JSON.stringify(res));
     });
   },
@@ -40,7 +41,7 @@ module.exports = {
   addMealToDayQuery(recipeId, type, portions, dayId) {
     return this.createMealQuery(recipeId, type, portions, dayId).then(meal => {
       console.log("################MEALTODAY");
-      
+
       //Round up on portionquantity of recipe
       let mealId = meal.dataValues.Id;
       addMealToDayDependingOnType(mealId, type, dayId);
@@ -95,9 +96,6 @@ function addAllProductsBasedOnRecipe(mealId, recipeId) {
   helper
     .getAllIngredientsFromRecipe(recipeId)
     .then(products => {
-      console.log("######################");
-      console.log(products);
-      console.log("######################");
       addAllProductsInRecipeWithPortions(mealId, recipeId, products);
     })
     .catch(err => console.log(err));
@@ -107,12 +105,21 @@ function findSpecificDayQuery(dayId) {
   return models.Day.findOne({ where: (id = dayId) });
 }
 
+/**
+ * TODO: Will be used when clicking "Add to planner"
+ * Issue is that the user can add and remove items, and currently just puts items from the recipe in
+ * Might need check if the user has removed or added items. 
+ * What if a user has removed everything except one?4
+ * Maybe use the function differently, rather give all products that will be purchased in the array
+ * and remove the if-check?
+ */
 function addAllProductsInRecipeWithPortions(mealId, recipeId, productsArr) {
   for (let i = 0; i < productsArr.length; i++) {
-   
-    
-    createProductQuery(productsArr[i]);
-    addIngredientToMealWithPortions(mealId, recipeId, productsArr[i]);
+    console.log("Is Basic: " + productsArr[i].is_basic);
+    if (!productsArr[i].is_basic) {
+      createProductQuery(productsArr[i].id);
+      addIngredientToMealWithPortions(mealId, recipeId, productsArr[i].id);
+    }
   }
 }
 
@@ -120,7 +127,6 @@ function addIngredientToMealWithPortions(mealId, recipeId, productId) {
   helper
     .getPortionQuantityOfIngredientInRecipe(recipeId, productId)
     .then(quantity => {
-      
       createProductInMealQuery(mealId, productId, quantity);
     });
 }
