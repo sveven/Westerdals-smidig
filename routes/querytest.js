@@ -18,11 +18,13 @@ router.post("/", function(req, res) {
   query.createProductQuery(userInput);
   
   query.fetchProductQuery( function(fetchResponse){
-    req.allProducts = fetchResponse;
+    req.allProducts = pullProductInfo(fetchResponse);
+
+
+
     renderQueryTestPage(req, res)
    });
   
-   
 });
 
 function renderQueryTestPage(req, res) {
@@ -34,5 +36,13 @@ function renderQueryTestPage(req, res) {
   
 };
 
+
+function pullProductInfo(raw){
+
+  let produuctInfo = "Her er det ingen ting hahahah";
+  
+  return productInfo;
+
+}
 
 module.exports = router;

@@ -8,7 +8,8 @@ module.exports = {
 
   // Fetches all database entries for now.
   fetchProductQuery(callback) {
-    models.Product.findAll().then(res => {
+    models.Product.findAll({
+    }).then(res => {
       callback(res);
     });
   },
