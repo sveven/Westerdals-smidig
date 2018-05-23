@@ -26,15 +26,17 @@
       
           <% if (typeof allProducts == 'object' && allProducts !== 'undefined') {%>
 
-            <p><%= allProducts.toString() %></p>
+            
 
             <% for (var product in allProducts) { %>
 
               
               <tr>
+                <% for(var item in product.dataValues.kolonialId) { %>
                 <td>
-                  <%= product.kolonialId %>
+                  <%= item %>
                 </td>
+                <% } %>
               </tr>
 
             <% } %>
