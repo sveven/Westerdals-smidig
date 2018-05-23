@@ -10,15 +10,17 @@
 				<h1 class="concept-text" ><%= data.concept_icons[i].name %></h1>
 			</div>
 		<% } %>
-		<h1><%= data.title %></h1>
-		<h6><%= data.provider_name %></h6>
-		<div class="add-wrapper">	
-			<div id="add-section-top">
-				<h1>kr <%= data.portion_price %></h1>
-				<p>per posjon</p>
-				<input type="submit" name="" value="Legg til i planlegger">
-			</div>
+		<div class="recipe-header-title">
+			<h1><%= data.title %></h1>
+			<h6><%= data.provider_name %></h6>	
 		</div>
+			<div id="add-section-top">
+				<div id="add-text-wrapper">	
+					<h1>kr <%= data.portion_price %></h1>
+					<p>per posjon</p>
+				</div>
+				<input class="button add-recipe" type="submit" name="" value="Legg til i planlegger">
+			</div>
 
 	</section>
 	
