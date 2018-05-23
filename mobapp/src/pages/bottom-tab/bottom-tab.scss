@@ -1,0 +1,10 @@
+page-bottom-tab {
+
+    .tabs-ios-kolonialmork .tab-button[aria-selected=true], .tabs-ios-kolonialmork .tab-button[aria-selected=true] .tab-button-icon{
+        color: #FFA51E;
+    }
+        
+    .tabs-ios-kolonialmork .tab-button, .tabs-ios-kolonialmork .tab-button-icon, .tabs-ios-kolonialmork .tab-button:hover:not(.disable-hover), .tabs-ios-kolonialmork .tab-button:hover:not(.disable-hover) .tab-button-icon{
+        color: #FFA51E;
+    }
+}

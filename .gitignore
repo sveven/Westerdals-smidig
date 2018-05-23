@@ -4,6 +4,7 @@ webapp/config/config.json
 
 # Node modules
 webapp/node_modules/
+mobapp/node_modules/
 
 #minified stylesheets
 
@@ -17,3 +18,8 @@ tmp/week-planner/*
 webapp/npm-debug.log
 
 webapp/public/stylesheets/styles.min.css
+
+
+#Ionic
+mobapp/plugins
+mobapp/platforms
