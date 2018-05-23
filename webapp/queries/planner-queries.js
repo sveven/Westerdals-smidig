@@ -10,7 +10,7 @@ module.exports = {
   fetchProductQuery(callback) {
     models.Product.findAll({
     }).then(res => {
-      callback(res);
+      callback(JSON.stringify(res));
     });
   },
 

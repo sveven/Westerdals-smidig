@@ -20,15 +20,12 @@ router.post("/", function(req, res) {
   query.fetchProductQuery( function(fetchResponse){
     req.allProducts = pullProductInfo(fetchResponse);
 
-
-
     renderQueryTestPage(req, res)
    });
   
 });
 
 function renderQueryTestPage(req, res) {
-  console.log(JSON.stringify(req.allProducts));
   res.render("querytest", {
     title: "K-Planleggeren",
     allProducts: req.allProducts
@@ -38,9 +35,10 @@ function renderQueryTestPage(req, res) {
 
 
 function pullProductInfo(raw){
+  let productInfo = JSON.parse(raw);
 
-  let productInfo = "Her er det ingen ting hahahah";
-  
+
+
   return productInfo;
 
 }

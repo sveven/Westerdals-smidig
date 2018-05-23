@@ -26,17 +26,22 @@
       
           <% if (typeof allProducts == 'object' && allProducts !== 'undefined') {%>
 
-            
-
-            <% for (var product in allProducts) { %>
-
+            <% for (var i = 0; i < allProducts.length; i++) { %>
               
               <tr>
-                <% for(var item in product.dataValues.kolonialId) { %>
+             
                 <td>
-                  <%= item %>
+                  <p> KolonialID: <%= allProducts[i].kolonialId %></p>
                 </td>
-                <% } %>
+
+                <td>
+                  <p> Opprettet: <%= allProducts[i].createdAt %></p>
+                </td>
+
+                <td>
+                  <p> Sist endret: <%= allProducts[i].updatedAt %></p>
+                </td>
+        
               </tr>
 
             <% } %>
