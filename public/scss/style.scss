@@ -1,49 +1,5 @@
 @media (max-width: 600px) {
-    body {
-        width: 100%;
-    }
-
-    .wrapper {
-        display: grid;
-        position: absolute;
-        top: 20px;
-    }
     
-    .breakfast-wrapper {
-        display: grid;
-        position: relative;
-        grid-gap: 5px;
-        height: 23vh;
-        justify-content: center;
-        text-align: center;
-        grid-template-columns: repeat(1, 10vmax);
-        grid-template-rows: repeat(1, 10vmax);
-        
-    }
-    
-    .lunch-wrapper {
-        display: grid;
-        position: relative;
-        grid-gap: 5px;
-        height: 23vh;
-        justify-content: center;
-        text-align: center;
-        grid-template-columns: repeat(1, 10vmax);
-        grid-template-rows: repeat(1, 10vmax);
-    }
-    
-    .dinner-wrapper {
-        display: grid;
-        position: relative;
-        grid-gap: 5px;
-        flex-basis: 100%;
-        height: 23vh;
-        justify-content: center;
-        text-align: center;
-        grid-template-columns: repeat(1, 10vmax);
-        grid-template-rows: repeat(1, 10vmax);
-        
-    }
         
 } 
  
@@ -85,11 +41,11 @@ p {
     display: grid;
     position: relative;
     grid-gap: 5px;
-    height: 23vh;
+    height: 24vh;
     justify-content: center;
     text-align: center;
     grid-template-columns: repeat(7, 10vmax);
-    grid-template-rows: repeat(3, 10vmax);
+    grid-template-rows: repeat(3, 11vmax);
     
 }
 
@@ -97,11 +53,11 @@ p {
     display: grid;
     position: relative;
     grid-gap: 5px;
-    height: 23vh;
+    height: 24vh;
     justify-content: center;
     text-align: center;
     grid-template-columns: repeat(7, 10vmax);
-    grid-template-rows: repeat(3, 10vmax);
+    grid-template-rows: repeat(3, 11vmax);
 }
 
 .dinner-wrapper {
@@ -109,11 +65,11 @@ p {
     position: relative;
     grid-gap: 5px;
     flex-basis: 100%;
-    height: 23vh;
+    height: 24vh;
     justify-content: center;
     text-align: center;
     grid-template-columns: repeat(7, 10vmax);
-    grid-template-rows: repeat(3, 10vmax);
+    grid-template-rows: repeat(3, 11vmax);
     
 }
 
