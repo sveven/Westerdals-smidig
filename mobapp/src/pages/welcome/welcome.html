@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar color="oransje">
+    <ion-title text-center>Kompanjong</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="welcome" padding>
+  <ion-slides pager="true">
+    <ion-slide *ngFor="let slide of slider">
+        <img [src]="slide.image" class="slide-image"/>
+      <h2 [innerHTML]="slide.title"></h2>
+      <p [innerHTML]="slide.description"></p>
+    </ion-slide>
+    <ion-slide>
+        <button class="welcomeButton" ion-button large clear icon-end color="primary" (click)="goToTabPage()">
+            Gå videre
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+        </ion-slide>
+      </ion-slides>
+</ion-content>
+

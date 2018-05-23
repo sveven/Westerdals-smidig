@@ -16,7 +16,7 @@ module.exports = {
 
   getAllIngredientIdsFromRecipe(recipeId) {
     let ingredientIds = [];
-
+    
     return new Promise(resolve => {
       this.getAllIngredientsFromRecipe(recipeId)
         .then(res => {
