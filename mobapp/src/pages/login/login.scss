@@ -1,0 +1,50 @@
+page-login {
+
+    .backgroundImg{
+        background: url('../assets/imgs/Background-image.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    .logoImg{
+        height: 80px;
+        width: 70px;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+    }
+    
+    .txtKompanjong{
+        font-family: "GT Walsheim Regular", sans-serif;
+        text-align: center;
+        color: rgb(238, 237, 237);
+        font-size: 2rem;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    .text-input-field {
+        background: rgba(255, 255, 255, 0);
+        padding: 5px;
+        border: 2px solid rgba(246, 246, 246, 0);
+        border-radius: 3px;
+        box-shadow: 0 2px 1px 0 rgb(255, 255, 255);
+        color: whitesmoke;
+        
+    }
+    .container {
+        background: rgba(255, 255, 255, 0);
+        width: 70%;
+    
+    }
+
+    .authButtons{
+        font-family: "GT Walsheim Regular", sans-serif;
+        background-color: #FFA51E;
+        margin-left: 145px;
+        margin-top: 70px;
+    }
+
+    
+}
