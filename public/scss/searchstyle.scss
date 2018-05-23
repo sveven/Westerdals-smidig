@@ -37,9 +37,8 @@ h2 {
 	width: 10%;
 }
 
-.container {
-	display: grid;
-	margin-left: -1vw;
+.container-fluid {
+	display: grid;	
 	grid-template-columns: 15vw 83.8vw;
 	grid-template-rows: 15rem 1fr;
 	grid-template-areas:
@@ -47,11 +46,18 @@ h2 {
 	"sidebar content"
 }
 
+#container-search {
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
 
 .header  {
 	grid-area: header;
 	top: 0;
 	background-image: url(/images/search.jpg);
+	background-size: cover;
 }
 
 #search-form {
