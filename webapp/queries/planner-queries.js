@@ -39,6 +39,8 @@ module.exports = {
   //TODO: This has to happen after a day has been created.
   addMealToDayQuery(recipeId, type, portions, dayId) {
     return this.createMealQuery(recipeId, type, portions, dayId).then(meal => {
+      console.log("################MEALTODAY");
+      
       //Round up on portionquantity of recipe
       let mealId = meal.dataValues.Id;
       addMealToDayDependingOnType(mealId, type, dayId);
@@ -91,8 +93,11 @@ function addMealToDayDependingOnType(mealId, type, dayId) {
 
 function addAllProductsBasedOnRecipe(mealId, recipeId) {
   helper
-    .getAllIngredientIdsFromRecipe(recipeId)
+    .getAllIngredientsFromRecipe(recipeId)
     .then(products => {
+      console.log("######################");
+      console.log(products);
+      console.log("######################");
       addAllProductsInRecipeWithPortions(mealId, recipeId, products);
     })
     .catch(err => console.log(err));
@@ -104,6 +109,8 @@ function findSpecificDayQuery(dayId) {
 
 function addAllProductsInRecipeWithPortions(mealId, recipeId, productsArr) {
   for (let i = 0; i < productsArr.length; i++) {
+   
+    
     createProductQuery(productsArr[i]);
     addIngredientToMealWithPortions(mealId, recipeId, productsArr[i]);
   }
@@ -113,6 +120,7 @@ function addIngredientToMealWithPortions(mealId, recipeId, productId) {
   helper
     .getPortionQuantityOfIngredientInRecipe(recipeId, productId)
     .then(quantity => {
+      
       createProductInMealQuery(mealId, productId, quantity);
     });
 }

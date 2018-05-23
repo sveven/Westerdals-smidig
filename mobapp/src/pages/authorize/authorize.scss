@@ -1,0 +1,36 @@
+page-authorize {
+    
+    .backgroundImg{
+        background: url('../assets/imgs/Background-image.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    .logoImg{
+        height: 80px;
+        width: 70px;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+    }
+    
+    .txtKompanjong{
+        font-family: "GT Walsheim Regular", sans-serif;
+        text-align: center;
+        color: rgb(238, 237, 237);
+        font-size: 3rem;
+        margin-top: 9px;
+    }
+
+    .button-container { 
+        margin-top: 100px;
+    }
+
+
+    .authButtons{
+        font-family: "GT Walsheim Regular", sans-serif;
+        background-color: #FFA51E;
+    }
+    
+}

@@ -1,0 +1,21 @@
+<ion-content class="backgroundImg">
+  <div>
+    <ion-thumbnail>
+        <img class="logoImg" src="../assets/imgs/Klogo.png">
+        <p class="txtKompanjong">Logg inn med din bruker fra kolonial.no</p>
+    </ion-thumbnail>
+  </div>
+
+ <ion-item class="container">
+   <ion-label color="oransje" floating>Brukernavn</ion-label>
+    <ion-input class="text-input-field" type="text"></ion-input>
+ </ion-item>
+ <ion-item class="container">
+    <ion-label color="oransje" floating>Passord</ion-label>
+     <ion-input class="text-input-field" type="password"></ion-input>
+  </ion-item>
+  
+    <button class="authButtons" ion-button short color="dark" (click)="loginPush()">Logg inn</button>
+  
+
+</ion-content>
