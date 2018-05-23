@@ -1,0 +1,34 @@
+<% layout("layout") -%>
+
+    <h1><%= title %></h1>
+
+
+
+    <% if (signedin === true) { %>
+
+      <p>Hei <%= first_name %> <%= last_name %>!, du er logget inn.</p>
+
+      <form class="" action="logout" method="post">
+        <input type="submit"value="Logg Ut">
+      </form>
+
+    <% } else { %>
+
+      <form id = "" class="" action="/login" method="post">
+        <div>
+          <table>
+            <tr>
+              <td>  <label for="username">Brukernavn: </label> </td>
+              <td> <input type="text" id="username" name="username"><br> </td>
+            </tr>
+            <tr>
+              <td> <label for="pass">Passord: </label> </td>
+              <td> <input type="password" id="pass" name="pass"><br> </td>
+            </tr>
+          </table>
+        </div>
+
+        <input type="submit" value="Logg Inn">
+      </form>
+
+    <% } %>
