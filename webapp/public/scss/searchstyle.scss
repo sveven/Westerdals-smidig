@@ -11,13 +11,17 @@ h2 {
 #h1-test {
 	font-size: 3rem;
 	color: white;
-	position: relative;
-	top: 10%;
+	position: absolute;
+	top: 7%;
+	left: 5%;
 }
 
-.grocery-search {
-	top: -1000px;
-	z-index: 1000;
+#grocery-search-form {
+	position: absolute;
+    top: 16%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 }
 
 .buy-button {
@@ -43,7 +47,7 @@ h2 {
 
 .container-fluid {
 	display: grid;	
-	grid-template-columns: 40vh 85vw;
+	grid-template-columns: 15vw 85vw;
 	grid-template-rows: 20rem 1fr;
 	grid-template-areas:
 	"header header"
@@ -95,7 +99,7 @@ h2 {
 	position: relative;
 	border-radius: 2px;
 	box-sizing: border-box;
-	grid-template-rows: 70% 10% 10% 10%;
+	grid-template-rows: 59% 13% 14% 14%;
 	grid-template-areas: "image" "price" "item" "item2";
 }
 .img-container {
@@ -137,4 +141,5 @@ h2 {
 	 font-weight: bold;
 	 background-color: rgb(240, 240, 240);
 	 margin: auto;
+	 z-index: 1000;
  }

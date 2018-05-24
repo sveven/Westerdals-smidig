@@ -3,13 +3,13 @@
 
 	//HTML elements
 
-	let $btnSearch = $("#search-btn");
+	let $btnSearch = $("#search");
 	let $searchOutput = $("#search-output");
 	let $framework;
 	let $message = $(".message");
 
 	$btnSearch.on("click", function (e) {
-		let $searchField = $("#sok").val();
+		let $searchField = $("#grocery-search").val();
 		$(".search-result").empty();
 
 		//Prevent default behaviour
