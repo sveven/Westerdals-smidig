@@ -89,7 +89,7 @@ h2 {
 
 .search-result  {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 	list-style-type: none;
 	grid-gap: 5px;
 	margin-right: 2%;
@@ -134,14 +134,15 @@ h2 {
  
  #item-name-extra {
 	grid-area: item2;
-	font-size: 1rem;
+	font-size: 0.8rem;
 	margin: auto;
+	color: gray;
 }
 
  #item-price {
 	 grid-area: price; 
 	 font-weight: bold;
 	 background-color: rgb(240, 240, 240);
-	 margin: auto;
+	 margin: auto auto 10% auto;
 	 z-index: 1000;
  }
