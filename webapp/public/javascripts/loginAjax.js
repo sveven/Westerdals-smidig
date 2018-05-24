@@ -3,8 +3,11 @@
 	//HTML Objects
 	let userInfoField;
 	let loginForm;
+	let btnDiv;
 	let btnLogin;
+	let usrDiv;
 	let usrField;
+	let pwdDiv;
 	let pwdField;
 
 	let loggedInData;
@@ -22,18 +25,29 @@
 				action: "/login",
 				method: "POST"
 			});
+			btnDiv = $("<div>",	{
+				class: "form-group"
+			});
 			btnLogin = $("<input>",	{
-				id: "login-btn",
-				type: "submit",
-				value: "Logg Inn"
+				class: "fas fa-sign-in-alt btn btn-regular",
+				id: "header-login-btn",
+				type: "submit"
+			});
+			usrDiv = $("<div>", {
+				class: "form-group"
 			});
 			usrField = $("<input>",{
+				class: "form-control",
 				type: "text",
 				id: "username",
 				name: "pass",
 				placeholder: "Brukernavn"
 			});
+			pwdDiv = $("<div>", {
+				class: "form-group"
+			});
 			pwdField = $("<input>",	{
+				class: "form-control",
 				id: "pwd-field",
 				type: "password",
 				name: "pass",
@@ -98,10 +112,13 @@
 			);
 		} else	{
 			userInfoField.empty();
+			usrDiv.append(usrField);
+			btnDiv.append(btnLogin);
+			pwdDiv.append(pwdField);
 			loginForm.append(
-				usrField,
-				pwdField,
-				btnLogin
+				usrDiv,
+				pwdDiv,
+				btnDiv
 			);
 			userInfoField.append(loginForm);
 		}
