@@ -2,17 +2,17 @@
 
 	<div id="container-search" class="container-fluid">
 		<div class="header">
+			<b>
+				<h1 id="h1-test">Enkeltvarer</h1>
+			</b>
+			<form id="grocery-search-form" action="search" method="post">
 
-			<form class="grocery-search" id="search-form" action="search" method="post">
-				<b>
-					<h1 id="h1-test">Enkeltvarer</h1>
-				</b>
 				<div id="search-input">
 
-					<input type="text" id="sok" name="formsearch" placeholder="Søk i hundrevis av oppskrifter!" value="<%= search %>">
+					<input type="text" class="sok" id="grocery-search" name="formsearch" placeholder="Søk i tusenvis av varer!" value="<%= search %>">
 					<label for="search-btn" id="search-icon" class="fas fa-search"></label>
 				</div>
-				<input id="search-btn" type="submit" value="Søk">
+				<input id="search" class="search-btn" type="submit" value="Søk">
 
 			</form>
 
