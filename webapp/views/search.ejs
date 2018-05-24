@@ -2,21 +2,25 @@
 
 	<div id="container-search" class="container-fluid">
 		<div class="header">
+			
+			<form id="search-form" action="search" method="post">
+				<b>
+				<h1 id="h1-test">Enkeltvarer</h1>
+			</b>
+				<div id="search-input">
 
-			<form id="search-form" class="" action="search" method="post">
-				<div>
-				<b><h1 id="h1-test">Enkeltvarer</h1></b>
-					<input type="text" id="search-input" name="formsearch" placeholder="Søk.." value="<%= search %>">
+					<input type="text" id="sok" name="formsearch" placeholder="Søk i hundrevis av oppskrifter!" value="<%= search %>">
 					<label for="search-btn" id="search-icon" class="fas fa-search"></label>
-					<input id="search-btn" type="submit" value="Søk">
-
 				</div>
+				<input id="search-btn" type="submit" value="Søk">
 
 			</form>
+
 			<p class="message"></p>
 		</div>
 		<div class="sidebar">
-			<b> <br>
+			<b>
+				<br>
 				<h2>Kategorier</h2>
 				<br>
 			</b>

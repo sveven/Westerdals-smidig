@@ -35,28 +35,6 @@ h2 {
 	background-color: rgb(240, 156, 21);
 }
 
-#field-search {
-	width: 80%;
-    padding: 12px 20px;
-	margin: 8px 0;
-	position: relative;
-	box-sizing: border-box;
-	border-radius: 3px;
-	border: 1px solid lightgray;
-	font-size: 1.2rem;
-}
-
-#grocery-search-btn {
-	background-color: rgb(255, 165, 20);
-	border-style: none;
-    padding: 14px 20px;
-	margin: 8px 0;
-    border-radius: 3px;
-	box-sizing: border-box;
-	font-size: 1.2rem;
-    color: white;
-	width: 10%;
-}
 
 .container-fluid {
 	display: grid;	
@@ -81,12 +59,7 @@ h2 {
 	background-size: cover;
 }
 
-#search-form {
-	display: grid;
-	position: relative;
-	top: 30%;
-	left: 5%;
-}
+
 
 .sidebar    {
 	grid-area: sidebar;
