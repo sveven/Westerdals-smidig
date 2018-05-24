@@ -20,9 +20,6 @@ module.exports = (sequelize, DataTypes) => {
       through: { model: models.ProductInMeal },
       foreignKey: models.Meal.Id
     });
-    Meal.hasOne(models.Day, { foreignKey: "breakfastId" });
-    Meal.hasOne(models.Day, { foreignKey: "lunchId" });
-    Meal.hasOne(models.Day, { foreignKey: "dinnerId" });
   };
   return Meal;
 };

@@ -20,9 +20,9 @@ module.exports = {
     });
   },
 
-  fetchMealsFromWeek(weekId) {
+  fetchMealsFromWeek() {
     //TODO: Continue here
-    return this.fetchDaysInWeek(weekId);
+    return models.Day.findAll({ include: models.Meal });
   },
 
   createUserQuery() {

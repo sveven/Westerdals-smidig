@@ -23,6 +23,8 @@ module.exports = (sequelize, DataTypes) => {
 
   Day.associate = models => {
     Day.belongsTo(models.Week);
+    Day.hasMany(models.Meal);
+
   };
 
   return Day;
