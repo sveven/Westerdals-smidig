@@ -14,21 +14,9 @@
 			<div class="nav-links navbar-nav">
 				<a  class="nav-item nav-link" href="#"><i class="icons far fa-calendar-alt"></i></a>
 				<a  class="nav-item nav-link" href="#"><i class="icons fas fa-shopping-cart"></i></i></a>
-        <% if ((signedin === false) || !signedin || (signedin == 'undefined')) { %>
-
-          <form action="/login" method="post">
-            <label for="username"></label>
-            <input type="text" id="username" name="username" placeholder="Brukernavn">
-            <label for="pass"></label>
-            <input type="password" name="pass" placeholder="Passord">
-            <input type="submit" name="" value="Logg Inn">
-          </form>
-          
-        <% } else	{ %>
-          
-          <a  class="nav-item nav-link" href="#"><i class="icons far fa-user"></i><p><%= first_name %> <%= last_name %></p><i class="fas fa-sign-out-alt"></i></a>
-
-				<% } %>
+				<div id="user-info">
+					
+				</div>
 			</div>
 		</div>
 	</nav>	

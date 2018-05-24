@@ -6,12 +6,16 @@ module.exports = function(req, res, next) {
 	res.cookie("requestPath", path);
 	//console.log(req.cookies.requestPath);
 	if (!req.cookies.data || !req.cookies.data.is_authenticated === "undefined" || req.cookies.data.is_authenticated === false) {
+		let data = { "noe": "for morro skyld" };
 
+		res.cookie("data", data);
 		// Her er brukeren ikke autentisert
 		//console.log("Her mangler det is_authenticated");
 		res.locals.signedin = false;
 	}
 	else {
+
+	
 		// Her er brukeren autentisert
 		//console.log("Her mangler det IKKE is_authenticated");
 	}
