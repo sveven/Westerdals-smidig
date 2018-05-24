@@ -40,7 +40,7 @@
 				class: "form-control",
 				type: "text",
 				id: "username",
-				name: "pass",
+				name: "username",
 				placeholder: "Brukernavn"
 			});
 			pwdDiv = $("<div>", {
@@ -75,7 +75,8 @@
 				e.preventDefault();
 
 				$.ajax({
-					type: "POST",
+          type: "POST",
+          url: "/login",
 					contentType: "application/json",
 					dataType: "json",
 					cache: "false",
