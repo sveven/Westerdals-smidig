@@ -12,13 +12,14 @@ h2 {
 	font-size: 3rem;
 	color: white;
 	position: absolute;
-	top: 7%;
+	top: 30%;
 	left: 5%;
 }
 
 #grocery-search-form {
 	position: absolute;
-    top: 16%;
+	margin: 0;
+    top: 70%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
@@ -57,12 +58,13 @@ h2 {
 #container-search {
 	margin: 0;
 	padding: 0;
-	position: relative;
+	position: absolute;
 }
 
 
 .header  {
 	grid-area: header;
+	position: relative;
 	top: 0;
 	background-image: url(/images/search.jpg);
 	background-size: cover;
@@ -98,6 +100,7 @@ h2 {
 	display: grid;
 	position: relative;
 	border-radius: 2px;
+	max-height: 220px;
 	box-sizing: border-box;
 	grid-template-rows: 59% 13% 14% 14%;
 	grid-template-areas: "image" "price" "item" "item2";

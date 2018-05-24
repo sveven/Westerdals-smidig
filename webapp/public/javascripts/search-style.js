@@ -8,7 +8,7 @@ let searchBtn;
 const init = function () {
 	const setElements = function () {
 		searchResult = $(".search-result");
-		searchBtn = $("#grocery-search-btn");
+		searchBtn = $("#search");
 	}();
 
 	const setEvents = function () {
