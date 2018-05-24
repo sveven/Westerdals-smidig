@@ -13,6 +13,8 @@ router.get("/", function(req, res){
 		});
 	} else if (req.cookies.data.is_authenticated === true){
 
+		
+
 		res.render("login", {
 			title: "K-Planleggeren",
 			signedin: true,

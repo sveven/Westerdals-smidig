@@ -8,9 +8,21 @@ module.exports = {
     });
   },
 
-  // Fetches all database entries for now.
   fetchAllProductsQuery() {
     return models.Product.findAll({});
+  },
+
+  fetchDaysInWeek(weekId) {
+    return models.Day.findAll({
+      where: {
+        WeekId: weekId
+      }
+    });
+  },
+
+  fetchMealsFromWeek(weekId) {
+    //TODO: Continue here
+    return this.fetchDaysInWeek(weekId);
   },
 
   createUserQuery() {

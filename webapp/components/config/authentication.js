@@ -15,9 +15,10 @@ module.exports = function(req, res, next) {
 	res.cookie("requestPath", path);
 	//console.log(req.cookies.requestPath);
 	if (!req.cookies.data || !req.cookies.data.is_authenticated === "undefined" || req.cookies.data.is_authenticated === false) {
+		let data = { "noe": "for morro skyld" };
 
     // Her er brukeren ikke autentisert
-    
+    res.cookie("data", data);
     // TODO: Om bruker ikke er logget inn, og har en id som vi har gitt, så er det bra. 
     //if(req.cookies.data.planleggerId && Number.isInteger(req.cookies.data.planleggerId)
     
