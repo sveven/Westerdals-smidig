@@ -3,13 +3,13 @@
 
 	//HTML elements
 
-	let $btnSearch = $("#grocery-search-btn");
+	let $btnSearch = $("#search-btn");
 	let $searchOutput = $("#search-output");
 	let $framework;
 	let $message = $(".message");
 
 	$btnSearch.on("click", function (e) {
-		let $searchField = $("#field-search").val();
+		let $searchField = $("#sok").val();
 		$(".search-result").empty();
 
 		//Prevent default behaviour
@@ -40,12 +40,16 @@
 		if (isEmpty($(".search-result"))) {
 			for (var i = 0; i < dataLength; i++) {
 				$(".content .search-result").append("<li class=\"search-item\" id=\"search-item" + i + "\" <a href=\"itemurl\"></li>");
+				let buyButton = $("<input class='buy-button' type='submit' value='Kjøp' onclick='"+ data.products[i].id + "'>");
 				let imgUrl = data.products[i].images[0].thumbnail.url;
 				var $image = $("<img class='img-thumb img-thumbnail img-fluid' src='" + imgUrl + "'" + "/>");
 				let itemName = $("<p id='item-name'></p>").text(data.products[i].name);
-				let itemPrice = $("<p id='item-price'></p>").text(data.products[i].gross_price);
-				let imgContainer = $("<div class\"img-container\"></div>").html($image);
-				$("#search-item" + i).prepend(itemName, itemPrice, imgContainer);
+				let itemNameExtra = $("<p id='item-name-extra'></p>").text(data.products[i].name_extra);
+				let itemPrice = $("<p id='item-price'> </p>").text("kr " + data.products[i].gross_price);
+				let imgContainer = $("<div class\"img-container\"></div>");
+				imgContainer.append($image, buyButton);
+				$("#search-item" + i).prepend(itemName, itemNameExtra, itemPrice, imgContainer);
+				
 			}
 		} else {
 			return false;
