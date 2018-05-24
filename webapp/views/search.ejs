@@ -2,12 +2,13 @@
 
 	<div id="container-search" class="container-fluid">
 		<div class="header">
-			
+
 			<form id="search-form" class="" action="search" method="post">
 				<div>
 				<b><h1 id="h1-test">Enkeltvarer</h1></b>
-					<input type="text" id="field-search" name="formsearch" placeholder="Søk.." value="<%= search %>">
-					<input id="grocery-search-btn" type="submit" value="Søk">
+					<input type="text" id="search-input" name="formsearch" placeholder="Søk.." value="<%= search %>">
+					<label for="search-btn" id="search-icon" class="fas fa-search"></label>
+					<input id="search-btn" type="submit" value="Søk">
 
 				</div>
 

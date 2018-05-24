@@ -15,6 +15,8 @@ const init = function () {
 		searchBtn.click(function () {
 			searchResult.toggle();
 			searchResult.fadeIn(1200);
+			
+
 		});
 	}();
 }();
