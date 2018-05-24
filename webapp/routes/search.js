@@ -24,9 +24,8 @@ router.post("/", function(req, res) {
   let ajax = req.body.ajax;
   connection.searchForProduct(search, function(list) {
     if (ajax === "true") {
-      let data = list;
 
-      res.send(data);
+      res.send(list);
     } else {
       res.render("search", {
         title: "K-Planleggeren",
