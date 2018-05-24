@@ -15,8 +15,10 @@ module.exports = {
     });
   },
 
-  createUserQuery() {
-    return models.User.create({ Id: null, kolonialUserId: null });
+  createUserQuery(kolonialUserId) {
+    return models.User.findOrCreate({
+      where: { kolonialUserId: kolonialUserId }
+    });
   },
 
   createWeekQuery() {
@@ -108,7 +110,7 @@ function findSpecificDayQuery(dayId) {
 /**
  * TODO: Will be used when clicking "Add to planner"
  * Issue is that the user can add and remove items, and currently just puts items from the recipe in
- * Might need check if the user has removed or added items. 
+ * Might need check if the user has removed or added items.
  * What if a user has removed everything except one?4
  * Maybe use the function differently, rather give all products that will be purchased in the array
  * and remove the if-check?
