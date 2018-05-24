@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     portions: DataTypes.FLOAT(15, 3)
   });
+  
   Meal.associate = models => {
     Meal.belongsToMany(models.Product, {
       through: { model: models.ProductInMeal },

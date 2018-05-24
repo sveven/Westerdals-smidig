@@ -13,10 +13,11 @@ module.exports = {
   },
 
   fetchDaysInWeek(weekId) {
-    return models.Day.findAll({
+    return models.Week.findAll({
       where: {
-        WeekId: weekId
-      }
+        id: weekId
+      },
+      include: models.Day
     });
   },
 
