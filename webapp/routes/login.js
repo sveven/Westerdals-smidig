@@ -32,6 +32,9 @@ router.post("/", function(req, res){
 	var username = req.body.username;
 	var password = req.body.pass;
 
+  console.log("LOGIN: ");
+  console.log(JSON.stringify(req.body));
+
 	//console.log("Skal være logget ut: " + JSON.stringify(req.cookies.data.is_authenticated));
 
 	authenticate.login(username, password, function(data){
