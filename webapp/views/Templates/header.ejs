@@ -14,26 +14,9 @@
 			<div class="nav-links navbar-nav">
 				<a  class="nav-item nav-link" href="http://localhost:3000/week-planner-current"><i class="icons far fa-calendar-alt"></i></a>
 				<a  class="nav-item nav-link" href="#"><i class="icons fas fa-shopping-cart"></i></i></a>
-        <% if ((signedin === false) || !signedin || (signedin == 'undefined')) { %>
-	
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="username" placeholder="Brukernavn">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="password" placeholder="Passord">
-										
-										</div>
-
-										<div class="form-group">
-                    <button type="submit" class="fas fa-sign-in-alt btn btn-regular" id="header-login-btn"></button>
-										</div>
-        <% } else	{ %>
-          
-          <a  class="nav-item nav-link" href="#"><i class="icons far fa-user"></i><p><%= first_name %> <%= last_name %></p><i class="fas fa-sign-out-alt"></i></a>
-
-				<% } %>
+				<div id="user-info">
+					
+				</div>
 			</div>
 		</div>
 	</nav>	

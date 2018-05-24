@@ -11,10 +11,14 @@ router.post("/", function(req, res){
 		res.clearCookie("data");
 		res.cookie("data", data);
 
+    res.send();
+
+    /*
 		res.render("login", {
 			title: "K-Planleggeren",
 			signedin: false
-		});
+    });
+    */
 	});
 });
 

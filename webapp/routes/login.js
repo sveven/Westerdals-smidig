@@ -13,6 +13,8 @@ router.get("/", function(req, res){
 		});
 	} else if (req.cookies.data.is_authenticated === true){
 
+		
+
 		res.render("login", {
 			title: "K-Planleggeren",
 			signedin: true,
@@ -40,18 +42,22 @@ router.post("/", function(req, res){
 			if(res.cookies.data){
 				let cookiedata = JSON.parse(res.cookies.data);
 				sessionid = cookiedata.sessionid;
-				console.log(JSON.stringify(cookiedata));
+				//console.log(JSON.stringify(cookiedata));
 			}
-		}
+    }
+ 
 
-		//console.log(req.cookies.requestPath);
-
+    //console.log(req.cookies.requestPath);
+    
+    res.send();
+/*
 		res.render("login", {
 			title: "K-Planleggeren",
 			signedin: true,
 			first_name: data.user.first_name,
 			last_name: data.user.last_name});
-	});
+  */
+    });
 });
 
 module.exports = router;
