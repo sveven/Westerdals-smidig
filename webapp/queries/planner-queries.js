@@ -21,8 +21,8 @@ module.exports = {
     });
   },
 
-  createWeekQuery() {
-    return models.Week.create({ weekId: null });
+  createWeekQuery(userId) {
+    return models.Week.create({ weekId: null, UserId: userId });
   },
 
   createMealQuery(recipeId, type, portions, dayId) {
