@@ -15,6 +15,11 @@ h2 {
 	top: 10%;
 }
 
+.grocery-search {
+	top: -1000px;
+	z-index: 1000;
+}
+
 .buy-button {
 	display: grid;
 	border: none;
@@ -38,7 +43,7 @@ h2 {
 
 .container-fluid {
 	display: grid;	
-	grid-template-columns: 15vw 85vw;
+	grid-template-columns: 40vh 85vw;
 	grid-template-rows: 20rem 1fr;
 	grid-template-areas:
 	"header header"
