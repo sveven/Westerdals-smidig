@@ -45,6 +45,14 @@ body {
     border-style: none;
 }
 
+#search-form {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
 #search-input {
     position: relative;
     width: 60vw;
