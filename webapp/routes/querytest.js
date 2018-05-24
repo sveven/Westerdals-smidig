@@ -12,35 +12,18 @@ router.get("/", function(req, res) {
 
 router.post("/", function(req, res) {
   let userInput = req.body.formfield;
-  
-  query.addMealToDayQuery(userInput, "Dinner", 4, 1);
 
-  query.createProductQuery(userInput);
-  
-  query.fetchProductQuery( function(fetchResponse){
-    req.allProducts = pullProductInfo(fetchResponse);
 
-    renderQueryTestPage(req, res)
-   });
-  
+  query.fetchAllProductsQuery().then(products => {
+    renderQueryTestPage(products, res);
+  });
 });
 
-function renderQueryTestPage(req, res) {
+function renderQueryTestPage(products, res) {
   res.render("querytest", {
     title: "K-Planleggeren",
-    allProducts: req.allProducts
+    allProducts: products
   });
-  
-};
-
-
-function pullProductInfo(raw){
-  let productInfo = JSON.parse(raw);
-
-
-
-  return productInfo;
-
 }
 
 module.exports = router;
