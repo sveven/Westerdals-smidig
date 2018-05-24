@@ -9,10 +9,12 @@ module.exports = {
   },
 
   // Fetches all database entries for now.
-  fetchProductQuery(callback) {
-    models.Product.findAll({}).then(res => {
-      callback(JSON.stringify(res));
-    });
+  fetchAllProductsQuery() {
+    return models.Product.findAll({});
+  },
+
+  createUserQuery() {
+    return models.User.create({ Id: null, kolonialUserId: null });
   },
 
   createUserQuery(kolonialUserId) {
