@@ -13,6 +13,7 @@ router.get("/", function(req, res) {
 router.post("/", function(req, res) {
   let userInput = req.body.formfield;
 
+  query.fetchMealsFromWeek(1).then(res => console.log(JSON.stringify(res)));
 
   query.fetchAllProductsQuery().then(products => {
     renderQueryTestPage(products, res);
