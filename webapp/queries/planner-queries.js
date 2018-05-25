@@ -40,6 +40,14 @@ module.exports = {
   },
 
   /**
+   * Gets all
+   * @param {*} dayId
+   */
+  fetchProductsOnDay(dayId) {
+    return models.Product.findAll({});
+  },
+
+  /**
    * Creates a user in the database.
    */
   createUserQuery() {
@@ -88,8 +96,6 @@ module.exports = {
 
   addMealToDayQuery(recipeId, type, portions, dayId) {
     return this.createMealQuery(recipeId, type, portions, dayId).then(meal => {
-      console.log("################MEALTODAY");
-
       //Round up on portionquantity of recipe
       let mealId = meal.dataValues.Id;
       // addMealToDayDependingOnType(mealId, type, dayId);
@@ -97,20 +103,41 @@ module.exports = {
     });
   },
 
-  createProductForUser(productId, quantity, userId) {
-    return this.create({
-      ProductKolonialId: productId,
-      productQuantity: quantity,
-      UserId: userId
+  /**
+   * TODO: Current rework
+   * @param {*} kolonialId
+   * @param {*} userId
+   */
+  createProductForUser(kolonialId, userId) {
+    return models.Product.findOrCreate({
+      where: { kolonialId: kolonialId }
+      //TODO: do it the hard way instead as I have no idea how it works.
     });
   },
 
+  /**
+   * TODO: Needs to be reworked
+   * @param {*} productId
+   * @param {*} quantity
+   * @param {*} userId
+   */
+  // createProductForUser(productId, quantity, userId) {
+  // return this.create({
+  //   ProductKolonialId: productId,
+  //   productQuantity: quantity,
+  //   UserId: userId
+  // });
+  // },
+
+  /**
+   * TODO: Needs to be reworked
+   */
   createProductInDay(productId, quantity, dayId) {
-    return this.create({
-      ProductKolonialId: productId,
-      productQuantity: quantity,
-      DayId: dayId
-    });
+    // return this.create({
+    //   ProductKolonialId: productId,
+    //   productQuantity: quantity,
+    //   DayId: dayId
+    // });
   }
 };
 
@@ -173,9 +200,9 @@ function addAllProductsInRecipeWithPortions(mealId, recipeId, productsArr) {
 
 /**
  * Adds an ingredient to a meal with portion based on recipe
- * @param {*} mealId 
- * @param {*} recipeId 
- * @param {*} productId 
+ * @param {*} mealId
+ * @param {*} recipeId
+ * @param {*} productId
  */
 function addIngredientToMealWithPortions(mealId, recipeId, productId) {
   helper
@@ -187,9 +214,9 @@ function addIngredientToMealWithPortions(mealId, recipeId, productId) {
 
 /**
  * Creates a product in meal
- * @param {*} mealId 
- * @param {*} productId 
- * @param {*} portionQuantity 
+ * @param {*} mealId
+ * @param {*} productId
+ * @param {*} portionQuantity
  */
 function createProductInMealQuery(mealId, productId, portionQuantity) {
   return models.ProductInMeal.create({
@@ -201,7 +228,7 @@ function createProductInMealQuery(mealId, productId, portionQuantity) {
 
 /**
  * Creates a product. Helpermethod.
- * @param {*} productId 
+ * @param {*} productId
  */
 function createProductQuery(productId) {
   return models.Product.findOrCreate({
