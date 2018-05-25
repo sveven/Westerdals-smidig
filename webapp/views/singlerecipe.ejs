@@ -25,16 +25,21 @@
 	</section>
 	<main class="recipe-section">
 		<header class="mini-header">
-			
+			<h4 id="recipe-duration"><%= data.cooking_duration_string %></h4>
+			<h4 id="recipe-difficulty"><%= data.difficulty_string %></h4>
 		</header>
 		<article class="recipe-text">
-			
+			<%- data.instructions_html %>
 		</article>
 		<aside class="recipe-ingredients">
-			
+			<%= data.ingredient_list_html %>
 		</aside>
 		<aside class="recipe-shopping-list">
-			
+			<% for (i in data.ingredients) { %>
+			<div id="ingredient-wrapper">
+				<h4 id="ingredient-title"><%= data.ingredients[i].product.name %></h4>
+			</div>
+			<% } %>
 		</aside>
 		<aside class="recipe-footer">
 			
