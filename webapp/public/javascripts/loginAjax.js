@@ -84,10 +84,10 @@
 					contentType: "application/json",
 					dataType: "json",
 					cache: "false",
-					data: JSON.stringify({
-						"username": usrData,
-						"pass": pwdData
-					})
+					data: JSON.stringify({ 
+						username: usrData,
+						pass: pwdData
+          })
 				}).done(successFunction).fail(failFunction);
 			});
 		}();
