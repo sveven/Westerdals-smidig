@@ -43,7 +43,6 @@ router.post("/", function(req, res){
 			if(res.cookies.data){
 				let cookiedata = JSON.parse(res.cookies.data);
 				sessionid = cookiedata.sessionid;
-				
 			}
     }
     
