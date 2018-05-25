@@ -2,6 +2,11 @@
     
         
 } 
+
+@media (min-width: 768px) and (max-width: 1024px) {
+   
+    
+}
  
 html {
     overflow-y: scroll;
@@ -26,6 +31,7 @@ p {
     background-image: url("/images/weekplanner.jpg");
     background-position: center;
     background-attachment: cover;
+    background-repeat: no-repeat;
     max-width: 100%;
     max-height: 100%;
     position: relative;
@@ -49,11 +55,10 @@ p {
     display: grid;
     position: relative;
     grid-gap: 5px;
-    height: 25vh;
+    height: 27vh;
     justify-content: center;
     text-align: center;
-    grid-template-columns: repeat(7, 10vmax);
-    grid-template-rows: repeat(3, 11vmax);
+    grid-template-columns: repeat(7, minmax(13vmax, 0));
     
 }
 
@@ -61,11 +66,10 @@ p {
     display: grid;
     position: relative;
     grid-gap: 5px;
-    height: 25vh;
+    height: 27vh;
     justify-content: center;
     text-align: center;
-    grid-template-columns: repeat(7, 10vmax);
-    grid-template-rows: repeat(3, 11vmax);
+    grid-template-columns: repeat(7, minmax(13vmax, 0));
     
 }
 
@@ -73,11 +77,10 @@ p {
     display: grid;
     position: relative;
     grid-gap: 5px;
-    height: 25vh;
+    height: 27vh;
     justify-content: center;
     text-align: center;
-    grid-template-columns: repeat(7, 10vmax);
-    grid-template-rows: repeat(3, 11vmax);
+    grid-template-columns: repeat(7, minmax(13vmax, 0));
     
     
 }
@@ -107,10 +110,10 @@ p {
     border: none;
     margin: auto;
     height: 4.5vh;
-    margin-top: -1vh;
+    margin-top: 1vh;
     border-radius: 3px;
     position: relative;
-    width: 72vw;
+    width: 92.9vw;
 }
 
 
