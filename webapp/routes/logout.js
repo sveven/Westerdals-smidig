@@ -12,13 +12,7 @@ router.post("/", function(req, res){
 		res.cookie("data", data);
 
     res.send();
-
-    /*
-		res.render("login", {
-			title: "K-Planleggeren",
-			signedin: false
-    });
-    */
+    
 	});
 });
 
