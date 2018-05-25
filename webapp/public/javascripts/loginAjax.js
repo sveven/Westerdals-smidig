@@ -70,7 +70,7 @@
 		const setEvents = function () {
 			btnLogin.on("click", function (e) {
 				let usrData = usrField.val();
-				let pwdData = pwdField.val();
+        let pwdData = pwdField.val();
 
 				e.preventDefault();
 
@@ -81,11 +81,11 @@
 					dataType: "json",
 					cache: "false",
 					data: JSON.stringify({
-						username: usrField,
-						pass: pwdField
-					})
+						username: usrData,
+						pass: pwdData
+          })
 				}).done(loginFunction).fail(failFunction);
-			});
+      });
 		}();
 
 		const setGUI	= function()	{
