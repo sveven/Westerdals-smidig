@@ -112,10 +112,12 @@
 	}();
 
 	function appendElements()	{
-		let x = document.cookie;
-		
+    let x = JSON.stringify(document.cookie.match('(^|;) ?' + "data" + '=([^;]*)(;|$)'));
+    console.log(JSON.parse(x));
+    
+    
 
-		if(x.data.user)	{
+		if(x === 'undefined')	{
 			userInfoField.empty();
 
 			loggedInData.append(

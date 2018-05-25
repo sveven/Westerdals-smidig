@@ -26,8 +26,6 @@ router.get("/", function(req, res){
   }
   
   res.send();
-
-	//next();
 });
 
 router.post("/", function(req, res){
