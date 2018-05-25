@@ -1,3 +1,5 @@
+const query = require("../../queries/planner-queries");
+
 module.exports = function(req, res, next) {
 	let path = req.path;
 
@@ -15,21 +17,31 @@ module.exports = function(req, res, next) {
 	res.cookie("requestPath", path);
 	//console.log(req.cookies.requestPath);
 	if (!req.cookies.data || !req.cookies.data.is_authenticated === "undefined" || req.cookies.data.is_authenticated === false) {
+
+    // Dette nullstiller data i cookies hver gang. Fjern denne. 
 		let data = { "noe": "for morro skyld" };
+    res.cookie("data", data);
 
     // Her er brukeren ikke autentisert
-    res.cookie("data", data);
     // TODO: Om bruker ikke er logget inn, og har en id som vi har gitt, så er det bra. 
-    //if(req.cookies.data.planleggerId && Number.isInteger(req.cookies.data.planleggerId)
+    if (req.cookies.data.planleggerId && Number.isInteger(req.cookies.data.planleggerId)){
+    //    console.log("TODO: Om bruker ikke er logget inn, og har en id som vi har gitt, så er det bra. ");
+    }
     
-    // TODO: Om bruker ikke er logget inn, og ikke har en id som vi har gitt, så gi en id. 
-    /*
+    // Om bruker ikke er logget inn, og ikke har en id som vi har gitt, så gi en id. 
+    
     else { 
     
-      req.cookies.data.planleggerId = query.createuser....(then{return planleggerId}})
+      query.createUserQuery().then(res => {
+
+
+        //res.cookie("planleggerId", JSON.parse(JSON.stringify(res)).id);
+
+        //req.cookies.data.planleggerId = JSON.parse(JSON.stringify(res)).id;
+        //console.log("CREATE USER QUERY: " + req.cookies.data.planleggerId);
+      });
     
-    */ 
-    
+    }
 
 
 	
@@ -65,13 +77,19 @@ module.exports = function(req, res, next) {
     
   }
 
-  /*
+  
 
   if (!req.cookies.data.ukeId || !req.cookies.data.ukeId === 'undefined'){
 
-    req.cookies.data.ukeId = query.createweekID(req.cookies.data.planleggerId).then();
+    query.createWeekQuery().then(res => {
+      
+      req.cookies.data.ukeId = JSON.parse(JSON.stringify(res)).id;
+      console.log("CREATE WEEK QUERY: " + req.cookies.data.ukeId);
+    });
+
+    //req.cookies.data.ukeId
 
   }
-    */
+    
 	next();
 };
