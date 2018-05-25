@@ -111,9 +111,7 @@
 	let x = Cookies.getJSON("data");
     let data = JSON.parse(x.substring(2));
 
-   
-	
-    if (x.data.is_authenticated === true) {
+    if (data.user === 'undefined') {
       userInfoField.empty();
 
       loggedInData.append(usrIcon, usrData, signOutBtn);
