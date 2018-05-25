@@ -86,9 +86,10 @@
 					cache: "false",
 					data: JSON.stringify({
 						"username": usrData,
-						"pass": pwdData
-					})
-				}).done(successFunction).fail(failFunction);
+						"pass": pwdData,
+					}),
+					success: successFunction()
+				});
 			});
 		}();
 
