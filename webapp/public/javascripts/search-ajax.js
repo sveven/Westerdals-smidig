@@ -46,9 +46,10 @@
 				let itemName = $("<p id='item-name'></p>").text(data.products[i].name);
 				let itemNameExtra = $("<p id='item-name-extra'></p>").text(data.products[i].name_extra);
 				let itemPrice = $("<p id='item-price'> </p>").text("kr " + data.products[i].gross_price);
+				let itemGrossPrice = $("<p id='item-gross-price'> </p>").text("kr " + data.products[i].gross_unit_price + " per " + data.products[i].unit_price_quantity_abbreviation);
 				let imgContainer = $("<div class\"img-container\"></div>");
 				imgContainer.append($image, buyButton);
-				$("#search-item" + i).prepend(itemName, itemNameExtra, itemPrice, imgContainer);
+				$("#search-item" + i).prepend(itemName, itemNameExtra, itemPrice, itemGrossPrice, imgContainer);
 				
 			}
 		} else {
