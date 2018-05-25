@@ -86,7 +86,7 @@
 					cache: "false",
 					data: JSON.stringify({
 						"username": usrData,
-						"pass": pwdData,
+						"pass": pwdData
 					}),
 					success: successFunction()
 				});
