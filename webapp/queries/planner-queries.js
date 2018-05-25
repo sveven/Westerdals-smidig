@@ -104,16 +104,17 @@ module.exports = {
   },
 
   /**
-   * TODO: Current rework
+   * Creates a product for a user, and adds to the join table
+   * TODO: add product quantity
    * @param {*} kolonialId
    * @param {*} userId
    */
   createProductForUser(kolonialId, userId) {
-    return models.Product.findOne({
+    return models.Product.findOrCreate({
       where: { kolonialId: kolonialId }
     }).then(product => {
-      findSpecificUserQuery(userId).then(user => {
-        return product.addUsers(user);
+      findSpecificUserQuery(userId).then(user => {        
+        return product[0].addUsers(user);
       });
     });
   },
