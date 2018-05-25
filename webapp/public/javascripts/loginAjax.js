@@ -14,12 +14,16 @@
 	let usrIcon;
 	let usrData;
 	let signOutBtn;
+	let $message;
 
 
 
 	const init =	function()	{
 		const setHTMLObjects = function()	{
 			userInfoField = $("#user-info");
+			$message = $("<div>", {
+				class: "message"
+			});
 			loginForm = $("<form>",	{
 				id: "login-form",
 				action: "/login",
@@ -66,26 +70,26 @@
 				class: "fas fa-sign-out-alt"
 			});
 		}();
-
+		
 		const setEvents = function () {
 			btnLogin.on("click", function (e) {
 				let usrData = usrField.val();
-        let pwdData = pwdField.val();
-
+				let pwdData = pwdField.val();
+				
 				e.preventDefault();
-
+				
 				$.ajax({
-          type: "POST",
-          url: "/login",
+					url: "/login",
+					type: "POST",
 					contentType: "application/json",
 					dataType: "json",
 					cache: "false",
 					data: JSON.stringify({
-						username: usrData,
-						pass: pwdData
-          })
-				}).done(loginFunction).fail(failFunction);
-      });
+						"username": usrData,
+						"pass": pwdData
+					})
+				}).done(successFunction).fail(failFunction);
+			});
 		}();
 
 		const setGUI	= function()	{
@@ -97,7 +101,6 @@
 
 	function appendElements()	{
 		let x = document.cookie;
-		console.log(x);
 		
 
 		if(x.data)	{
@@ -125,10 +128,8 @@
 		}
 	}
 
-	function loginFunction(returverdi)	{
+	function successFunction()	{
 		let userdata = document.cookie.data;
-		console.log(userdata);
-		
 		userInfoField.empty();
 
 		loggedInData.append(
@@ -141,7 +142,7 @@
 		);
 	}
 
-	function logoutFunction(returverdi)	{
+	function logoutFunction()	{
 		userInfoField.empty();
 		loginForm.append(
 			usrField,
@@ -153,5 +154,7 @@
 
 	function failFunction(request, textStatus, errorThrown)	{
 		$message.text("An error occured during your request: " + request.status + " " + textStatus + " " + errorThrown);
+		userInfoField.empty();
+		userInfoField.append($message);
 	}
 })(jQuery);
