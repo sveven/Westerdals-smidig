@@ -86,9 +86,23 @@
 					cache: "false",
 					data: JSON.stringify({
 						"username": usrData,
-						"pass": pwdData
-					})
-				}).done(successFunction).fail(failFunction);
+						"pass": pwdData,
+					}),
+					success: successFunction()
+				});
+			});
+
+			signOutBtn.on("click", function(e)	{
+				e.preventDefault();
+
+				$.ajax({
+					url: "/logout",
+					type: "POST",
+					contentType: "application/json",
+					dataType: "json",
+					cache: "false",
+					success: logoutFunction()
+				});
 			});
 		}();
 
@@ -144,10 +158,13 @@
 
 	function logoutFunction()	{
 		userInfoField.empty();
+		usrDiv.append(usrField);
+		pwdDiv.append(pwdField);
+		btnDiv.append(btnLogin);
 		loginForm.append(
-			usrField,
-			pwdField,
-			btnLogin
+			usrDiv,
+			pwdDiv,
+			btnDiv
 		);
 		userInfoField.append(loginForm);
 	}
