@@ -91,6 +91,8 @@
 					success: successFunction()
 				});
 			});
+
+			
 		}();
 
 		const setGUI	= function()	{
