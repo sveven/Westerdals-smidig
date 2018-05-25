@@ -25,9 +25,7 @@
 				class: "message"
 			});
 			loginForm = $("<form>",	{
-				id: "login-form",
-				action: "/login",
-				method: "POST"
+				id: "login-form"
 			});
 			btnDiv = $("<div>",	{
 				class: "form-group"
@@ -117,7 +115,7 @@
 		let x = document.cookie;
 		
 
-		if(x.data)	{
+		if(x.data.user)	{
 			userInfoField.empty();
 
 			loggedInData.append(
