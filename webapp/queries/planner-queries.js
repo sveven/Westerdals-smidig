@@ -105,73 +105,40 @@ module.exports = {
 
   /**
    * Creates a product for a user, and adds to the join table
-   * TODO: add product quantity
-   * @param {*} kolonialId
+   * @param {*} productId
    * @param {*} userId
+   * @param {*} quantity
    */
-  createProductForUser(kolonialId, userId) {
+  createProductForUser(productId, userId, quantity) {
     return models.Product.findOrCreate({
-      where: { kolonialId: kolonialId }
+      where: { kolonialId: productId }
     }).then(product => {
       findSpecificUserQuery(userId).then(user => {
-        return product[0].addUsers(user).then(res => {
-          console.log("Added users"+res);
+        return product[0].addUsers(user, {
+          through: { productQuantity: quantity }
         });
       });
     });
   },
 
   /**
-   * TODO: Needs to be reworked
    * @param {*} productId
    * @param {*} quantity
    * @param {*} userId
    */
-  // createProductForUser(productId, quantity, userId) {
-  // return this.create({
-  //   ProductKolonialId: productId,
-  //   productQuantity: quantity,
-  //   UserId: userId
-  // });
-  // },
-
-  /**
-   * TODO: Needs to be reworked
-   */
   createProductInDay(productId, quantity, dayId) {
-    // return this.create({
-    //   ProductKolonialId: productId,
-    //   productQuantity: quantity,
-    //   DayId: dayId
-    // });
-  }
-};
+    return models.Product.findOrCreate({
+      where: { kolonialId: productId }
+    }).then(product => {
+      findSpecificDayQuery(dayId).then(day => {
+        return product[0].addDays(day, {
+          through: { productQuantity: quantity }
+        });
+      });
+    });
+  },
 
-/* function addMealToDayDependingOnType(mealId, type, dayId) {
-  switch (type) {
-    case "Breakfast":
-      return findSpecificDayQuery().then(day => {
-        day.update({
-          breakfastId: mealId
-        });
-      });
-      break;
-    case "Lunch":
-      return findSpecificDayQuery().then(day => {
-        day.update({
-          lunchId: mealId
-        });
-      });
-      break;
-    case "Dinner":
-      return findSpecificDayQuery().then(day => {
-        day.update({
-          dinnerId: mealId
-        });
-      });
-      break;
-  }
-} */
+};
 
 function addAllProductsBasedOnRecipe(mealId, recipeId) {
   helper
@@ -189,6 +156,7 @@ function findSpecificDayQuery(dayId) {
 function findSpecificUserQuery(userId) {
   return models.User.findOne({ where: (Id = userId) });
 }
+
 
 /**
  * TODO: Will be used when clicking "Add to planner"
