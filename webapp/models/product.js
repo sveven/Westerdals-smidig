@@ -8,16 +8,15 @@ module.exports = (sequelize, DataTypes) => {
   });
   Product.associate = models => {
     models.Product.belongsToMany(models.Meal, {
-      through: { model: models.ProductInMeal },
-      foreignKey: models.Product.kolonialId
+      through: { model: models.ProductInMeal }
     });
+    
     models.Product.belongsToMany(models.Day, {
-      through: { model: models.ProductInDay },
-      foreignKey: models.Product.kolonialId
+      through: { model: models.ProductInDay }
     });
+
     Product.belongsToMany(models.User, {
-      through: { model: models.ProductForUser },
-      foreignKey: models.Product.kolonialId    
+      through: { model: models.ProductForUser }
     });
   };
 

@@ -109,9 +109,12 @@ module.exports = {
    * @param {*} userId
    */
   createProductForUser(kolonialId, userId) {
-    return models.Product.findOrCreate({
+    return models.Product.findOne({
       where: { kolonialId: kolonialId }
-      //TODO: do it the hard way instead as I have no idea how it works.
+    }).then(product => {
+      findSpecificUserQuery(userId).then(user => {
+        return product.addUsers(user);
+      });
     });
   },
 
@@ -178,6 +181,10 @@ function addAllProductsBasedOnRecipe(mealId, recipeId) {
 
 function findSpecificDayQuery(dayId) {
   return models.Day.findOne({ where: (id = dayId) });
+}
+
+function findSpecificUserQuery(userId) {
+  return models.User.findOne({ where: (Id = userId) });
 }
 
 /**
