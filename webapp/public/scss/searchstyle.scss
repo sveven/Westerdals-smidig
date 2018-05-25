@@ -49,8 +49,9 @@ h2 {
 
 
 .container-fluid {
-	display: grid;	
-	grid-template-columns: 15vw 85vw;
+	display: grid;
+	overflow: hidden;	
+	grid-template-columns: 20vw 80vw;
 	grid-template-rows: 20rem 1fr;
 	grid-template-areas:
 	"header header"
@@ -89,11 +90,12 @@ h2 {
 
 .search-result  {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	grid-gap: 5vh 0px;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 180px));
 	list-style-type: none;
-	grid-gap: 5px;
 	margin-right: 2%;
 	margin-top: 2%;
+	position: relative;
 }
 
 
@@ -103,11 +105,14 @@ h2 {
 	position: relative;
 	border-radius: 2px;
 	grid-template-rows: 58% 14% 14% 14%;
-	grid-template-areas: "image" "price" "item" "item2";
+	grid-template-areas: "image" "price" "unitPrice" "item" "item2";
 }
 .img-container {
 	position: absolute;
 	text-align: center;
+	height: 140px;
+    min-height: 140px;
+    position: relative;
     vertical-align: middle;
 
 }
@@ -134,14 +139,22 @@ h2 {
  
  #item-name-extra {
 	grid-area: item2;
-	font-size: 1rem;
+	font-size: 13px;
 	margin: auto;
+	color: #8d8790;
 }
 
  #item-price {
 	 grid-area: price; 
 	 font-weight: bold;
 	 background-color: rgb(240, 240, 240);
-	 margin: auto;
 	 z-index: 1000;
+	 margin: auto;
+ }
+
+ #item-gross-price {
+	 grid-area: unitPrice;
+	 margin: 1% auto 6% auto;
+	 font-size: 11px;
+	 color: #8d8790;
  }
