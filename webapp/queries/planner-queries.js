@@ -40,6 +40,14 @@ module.exports = {
   },
 
   /**
+   * Gets all
+   * @param {*} dayId
+   */
+  fetchProductsOnDay(dayId) {
+    return models.Product.findAll({});
+  },
+
+  /**
    * Creates a user in the database.
    */
   createUserQuery() {
@@ -88,8 +96,6 @@ module.exports = {
 
   addMealToDayQuery(recipeId, type, portions, dayId) {
     return this.createMealQuery(recipeId, type, portions, dayId).then(meal => {
-      console.log("################MEALTODAY");
-
       //Round up on portionquantity of recipe
       let mealId = meal.dataValues.Id;
       // addMealToDayDependingOnType(mealId, type, dayId);
@@ -97,20 +103,45 @@ module.exports = {
     });
   },
 
-  createProductForUser(productId, quantity, userId) {
-    return this.create({
-      ProductKolonialId: productId,
-      productQuantity: quantity,
-      UserId: userId
+  /**
+   * Creates a product for a user, and adds to the join table
+   * TODO: add product quantity
+   * @param {*} kolonialId
+   * @param {*} userId
+   */
+  createProductForUser(kolonialId, userId) {
+    return models.Product.findOrCreate({
+      where: { kolonialId: kolonialId }
+    }).then(product => {
+      findSpecificUserQuery(userId).then(user => {        
+        return product[0].addUsers(user);
+      });
     });
   },
 
+  /**
+   * TODO: Needs to be reworked
+   * @param {*} productId
+   * @param {*} quantity
+   * @param {*} userId
+   */
+  // createProductForUser(productId, quantity, userId) {
+  // return this.create({
+  //   ProductKolonialId: productId,
+  //   productQuantity: quantity,
+  //   UserId: userId
+  // });
+  // },
+
+  /**
+   * TODO: Needs to be reworked
+   */
   createProductInDay(productId, quantity, dayId) {
-    return this.create({
-      ProductKolonialId: productId,
-      productQuantity: quantity,
-      DayId: dayId
-    });
+    // return this.create({
+    //   ProductKolonialId: productId,
+    //   productQuantity: quantity,
+    //   DayId: dayId
+    // });
   }
 };
 
@@ -153,6 +184,10 @@ function findSpecificDayQuery(dayId) {
   return models.Day.findOne({ where: (id = dayId) });
 }
 
+function findSpecificUserQuery(userId) {
+  return models.User.findOne({ where: (Id = userId) });
+}
+
 /**
  * TODO: Will be used when clicking "Add to planner"
  * Issue is that the user can add and remove items, and currently just puts items from the recipe in
@@ -173,9 +208,9 @@ function addAllProductsInRecipeWithPortions(mealId, recipeId, productsArr) {
 
 /**
  * Adds an ingredient to a meal with portion based on recipe
- * @param {*} mealId 
- * @param {*} recipeId 
- * @param {*} productId 
+ * @param {*} mealId
+ * @param {*} recipeId
+ * @param {*} productId
  */
 function addIngredientToMealWithPortions(mealId, recipeId, productId) {
   helper
@@ -187,9 +222,9 @@ function addIngredientToMealWithPortions(mealId, recipeId, productId) {
 
 /**
  * Creates a product in meal
- * @param {*} mealId 
- * @param {*} productId 
- * @param {*} portionQuantity 
+ * @param {*} mealId
+ * @param {*} productId
+ * @param {*} portionQuantity
  */
 function createProductInMealQuery(mealId, productId, portionQuantity) {
   return models.ProductInMeal.create({
@@ -201,7 +236,7 @@ function createProductInMealQuery(mealId, productId, portionQuantity) {
 
 /**
  * Creates a product. Helpermethod.
- * @param {*} productId 
+ * @param {*} productId
  */
 function createProductQuery(productId) {
   return models.Product.findOrCreate({

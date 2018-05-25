@@ -15,11 +15,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     portions: DataTypes.FLOAT(15, 3)
   });
-  
+
   Meal.associate = models => {
     Meal.belongsToMany(models.Product, {
-      through: { model: models.ProductInMeal },
-      foreignKey: models.Meal.Id
+      through: { model: models.ProductInMeal }
     });
   };
   return Meal;

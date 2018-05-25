@@ -2,6 +2,11 @@
     
         
 } 
+
+@media (min-width: 768px) and (max-width: 1024px) {
+   
+    
+}
  
 html {
     overflow-y: scroll;
@@ -21,13 +26,28 @@ p {
 }
 
 
+
+#week-planner-body {
+    background-image: url("/images/weekplanner.jpg");
+    background-position: center;
+    background-attachment: cover;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
+}
+
+
 #title-text {
     display: inline-block;
+    background-color: rgba($color: white, $alpha: 0.9);
+    margin-bottom: 2vh;
+    margin-top: 2.6vh;
+    top: 20%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
     position: relative;
-    text-decoration: underline;
-    margin: auto;
-    left: 41.5%;
-    margin-bottom: 1.7vh;
 }
 
 
@@ -38,8 +58,7 @@ p {
     height: 27vh;
     justify-content: center;
     text-align: center;
-    grid-template-columns: repeat(7, 10vmax);
-    grid-template-rows: repeat(3, 11vmax);
+    grid-template-columns: repeat(7, minmax(13vmax, 0));
     
 }
 
@@ -50,20 +69,19 @@ p {
     height: 27vh;
     justify-content: center;
     text-align: center;
-    grid-template-columns: repeat(7, 10vmax);
-    grid-template-rows: repeat(3, 11vmax);
+    grid-template-columns: repeat(7, minmax(13vmax, 0));
+    
 }
 
 .dinner-wrapper {
     display: grid;
     position: relative;
     grid-gap: 5px;
-    flex-basis: 100%;
     height: 27vh;
     justify-content: center;
     text-align: center;
-    grid-template-columns: repeat(7, 10vmax);
-    grid-template-rows: repeat(3, 11vmax);
+    grid-template-columns: repeat(7, minmax(13vmax, 0));
+    
     
 }
 
@@ -71,16 +89,19 @@ p {
 .breakfast {
     border: 1.5px solid rgb(255, 165, 20);
     border-radius: 3px;
+    background-color: white;
 }
 
 .lunch {
     border: 1.5px solid rgb(255, 165, 20);
     border-radius: 3px;
+    background-color: white;
 }
 
 .dinner {
     border: 1.5px solid rgb(255, 165, 20);
     border-radius: 3px;
+    background-color: white;
 }
 
 .btn-collapse {
@@ -89,10 +110,10 @@ p {
     border: none;
     margin: auto;
     height: 4.5vh;
-    margin-top: -1vh;
+    margin-top: 1vh;
     border-radius: 3px;
     position: relative;
-    width: 72vw;
+    width: 92.9vw;
 }
 
 

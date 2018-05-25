@@ -84,7 +84,7 @@
 					cache: "false",
 					data: JSON.stringify({
 						"username": usrData,
-						"pass": pwdData,
+						"pass": pwdData
 					}),
 					success: successFunction()
 				});
@@ -112,12 +112,20 @@
 	}();
 
 	function appendElements()	{
+<<<<<<< HEAD
     let x = JSON.stringify(document.cookie.match('(^|;) ?' + "data" + '=([^;]*)(;|$)'));
     console.log(JSON.parse(x));
     
     
 
 		if(x === 'undefined')	{
+=======
+		let x = document.cookies;
+		console.log("cookie "+x);
+			
+
+		if(x.data.j.is_authenticated === true)	{
+>>>>>>> 35b694b8016b771ce5fad564bb0af3288ee3c0da
 			userInfoField.empty();
 
 			loggedInData.append(
