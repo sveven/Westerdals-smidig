@@ -40,12 +40,23 @@ module.exports = {
   },
 
   /**
-   * Gets all
+   * Gets all produts on a day
    * @param {*} dayId
    */
   fetchProductsOnDay(dayId) {
-    return models.Product.findAll({});
+    return models.Day.findOne({
+      where: {
+        id: dayId
+      },
+      include: [
+        {
+          model: models.Product
+        }
+      ]
+    });
   },
+
+  fetchProductsForUser(userId) {},
 
   /**
    * Creates a user in the database.
@@ -136,8 +147,7 @@ module.exports = {
         });
       });
     });
-  },
-
+  }
 };
 
 function addAllProductsBasedOnRecipe(mealId, recipeId) {
@@ -156,7 +166,6 @@ function findSpecificDayQuery(dayId) {
 function findSpecificUserQuery(userId) {
   return models.User.findOne({ where: (Id = userId) });
 }
-
 
 /**
  * TODO: Will be used when clicking "Add to planner"

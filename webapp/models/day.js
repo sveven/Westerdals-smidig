@@ -25,6 +25,9 @@ module.exports = (sequelize, DataTypes) => {
     Day.hasMany(models.Meal, {
       onDelete: "CASCADE"
     });
+    Day.belongsToMany(models.Product, {
+      through: { model: models.ProductInDay }
+    });
   };
 
   return Day;
