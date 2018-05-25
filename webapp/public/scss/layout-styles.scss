@@ -30,9 +30,10 @@
 
 
 #header-login-btn {
+    display: flex;
+    height: 35px;
     background-color: rgb(255, 165, 20);
     color: white; 
-    height: 5vh;
     margin: auto auto auto 25%;
     
 
@@ -43,4 +44,11 @@
 }
 .form-group {
     margin: auto;
+    display: inline-block;
+
+}
+
+#user-info {
+    margin: auto;
+    display: inline-block;
 }

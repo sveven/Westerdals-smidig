@@ -13,16 +13,17 @@ module.exports = {
   },
 
   fetchDaysInWeek(weekId) {
-    return models.Day.findAll({
+    return models.Week.findAll({
       where: {
-        WeekId: weekId
-      }
+        id: weekId
+      },
+      include: models.Day
     });
   },
 
-  fetchMealsFromWeek(weekId) {
+  fetchMealsFromWeek() {
     //TODO: Continue here
-    return this.fetchDaysInWeek(weekId);
+    return models.Day.findAll({ include: models.Meal });
   },
 
   createUserQuery() {

@@ -26,22 +26,16 @@ p {
     position: relative;
     text-decoration: underline;
     margin: auto;
-    left: 50%;
-    margin-left: -104px;
+    left: 41.5%;
     margin-bottom: 1.7vh;
 }
 
-.wrapper {
-    display: grid;
-    position: absolute;
-    top: 20px;
-}
 
 .breakfast-wrapper {
     display: grid;
     position: relative;
     grid-gap: 5px;
-    height: 24vh;
+    height: 27vh;
     justify-content: center;
     text-align: center;
     grid-template-columns: repeat(7, 10vmax);
@@ -53,7 +47,7 @@ p {
     display: grid;
     position: relative;
     grid-gap: 5px;
-    height: 24vh;
+    height: 27vh;
     justify-content: center;
     text-align: center;
     grid-template-columns: repeat(7, 10vmax);
@@ -65,7 +59,7 @@ p {
     position: relative;
     grid-gap: 5px;
     flex-basis: 100%;
-    height: 24vh;
+    height: 27vh;
     justify-content: center;
     text-align: center;
     grid-template-columns: repeat(7, 10vmax);

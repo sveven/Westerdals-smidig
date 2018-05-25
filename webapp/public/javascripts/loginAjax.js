@@ -28,7 +28,7 @@
 			btnDiv = $("<div>",	{
 				class: "form-group"
 			});
-			btnLogin = $("<input>",	{
+			btnLogin = $("<button>",	{
 				class: "fas fa-sign-in-alt btn btn-regular",
 				id: "header-login-btn",
 				type: "submit"
@@ -40,7 +40,7 @@
 				class: "form-control",
 				type: "text",
 				id: "username",
-				name: "pass",
+				name: "username",
 				placeholder: "Brukernavn"
 			});
 			pwdDiv = $("<div>", {
@@ -75,7 +75,8 @@
 				e.preventDefault();
 
 				$.ajax({
-					type: "POST",
+          type: "POST",
+          url: "/login",
 					contentType: "application/json",
 					dataType: "json",
 					cache: "false",
