@@ -4,7 +4,7 @@ const connection = require("../components/kolonialapi/requestHandler");
 const query = require("../queries/planner-queries");
 
 router.get("/", function(req, res) {
-  query.fetchDaysInWeek(1).then(res => console.log(JSON.stringify(res)));
+  query.fetchMealsFromWeek(1).then(res => console.log(JSON.stringify(res)));
   res.render("querytest", {
     title: "K-Planleggeren",
     returnData: ""
@@ -13,6 +13,7 @@ router.get("/", function(req, res) {
 
 router.post("/", function(req, res) {
   let userInput = req.body.formfield;
+
 
 
   query.fetchAllProductsQuery().then(products => {
