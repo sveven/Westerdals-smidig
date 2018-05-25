@@ -108,10 +108,7 @@
   })();
 
   function appendElements() {
-    let x = Cookies.getJSON("data");
-    let data = JSON.parse(x.substring(2));
 
-	console.log(data);
 	
     if (x.data.is_authenticated === true) {
       userInfoField.empty();
@@ -158,3 +155,4 @@
     userInfoField.append($message);
   }
 })(jQuery);
+
