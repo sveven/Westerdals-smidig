@@ -28,7 +28,7 @@
 			btnDiv = $("<div>",	{
 				class: "form-group"
 			});
-			btnLogin = $("<input>",	{
+			btnLogin = $("<button>",	{
 				class: "fas fa-sign-in-alt btn btn-regular",
 				id: "header-login-btn",
 				type: "submit"
@@ -152,6 +152,6 @@
 	}
 
 	function failFunction(request, textStatus, errorThrown)	{
-		 $message.text("An error occured during your request: " + request.status + " " + textStatus + " " + errorThrown);
+		$message.text("An error occured during your request: " + request.status + " " + textStatus + " " + errorThrown);
 	}
 })(jQuery);
