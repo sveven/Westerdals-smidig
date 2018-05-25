@@ -152,6 +152,6 @@
 	}
 
 	function failFunction(request, textStatus, errorThrown)	{
-		 $message.text("An error occured during your request: " + request.status + " " + textStatus + " " + errorThrown);
+		$message.text("An error occured during your request: " + request.status + " " + textStatus + " " + errorThrown);
 	}
 })(jQuery);
