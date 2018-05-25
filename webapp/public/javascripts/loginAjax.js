@@ -92,7 +92,18 @@
 				});
 			});
 
-			
+			signOutBtn.on("click", function(e)	{
+				e.preventDefault();
+
+				$.ajax({
+					url: "/logout",
+					type: "POST",
+					contentType: "application/json",
+					dataType: "json",
+					cache: "false",
+					success: logoutFunction()
+				});
+			});
 		}();
 
 		const setGUI	= function()	{
@@ -147,10 +158,13 @@
 
 	function logoutFunction()	{
 		userInfoField.empty();
+		usrDiv.append(usrField);
+		pwdDiv.append(pwdField);
+		btnDiv.append(btnLogin);
 		loginForm.append(
-			usrField,
-			pwdField,
-			btnLogin
+			usrDiv,
+			pwdDiv,
+			btnDiv
 		);
 		userInfoField.append(loginForm);
 	}
