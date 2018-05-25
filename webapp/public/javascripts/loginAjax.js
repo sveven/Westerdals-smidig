@@ -25,7 +25,8 @@
 				class: "message"
 			});
 			loginForm = $("<form>",	{
-				id: "login-form"
+        id: "login-form",
+        action: "login"
 			});
 			btnDiv = $("<div>",	{
 				class: "form-group"
@@ -112,20 +113,11 @@
 	}();
 
 	function appendElements()	{
-<<<<<<< HEAD
-    let x = JSON.stringify(document.cookie.match('(^|;) ?' + "data" + '=([^;]*)(;|$)'));
-    console.log(JSON.parse(x));
-    
-    
-
-		if(x === 'undefined')	{
-=======
-		let x = document.cookies;
-		console.log("cookie "+x);
+		let x = Cookies.getJSON();
+		console.log("cookie "+ JSON.stringify(x));
 			
 
 		if(x.data.j.is_authenticated === true)	{
->>>>>>> 35b694b8016b771ce5fad564bb0af3288ee3c0da
 			userInfoField.empty();
 
 			loggedInData.append(
