@@ -112,10 +112,11 @@
 	}();
 
 	function appendElements()	{
-		let x = document.cookie;
-		
+		let x = document.cookies;
+		console.log("cookie "+x);
+			
 
-		if(x.data.user)	{
+		if(x.data.j.is_authenticated === true)	{
 			userInfoField.empty();
 
 			loggedInData.append(
