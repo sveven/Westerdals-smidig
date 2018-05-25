@@ -108,7 +108,11 @@
   })();
 
   function appendElements() {
+	let x = Cookies.getJSON("data");
+    let data = JSON.parse(x.substring(2));
 
+    if (x.data.is_authenticated === true) {
+      userInfoField.empty();
 	
     if (x.data.is_authenticated === true) {
       userInfoField.empty();
