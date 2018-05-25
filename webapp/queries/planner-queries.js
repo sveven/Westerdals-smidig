@@ -113,8 +113,10 @@ module.exports = {
     return models.Product.findOrCreate({
       where: { kolonialId: kolonialId }
     }).then(product => {
-      findSpecificUserQuery(userId).then(user => {        
-        return product[0].addUsers(user);
+      findSpecificUserQuery(userId).then(user => {
+        return product[0].addUsers(user).then(res => {
+          console.log("Added users"+res);
+        });
       });
     });
   },
