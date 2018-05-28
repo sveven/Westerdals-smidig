@@ -56,7 +56,14 @@ module.exports = {
     });
   },
 
-  fetchProductsForUser(userId) {},
+  fetchProductsForUser(userId) {
+    return models.User.findOne({
+      where: {
+        id: userId
+      },
+      include: [{ model: models.Product }]
+    });
+  },
 
   /**
    * Creates a user in the database.
@@ -73,6 +80,7 @@ module.exports = {
       where: { kolonialUserId: kolonialUserId }
     });
   },
+
   /**
    * Creates a week connected to a user.
    * @param {*} userId
@@ -97,6 +105,7 @@ module.exports = {
       dayId: dayId
     });
   },
+
   /**
    * Creates a day in a given week
    * @param {*} weekId
@@ -124,7 +133,7 @@ module.exports = {
     return models.Product.findOrCreate({
       where: { kolonialId: productId }
     }).then(product => {
-      findSpecificUserQuery(userId).then(user => {
+      fetchUserQuery(userId).then(user => {
         return product[0].addUsers(user, {
           through: { productQuantity: quantity }
         });
@@ -141,7 +150,7 @@ module.exports = {
     return models.Product.findOrCreate({
       where: { kolonialId: productId }
     }).then(product => {
-      findSpecificDayQuery(dayId).then(day => {
+      fetchDayQuery(dayId).then(day => {
         return product[0].addDays(day, {
           through: { productQuantity: quantity }
         });
@@ -150,6 +159,11 @@ module.exports = {
   }
 };
 
+/**
+ * Adds all products for a recipe.
+ * @param {*} mealId 
+ * @param {*} recipeId 
+ */
 function addAllProductsBasedOnRecipe(mealId, recipeId) {
   helper
     .getAllIngredientsFromRecipe(recipeId)
@@ -159,11 +173,19 @@ function addAllProductsBasedOnRecipe(mealId, recipeId) {
     .catch(err => console.log(err));
 }
 
-function findSpecificDayQuery(dayId) {
+/**
+ * Returns a day based on a day ID
+ * @param {*} dayId 
+ */
+function fetchDayQuery(dayId) {
   return models.Day.findOne({ where: (id = dayId) });
 }
 
-function findSpecificUserQuery(userId) {
+/**
+ * Finds a user based on a user id.
+ * @param {*} userId 
+ */
+function fetchUserQuery(userId) {
   return models.User.findOne({ where: (Id = userId) });
 }
 
