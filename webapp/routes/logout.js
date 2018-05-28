@@ -5,7 +5,7 @@ const cookieparser = require("cookie-parser");
 
 router.post("/", function(req, res){
 
-	console.log("Skal være logget inn: " + req.cookies.data.is_authenticated);
+	//console.log("Skal være logget inn: " + req.cookies.data.is_authenticated);
 
 	authenticate.logout(req, function(data){
 		res.clearCookie("data");

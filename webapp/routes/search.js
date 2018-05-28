@@ -20,7 +20,7 @@ router.get("/", function(req, res) {
   
 });
 
-router.get("categories/:id", function(){
+router.get("/categories/:id", function(req, res){
 
   var categoriesId = req.params.id;
   var search = "";
