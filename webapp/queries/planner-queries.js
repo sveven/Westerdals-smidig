@@ -73,15 +73,6 @@ module.exports = {
   },
 
   /**
-   * Might be omitted
-   */
-  createUserQuery(kolonialUserId) {
-    return models.User.findOrCreate({
-      where: { kolonialUserId: kolonialUserId }
-    });
-  },
-
-  /**
    * Creates a week connected to a user.
    * @param {*} userId
    */

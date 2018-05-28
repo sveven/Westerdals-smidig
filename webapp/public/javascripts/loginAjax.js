@@ -113,8 +113,10 @@
 		if	(x !== "undefined") 	{
 			data = JSON.parse(x.substring(2));
 		}
-		
-		if (data === "undefined" ) {
+    
+    //console.log(JSON.stringify(data));
+    
+		if (data.user === "undefined" ) {
 			userInfoField.empty();
 
 			loggedInData.append(usrIcon, usrData, signOutBtn);
