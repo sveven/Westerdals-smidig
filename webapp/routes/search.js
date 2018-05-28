@@ -10,14 +10,38 @@ router.get("/", function(req, res) {
 
   connection.getAllProductCategories(function(cat) {
 
-  res.render("search", {
-    title: "K-Planleggeren",
-    search: search,
-    data: list,
-    categories: cat
-  });
-});
+      res.render("search", {
+        title: "K-Planleggeren",
+        search: search,
+        data: list,
+        categories: cat
+       });
+    });
   
+});
+
+router.get("categories/:id", function(){
+
+  var categoriesId = req.params.id;
+  var search = "";
+  var cat = "";
+  
+
+
+  connection.getAllProductsFromCategory( categoriesId, function(categoriesItems) {
+
+    res.render("search", {
+
+      title: "K-Planleggeren",
+      search: search,
+      data: categoriesItems,
+      categories: cat
+    });
+  
+
+  });
+
+
 });
 
 router.post("/", function(req, res) {

@@ -18,7 +18,9 @@ module.exports = function(req, res, next) {
 	//console.log(req.cookies.requestPath);
 	if (!req.cookies.data || !req.cookies.data.is_authenticated === "undefined" || req.cookies.data.is_authenticated === false) {
 
-    res.cookie("data");
+    let data = {};
+
+    res.cookie("data", data);
 
     // Her er brukeren ikke autentisert
     // TODO: Om bruker ikke er logget inn, og har en id som vi har gitt, så er det bra. 
