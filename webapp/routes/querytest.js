@@ -4,7 +4,7 @@ const connection = require("../components/kolonialapi/requestHandler");
 const query = require("../queries/planner-queries");
 
 router.get("/", function(req, res) {
-  query.fetchProductsOnDay(2).then(res => {
+  query.fetchProductsForUser(1).then(res => {
     console.log(JSON.stringify(res));
   });
   res.render("querytest", {
