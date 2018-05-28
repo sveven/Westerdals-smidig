@@ -109,10 +109,15 @@
 
 	function appendElements() {
 		let x = Cookies.getJSON("data");
-		let data = JSON.parse(x.substring(2));
-
-    if (data.user === 'undefined') {
-      userInfoField.empty();
+		let data;
+		if	(x !== "undefined") 	{
+			data = JSON.parse(x.substring(2));
+		}
+    
+    //console.log(JSON.stringify(data));
+    
+		if (data.user === "undefined" ) {
+			userInfoField.empty();
 
 			loggedInData.append(usrIcon, usrData, signOutBtn);
 			userInfoField.append(loggedInData);

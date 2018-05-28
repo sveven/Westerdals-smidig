@@ -11,6 +11,7 @@ const reload = require("reload");
 const session = require("express-session");
 
 const authentication = require("./components/config/authentication");
+const createUserInfo = require("./components/create-user-info");
 //var config = require('./config');
 
 const index = require("./routes/index");
@@ -54,7 +55,9 @@ app.use(express.static(path.join(__dirname, "public")));
 	})
 ); */
 
+app.use(createUserInfo);
 app.use(authentication);
+
 
 
 app.use("/", index);

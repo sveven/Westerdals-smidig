@@ -17,15 +17,14 @@ body {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-    color: #00B7FF;
+#category-heading {
+    position: relative;
+    left: 13%;
 }
 
-p {
-    margin-top: 1vh;
+#wrapper {
+    display: grid;
 }
-
-
 
 #week-planner-body {
     background-image: url("/images/weekplanner.jpg");
@@ -95,7 +94,7 @@ p {
 .lunch {
     border: 1.5px solid rgb(255, 165, 20);
     border-radius: 3px;
-    background-color: white;
+    background-color: rgb(228, 35, 35);
 }
 
 .dinner {
@@ -106,7 +105,7 @@ p {
 
 .btn-collapse {
     display: grid;
-    background-color: rgb(255, 165, 20);
+    background-color: #f19500;
     border: none;
     margin: auto;
     height: 4.5vh;
@@ -131,7 +130,7 @@ p {
     font-size: 1.5vmax;
     color: white;
     border-style: none;
-}
+}   
 
 
 .complete-btn {
