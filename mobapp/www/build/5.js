@@ -1,6 +1,6 @@
 webpackJsonp([5],{
 
-/***/ 279:
+/***/ 278:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BottomTabPageModule", function() { return BottomTabPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bottom_tab__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bottom_tab__ = __webpack_require__(284);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var BottomTabPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 285:
+/***/ 284:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65,7 +65,7 @@ var BottomTabPage = /** @class */ (function () {
     }
     BottomTabPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-bottom-tab',template:/*ion-inline-start:"/Users/antim/PRO200-17-20/mobapp/src/pages/bottom-tab/bottom-tab.html"*/'<ion-tabs color="kolonialmork">\n    <ion-tab [root]="searchRoot" tabTitle="Søk" tabIcon="search"></ion-tab>\n    <ion-tab [root]="cameraRoot" tabTitle="Scann" tabIcon="camera"></ion-tab>\n    <ion-tab [root]="checkoutRoot" tabTitle="Oversikt" tabIcon="cart"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/antim/PRO200-17-20/mobapp/src/pages/bottom-tab/bottom-tab.html"*/
+            selector: 'page-bottom-tab',template:/*ion-inline-start:"/Users/antim/PRO200-17-20/mobapp/src/pages/bottom-tab/bottom-tab.html"*/'<ion-tabs color="kolonialmork">\n    <ion-tab [root]="searchRoot" tabTitle="Søk" tabIcon="search" ></ion-tab>\n    <ion-tab [root]="cameraRoot" tabTitle="Scann" tabIcon="camera"></ion-tab>\n    <ion-tab [root]="checkoutRoot" tabTitle="Oversikt" tabIcon="cart"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/antim/PRO200-17-20/mobapp/src/pages/bottom-tab/bottom-tab.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
     ], BottomTabPage);

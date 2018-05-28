@@ -30573,6 +30573,38 @@ page-bottom-tab .tabs-ios-kolonialmork .tab-button, page-bottom-tab .tabs-ios-ko
   color: #FFA51E;
 }
 
+page-camera .cameraPage {
+  background-color: #F0F0EC;
+}
+
+page-camera .img {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  margin-right: -50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  max-height: 40%;
+  max-width: 50%;
+  margin: 18px 0;
+}
+
+page-camera h2 {
+  position: relative;
+  top: 9%;
+}
+
+page-camera .scannButton {
+  font-family: "GT Walsheim Regular", sans-serif;
+  background-color: #FFA51E;
+  position: absolute;
+  top: 73%;
+  left: 50%;
+  margin-right: -50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 page-login .backgroundImg {
   background: url("../assets/imgs/Background-image.jpg");
   background-size: cover;
@@ -30622,6 +30654,18 @@ page-login .authButtons {
   margin-top: 70px;
 }
 
+page-search ion-icon {
+  position: relative;
+  left: 10px;
+  bottom: 5px;
+  font-size: 30px;
+  color: #FFA51E;
+}
+
+page-search .contento {
+  background-color: #F0F0EC;
+}
+
 page-welcome ion-title {
   font-family: "GT Walsheim Medium", sans-serif;
   color: #eeeded;
@@ -30632,6 +30676,12 @@ page-welcome .welcome {
 }
 
 page-welcome .slide-image {
+  max-height: 50%;
+  max-width: 60%;
+  margin: 18px 0;
+}
+
+page-welcome .img {
   max-height: 50%;
   max-width: 60%;
   margin: 18px 0;

@@ -1,6 +1,6 @@
 webpackJsonp([4],{
 
-/***/ 278:
+/***/ 279:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CameraPageModule", function() { return CameraPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__camera__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__camera__ = __webpack_require__(285);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var CameraPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 284:
+/***/ 285:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68,6 +68,9 @@ var CameraPage = /** @class */ (function () {
         console.log('ionViewDidLoad CameraPage');
     };
     CameraPage.prototype.scannBar = function () {
+        this.option = {
+            preferFrontCamera: true,
+        };
         this.barcodescanner.scan().then(function (barcodeData) {
             console.log('Barcode data', barcodeData);
         }).catch(function (err) {
@@ -76,7 +79,7 @@ var CameraPage = /** @class */ (function () {
     };
     CameraPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-camera',template:/*ion-inline-start:"/Users/antim/PRO200-17-20/mobapp/src/pages/camera/camera.html"*/'\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Camera</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/antim/PRO200-17-20/mobapp/src/pages/camera/camera.html"*/,
+            selector: 'page-camera',template:/*ion-inline-start:"/Users/antim/PRO200-17-20/mobapp/src/pages/camera/camera.html"*/'<ion-content padding class="cameraPage">\n    <img class="img" src="../assets/icons/photo-camera.png"/>\n    <h2>Bruk kameraet for å scanne en oppskrift fra oppskriftsheftet</h2>\n    <button class="scannButton" large ion-button short (click)="scannBar()">Trykk her</button>\n</ion-content>\n'/*ion-inline-end:"/Users/antim/PRO200-17-20/mobapp/src/pages/camera/camera.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */]])
     ], CameraPage);

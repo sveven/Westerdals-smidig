@@ -31,7 +31,7 @@ var AuthorizePage = /** @class */ (function () {
     };
     AuthorizePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-authorize',template:/*ion-inline-start:"/Users/antim/PRO200-17-20/mobapp/src/pages/authorize/authorize.html"*/'<ion-content class="backgroundImg">\n    <div>\n        <ion-thumbnail>\n            <img class="logoImg" src="../assets/imgs/Klogo.png">\n        </ion-thumbnail>\n        <p class="txtKompanjong">Kompanjong</p>\n    </div>\n    <div class="button-container">\n   <ion-row style="text-align: center">\n       <ion-col>\n            <button class="authButtons" ion-button short color="dark" (click)="loginUser()">Logg inn</button>\n       </ion-col>\n   </ion-row>\n   <ion-row style="text-align: center">\n        <ion-col>\n             <button class="authButtons" ion-button short color="dark" (click)="registerUser()">Registrer deg</button>\n        </ion-col>\n    </ion-row>\n</div>\n</ion-content>'/*ion-inline-end:"/Users/antim/PRO200-17-20/mobapp/src/pages/authorize/authorize.html"*/,
+            selector: 'page-authorize',template:/*ion-inline-start:"/Users/antim/PRO200-17-20/mobapp/src/pages/authorize/authorize.html"*/'<ion-content class="backgroundImg">\n    <div>\n        <ion-thumbnail>\n            <img class="logoImg" src="../assets/imgs/Klogo.png">\n        </ion-thumbnail>\n        <p class="txtKompanjong">Kompanjong</p>\n    </div>\n    <div class="button-container">\n   <ion-row style="text-align: center">\n       <ion-col>\n            <button class="authButtons" ion-button short (click)="loginUser()">Logg inn</button>\n       </ion-col>\n   </ion-row>\n   <ion-row style="text-align: center">\n        <ion-col>\n             <button class="authButtons" ion-button short color="dark" (click)="registerUser()">Registrer deg</button>\n        </ion-col>\n    </ion-row>\n</div>\n</ion-content>'/*ion-inline-end:"/Users/antim/PRO200-17-20/mobapp/src/pages/authorize/authorize.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
     ], AuthorizePage);
@@ -68,11 +68,11 @@ var map = {
 		6
 	],
 	"../pages/bottom-tab/bottom-tab.module": [
-		279,
+		278,
 		5
 	],
 	"../pages/camera/camera.module": [
-		278,
+		279,
 		4
 	],
 	"../pages/checkout/checkout.module": [
@@ -80,15 +80,15 @@ var map = {
 		3
 	],
 	"../pages/login/login.module": [
-		282,
+		281,
 		2
 	],
 	"../pages/search/search.module": [
-		281,
+		283,
 		1
 	],
 	"../pages/welcome/welcome.module": [
-		283,
+		282,
 		0
 	]
 };
@@ -168,12 +168,12 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/authorize/authorize.module#AuthorizePageModule', name: 'AuthorizePage', segment: 'authorize', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/camera/camera.module#CameraPageModule', name: 'CameraPage', segment: 'camera', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/bottom-tab/bottom-tab.module#BottomTabPageModule', name: 'BottomTabPage', segment: 'bottom-tab', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/camera/camera.module#CameraPageModule', name: 'CameraPage', segment: 'camera', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/checkout/checkout.module#CheckoutPageModule', name: 'CheckoutPage', segment: 'checkout', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClientModule */],

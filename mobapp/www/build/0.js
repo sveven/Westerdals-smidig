@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 283:
+/***/ 282:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WelcomePageModule", function() { return WelcomePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__welcome__ = __webpack_require__(289);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__welcome__ = __webpack_require__(288);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var WelcomePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 289:
+/***/ 288:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -91,7 +91,7 @@ var WelcomePage = /** @class */ (function () {
     };
     WelcomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-welcome',template:/*ion-inline-start:"/Users/antim/PRO200-17-20/mobapp/src/pages/welcome/welcome.html"*/'<ion-header>\n  <ion-navbar color="oransje">\n    <ion-title text-center>Kompanjong</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="welcome" padding>\n  <ion-slides pager="true">\n    <ion-slide *ngFor="let slide of slider">\n        <img [src]="slide.image" class="slide-image"/>\n      <h2 [innerHTML]="slide.title"></h2>\n      <p [innerHTML]="slide.description"></p>\n    </ion-slide>\n    <ion-slide>\n        <button class="welcomeButton" ion-button large clear icon-end color="primary" (click)="goToTabPage()">\n            Gå videre\n            <ion-icon name="arrow-forward"></ion-icon>\n          </button>\n        </ion-slide>\n      </ion-slides>\n</ion-content>\n\n'/*ion-inline-end:"/Users/antim/PRO200-17-20/mobapp/src/pages/welcome/welcome.html"*/,
+            selector: 'page-welcome',template:/*ion-inline-start:"/Users/antim/PRO200-17-20/mobapp/src/pages/welcome/welcome.html"*/'<ion-header>\n  <ion-navbar color="oransje">\n    <ion-title text-center>Kompanjong</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="welcome" padding>\n  <ion-slides pager="true">\n    <ion-slide *ngFor="let slide of slider">\n        <img [src]="slide.image" class="slide-image"/>\n      <h2 [innerHTML]="slide.title"></h2>\n      <p [innerHTML]="slide.description"></p>\n    </ion-slide>\n    <ion-slide>\n      <img class="img" src="../assets/icons/shopping-basket.png"/>\n      <h2>Da er det bare å sette i gang!</h2>\n        <button class="welcomeButton" ion-button large clear icon-end color="dark" (click)="goToTabPage()">\n            Gå videre\n            <ion-icon name="arrow-forward"></ion-icon>\n          </button>\n        </ion-slide>\n      </ion-slides>\n</ion-content>\n\n'/*ion-inline-end:"/Users/antim/PRO200-17-20/mobapp/src/pages/welcome/welcome.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
