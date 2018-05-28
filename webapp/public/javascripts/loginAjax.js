@@ -111,11 +111,16 @@
 		let x = Cookies.getJSON("data");
 		let data = JSON.parse(x.substring(2));
 
+<<<<<<< HEAD
 		console.log(data);
 		
 	
 		if (data.user === undefined) {
 			userInfoField.empty();
+=======
+    if (data.user === 'undefined') {
+      userInfoField.empty();
+>>>>>>> 95c1a8191f83ad73ccf6a2d9c15d46f1a055dceb
 
 			loggedInData.append(usrIcon, usrData, signOutBtn);
 			userInfoField.append(loggedInData);

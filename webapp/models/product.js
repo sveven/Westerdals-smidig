@@ -7,11 +7,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
   Product.associate = models => {
-    models.Product.belongsToMany(models.Meal, {
+    Product.belongsToMany(models.Meal, {
       through: { model: models.ProductInMeal }
     });
-    
-    models.Product.belongsToMany(models.Day, {
+
+    Product.belongsToMany(models.Day, {
       through: { model: models.ProductInDay }
     });
 
