@@ -20,8 +20,7 @@
 		</div>
 		<div class="sidebar">
 			<b>
-				<br>
-				<h2>Kategorier</h2>
+				<h2 id="category-heading">Kategorier</h2>
 				<br>
 			</b>
 
@@ -29,7 +28,7 @@
 
 			<% for (i in categories.results){ %>
 
-				<li class="category-items"><%= categories.results[i].name%></li>
+				<a class="category-items" href="search/<%=categories.results[i].id %>"><li class="category-items"><%= categories.results[i].name %></li></a>
 		
     		<% } %>
 			</ul>
