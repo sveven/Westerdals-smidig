@@ -18,9 +18,7 @@ module.exports = function(req, res, next) {
 	//console.log(req.cookies.requestPath);
 	if (!req.cookies.data || !req.cookies.data.is_authenticated === "undefined" || req.cookies.data.is_authenticated === false) {
 
-    // Dette nullstiller data i cookies hver gang. Fjern denne. 
-		let data = { "noe": "for morro skyld" };
-    res.cookie("data", data);
+    res.cookie("data");
 
     // Her er brukeren ikke autentisert
     // TODO: Om bruker ikke er logget inn, og har en id som vi har gitt, så er det bra. 

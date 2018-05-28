@@ -40,6 +40,25 @@ module.exports = {
   },
 
   /**
+   * Gets all produts on a day
+   * @param {*} dayId
+   */
+  fetchProductsOnDay(dayId) {
+    return models.Day.findOne({
+      where: {
+        id: dayId
+      },
+      include: [
+        {
+          model: models.Product
+        }
+      ]
+    });
+  },
+
+  fetchProductsForUser(userId) {},
+
+  /**
    * Creates a user in the database.
    */
   createUserQuery() {
@@ -88,8 +107,6 @@ module.exports = {
 
   addMealToDayQuery(recipeId, type, portions, dayId) {
     return this.createMealQuery(recipeId, type, portions, dayId).then(meal => {
-      console.log("################MEALTODAY");
-
       //Round up on portionquantity of recipe
       let mealId = meal.dataValues.Id;
       // addMealToDayDependingOnType(mealId, type, dayId);
@@ -97,48 +114,41 @@ module.exports = {
     });
   },
 
-  createProductForUser(productId, quantity, userId) {
-    return this.create({
-      ProductKolonialId: productId,
-      productQuantity: quantity,
-      UserId: userId
+  /**
+   * Creates a product for a user, and adds to the join table
+   * @param {*} productId
+   * @param {*} userId
+   * @param {*} quantity
+   */
+  createProductForUser(productId, userId, quantity) {
+    return models.Product.findOrCreate({
+      where: { kolonialId: productId }
+    }).then(product => {
+      findSpecificUserQuery(userId).then(user => {
+        return product[0].addUsers(user, {
+          through: { productQuantity: quantity }
+        });
+      });
     });
   },
 
+  /**
+   * @param {*} productId
+   * @param {*} quantity
+   * @param {*} userId
+   */
   createProductInDay(productId, quantity, dayId) {
-    return this.create({
-      ProductKolonialId: productId,
-      productQuantity: quantity,
-      DayId: dayId
+    return models.Product.findOrCreate({
+      where: { kolonialId: productId }
+    }).then(product => {
+      findSpecificDayQuery(dayId).then(day => {
+        return product[0].addDays(day, {
+          through: { productQuantity: quantity }
+        });
+      });
     });
   }
 };
-
-/* function addMealToDayDependingOnType(mealId, type, dayId) {
-  switch (type) {
-    case "Breakfast":
-      return findSpecificDayQuery().then(day => {
-        day.update({
-          breakfastId: mealId
-        });
-      });
-      break;
-    case "Lunch":
-      return findSpecificDayQuery().then(day => {
-        day.update({
-          lunchId: mealId
-        });
-      });
-      break;
-    case "Dinner":
-      return findSpecificDayQuery().then(day => {
-        day.update({
-          dinnerId: mealId
-        });
-      });
-      break;
-  }
-} */
 
 function addAllProductsBasedOnRecipe(mealId, recipeId) {
   helper
@@ -151,6 +161,10 @@ function addAllProductsBasedOnRecipe(mealId, recipeId) {
 
 function findSpecificDayQuery(dayId) {
   return models.Day.findOne({ where: (id = dayId) });
+}
+
+function findSpecificUserQuery(userId) {
+  return models.User.findOne({ where: (Id = userId) });
 }
 
 /**
@@ -173,9 +187,9 @@ function addAllProductsInRecipeWithPortions(mealId, recipeId, productsArr) {
 
 /**
  * Adds an ingredient to a meal with portion based on recipe
- * @param {*} mealId 
- * @param {*} recipeId 
- * @param {*} productId 
+ * @param {*} mealId
+ * @param {*} recipeId
+ * @param {*} productId
  */
 function addIngredientToMealWithPortions(mealId, recipeId, productId) {
   helper
@@ -187,9 +201,9 @@ function addIngredientToMealWithPortions(mealId, recipeId, productId) {
 
 /**
  * Creates a product in meal
- * @param {*} mealId 
- * @param {*} productId 
- * @param {*} portionQuantity 
+ * @param {*} mealId
+ * @param {*} productId
+ * @param {*} portionQuantity
  */
 function createProductInMealQuery(mealId, productId, portionQuantity) {
   return models.ProductInMeal.create({
@@ -201,7 +215,7 @@ function createProductInMealQuery(mealId, productId, portionQuantity) {
 
 /**
  * Creates a product. Helpermethod.
- * @param {*} productId 
+ * @param {*} productId
  */
 function createProductQuery(productId) {
   return models.Product.findOrCreate({
