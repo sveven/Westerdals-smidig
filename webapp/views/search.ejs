@@ -25,6 +25,15 @@
 				<br>
 			</b>
 
+			<ul id="category-list"> 
+
+			<% for (i in categories.results){ %>
+
+				<li class="category-items"><%= categories.results[i].name%></li>
+		
+    		<% } %>
+			</ul>
+
 		</div>
 		<div class="content">
 			<ul class="search-result">

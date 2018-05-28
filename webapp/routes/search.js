@@ -9,14 +9,15 @@ router.get("/", function(req, res) {
   let categories;
 
   connection.getAllProductCategories(function(cat) {
-    categories = cat;
-  });
 
   res.render("search", {
     title: "K-Planleggeren",
     search: search,
-    data: list
+    data: list,
+    categories: cat
   });
+});
+  
 });
 
 router.post("/", function(req, res) {
