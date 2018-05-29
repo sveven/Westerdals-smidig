@@ -10,6 +10,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AuthorizePage } from '../pages/authorize/authorize';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 
 import { WelcomePage } from '../pages/welcome/welcome';
 import { BottomTabPage } from '../pages/bottom-tab/bottom-tab';
@@ -43,7 +44,11 @@ import { CheckoutPage } from '../pages/checkout/checkout';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    BarcodeScanner
+    BarcodeScanner,
+    QRScanner,
+    
+
   ]
 })
+
 export class AppModule {}
