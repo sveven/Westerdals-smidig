@@ -21,7 +21,7 @@ router.get("/", function(req, res) {
 });
 
 
-router.get("categories/ajax/:id", function(req, res){
+router.post("categories/ajax/:id", function(req, res){
 
 
   connectiong.getAllProductsFromCategory( categoriesId, function(categoriesItems){
