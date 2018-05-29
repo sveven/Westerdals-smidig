@@ -17,7 +17,6 @@ router.get("/", function(req, res) {
         categories: cat
        });
     });
-  
 });
 
 
@@ -32,7 +31,6 @@ router.post("categories/ajax/:id", function(req, res){
     res.send(data);
   
   });
-
 });
 
 
