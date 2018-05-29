@@ -17,6 +17,7 @@ import { BottomTabPage } from '../pages/bottom-tab/bottom-tab';
 import { CameraPage } from '../pages/camera/camera';
 import { SearchPage } from '../pages/search/search';
 import { CheckoutPage } from '../pages/checkout/checkout';
+import { SearchProvider } from '../providers/search/search';
 
 @NgModule({
   declarations: [
@@ -45,9 +46,7 @@ import { CheckoutPage } from '../pages/checkout/checkout';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BarcodeScanner,
-    QRScanner,
-    
-
+    SearchProvider
   ]
 })
 
