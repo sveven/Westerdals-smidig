@@ -114,7 +114,7 @@
 			data = JSON.parse(x.substring(2));
 		}
     
-    //console.log(JSON.stringify(data));
+    console.log(JSON.stringify(data));
     
 		if (data.user === "undefined" ) {
 			userInfoField.empty();

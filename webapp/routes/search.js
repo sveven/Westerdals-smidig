@@ -20,6 +20,20 @@ router.get("/", function(req, res) {
   
 });
 
+router.get("categories/ajax/:id", function(){
+
+
+  connectiong.getAllProductsFromCategory( categoriesId, function(categoriesItems){
+    
+    let categoriesId = req.params.id;
+    let data = categoriesItems;
+
+    res.send(data);
+  
+  });
+
+});
+
 router.get("categories/:id", function(){
 
   var categoriesId = req.params.id;
@@ -40,7 +54,6 @@ router.get("categories/:id", function(){
   
 
   });
-
 
 });
 
