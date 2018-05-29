@@ -5,6 +5,7 @@ import { SearchPage } from '../search/search';
 import { CheckoutPage } from '../checkout/checkout';
 
 
+
 @IonicPage()
 @Component({
   selector: 'page-bottom-tab',

@@ -17,24 +17,26 @@ export class WelcomePage {
     {
       title: 'Velkommen til Kompanjong',
       description: 'Kompanjong gjør planleggingen av uken enklere og raskere mens du er på farten.',
-      image: "assets/icons/LogoKolonial.png",
+      image: "../assets/icons/LogoKolonial.png",
     },
     {
       title: 'Her kan du:',
       description: 'Søke opp varer',
-      image: "assets/icons/search.png",
+      image: "../assets/icons/search.png",
     },
     {
       title: 'Og...',
       description: 'Scanne koder fra oppskriftsheftet',
-      image: "assets/icons/photo-camera.png",
+      image: "../assets/icons/photo-camera.png",
     },
     {
       title: 'Deretter..',
       description: 'Legg til i oversikten din',
-      image: "assets/icons/shopping-cart.png",
+      image: "../assets/icons/shopping-cart.png",
     },
   ]
+
+
 
   goToTabPage(){
     this.navCtrl.push('BottomTabPage');
