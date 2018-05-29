@@ -23,15 +23,37 @@
 				<h2 id="category-heading">Kategorier</h2>
 				<br>
 			</b>
+			<form>
+				<div id="tree">
+					<% for (i in categories.results){ %>
+						<div>
+						<input class="checkbox" id="category<%= i %>" type="checkbox">
+						<label id="category-list" for="category<%= i %>">
+						<a>
+							<%= categories.results[i].name %>
+						</a>
+						</label>
 
-			<ul id="category-list"> 
 
-			<% for (i in categories.results){ %>
+							<div class="sub">
+						
+							<% for (j in categories.results[i].children) { %>
+								<label class="child-cat">
+									<%= categories.results[i].children[j].name%>
+								</label>
+								<br>
+								<%	} %>
+								
+								
+						</div>
+						</div>
+						<% } %>
 
-				<a class="category-items" href="search/<%=categories.results[i].id %>"><li class="category-items"><%= categories.results[i].name %></li></a>
-		
-    		<% } %>
-			</ul>
+				</div>
+			</form>
+
+
+
 
 		</div>
 		<div class="content">
