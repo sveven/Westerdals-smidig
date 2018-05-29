@@ -52,8 +52,15 @@ h2 {
 	display: grid;
 	overflow: hidden;
 	grid-template-columns: 20vw 80vw;
+<<<<<<< HEAD
 	grid-template-rows: 40vh 1fr;
 	grid-template-areas: "header header" "sidebar content"
+=======
+	grid-template-rows: 20rem 1fr;
+	grid-template-areas: 
+	"header header" 
+	"sidebar content"
+>>>>>>> 1e7f63010e4558bd4f3f9aef3424d053dbf25a20
 }
 
 #container-search {
@@ -70,9 +77,13 @@ h2 {
 	cursor: pointer;
 }
 
+#category-list:hover {
+	color: rgb(70, 70, 70);
+}
+
 .sub {
 	display: none;
-	margin-left: 1%;
+	margin-left: 5%;
 	
 }
 
@@ -82,6 +93,10 @@ input:checked ~ .sub {
 
 .child-cat {
 	cursor: pointer;
+}
+
+.child-cat:hover {
+	text-decoration: underline;
 }
 
 .checkbox {
@@ -128,10 +143,10 @@ input:checked ~ .sub {
 
 .search-result {
 	display: grid;
-	grid-gap: 5vh 0px;
+	grid-gap: 7vh 0px;
 	grid-template-columns: repeat(auto-fill, minmax(150px, 180px));
 	list-style-type: none;
-	margin-top: 10%;
+	margin-top: 5%;
 	position: relative;
 }
 
@@ -139,6 +154,7 @@ input:checked ~ .sub {
 	display: grid;
 	position: relative;
 	border-radius: 2px;
+	max-height: 180px;
 	grid-template-rows: 58% 14% 14% 14%;
 	grid-template-areas: "image" "price" "unitPrice" "item" "item2";
 }
@@ -146,8 +162,7 @@ input:checked ~ .sub {
 .img-container {
 	position: absolute;
 	text-align: center;
-	height: 140px;
-	min-height: 140px;
+	min-height: 110px;
 	position: relative;
 	vertical-align: middle;
 }
