@@ -109,8 +109,16 @@ const loginElements = (function($) {
 	})();
 
 	function appendElements() {
-		let data = JSON.parse(Cookies.getJSON("data").substring(2));
-		console.log(data);
+		let x = Cookies.getJSON("data");
+		let data;
+		if	(x !== "undefined") 	{
+			data = JSON.parse(x.substring(2));
+		}
+    
+    console.log(JSON.stringify(data));
+    
+		if (data.user === "undefined" ) {
+			userInfoField.empty();
 
 		if (data.user) {
 			successFunction();

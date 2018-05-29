@@ -20,7 +20,23 @@ router.get("/", function(req, res) {
   
 });
 
+router.get("categories/ajax/:id", function(req, res){
+
+
+  connectiong.getAllProductsFromCategory( categoriesId, function(categoriesItems){
+    
+    let categoriesId = req.params.id;
+    let data = categoriesItems;
+
+    res.send(data);
+  
+  });
+
+});
+
+
 router.get("/categories/:id", function(req, res){
+
 
   var categoriesId = req.params.id;
   var search = "";
@@ -40,7 +56,6 @@ router.get("/categories/:id", function(req, res){
   
 
   });
-
 
 });
 
