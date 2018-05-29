@@ -1,52 +1,68 @@
 <% layout("layout") -%>
 
 
-<% if (data.id){ %>
+	<% if (data.id){ %>
 
-	<section id="recipe-header" style="background-image: url(<%= data.feature_image_url %>)">
-		<div class="gradient"></div>
-		<% for (i in data.concept_icons) { %>
-			<div class="concept-icon" title="">
-				<img class="png" src="<%= data.concept_icons[i].image_url %>" alt="<%= data.concept_icons[i].name %>">
-				<h1 class="concept-text" ><%= data.concept_icons[i].name %></h1>
-			</div>
-		<% } %>
-		<div class="recipe-header-title">
-			<h1><%= data.title %></h1>
-			<h6><%= data.provider_name %></h6>	
-		</div>
-		<div id="add-section-top">
-			<div id="add-text-wrapper">	
-				<h1>kr <%= data.portion_price %></h1>
-				<p>per posjon</p>
-			</div>
-			<input class="button add-recipe" type="submit" name="" value="Legg til i planlegger">
-		</div>
-	</section>
-	<main class="recipe-section">
-		<header class="mini-header">
-			<h4 id="recipe-duration"><%= data.cooking_duration_string %></h4>
-			<h4 id="recipe-difficulty"><%= data.difficulty_string %></h4>
-		</header>
-		<article class="recipe-text">
-			<%- data.instructions_html %>
-		</article>
-		<aside class="recipe-ingredients">
-			<%- data.ingredient_list_html %>
-		</aside>
-		<aside class="recipe-shopping-list">
-			<% for (i in data.ingredients) { %>
-			<div id="ingredient-wrapper">
-				<img src="<%= data.ingredients[i].product.images[0].thumbnail.url %>" alt="">
-				<h4 id="ingredient-title"><%= data.ingredients[i].product.name %></h4>
-			</div>
-			<% } %>
-		</aside>
-		<aside class="recipe-footer">
-			
-		</aside>
-	</main>
-	
+		<section id="recipe-header" style="background-image: url(<%= data.feature_image_url %>)">
+			<div class="gradient"></div>
+			<% for (i in data.concept_icons) { %>
+				<div class="concept-icon" title="">
+					<img class="png" src="<%= data.concept_icons[i].image_url %>" alt="<%= data.concept_icons[i].name %>">
+					<h1 class="concept-text">
+						<%= data.concept_icons[i].name %>
+					</h1>
+				</div>
+				<% } %>
+					<div class="recipe-header-title">
+						<h1>
+							<%= data.title %>
+						</h1>
+						<h6>
+							<%= data.provider_name %>
+						</h6>
+					</div>
+					<div id="add-section-top">
+						<div id="add-text-wrapper">
+							<h1>kr
+								<%= data.portion_price %>
+							</h1>
+							<p>per posjon</p>
+						</div>
+						<form action="/recipes/single/<%= data.id %>/<%= data.default_num_portions %>" method="POST">
+							<input class="button add-recipe" type="submit" value="Legg til i planlegger">
+						</form>
+					</div>
+		</section>
+		<main class="recipe-section">
+			<header class="mini-header">
+				<h4 id="recipe-duration">
+					<%= data.cooking_duration_string %>
+				</h4>
+				<h4 id="recipe-difficulty">
+					<%= data.difficulty_string %>
+				</h4>
+			</header>
+			<article class="recipe-text">
+				<%- data.instructions_html %>
+			</article>
+			<aside class="recipe-ingredients">
+				<%- data.ingredient_list_html %>
+			</aside>
+			<aside class="recipe-shopping-list">
+				<% for (i in data.ingredients) { %>
+					<div id="ingredient-wrapper">
+						<img src="<%= data.ingredients[i].product.images[0].thumbnail.url %>" alt="">
+						<h4 id="ingredient-title">
+							<%= data.ingredients[i].product.name %>
+						</h4>
+					</div>
+					<% } %>
+			</aside>
+			<aside class="recipe-footer">
 
-<%}%>
+			</aside>
+		</main>
 
+
+
+		<%}%>
