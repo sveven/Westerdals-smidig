@@ -24,6 +24,8 @@ const logout = require("./routes/logout");
 const test = require("./routes/test");
 const weekPlannerCurrent = require("./routes/week-planner-current");
 const queryTest = require("./routes/querytest");
+const cart = require("./routes/cart");
+const basis = require("./routes/basis");
 
 /*
 const basicProducts = require('./routes/basic-products');
@@ -67,6 +69,8 @@ app.use("/recipes", recipes);
 app.use("/test", test);
 app.use("/login", login);
 app.use("/logout", logout);
+app.use("/cart", cart);
+app.use("/basis", basis);
 
 // testsite for testing queries.
 app.use("/querytest", queryTest);
