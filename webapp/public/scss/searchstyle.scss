@@ -52,15 +52,8 @@ h2 {
 	display: grid;
 	overflow: hidden;
 	grid-template-columns: 20vw 80vw;
-<<<<<<< HEAD
 	grid-template-rows: 40vh 1fr;
 	grid-template-areas: "header header" "sidebar content"
-=======
-	grid-template-rows: 20rem 1fr;
-	grid-template-areas: 
-	"header header" 
-	"sidebar content"
->>>>>>> 1e7f63010e4558bd4f3f9aef3424d053dbf25a20
 }
 
 #container-search {
