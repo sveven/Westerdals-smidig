@@ -56,6 +56,10 @@ module.exports = {
     });
   },
 
+  /**
+   * Gets a user with all their extra products
+   * @param {*} userId 
+   */
   fetchProductsForUser(userId) {
     return models.User.findOne({
       where: {
@@ -81,23 +85,6 @@ module.exports = {
   },
 
   /**
-   * Creates a meal with given parameters
-   * @param {*} recipeId
-   * @param {*} type
-   * @param {*} portions
-   * @param {*} dayId
-   */
-  createMealQuery(recipeId, type, portions, dayId) {
-    return models.Meal.create({
-      Id: null,
-      recipeId: recipeId,
-      type: type,
-      portions: portions,
-      dayId: dayId
-    });
-  },
-
-  /**
    * Creates a day in a given week
    * @param {*} weekId
    */
@@ -106,7 +93,7 @@ module.exports = {
   },
 
   addMealToDayQuery(recipeId, type, portions, dayId) {
-    return this.createMealQuery(recipeId, type, portions, dayId).then(meal => {
+    return createMealQuery(recipeId, type, portions, dayId).then(meal => {
       //Round up on portionquantity of recipe
       let mealId = meal.dataValues.Id;
       // addMealToDayDependingOnType(mealId, type, dayId);
@@ -151,9 +138,26 @@ module.exports = {
 };
 
 /**
+ * Creates a meal with given parameters
+ * @param {*} recipeId
+ * @param {*} type
+ * @param {*} portions
+ * @param {*} dayId
+ */
+function createMealQuery(recipeId, type, portions, dayId) {
+  return models.Meal.create({
+    Id: null,
+    recipeId: recipeId,
+    type: type,
+    portions: portions,
+    dayId: dayId
+  });
+}
+
+/**
  * Adds all products for a recipe.
- * @param {*} mealId 
- * @param {*} recipeId 
+ * @param {*} mealId
+ * @param {*} recipeId
  */
 function addAllProductsBasedOnRecipe(mealId, recipeId) {
   helper
@@ -166,7 +170,7 @@ function addAllProductsBasedOnRecipe(mealId, recipeId) {
 
 /**
  * Returns a day based on a day ID
- * @param {*} dayId 
+ * @param {*} dayId
  */
 function fetchDayQuery(dayId) {
   return models.Day.findOne({ where: (id = dayId) });
@@ -174,19 +178,17 @@ function fetchDayQuery(dayId) {
 
 /**
  * Finds a user based on a user id.
- * @param {*} userId 
+ * @param {*} userId
  */
 function fetchUserQuery(userId) {
   return models.User.findOne({ where: (Id = userId) });
 }
 
 /**
- * TODO: Will be used when clicking "Add to planner"
- * Issue is that the user can add and remove items, and currently just puts items from the recipe in
- * Might need check if the user has removed or added items.
- * What if a user has removed everything except one?4
- * Maybe use the function differently, rather give all products that will be purchased in the array
- * and remove the if-check?
+ * Adds all products in a recipe based on prod
+ * @param {*} mealId
+ * @param {*} recipeId
+ * @param {*} productsArr
  */
 function addAllProductsInRecipeWithPortions(mealId, recipeId, productsArr) {
   for (let i = 0; i < productsArr.length; i++) {

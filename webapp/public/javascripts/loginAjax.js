@@ -1,4 +1,4 @@
-(function($) {
+const loginElements = (function($) {
 	"use strict";
 	//HTML Objects
 	let userInfoField;
@@ -22,7 +22,7 @@
 			$message = $("<div>", {
 				class: "message"
 			});
-			loginForm = $("<form>", {
+			loginForm = $("<div>", {
 				id: "login-form"
 			});
 			btnDiv = $("<div>", {
@@ -31,7 +31,7 @@
 			btnLogin = $("<button>", {
 				class: "fas fa-sign-in-alt btn btn-regular",
 				id: "header-login-btn",
-				type: "submit"
+				type: "button"
 			});
 			usrDiv = $("<div>", {
 				class: "form-group"
@@ -66,9 +66,13 @@
 				class: "fas fa-sign-out-alt"
 			});
 		})();
+		
+		const setGUI = (function() {
+			appendElements();
+		})();
 
 		const setEvents = (function() {
-			btnLogin.on("click", function(e) {
+			userInfoField.on("click", "div button", function(e) {
 				let usrData = usrField.val();
 				let pwdData = pwdField.val();
 
@@ -88,7 +92,7 @@
 				});
 			});
 
-			signOutBtn.on("click", function(e) {
+			userInfoField.on("click", "a i", function(e) {
 				e.preventDefault();
 
 				$.ajax({
@@ -102,9 +106,6 @@
 			});
 		})();
 
-		const setGUI = (function() {
-			appendElements();
-		})();
 	})();
 
 	function appendElements() {
@@ -119,20 +120,14 @@
 		if (data.user === "undefined" ) {
 			userInfoField.empty();
 
-			loggedInData.append(usrIcon, usrData, signOutBtn);
-			userInfoField.append(loggedInData);
+		if (data.user) {
+			successFunction();
 		} else {
-			userInfoField.empty();
-			usrDiv.append(usrField);
-			btnDiv.append(btnLogin);
-			pwdDiv.append(pwdField);
-			loginForm.append(usrDiv, pwdDiv, btnDiv);
-			userInfoField.append(loginForm);
+			logoutFunction();
 		}
 	}
 
 	function successFunction() {
-		let userdata = document.cookie.data;
 		userInfoField.empty();
 
 		loggedInData.append(usrIcon, usrData, signOutBtn);
@@ -151,11 +146,11 @@
 	function failFunction(request, textStatus, errorThrown) {
 		$message.text(
 			"An error occured during your request: " +
-        request.status +
-        " " +
-        textStatus +
-        " " +
-        errorThrown
+				request.status +
+				" " +
+				textStatus +
+				" " +
+				errorThrown
 		);
 		userInfoField.empty();
 		userInfoField.append($message);

@@ -36,6 +36,8 @@ export class WelcomePage {
     },
   ]
 
+
+
   goToTabPage(){
     this.navCtrl.push('BottomTabPage');
   }

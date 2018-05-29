@@ -211,6 +211,7 @@ module.exports = {
 
     /**
      * Returns the contents in the cart
+     * TODO: Might need changing aas we have changes in sessions
      * @param callback
      */
     getCartContent: function(sessionid, callback) {

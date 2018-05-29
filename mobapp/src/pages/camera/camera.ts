@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
 
 
 
@@ -12,6 +12,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 })
 export class CameraPage {
 
+  option: BarcodeScannerOptions;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private barcodescanner: BarcodeScanner) {
   }
 
@@ -20,6 +22,9 @@ export class CameraPage {
   }
 
   scannBar(){
+    this.option = {
+      preferFrontCamera: true,
+    }
     this.barcodescanner.scan().then(barcodeData => {
       console.log('Barcode data', barcodeData);
      }).catch(err => {
