@@ -37,6 +37,7 @@
 		<aside class="recipe-shopping-list">
 			<% for (i in data.ingredients) { %>
 			<div id="ingredient-wrapper">
+				<img src="<%= data.ingredients[i].product.images[0].thumbnail.url %>" alt="">
 				<h4 id="ingredient-title"><%= data.ingredients[i].product.name %></h4>
 			</div>
 			<% } %>
