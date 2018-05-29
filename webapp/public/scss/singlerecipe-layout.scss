@@ -108,7 +108,8 @@ input {
 }
 
 .recipe-ingredients {
-    grid-area: ingredients;
+	grid-area: ingredients;
+	justify-items: center;
 }
 
 .ingredient-list {
@@ -135,7 +136,7 @@ input {
     grid-template-columns: 400px 0.75fr 400px;
     grid-template-rows: 50px 1fr 30px;
 	min-height: 100vh;
-	margin: 0 8rem;
+	justify-content: center;
 }
 
 //END Recipe GRID
