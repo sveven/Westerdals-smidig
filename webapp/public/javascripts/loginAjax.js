@@ -1,4 +1,4 @@
-const loginElements = (function($) {
+(function($) {
 	"use strict";
 	//HTML Objects
 	let userInfoField;
@@ -22,7 +22,7 @@ const loginElements = (function($) {
 			$message = $("<div>", {
 				class: "message"
 			});
-			loginForm = $("<div>", {
+			loginForm = $("<form>", {
 				id: "login-form"
 			});
 			btnDiv = $("<div>", {
@@ -31,7 +31,7 @@ const loginElements = (function($) {
 			btnLogin = $("<button>", {
 				class: "fas fa-sign-in-alt btn btn-regular",
 				id: "header-login-btn",
-				type: "button"
+				type: "submit"
 			});
 			usrDiv = $("<div>", {
 				class: "form-group"
@@ -66,13 +66,9 @@ const loginElements = (function($) {
 				class: "fas fa-sign-out-alt"
 			});
 		})();
-		
-		const setGUI = (function() {
-			appendElements();
-		})();
 
 		const setEvents = (function() {
-			userInfoField.on("click", "div button", function(e) {
+			btnLogin.on("click", function(e) {
 				let usrData = usrField.val();
 				let pwdData = pwdField.val();
 
@@ -92,7 +88,7 @@ const loginElements = (function($) {
 				});
 			});
 
-			userInfoField.on("click", "a i", function(e) {
+			signOutBtn.on("click", function(e) {
 				e.preventDefault();
 
 				$.ajax({
@@ -106,6 +102,9 @@ const loginElements = (function($) {
 			});
 		})();
 
+		const setGUI = (function() {
+			appendElements();
+		})();
 	})();
 
 	function appendElements() {
@@ -120,14 +119,20 @@ const loginElements = (function($) {
 		if (data.user === "undefined" ) {
 			userInfoField.empty();
 
-		if (data.user) {
-			successFunction();
+			loggedInData.append(usrIcon, usrData, signOutBtn);
+			userInfoField.append(loggedInData);
 		} else {
-			logoutFunction();
+			userInfoField.empty();
+			usrDiv.append(usrField);
+			btnDiv.append(btnLogin);
+			pwdDiv.append(pwdField);
+			loginForm.append(usrDiv, pwdDiv, btnDiv);
+			userInfoField.append(loginForm);
 		}
 	}
 
 	function successFunction() {
+		let userdata = document.cookie.data;
 		userInfoField.empty();
 
 		loggedInData.append(usrIcon, usrData, signOutBtn);
@@ -146,11 +151,11 @@ const loginElements = (function($) {
 	function failFunction(request, textStatus, errorThrown) {
 		$message.text(
 			"An error occured during your request: " +
-				request.status +
-				" " +
-				textStatus +
-				" " +
-				errorThrown
+        request.status +
+        " " +
+        textStatus +
+        " " +
+        errorThrown
 		);
 		userInfoField.empty();
 		userInfoField.append($message);
