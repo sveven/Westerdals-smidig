@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import config from "../.../../../../../webapp/config.js";
-
+import * as config from "./../../app/env"
 /*
   Generated class for the SearchProvider provider.
 
@@ -11,26 +10,38 @@ import config from "../.../../../../../webapp/config.js";
 
 @Injectable()
 export class SearchProvider {
-  constructor(public http: HttpClient) {
-  }
+  constructor(public http: HttpClient) {}
 
-  performGetRequest() {
-    console.log("In Request");
+  options = {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "User-Agent": config.username,
+      "X-Client-Token": config.token
+    }
+  };
 
+  searchForProduct(searchWord: string) {
     return new Promise((resolve, reject) => {
       this.http
-        .get("https://kolonial.no/api/v1/products/9329/", {
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-            "User-Agent": config.secretusername,
-            "X-Client-Token": config.secrettoken
-          }
-        })
+        .get( `https://kolonial.no/api/v1/search/?q=${searchWord}/`)
         .subscribe(
           response => {
-            console.log(response);
+            resolve(response);
+          },
+          error => {
+            reject(error);
+          }
+        );
+    });
+  }
 
+  searchForRecipeById(recipeId: string) {
+    return new Promise((resolve, reject) => {
+      this.http
+        .get( `https://kolonial.no/api/v1/recipes/${recipeId}/`)
+        .subscribe(
+          response => {
             resolve(response);
           },
           error => {
