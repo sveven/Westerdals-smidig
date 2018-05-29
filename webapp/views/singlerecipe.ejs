@@ -28,7 +28,6 @@
 							</h1>
 							<p>per posjon</p>
 						</div>
-
 						<form action="/recipes/single/<%= data.id %>/<%= data.default_num_portions %>" method="POST">
 							<input class="button add-recipe" type="submit" value="Legg til i planlegger">
 						</form>
@@ -52,6 +51,7 @@
 			<aside class="recipe-shopping-list">
 				<% for (i in data.ingredients) { %>
 					<div id="ingredient-wrapper">
+						<img src="<%= data.ingredients[i].product.images[0].thumbnail.url %>" alt="">
 						<h4 id="ingredient-title">
 							<%= data.ingredients[i].product.name %>
 						</h4>
@@ -62,6 +62,7 @@
 
 			</aside>
 		</main>
+
 
 
 		<%}%>

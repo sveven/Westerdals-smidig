@@ -108,7 +108,10 @@ input {
 }
 
 .recipe-ingredients {
+	margin-top: -3rem;
+	margin-left: 8rem;
     grid-area: ingredients;
+    justify-items: center;
 }
 
 .ingredient-list {
@@ -132,10 +135,11 @@ input {
 .recipe-section {
     display: grid;
     grid-template: "header header header" "ingredients approach groceries" "footer footer footer";
-    grid-template-columns: 400px 0.75fr 400px;
-    grid-template-rows: 50px 1fr 30px;
-	min-height: 100vh;
-	margin: 0 8rem;
+    grid-template-columns: 400px 1fr 400px;
+	grid-template-rows: 50px 1fr 30px;
+	grid-row-gap: 4rem;
+    min-height: 100vh;
+    justify-content: center;
 }
 
 //END Recipe GRID
@@ -157,17 +161,17 @@ li {
     font-weight: bold;
 }
  */
-.body	ol	{
+
+.body ol {
     counter-reset: item;
     margin: 0 0 1.5em;
-	padding: 0;
-	font-size: 1.25rem;
+    padding: 0;
+    font-size: 1.25rem;
     >li {
         counter-increment: item;
         list-style-type: none;
         margin: 0;
         padding: 1.5rem 0 0 2rem;
-
         &::before {
             content: counter(item) '.';
             display: inline-block;
@@ -180,10 +184,12 @@ li {
 }
 
 @media only screen and (max-width: 1300px) {
-    .recipe-ingredients {
-        margin-left: 0;
-    }
-    .recipe-shopping-list {
-        margin-right: 0;
-    }
+     .recipe-section {
+        grid-template-columns: 250px 1fr 250px;
+        justify-content: stretch;
+	} 
+	
+	.recipe-ingredients	{
+		margin-left: 0;
+	}
 }

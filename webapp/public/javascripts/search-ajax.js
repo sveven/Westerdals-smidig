@@ -2,7 +2,6 @@
 	"use strict";
 
 	//HTML elements
-
 	let $btnSearch = $("#search");
 	let $searchOutput = $("#search-output");
 	let $framework;
