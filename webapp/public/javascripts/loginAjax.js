@@ -1,4 +1,4 @@
-const loginElements = (function($) {
+const loginElements = (function ($) {
 	"use strict";
 	//HTML Objects
 	let userInfoField;
@@ -16,8 +16,8 @@ const loginElements = (function($) {
 	let signOutBtn;
 	let $message;
 
-	const init = (function() {
-		const setHTMLObjects = (function() {
+	const init = (function () {
+		const setHTMLObjects = (function () {
 			userInfoField = $("#user-info");
 			$message = $("<div>", {
 				class: "message"
@@ -66,13 +66,13 @@ const loginElements = (function($) {
 				class: "fas fa-sign-out-alt"
 			});
 		})();
-		
-		const setGUI = (function() {
+
+		const setGUI = (function () {
 			appendElements();
 		})();
 
-		const setEvents = (function() {
-			userInfoField.on("click", "div button", function(e) {
+		const setEvents = (function () {
+			userInfoField.on("click", "div button", function (e) {
 				let usrData = usrField.val();
 				let pwdData = pwdField.val();
 
@@ -92,7 +92,7 @@ const loginElements = (function($) {
 				});
 			});
 
-			userInfoField.on("click", "a i", function(e) {
+			userInfoField.on("click", "a i", function (e) {
 				e.preventDefault();
 
 				$.ajax({
@@ -109,16 +109,8 @@ const loginElements = (function($) {
 	})();
 
 	function appendElements() {
-		let x = Cookies.getJSON("data");
-		let data;
-		if	(x !== "undefined") 	{
-			data = JSON.parse(x.substring(2));
-		}
-    
-    console.log(JSON.stringify(data));
-    
-		if (data.user === "undefined" ) {
-			userInfoField.empty();
+		let data = JSON.parse(Cookies.getJSON("data").substring(2));
+		console.log(data);
 
 		if (data.user) {
 			successFunction();
@@ -146,11 +138,11 @@ const loginElements = (function($) {
 	function failFunction(request, textStatus, errorThrown) {
 		$message.text(
 			"An error occured during your request: " +
-				request.status +
-				" " +
-				textStatus +
-				" " +
-				errorThrown
+			request.status +
+			" " +
+			textStatus +
+			" " +
+			errorThrown
 		);
 		userInfoField.empty();
 		userInfoField.append($message);
