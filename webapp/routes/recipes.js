@@ -7,6 +7,7 @@ const connection = require("../components/kolonialapi/requestHandler");
 router.get("/", function(req, res) {
 	let search = "";
 	let list = [];
+	let showEntirePage = false;
 
 	res.render("recipes", {
 		title: "K-Planleggeren",
@@ -18,8 +19,9 @@ router.get("/", function(req, res) {
 
 router.post("/", function(req, res){
 	let search = req.body.formInput;
-	connection.searchForRecipe(search, function(list){
+	let showEntirePage = false;
 
+	connection.searchForRecipe(search, function(list){
 		res.render("recipes", {
 			title: "K-Planleggeren",
 			search: search,
