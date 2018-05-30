@@ -6,8 +6,6 @@
 	let $searchOutput = $("#search-output");
 	let $framework;
 	let $message = $(".message");
-	let searchResult = $(".search-result");
-	let searchBtn = $("#search");
 
 
 
@@ -73,13 +71,6 @@
 		return !$.trim(el.html());
 	}
 	
-	const setEvents = function () {
-		searchBtn.click(function () {
-			searchResult.toggle();
-			searchResult.fadeIn(1200);
-				
 	
-		});
-	}();
 	
 })(jQuery);

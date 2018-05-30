@@ -72,6 +72,7 @@ app.use("/login", login);
 app.use("/logout", logout);
 app.use("/cart", cart);
 app.use("/basis", basis);
+app.use("/searchTabs", searchTabs);
 
 // testsite for testing queries.
 app.use("/querytest", queryTest);
@@ -84,7 +85,6 @@ app.use('/introduction', introduction);
 app.use('/shopping-cart', shoppingCart);
 */
 app.use("/week-planner-current", weekPlannerCurrent);
-app.use("/search-tabs", searchTabs);
 
 reload(app);
 

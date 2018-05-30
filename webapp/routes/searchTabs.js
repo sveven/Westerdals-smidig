@@ -10,3 +10,4 @@ router.get("/", function(req, res) {
     search: search
   });
 });
+module.exports = router;
