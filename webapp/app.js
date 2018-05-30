@@ -84,6 +84,7 @@ app.use('/introduction', introduction);
 app.use('/shopping-cart', shoppingCart);
 */
 app.use("/week-planner-current", weekPlannerCurrent);
+app.use("/planner", searchTabs);
 
 reload(app);
 
