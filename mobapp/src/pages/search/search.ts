@@ -21,6 +21,7 @@ export class SearchPage {
   performSearch(searchWord: string) {
     this.searchProvider
       .searchForProduct(searchWord)
-      .then((res: any) => (this.search = res.products));
+      .then((res: any) => (this.search = res.products))
+      .catch(err => console.log(err));
   }
 }

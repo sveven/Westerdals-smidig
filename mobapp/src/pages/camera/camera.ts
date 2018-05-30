@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 
 
 
@@ -14,8 +13,7 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 export class CameraPage {
 
   
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private barcodescanner: BarcodeScanner, private qrScanner: QRScanner) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private barcodescanner: BarcodeScanner) {
   }
 
   scannQr(){
@@ -28,7 +26,7 @@ export class CameraPage {
          console.log('Error', err);
      });
     }
-    
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad CameraPage');
   }

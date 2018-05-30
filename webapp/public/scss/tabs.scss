@@ -1,0 +1,61 @@
+.tab-content {
+    border: 1px solid #ddd;
+    border-bottom: 0px;
+    position: relative;
+}
+
+.tab-content ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0)
+}
+
+.nav-item {
+    margin: 0 1rem;
+}
+
+.nav-tabs {
+    border-bottom: 0px;
+}
+
+.tab-content .nav-link {
+    background-color: #929292;
+}
+
+.nav-tabs .nav-link {
+    border: 1px solid #929292;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.nav-tabs>li>label {
+    padding-top: 8px;
+    border: 1px solid #f1f1f1;
+    color: #f1f1f1;
+    padding-bottom: 8px;
+    line-height: 20px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    -moz-border-radius-bottomright: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem 3rem;
+}
+
+.nav-tabs>.active>label,
+.nav-tabs>.active>label:hover,
+.nav-tabs>.active>label:focus {
+    color: #555555;
+    cursor: default;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-top-color: transparent;
+}

@@ -4,7 +4,6 @@ import { AuthorizePage } from './authorize';
 
 @NgModule({
   declarations: [
-    AuthorizePage,
   ],
   imports: [
     IonicPageModule.forChild(AuthorizePage),
