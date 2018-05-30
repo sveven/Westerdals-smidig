@@ -22,7 +22,7 @@ const searchOptions	= (function($)	{
 					url: "/search",
 					type: "GET",
 					success: function (result) {
-						console.log(result);
+						body.load(result);
 					}
 				});
 			});
@@ -34,7 +34,7 @@ const searchOptions	= (function($)	{
 					url: "/recipes",
 					type: "GET",
 					success: function (result) {
-						load(result);
+						body.load(result);
 					}
 				});
 			});
