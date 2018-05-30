@@ -20,4 +20,15 @@ page-welcome {
         max-width: 60%;
         margin: 18px 0;
     }
+
+    .welcomeButton{
+        color: white;
+        font-family: "GT Walsheim Regular", sans-serif;
+        background-color: #FFA51E;
+        position: absolute;
+        top: 83%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%); 
+    }
 }
