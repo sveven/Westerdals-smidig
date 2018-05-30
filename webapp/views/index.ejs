@@ -1,22 +1,29 @@
 <% layout("layout") -%>
-    
-    <h1><%= title %></h1>
-    <p>Velkommen til <%= title %></p>
-    <p>Du har søkt etter: <%= search %></p>
 
-    <% if (data){ %>
+  <div id="index-background">
 
-    <table>
-      <% for (i in data.products){ %>
-        <tr>
-          <td><img src="<%= data.products[i].images[0].thumbnail.url %>" alt=""></td>
-          <td><p><%= data.products[i].name %></p></td>
-          <td><p><%= data.products[i].gross_price %></p></td>
-        </tr>
-      <% } %>
+  </div>
+  <h1 id="index-title">Planlegg uken din med «Hektisk»</h1>
+  <div id="grid-wrapper">
+  
+    <div class="index-grid">
+      <div class="index-image"></div>
+      <p class="index-image-text">
+        Steg 1: Planlegg ved å trykke på pluss knappen på den dag/måltid du ønsker å planlegge.</p>
+    </div>
+    <div class="index-grid">
+      <div class="index-image"></div>
+      <p class="index-image-text">
+        Steg 2: Velg om du vil planlegge med oppskrifter eller komponere eget måltid</p>
+    </div>
+    <div class="index-grid">
+      <div class="index-image"></div>
+      <p class="index-image-text">
+        Steg 3: Legg til basisvarer som ikke har noe med måtilder å gjøre. Såpe, tannkrem, vaskemidler..</p>
+    </div>
+  </div>
 
-    </table>
-    <% } else {%>
-      <p>No data.</p>
-    <% } %>
 
+  <a href="/week-planner-current">
+    <input class="btn btn-primary next-btn-index" type="submit" value="Gå videre">
+  </a>
