@@ -26,6 +26,7 @@ const weekPlannerCurrent = require("./routes/week-planner-current");
 const queryTest = require("./routes/querytest");
 const cart = require("./routes/cart");
 const basis = require("./routes/basis");
+const searchTabs = require("./routes/searchTabs");
 
 /*
 const basicProducts = require('./routes/basic-products');

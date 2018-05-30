@@ -13,6 +13,8 @@
 
 	$btnSearch.on("click", function (e) {
 		let $searchField = $("#grocery-search").val();
+		console.log($searchField);
+		
 		$(".search-result").empty();
 
 		//Prevent default behaviour

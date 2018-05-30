@@ -24,7 +24,7 @@ router.get("/", function(req, res) {
 router.post("categories/ajax/:id", function(req, res){
 
 
-	connectiong.getAllProductsFromCategory( categoriesId, function(categoriesItems){
+	connection.getAllProductsFromCategory( categoriesId, function(categoriesItems){
     
 		let categoriesId = req.params.id;
 		let data = categoriesItems;
