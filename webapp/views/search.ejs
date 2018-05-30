@@ -2,13 +2,13 @@
 
 	<div id="container-search" class="container-fluid">
 		<div class="header">
-	<%- include templates/tabs.ejs %>
+
 			<b>
 				<h1 id="h1-test">Enkeltvarer</h1>
 			</b>
 			<form id="grocery-search-form" action="search" method="post">
 
-				<div id="search-input">
+				<div id="grocery-search" class="search-input">
 
 					<input type="text" class="sok" id="grocery-search" name="formsearch" placeholder="Søk i tusenvis av varer!" value="<%= search %>">
 					<label for="search-btn" id="search-icon" class="fas fa-search"></label>

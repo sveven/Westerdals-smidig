@@ -4,14 +4,14 @@ const searchOptions	= (function($)	{
 	//HTML Objects
 	let groceriesBtn;
 	let recipesBtn;
-	let body;
+	let searchChoice;
 
 	//init
 	const init = (function()	{
 		const setHTMLObjects = (function () { 
 			groceriesBtn = $("#groceries-btn-wrapper");
-			recipesBtn = $("#recipes-btn-wrapper");
-			body = $("#body-section");
+			recipesBtn = $("#recipe-btn-wrapper");
+			searchChoice = $("#search-choice-section");
 		})();
 		const setEvents = (function() {
 			groceriesBtn.on("click", "label", function (e) { 
@@ -22,7 +22,7 @@ const searchOptions	= (function($)	{
 					url: "/search",
 					type: "GET",
 					success: function (result) {
-						body.load(result);
+						searchChoice.load(result);
 					}
 				});
 			});
@@ -34,7 +34,7 @@ const searchOptions	= (function($)	{
 					url: "/recipes",
 					type: "GET",
 					success: function (result) {
-						body.load(result);
+						searchChoice.load(result);
 					}
 				});
 			});
