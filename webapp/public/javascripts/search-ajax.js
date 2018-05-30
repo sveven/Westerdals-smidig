@@ -6,7 +6,7 @@
 	let $searchOutput = $("#search-output");
 	let $framework;
 	let $message = $(".message");
-
+    let searchResult = $(".search-result");
 
 
 	$btnSearch.on("click", function (e) {
@@ -71,5 +71,13 @@
 	}
 	
 	
+	const setEvents = function () {
+		$btnSearch.click(function () {
+			searchResult.toggle();
+			searchResult.fadeIn(1200);
+				
+	
+		});
+	}();
 	
 })(jQuery);
