@@ -10,7 +10,7 @@ const searchOptions	= (function($)	{
 	const init = (function()	{
 		const setHTMLObjects = (function () { 
 			groceriesBtn = $("#groceries-btn-wrapper");
-			recipesBtn = $("#recipes-btn-wrapper");
+			recipesBtn = $("#recipe-btn-wrapper");
 			body = $("#body-section");
 		})();
 		const setEvents = (function() {
@@ -22,19 +22,20 @@ const searchOptions	= (function($)	{
 					url: "/search",
 					type: "GET",
 					success: function (result) {
-						body.load(result);
+						body.html(result);
+						
 					}
 				});
 			});
 			recipesBtn.on("click", "label", function (e) { 
-
+				
 				e.preventDefault();
 
 				$.ajax({
 					url: "/recipes",
 					type: "GET",
 					success: function (result) {
-						body.load(result);
+						body.html(result);
 					}
 				});
 			});
