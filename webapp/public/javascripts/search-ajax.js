@@ -6,12 +6,11 @@
 	let $searchOutput = $("#search-output");
 	let $framework;
 	let $message = $(".message");
-
+    let searchResult = $(".search-result");
 
 
 	$btnSearch.on("click", function (e) {
 		let $searchField = $("#grocery-search").val();
-		console.log("search: " +$("#grocery-search").val());
 		
 		$(".search-result").empty();
 
@@ -72,5 +71,13 @@
 	}
 	
 	
+	const setEvents = function () {
+		$btnSearch.click(function () {
+			searchResult.toggle();
+			searchResult.fadeIn(1200);
+				
+	
+		});
+	}();
 	
 })(jQuery);
