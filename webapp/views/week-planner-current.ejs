@@ -1,9 +1,29 @@
 <% layout("layout") -%>
 
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Hjem</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="#">Planleggeren</a></li>
+  </ol>
+</div>
+</nav>
+
+<div class="progressbar-container">
+      <ul class="steps">
+        <li class="active">Steg 1</li>
+        <li>Steg 2</li>
+        <li>Steg 3</li>
+      </ul>
+    </div>
+
 	<body id="week-planner-body">
 		<div id="background-week">
 		</div>
+		<div id="title-wrapper">
 		<h1 id="title-text">Ukesplanlegger</h1>
+		<p id="title-two-text">Trykk på plustegnet ... for å starte planleggingen!</p>
+		</div>
+
 		<div id="wrapper">
 
 			<!--Frokost-->
@@ -60,7 +80,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 
 		<!--Lunsj-->
 
@@ -177,5 +196,6 @@
 		<a href="/basis">
 			<input class="btn btn-primary complete-btn" type="submit" value="Gå videre">
 		</a>
+		</div>
 
 	</body>
