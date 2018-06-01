@@ -39,6 +39,25 @@ module.exports = {
     });
   },
 
+  /**
+   * Gets a week with all connections, so that we can see all products
+   * @param {*} weekId
+   */
+  fetchAllProductsInWeek(weekId) {
+    return models.Week.findOne({
+      where: { id: weekId },
+      include: [
+        {
+          model: models.Day,
+          include: [
+            { model: models.Meal, include: [{ model: models.Product }] },
+            { model: models.Product }
+          ]
+        }
+      ]
+    });
+  },
+
   fetchAllMealsFromADay(dayId) {
     return models.Day.findOne({
       where: {
@@ -96,17 +115,19 @@ module.exports = {
 
   /**
    * Returns in a way where you have to check the portions
-   * @param {*} mealId 
+   * @param {*} mealId
    */
   fetchAllProductsInMealWithQuantity(mealId) {
     return models.Meal.findOne({
       where: {
         id: mealId
       },
-      include: [{
-        model: models.Product
-      }]
-    })
+      include: [
+        {
+          model: models.Product
+        }
+      ]
+    });
   },
 
   /**
@@ -134,9 +155,7 @@ module.exports = {
 
   addMealToDayQuery(recipeId, type, portions, dayId) {
     return createMealQuery(recipeId, type, portions, dayId).then(meal => {
-      //Round up on portionquantity of recipe
       let mealId = meal.dataValues.Id;
-      // addMealToDayDependingOnType(mealId, type, dayId);
       addAllProductsBasedOnRecipe(mealId, recipeId);
     });
   },
@@ -190,7 +209,7 @@ function createMealQuery(recipeId, type, portions, dayId) {
     recipeId: recipeId,
     type: type,
     portions: portions,
-    dayId: dayId
+    DayId: dayId
   });
 }
 
@@ -238,8 +257,12 @@ function addAllProductsInRecipeWithPortions(mealId, recipeId, productsArr) {
   for (let i = 0; i < productsArr.length; i++) {
     if (!productsArr[i].is_basic) {
       createProductQuery(productsArr[i].product.id);
-      
-      addIngredientToMealWithPortions(mealId, recipeId, productsArr[i].product.id);
+
+      addIngredientToMealWithPortions(
+        mealId,
+        recipeId,
+        productsArr[i].product.id
+      );
     }
   }
 }
@@ -265,7 +288,7 @@ function addIngredientToMealWithPortions(mealId, recipeId, productId) {
  * @param {*} portionQuantity
  */
 function createProductInMealQuery(mealId, productId, portionQuantity) {
-  return models.ProductInMeal.create({    
+  return models.ProductInMeal.create({
     MealId: mealId,
     ProductKolonialId: productId,
     portionQuantity: portionQuantity
