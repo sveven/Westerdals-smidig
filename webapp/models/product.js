@@ -15,12 +15,9 @@ module.exports = (sequelize, DataTypes) => {
       through: { model: models.ProductInDay }
     });
 
-    /**
-     * TODO: Might not be needed, as we are not saving products on a user anymore. 
-     */
-    // Product.belongsToMany(models.User, {
-    //   through: { model: models.ProductForUser }
-    // });
+    Product.belongsToMany(models.Week, {
+      through: { model: models.ProductInWeek }
+    });
   };
 
   return Product;
