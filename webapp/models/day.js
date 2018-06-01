@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
         "Saturday",
         "Sunday"
       ]
+    },
+    type: {
+      type: DataTypes.ENUM,
+      values: ["Breakfast", "Lunch", "Dinner"]
     }
   });
 
