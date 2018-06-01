@@ -1,9 +1,8 @@
-const queries = require("./planner-queries");
+const queries = require("./plannerCreateQueries");
 
 module.exports = {
 
     getJsonResultForCart(weekId) {
-        let meals = queries.fetchMealsFromWeek(weekId);
-        queries.fetchAllProductsInMealWithQuantity();
+
     }
 }
