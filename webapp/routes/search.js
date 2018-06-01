@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const connection = require("../components/kolonialapi/requestHandler");
 
+const searchPartial = "../views/partials/searchPartial.ejs";
+
 /* GET search page. */
 router.get("/", function(req, res) {
 	let search = "";
@@ -19,6 +21,25 @@ router.get("/", function(req, res) {
 	});
   
 });
+
+router.get("/partial", function(req, res) {
+	let search = "";
+	let list;
+	let categories;
+
+	connection.getAllProductCategories(function(cat) {
+
+
+    //console.log("ALTSÅ SÅ LANGT VIRKER DET." + __dirname + "../views/partials/searchPartial");
+		res.render(searchPartial, {
+			search: search,
+			data: list,
+			categories: cat
+		});
+	});
+  
+});
+
 
 
 router.post("categories/ajax/:id", function(req, res){

@@ -1,3 +1,22 @@
+#tabs-container	{
+	padding: 0;
+	display:grid;
+	grid-template-areas:	"tabs"
+							"content";
+	grid-template-columns: 1fr;
+	grid-template-rows: 0 1fr;
+	min-height: 100vh;
+}
+
+#tabs-wrapper	{
+	grid-area: tabs;
+	z-index: 9999;
+}
+
+#search-location	{
+	grid-area: content;
+}
+
 .tab-content {
     border: 1px solid #ddd;
     border-bottom: 0px;

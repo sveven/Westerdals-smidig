@@ -1,23 +1,23 @@
 <section id="search-header">
-    <%- include ../templates/tabs.ejs %>
-        <div id="recipe-header-text">
-            <h1>Oppskriftssøk med et klikk</h1>
-            <p>Oppskriftssøk:
-                <%= search%>
-            </p>
-        </div>
+		<div id="recipe-header-text">
+			<h1>Oppskriftssøk med et klikk</h1>
+			<p>Oppskriftssøk:
+				<%= search%>
+			</p>
+		</div>
 
-        <form id="search-form" class="" action="/recipes" method="POST">
-            <div id="recipe-search" class="search-input">
-                <input type="text" id="recipe-search-text" class="sok" name="formInput" placeholder="Søk i hundrevis av oppskrifter!">
-                <label id="search-icon" for="search-btn" class="fas fa-search"></label>
-            </div>
-            <input id="recipes" class="search-btn" type="submit" value="Søk">
-        </form>
+		<form id="search-form" class="" action="/recipes" method="POST">
+			<div id="recipe-search" class="search-input">
+				<input type="text" id="recipe-search-text" class="sok" name="formInput" placeholder="Søk i hundrevis av oppskrifter!">
+				<label id="search-icon" for="search-btn" class="fas fa-search"></label>
+			</div>
+			<input id="recipes" class="search-btn" type="submit" value="Søk">
+		</form>
 
-        <section class="recipe-tags-section">
-            <!-- Section for recipe tags -->
-        </section>
+		<section class="recipe-tags-section">
+			<!-- Section for recipe tags -->
+		</section>
 
 </section>
 <% include /recipesSearchResult %>
+
