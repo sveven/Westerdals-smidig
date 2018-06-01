@@ -29,7 +29,7 @@
 				formsearch: $searchField,
 				ajax: "true"
 			})
-		}).done(successFunction)
+    }).done(successFunction)  
 			.fail(failFunction);
 	});
 

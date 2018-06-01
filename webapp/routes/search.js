@@ -81,19 +81,37 @@ router.get("/categories/:id", function(req, res){
 
 });
 
+/*
 router.post("/", function(req, res) {
 	let search = req.body.formsearch;
 	let ajax = req.body.ajax;
 	connection.searchForProduct(search, function(list) {
-		if (ajax === "true") {
+
+    res.send(list);
+
+		
+	});
+});
+*/
+router.post("/", function(req, res) {
+  let acceptsJSON = req.accepts('json');
+	let search = req.body.formsearch;
+  let ajax = req.body.ajax;
+
+	connection.searchForProduct(search, function(list) {
+		if (acceptsJSON) {
 			res.send(list);
 		} else {
 			res.render("search", {
 				title: "K-Planleggeren",
 				search: search,
-				data: list
+        data: list,
+        categories: {}
 			});
 		}
 	});
 });
+
+
+
 module.exports = router;
