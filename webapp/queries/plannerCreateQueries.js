@@ -7,7 +7,7 @@ module.exports = {
       where: { kolonialId: productId }
     });
   },
-  
+
   /**
    * Creates a user in the database.
    */
@@ -27,12 +27,17 @@ module.exports = {
    * Creates a day in a given week
    * @param {*} weekId
    */
-  createDayQuery(weekId, day) {
-    return models.Day.create({ id: null, day: day, WeekId: weekId });
+  createDayQuery(weekId, day, type) {
+    return models.Day.create({
+      id: null,
+      day: day,
+      type: type,
+      WeekId: weekId
+    });
   },
 
-  addMealToDayQuery(recipeId, type, portions, dayId) {
-    return createMealQuery(recipeId, type, portions, dayId).then(meal => {
+  addMealToDayQuery(recipeId, portions, dayId) {
+    return createMealQuery(recipeId, portions, dayId).then(meal => {
       let mealId = meal.dataValues.Id;
       addAllProductsBasedOnRecipe(mealId, recipeId);
     });
@@ -77,15 +82,13 @@ module.exports = {
 /**
  * Creates a meal with given parameters
  * @param {*} recipeId
- * @param {*} type
  * @param {*} portions
  * @param {*} dayId
  */
-function createMealQuery(recipeId, type, portions, dayId) {
+function createMealQuery(recipeId, portions, dayId) {
   return models.Meal.create({
     Id: null,
     recipeId: recipeId,
-    type: type,
     portions: portions,
     DayId: dayId
   });

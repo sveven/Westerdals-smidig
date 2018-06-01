@@ -30,7 +30,7 @@ router.post("/:recipe_id/:portions", function(req, res) {
   let type = req.cookies.type;
   let portions = req.params.portions;
   let dayId = req.cookies.dayId;
-  createQueries.addMealToDayQuery(recipeId, type, portions, dayId);
+  createQueries.addMealToDayQuery(recipeId,  portions, dayId);
 
   res.redirect("/week-planner-current");
 });

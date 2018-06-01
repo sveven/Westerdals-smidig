@@ -3,7 +3,7 @@ const helper = require("./queriesHelperMethods");
 
 module.exports = {
   /**
-   * Wes all products
+   *  all products
    */
   fetchAllProductsQuery() {
     return models.Product.findAll({});
@@ -64,21 +64,19 @@ module.exports = {
   fetchMealFromDayOfType(dayId, mealType) {
     return models.Day.findOne({
       where: {
-        id: dayId
+        id: dayId,
+        type: mealType
       },
       include: [
         {
-          model: models.Meal,
-          where: {
-            type: mealType
-          }
+          model: models.Meal
         }
       ]
     });
   },
 
   /**
-   * Gets all produts on a day
+   * Gets all products on a day
    * @param {*} dayId
    */
   fetchProductsOnDay(dayId) {
@@ -124,5 +122,3 @@ module.exports = {
     });
   }
 };
-
-
