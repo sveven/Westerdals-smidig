@@ -62,9 +62,14 @@ body {
   }
   .steps li.active {
     color: #f19500;
+    font-weight: bold;
+    font-size: 1.1rem;
   }
   .steps li.active:before {
     border-color: #f19500;
+    border: 2px solid #f19500;
+    height: 32px;
+    width: 32px;
   } 
   .steps li.active + li:after {
     background-color: #f19500;
