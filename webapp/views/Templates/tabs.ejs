@@ -1,12 +1,16 @@
 
 <div class="tab-content">
 	<ul class="nav nav-tabs" id="myTab" role="tablist">
+	<form action="/search" action="GET">
 		<li class="nav-item" id="groceries-btn-wrapper">
-			<label class="nav-link a1" id="groceries-tab" data-toggle="tab" role="tab" aria-controls="groceries" aria-selected="true">Varer</label>
+			<label class="nav-link a1" id="groceries-tab" for="grocery-btn" data-toggle="tab" role="tab" aria-controls="groceries" aria-selected="true"><input type="submit" name="grocery-btn" value=""> Varer</label>
 		</li>
+	</form>
+	<form action="/recipes" method="GET">		
 		<li class="nav-item" id="recipe-btn-wrapper">
-			<label class="nav-link a1" id="recipes-tab" data-toggle="tab" role="tab" aria-controls="Recipes" aria-selected="false">Oppskrifter</label>
+			<label class="nav-link a1" id="recipes-tab" for="recipe-btn" data-toggle="tab" role="tab" aria-controls="Recipes" aria-selected="false"><input type="submit" name="recipe-btn" value=""> Oppskrifter</label>
 		</li>
+	</form>
 
 	</ul>
 </div>
