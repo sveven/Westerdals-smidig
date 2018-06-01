@@ -21,6 +21,23 @@ router.get("/", function(req, res) {
 
 });
 
+router.get("/partial", function(req, res) {
+	let search = "";
+	let list = [];
+	let showEntirePage = req.body.ajax;
+	console.log(showEntirePage);
+	
+	if(showEntirePage !== 'undefined' || showEntirePage !== true){
+		showEntirePage = false;
+	}
+	
+	res.render("../views/partials/recipesPartial.ejs", {
+		title: "K-Planleggeren",
+		search: search,
+		data: list});
+
+});
+
 
 router.post("/", function(req, res){
 	let search = req.body.formInput;
