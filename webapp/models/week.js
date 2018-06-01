@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
     Week.hasMany(models.Day, {
       onDelete: "CASCADE"
     });
+
+    Week.belongsToMany(models.Product, {
+      through: { model: models.ProductInWeek }
+    });
   };
   return Week;
 

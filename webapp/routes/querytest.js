@@ -3,8 +3,9 @@ const router = express.Router();
 const connection = require("../components/kolonialapi/requestHandler");
 const query = require("../queries/planner-queries");
 
-router.get("/", function(req, res) {
-  query.fetchProductsForUser(1).then(res => {
+router.get("/", function (req, res) {
+  query.fetchAllProductsInMealWithQuantity(4);
+  query.fetchAllProductsInMealWithQuantity(4).then(res => {
     console.log(JSON.stringify(res));
   });
   res.render("querytest", {
@@ -13,7 +14,7 @@ router.get("/", function(req, res) {
   });
 });
 
-router.post("/", function(req, res) {
+router.post("/", function (req, res) {
   let userInput = req.body.formfield;
 
   query.fetchAllProductsQuery().then(products => {

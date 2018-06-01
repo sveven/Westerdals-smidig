@@ -2,13 +2,29 @@ const connection = require("../components/kolonialapi/requestHandler");
 
 module.exports = {
   getAllIngredientsFromRecipe(recipeId) {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
+      connection.getRecipeById(recipeId, (recipe, err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(recipe.ingredients);
+        }
+      });
+    });
+  },
+
+  /**
+   * Returns the default number of portions in a recipe
+   * @param {*} recipeId 
+   */
+  getDefaultPortionOfRecipe(recipeId) {
+    return new Promise(function (resolve, reject) {
       connection.getRecipeById(recipeId, (recipe, err) => {
         if (err) {
           reject(err);
         } else {
 
-          resolve(recipe.ingredients);
+          resolve(recipe.default_num_portions);
         }
       });
     });
@@ -16,7 +32,7 @@ module.exports = {
 
   getAllIngredientIdsFromRecipe(recipeId) {
     let ingredientIds = [];
-    
+
     return new Promise(resolve => {
       this.getAllIngredientsFromRecipe(recipeId)
         .then(res => {
@@ -36,6 +52,7 @@ module.exports = {
     return new Promise(resolve => {
       this.getAllIngredientsFromRecipe(recipeId)
         .then(res => {
+
           for (let i in res) {
             if (res[i].product.id === ingredientId) {
               ingredientQuantity = res[i].portion_quantity;
