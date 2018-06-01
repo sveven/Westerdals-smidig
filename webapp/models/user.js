@@ -16,9 +16,12 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Week, {
       onDelete: "CASCADE"
     });
-    User.belongsToMany(models.Product, {
-      through: { model: models.ProductForUser }
-    });
+    /**
+     * TODO: Might not be needed, as we are not connecting a user directly with products.
+     */
+    // User.belongsToMany(models.Product, {
+    //   through: { model: models.ProductForUser }
+    // });
   };
   return User;
 };

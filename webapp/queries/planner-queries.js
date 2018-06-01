@@ -81,7 +81,7 @@ module.exports = {
    * @param {*} userId
    */
   createWeekQuery(userId) {
-    return models.Week.create({ weekId: null, UserId: userId });
+    return models.Week.create({ weekId: null, UserId: userId, name: null });
   },
 
   /**
