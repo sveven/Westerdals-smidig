@@ -1,4 +1,4 @@
-const query = require("../queries/planner-queries");
+const query = require("../queries/plannerCreateQueries");
 
 module.exports = function(req, res, next) {
 
