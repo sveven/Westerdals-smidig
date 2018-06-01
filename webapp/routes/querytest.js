@@ -6,7 +6,7 @@ const destroy = require("../queries/plannerDeleteQueries");
 
 router.get("/", function(req, res) {
 
-  destroy.deleteMeal(9).then(res => {
+  create.createDayQuery(1, "Monday", "Lunch").then(res => {
     console.log(JSON.stringify(res));
   });
 

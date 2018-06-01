@@ -14,7 +14,5 @@ router.get("/", function(req, res) {
 		search: search,
 		data: list
 	});
-
-
 });
 module.exports = router;

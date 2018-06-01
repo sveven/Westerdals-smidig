@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const connection = require("../components/kolonialapi/requestHandler");
 
-router.get("/", function(req, res) {
+router.get("/", function (req, res) {
   let search = "";
   let data = "";
   let cat = "";
@@ -10,8 +10,10 @@ router.get("/", function(req, res) {
   res.render("searchTabs", {
     title: "K-Planleggeren",
     search: search,
-	data: data,
-	categories: cat
+    data: data,
+    categories: cat
   });
 });
+
+
 module.exports = router;

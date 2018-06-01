@@ -28,14 +28,21 @@ module.exports = {
    * @param {*} weekId
    */
   createDayQuery(weekId, day, type) {
-    return models.Day.create({
-      id: null,
-      day: day,
-      type: type,
-      WeekId: weekId
+    return models.Day.findOrCreate({
+      where: {
+        day: day,
+        type: type,
+        WeekId: weekId
+      }
     });
   },
 
+  /**
+   * Creates and adds a meal
+   * @param {*} recipeId 
+   * @param {*} portions 
+   * @param {*} dayId 
+   */
   addMealToDayQuery(recipeId, portions, dayId) {
     return createMealQuery(recipeId, portions, dayId).then(meal => {
       let mealId = meal.dataValues.Id;

@@ -25,7 +25,6 @@ router.get("/partial", function(req, res) {
 	let search = "";
 	let list = [];
 	let showEntirePage = req.body.ajax;
-	console.log(showEntirePage);
 	
 	if(showEntirePage !== 'undefined' || showEntirePage !== true){
 		showEntirePage = false;
