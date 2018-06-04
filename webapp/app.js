@@ -27,6 +27,7 @@ const queryTest = require("./routes/querytest");
 const cart = require("./routes/cart");
 const basis = require("./routes/basis");
 const searchTabs = require("./routes/searchTabs");
+const database = require("./routes/database");
 
 /*
 const basicProducts = require('./routes/basic-products');
@@ -73,6 +74,7 @@ app.use("/logout", logout);
 app.use("/cart", cart);
 app.use("/basis", basis);
 app.use("/searchTabs", searchTabs);
+app.use("/database", database);
 
 // testsite for testing queries.
 app.use("/querytest", queryTest);
