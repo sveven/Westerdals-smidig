@@ -96,12 +96,13 @@ router.post("/", function(req, res) {
 router.post("/", function(req, res) {
   let acceptsJSON = req.accepts('json');
 	let search = req.body.formsearch;
-  let ajax = req.body.ajax;
 
-	connection.searchForProduct(search, function(list) {
+	connection.searchForProduct(search, function(data) {
 		if (acceptsJSON) {
-			res.send(list);
+			res.send(data);
 		} else {
+
+      // Categories trengs ikke lastes inn her. 
 			res.render("search", {
 				title: "K-Planleggeren",
 				search: search,
