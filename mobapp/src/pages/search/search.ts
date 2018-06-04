@@ -8,9 +8,9 @@ import { SearchProvider } from "../../providers/search/search";
   templateUrl: "search.html"
 })
 export class SearchPage {
-  items: any[] = [];
+  search: any[] = [];
   loading: boolean;
-  search: string = "TEST";
+  
 
   constructor(
     public navCtrl: NavController,
@@ -18,10 +18,15 @@ export class SearchPage {
     private searchProvider: SearchProvider
   ) {}
 
+  
+
   performSearch(searchWord: string) {
+    this.loading = true;
     this.searchProvider
       .searchForProduct(searchWord)
-      .then((res: any) => (this.search = res.products))
+      .then((res: any) => {
+         this.loading = false;
+        (this.search = res.products)})
       .catch(err => console.log(err));
   }
 }
