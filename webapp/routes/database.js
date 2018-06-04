@@ -13,37 +13,28 @@ const fetch = require("../queries/plannerFetchQueries");
 
 router.put("/product-in-meal/:productid/:dayid", function(req, res) {
 
-  let result = create.createProductInDay(req.params.productid, 1, req.params.dayid);
+  create.createProductInDay(req.params.productid, 1, req.params.dayid).then(result => {
 
-
-    // TODO: check result properly, right now it just checks wether result exists or not. 
-
-  if(result){
-  
     res.status(204).send();
 
-  } else {
-    
-    res.status(500).send({error: "Could not insert product."});
-  
-  }
+  }).catch(err => {
 
+    res.status(500).send({error: err});
+
+  });
 
 });
 
 router.delete("/product-in-meal/:productid/:dayid", function(req, res){
 
-  let result = destroy.deleteProductInDay(req.params.dayid, req.params.productid);
-
-  if(result){
-  
+  destroy.deleteProductInDay(req.params.dayid, req.params.productid).then(result => {
+    
     res.status(204).send();
 
-  } else {
-    
-    res.status(500).send({error: "Could not delete product."});
-  
-  }
+  }).catch(err => {
+
+    res.status(500).send({error: err});
+  })
 
 });
 
@@ -51,36 +42,33 @@ router.delete("/product-in-meal/:productid/:dayid", function(req, res){
 // Add / remove product to week. 
 
 router.put("/product-in-week/:productid", function(req, res) {
-
-  req.params.productid;
   
-  let result = create.createProductInWeek(req.params.productid, req.cookies.weekId);
+  create.createProductInWeek(req.params.productid, req.cookies.weekId).then(result => {
 
-  if(result){
-  
     res.status(204).send();
 
-  } else {
-    
-    res.status(500).send({error: "Could not insert product."});
-  
-  }
+  }).catch(err => {
+
+    res.status(500).send({error: err});
+
+  });
+
 
 });
 
 router.delete("/product-in-week/:productid", function(req, res){
 
-  let result = destroy.deleteProductInWeek(req.cookies.weekId, req.params.productid);
+  destroy.deleteProductInWeek(req.cookies.weekId, req.params.productid).then(result => {
 
-  if(result){
-  
     res.status(204).send();
 
-  } else {
-    
-    res.status(500).send({error: "Could not delete product."});
-  
-  }
+  }).catch(err => {
+
+    res.status(500).send({error: err});
+
+  });
+
+
 
 });
 
@@ -88,39 +76,44 @@ router.delete("/product-in-week/:productid", function(req, res){
 
 router.put("/recipe-in-meal/:recipeid/:dayid", function(req, res){
 
-  let result = create.addMealToDayQuery(req.params.recipeid);
+  create.addMealToDayQuery(req.params.recipeid).then(result => {
 
-  if(result){
     res.status(204).send();
-  } else {
-    res.status(500).send({error: "Could not add recipe."});
-  }
-  
+
+  }).catch(err => {
+
+    res.status(500).send({error: err});
+
+  });
 
 });
 
 router.delete("/recipe-in-meal/:recipeid/:dayid", function(req, res){
 
-  let result = destroy.deleteMeal(req.params.recipeid);
+  destroy.deleteMeal(req.params.recipeid).then(result => {
 
-  if(result){
     res.status(204).send();
-  } else {
-    res.status(500).send({error: "Could not delete recie."})
-  }
+
+  }).catch(err => {
+
+    res.status(500).send({error: err});
+
+  });
 
 });
 
 
 router.get("/week", function(req, res){
 
-  let result = fetch.fetchDaysInWeek(req.cookies.weekId);
+  fetch.fetchDaysInWeek(req.cookies.weekId).then(result => {
 
-  if(result){
     res.send(result);
-  } else {
-    res.status(500).send({error: "Could not fetch week."});
-  }
+
+  }).catch(err => {
+
+    res.status(500).send({error: err});
+
+  });
 
 });
 
@@ -129,13 +122,15 @@ router.get("/week", function(req, res){
 
 rotuer.get("/all", function(req,res){
 
-  let result = fetch.fetchAllProductsQuery(req.cookies.weekid);
+  fetch.fetchAllProductsQuery(req.cookies.weekid).then(result => {
 
-  if(result){
     res.send(result);
-  } else {
-    res.status(500).send({error: "Could not get all products."}) 
-  }
+
+  }).catch(err => {
+
+    res.status(500).send({error: err});
+
+  });
 })
 
 
