@@ -17,13 +17,66 @@ body {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-#category-heading {
+.steps-container {
+    width: 100%;
+  }
+  
+  .steps {
+    counter-reset: step;
     position: relative;
-    left: 13%;
-}
+    left: 3%;
+  }
+  .steps li {
+    list-style: none;
+    display: inline-block;
+    width: 30.33%;
+    position: relative;
+    text-align: center;
+    font-size: 1rem;
+  }
+  .steps li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 30px;
+    height: 30px;
+    line-height : 30px;
+    border: 1.2px solid #ddd;
+    border-radius: 100%;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    background-color: #fff;
+  }
+  .steps li:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    top: 15px;
+    left: -50%;
+    z-index : -1;
+  }
+  .steps li:first-child:after {
+    content: none;
+  }
+  .steps li.active {
+    color: #f19500;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  .steps li.active:before {
+    border-color: #f19500;
+    border: 2px solid #f19500;
+    height: 32px;
+    width: 32px;
+  } 
+  .steps li.active + li:after {
+    background-color: #f19500;
+  }
 
 #wrapper {
-    display: grid;
+    position: relative;
 }
 
 #background-week {
@@ -31,27 +84,30 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 38%;
     background-image: url('../images/weekplanner.jpg');
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: cover;
     background-size: 100%;
-    opacity: 0.7;
-    filter:alpha(opacity=70);
+    opacity: 0.4;
+    filter: blur(10px);
     z-index: -1000;
+    
 }
 
-#title-text {
-    display: inline-block;
-    background-color: rgba($color: white, $alpha: 0.9);
-    margin-bottom: 0;
-    margin-top: 4vh;
+#title-wrapper {
+    border-radius: 3px;
     padding: 5px;
+    position: relative;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    position: relative;
+    display: inline-block;
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: -8%;
 }
+
 
 
 .breakfast-wrapper {

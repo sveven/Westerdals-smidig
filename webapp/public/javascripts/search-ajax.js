@@ -6,9 +6,12 @@
 	let $searchOutput = $("#search-output");
 	let $framework;
 	let $message = $(".message");
+    let searchResult = $(".search-result");
+
 
 	$btnSearch.on("click", function (e) {
 		let $searchField = $("#grocery-search").val();
+		
 		$(".search-result").empty();
 
 		//Prevent default behaviour
@@ -23,10 +26,9 @@
 			dataType: "json",
 			cache: "false",
 			data: JSON.stringify({
-				formsearch: $searchField,
-				ajax: "true"
+				formsearch: $searchField
 			})
-		}).done(successFunction)
+    }).done(successFunction)  
 			.fail(failFunction);
 	});
 
@@ -38,7 +40,8 @@
 		//if data exists
 		if (isEmpty($(".search-result"))) {
 			for (var i = 0; i < dataLength; i++) {
-				$(".content .search-result").append("<li class=\"search-item\" id=\"search-item" + i + "\" <a href=\"itemurl\"></li>");
+				
+				$(".content .search-result").append("<li class=\"search-item\" data-toggle='modal' data-target='#exampleModalCenter' id=\"search-item" + i + "\" <a href=\"itemurl\"></li>");
 				let buyButton = $("<input class='buy-button' type='submit' value='Kjøp' onclick='"+ data.products[i].id + "'>");
 				let imgUrl = data.products[i].images[0].thumbnail.url;
 				var $image = $("<img class='img-thumb img-thumbnail img-fluid' src='" + imgUrl + "'" + "/>");
@@ -65,4 +68,15 @@
 	function isEmpty(el) {
 		return !$.trim(el.html());
 	}
+	
+	
+	const setEvents = function () {
+		$btnSearch.click(function () {
+			searchResult.toggle();
+			searchResult.fadeIn(1200);
+				
+	
+		});
+	}();
+	
 })(jQuery);

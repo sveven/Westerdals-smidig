@@ -26,6 +26,7 @@ const weekPlannerCurrent = require("./routes/week-planner-current");
 const queryTest = require("./routes/querytest");
 const cart = require("./routes/cart");
 const basis = require("./routes/basis");
+const searchTabs = require("./routes/searchTabs");
 
 /*
 const basicProducts = require('./routes/basic-products');
@@ -71,6 +72,7 @@ app.use("/login", login);
 app.use("/logout", logout);
 app.use("/cart", cart);
 app.use("/basis", basis);
+app.use("/searchTabs", searchTabs);
 
 // testsite for testing queries.
 app.use("/querytest", queryTest);

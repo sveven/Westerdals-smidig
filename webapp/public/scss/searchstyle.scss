@@ -89,7 +89,7 @@ input:checked ~ .sub {
 }
 
 .child-cat:hover {
-	text-decoration: underline;
+	font-weight: bold;
 }
 
 .checkbox {
@@ -156,12 +156,12 @@ input:checked ~ .sub {
 	position: absolute;
 	text-align: center;
 	min-height: 110px;
-	position: relative;
 	vertical-align: middle;
 }
 
 .img-thumb {
 	max-height: 110px;
+	position: relative;
 	position: relative;
 	grid-area: image;
 	border: none;

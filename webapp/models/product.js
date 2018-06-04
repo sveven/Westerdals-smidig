@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
       through: { model: models.ProductInDay }
     });
 
-    Product.belongsToMany(models.User, {
-      through: { model: models.ProductForUser }
+    Product.belongsToMany(models.Week, {
+      through: { model: models.ProductInWeek }
     });
   };
 

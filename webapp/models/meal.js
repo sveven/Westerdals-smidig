@@ -9,10 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     recipeId: {
       type: DataTypes.INTEGER
     },
-    type: {
-      type: DataTypes.ENUM,
-      values: ["Breakfast", "Lunch", "Dinner"]
-    },
     portions: DataTypes.FLOAT(15, 3)
   });
 

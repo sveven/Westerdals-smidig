@@ -1,71 +1,10 @@
 const models = require("../models");
-const helper = require("./queries-helper-methods");
+const helper = require("./queriesHelperMethods");
 
 module.exports = {
   createProductQuery(productId) {
     return models.Product.findOrCreate({
       where: { kolonialId: productId }
-    });
-  },
-
-  /**
-   * Fetches all products
-   */
-  fetchAllProductsQuery() {
-    return models.Product.findAll({});
-  },
-
-  /**
-   * Fetches all days in a week
-   * @param {*} weekId
-   */
-  fetchDaysInWeek(weekId) {
-    return models.Week.findAll({
-      where: {
-        id: weekId
-      },
-      include: models.Day
-    });
-  },
-
-  /**
-   * Fetches all meals from a given week
-   * @param {*} weekId
-   */
-  fetchMealsFromWeek(weekId) {
-    return models.Week.findOne({
-      where: { id: weekId },
-      include: [{ model: models.Day, include: [{ model: models.Meal }] }]
-    });
-  },
-
-  /**
-   * Gets all produts on a day
-   * @param {*} dayId
-   */
-  fetchProductsOnDay(dayId) {
-    return models.Day.findOne({
-      where: {
-        id: dayId
-      },
-      include: [
-        {
-          model: models.Product
-        }
-      ]
-    });
-  },
-
-  /**
-   * Gets a user with all their extra products
-   * @param {*} userId 
-   */
-  fetchProductsForUser(userId) {
-    return models.User.findOne({
-      where: {
-        id: userId
-      },
-      include: [{ model: models.Product }]
     });
   },
 
@@ -81,22 +20,32 @@ module.exports = {
    * @param {*} userId
    */
   createWeekQuery(userId) {
-    return models.Week.create({ weekId: null, UserId: userId });
+    return models.Week.create({ weekId: null, UserId: userId, name: null });
   },
 
   /**
    * Creates a day in a given week
    * @param {*} weekId
    */
-  createDayQuery(weekId, day) {
-    return models.Day.create({ id: null, day: day, WeekId: weekId });
+  createDayQuery(weekId, day, type) {
+    return models.Day.findOrCreate({
+      where: {
+        day: day,
+        type: type,
+        WeekId: weekId
+      }
+    });
   },
 
-  addMealToDayQuery(recipeId, type, portions, dayId) {
-    return createMealQuery(recipeId, type, portions, dayId).then(meal => {
-      //Round up on portionquantity of recipe
+  /**
+   * Creates and adds a meal
+   * @param {*} recipeId 
+   * @param {*} portions 
+   * @param {*} dayId 
+   */
+  addMealToDayQuery(recipeId, portions, dayId) {
+    return createMealQuery(recipeId, portions, dayId).then(meal => {
       let mealId = meal.dataValues.Id;
-      // addMealToDayDependingOnType(mealId, type, dayId);
       addAllProductsBasedOnRecipe(mealId, recipeId);
     });
   },
@@ -104,15 +53,15 @@ module.exports = {
   /**
    * Creates a product for a user, and adds to the join table
    * @param {*} productId
-   * @param {*} userId
+   * @param {*} weekId
    * @param {*} quantity
    */
-  createProductForUser(productId, userId, quantity) {
+  createProductInWeek(productId, weekId, quantity) {
     return models.Product.findOrCreate({
       where: { kolonialId: productId }
     }).then(product => {
-      fetchUserQuery(userId).then(user => {
-        return product[0].addUsers(user, {
+      fetchWeekQuery(weekId).then(week => {
+        return product[0].addWeeks(week, {
           through: { productQuantity: quantity }
         });
       });
@@ -140,17 +89,15 @@ module.exports = {
 /**
  * Creates a meal with given parameters
  * @param {*} recipeId
- * @param {*} type
  * @param {*} portions
  * @param {*} dayId
  */
-function createMealQuery(recipeId, type, portions, dayId) {
+function createMealQuery(recipeId, portions, dayId) {
   return models.Meal.create({
     Id: null,
     recipeId: recipeId,
-    type: type,
     portions: portions,
-    dayId: dayId
+    DayId: dayId
   });
 }
 
@@ -184,6 +131,10 @@ function fetchUserQuery(userId) {
   return models.User.findOne({ where: (Id = userId) });
 }
 
+function fetchWeekQuery(weekId) {
+  return models.Week.findOne({ where: (id = weekId) });
+}
+
 /**
  * Adds all products in a recipe based on prod
  * @param {*} mealId
@@ -192,10 +143,14 @@ function fetchUserQuery(userId) {
  */
 function addAllProductsInRecipeWithPortions(mealId, recipeId, productsArr) {
   for (let i = 0; i < productsArr.length; i++) {
-    console.log("Is Basic: " + productsArr[i].is_basic);
     if (!productsArr[i].is_basic) {
-      createProductQuery(productsArr[i].id);
-      addIngredientToMealWithPortions(mealId, recipeId, productsArr[i].id);
+      createProductQuery(productsArr[i].product.id);
+
+      addIngredientToMealWithPortions(
+        mealId,
+        recipeId,
+        productsArr[i].product.id
+      );
     }
   }
 }

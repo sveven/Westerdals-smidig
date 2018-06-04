@@ -1,12 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const connection = require("../components/kolonialapi/requestHandler");
-const query = require("../queries/planner-queries");
+const create = require("../queries/plannerCreateQueries");
+const destroy = require("../queries/plannerDeleteQueries");
 
 router.get("/", function(req, res) {
-  query.fetchProductsForUser(1).then(res => {
+
+  create.createDayQuery(1, "Monday", "Lunch").then(res => {
     console.log(JSON.stringify(res));
   });
+
   res.render("querytest", {
     title: "K-Planleggeren",
     returnData: ""
@@ -15,10 +18,6 @@ router.get("/", function(req, res) {
 
 router.post("/", function(req, res) {
   let userInput = req.body.formfield;
-
-  query.fetchAllProductsQuery().then(products => {
-    renderQueryTestPage(products, res);
-  });
 });
 
 function renderQueryTestPage(products, res) {

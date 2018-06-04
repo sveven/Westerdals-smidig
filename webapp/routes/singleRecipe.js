@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const connection = require("../components/kolonialapi/requestHandler");
-const queries = require("../queries/planner-queries");
+const createQueries = require("../queries/plannerCreateQueries");
 
 /* GET search page. */
 router.get("/", function(req, res) {
@@ -30,7 +30,7 @@ router.post("/:recipe_id/:portions", function(req, res) {
   let type = req.cookies.type;
   let portions = req.params.portions;
   let dayId = req.cookies.dayId;
-  queries.addMealToDayQuery(recipeId, type, portions, dayId);
+  createQueries.addMealToDayQuery(recipeId,  portions, dayId);
 
   res.redirect("/week-planner-current");
 });
