@@ -1,0 +1,23 @@
+.cart-container	{
+	display: grid;
+	grid-template-areas:	". header ."
+							". cart ."
+							"footer footer footer";
+	grid-template-columns: 10rem 1fr 10rem;
+	grid-template-rows:	200px
+						1fr
+						100px;
+	min-height: 100vh;
+}
+
+.cart-header	{
+	grid-area: header;
+}
+
+.shopping-cart	{
+	grid-area: cart;
+}
+
+.cart-footer	{
+	grid-area: footer;
+}

@@ -13,6 +13,9 @@ TODO:
 			<img class="recipe-img" src="<%= data.results[i].feature_image_url %>" alt="Bilde av matrett">
 			<h5 class="recipe-title"><%= data.results[i].title %></h5>
 			<p class="recipe-difficulty"><%= data.results[i].difficulty_string %></p>
+			<form>
+				<input class="buy-button" type="submit" name="" value="Legg til">
+			</form>
 			<p class="recipe-duration"><%= data.results[i].cooking_duration_string %></p>
 		</div> 
     <% } %>
