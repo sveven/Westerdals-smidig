@@ -50,11 +50,16 @@
 			</aside>
 			<aside class="recipe-shopping-list">
 				<% for (i in data.ingredients) { %>
-					<div id="ingredient-wrapper">
-						<img src="<%= data.ingredients[i].product.images[0].thumbnail.url %>" alt="">
-						<h4 id="ingredient-title">
-							<%= data.ingredients[i].product.name %>
-						</h4>
+					<div class="ingredient-wrapper">
+						<img class="cart-image" src="<%= data.ingredients[i].product.images[0].thumbnail.url %>" alt="">
+						<div class="cart-text-wrapper">
+							<p class="ingredient-title">
+								<%= data.ingredients[i].product.name %>
+							</p>
+							<p>
+							<%= data.ingredients[i].product.name_extra %>
+							</p>
+						</div>
 					</div>
 					<% } %>
 			</aside>
