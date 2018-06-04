@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { SearchProvider } from "../../providers/search/search";
+import { Observable } from "rxjs/Observable";
 
 @IonicPage()
 @Component({
@@ -8,9 +9,9 @@ import { SearchProvider } from "../../providers/search/search";
   templateUrl: "search.html"
 })
 export class SearchPage {
-  search: any[] = [];
+  search: string = "Zalo";
+  products: any = [];
   loading: boolean;
-  
 
   constructor(
     public navCtrl: NavController,
@@ -18,15 +19,14 @@ export class SearchPage {
     private searchProvider: SearchProvider
   ) {}
 
-  
-
   performSearch(searchWord: string) {
-    this.loading = true;
     this.searchProvider
       .searchForProduct(searchWord)
       .then((res: any) => {
-         this.loading = false;
-        (this.search = res.products)})
-      .catch(err => console.log(err));
+        this.products.push(res.products);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 }
