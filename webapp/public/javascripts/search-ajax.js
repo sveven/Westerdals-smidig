@@ -26,8 +26,7 @@
 			dataType: "json",
 			cache: "false",
 			data: JSON.stringify({
-				formsearch: $searchField,
-				ajax: "true"
+				formsearch: $searchField
 			})
     }).done(successFunction)  
 			.fail(failFunction);
