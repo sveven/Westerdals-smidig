@@ -139,17 +139,13 @@ module.exports = {
 
     request.kolonialAPIRequest(options, function(list) {
       if (list.children.length > 0) {
-        async function getAllChildrenProducts() {
-          for (let i = 0; i < list.children.length; i++) {
-            options.path = productCategoriesId + list.children[i] + "/";
+        for (let i = 0; i < list.children.length; i++) {
+          options.path = productCategoriesId + list.children[i] + "/";
 
-            request.kolonialAPIRequest(options, function(child) {
-              products.push(child.products);
-            });
-          }
-       
+          request.kolonialAPIRequest(options, function(child) {
+            products.push(child.products);
+          });
         }
-        
       }
     });
   },

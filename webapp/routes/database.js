@@ -127,7 +127,7 @@ router.get("/week", function(req, res){
 
 //Hent ut all informasjon til handlekurven
 
-rotuer.get("/all", function(req,res){
+router.get("/all", function(req,res){
 
   let result = fetch.fetchAllProductsQuery(req.cookies.weekid);
 
