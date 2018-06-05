@@ -40,10 +40,14 @@ router.post("/", function(req, res) {
 	let acceptsJSON = req.accepts("json");
 
 	if (acceptsJSON) {
-		console.log("Recipesearch: " + req.body.recipeQuery);
+    
 		connection.searchForRecipe(req.body.recipeQuery, function(data) {
-			res.send(data);
-		});
+      res.send(data);
+      
+      console.log(JSON.stringify(data));
+
+    });
+    
 	} else {
 		let search = req.body.formInput;
 
