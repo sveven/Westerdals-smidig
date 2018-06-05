@@ -22,7 +22,7 @@ module.exports = {
     res.on('end', () => {
       let data = Buffer.concat(chunks);
       let list = JSON.parse(data);
-
+      
       apicallback(list);
 
       });

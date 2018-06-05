@@ -15,8 +15,8 @@ const searchOptions = (function($) {
 		})();
 		const setEvents = (function() {
 			groceriesBtn.on("click", "label", function(e) {
+				
 				e.preventDefault();
-
 				$.ajax({
 					url: "/search/partial",
 					type: "GET",
