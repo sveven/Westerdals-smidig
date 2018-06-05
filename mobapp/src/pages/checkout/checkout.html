@@ -1,13 +1,101 @@
-
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Oversikt</ion-title>
+  <ion-navbar color="oransje">
+    <ion-title text-center>Oversikt</ion-title>
+    <ion-buttons end>
+    <button class="tom">Tøm</button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
+<ion-grid wrap responsive-lg>
+      
+      <ion-row>
+          <ion-col col-2>
+            <p>bilde</p>
+          </ion-col>
+          <ion-col col-5>
+            <p>beskrivelse</p>
+          </ion-col>
+          <ion-col col-2>
+            <p>pris</p>
+          </ion-col>
+          <ion-col col-1>
+            <button ion-button icon-only clear (click)="add()">
+              <ion-icon name="add-circle"></ion-icon>
+          </button>
+          </ion-col>
+        </ion-row>
 
+        <ion-row>
+            <ion-col col-2>
+              <p>bilde</p>
+            </ion-col>
+            <ion-col col-5>
+              <p>beskrivelse</p>
+            </ion-col>
+            <ion-col col-2>
+              <p>pris</p>
+            </ion-col>
+            <ion-col col-1>
+              <button ion-button icon-only clear (click)="add()">
+                <ion-icon name="add-circle"></ion-icon>
+            </button>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+              <ion-col col-2>
+                <p>bilde</p>
+              </ion-col>
+              <ion-col col-5>
+                <p>beskrivelse</p>
+              </ion-col>
+              <ion-col col-2>
+                <p>pris</p>
+              </ion-col>
+              <ion-col col-1>
+                <button ion-button icon-only clear (click)="add()">
+                  <ion-icon name="add-circle"></ion-icon>
+              </button>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col col-2>
+                  <p>bilde</p>
+                </ion-col>
+                <ion-col col-5>
+                  <p>beskrivelse</p>
+                </ion-col>
+                <ion-col col-2>
+                  <p>pris</p>
+                </ion-col>
+                <ion-col col-1>
+                  <button ion-button icon-only clear (click)="add()">
+                    <ion-icon name="add-circle"></ion-icon>
+                </button>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                  <ion-col col-2>
+                    <p>bilde</p>
+                  </ion-col>
+                  <ion-col col-5>
+                    <p>beskrivelse</p>
+                  </ion-col>
+                  <ion-col col-2>
+                    <p>pris</p>
+                  </ion-col>
+                  <ion-col col-1>
+                    <button ion-button icon-only clear (click)="add()">
+                      <ion-icon name="add-circle"></ion-icon>
+                  </button>
+                  </ion-col>
+                </ion-row>
+
+                    
+    </ion-grid>
 </ion-content>

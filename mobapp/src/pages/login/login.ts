@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, AlertController, NavController, NavParams } from 'ionic-angular';
 
 
 
@@ -10,11 +10,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  showLogin:boolean = true;
+  username:string = 'ddd';
+  password:string = 'dd';
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
   }
 
   loginPush(){
-    this.navCtrl.push('WelcomePage');
+    if(this.username === '' || this.password === '' ){
+      let alert = this.alertCtrl.create({
+        title:'Feil',
+        subTitle:'Skriv inn riktig brukernavn og passord',
+        buttons:['Ok']
+      });
+      alert.present();
+    } else {
+      this.navCtrl.push('WelcomePage');
+    }
   }
 
 

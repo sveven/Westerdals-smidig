@@ -1,4 +1,5 @@
 <ion-content class="contento" padding>
+
   <ion-searchbar (ionInput)="text" (animated)="true" placeholder="Søk i tusenvis av varer" [(ngModel)]="search"></ion-searchbar>
   <button ion-button icon-only (click)="performSearch(search)">
     <ion-icon name="search"></ion-icon>
