@@ -1,16 +1,9 @@
-@media (max-width: 600px) {
-    
-        
-} 
+@media (max-width: 600px) {}
 
-@media (min-width: 768px) and (max-width: 1024px) {
-   
-    
-}
- 
+@media (min-width: 768px) and (max-width: 1024px) {}
+
 html {
     overflow-y: scroll;
-
 }
 
 body {
@@ -19,35 +12,38 @@ body {
 
 .steps-container {
     width: 100%;
-  }
-  
-  .steps {
+}
+
+.steps {
     counter-reset: step;
     position: relative;
     left: 3%;
-  }
-  .steps li {
+}
+
+.steps li {
     list-style: none;
     display: inline-block;
     width: 30.33%;
     position: relative;
     text-align: center;
     font-size: 1rem;
-  }
-  .steps li:before {
+}
+
+.steps li:before {
     content: counter(step);
     counter-increment: step;
     width: 30px;
     height: 30px;
-    line-height : 30px;
+    line-height: 30px;
     border: 1.2px solid #ddd;
     border-radius: 100%;
     display: block;
     text-align: center;
     margin: 0 auto 10px auto;
     background-color: #fff;
-  }
-  .steps li:after {
+}
+
+.steps li:after {
     content: "";
     position: absolute;
     width: 100%;
@@ -55,25 +51,29 @@ body {
     background-color: #ddd;
     top: 15px;
     left: -50%;
-    z-index : -1;
-  }
-  .steps li:first-child:after {
+    z-index: -1;
+}
+
+.steps li:first-child:after {
     content: none;
-  }
-  .steps li.active {
+}
+
+.steps li.active {
     color: #f19500;
     font-weight: bold;
     font-size: 1.1rem;
-  }
-  .steps li.active:before {
+}
+
+.steps li.active:before {
     border-color: #f19500;
     border: 2px solid #f19500;
     height: 32px;
     width: 32px;
-  } 
-  .steps li.active + li:after {
+}
+
+.steps li.active+li:after {
     background-color: #f19500;
-  }
+}
 
 #wrapper {
     position: relative;
@@ -92,7 +92,6 @@ body {
     opacity: 0.4;
     filter: blur(10px);
     z-index: -1000;
-    
 }
 
 #title-wrapper {
@@ -108,8 +107,6 @@ body {
     margin-bottom: -8%;
 }
 
-
-
 .breakfast-wrapper {
     position: relative;
     display: grid;
@@ -118,7 +115,6 @@ body {
     justify-content: center;
     text-align: center;
     grid-template-columns: repeat(7, minmax(12vmax, 0));
-    
 }
 
 .lunch-wrapper {
@@ -129,7 +125,6 @@ body {
     justify-content: center;
     text-align: center;
     grid-template-columns: repeat(7, minmax(12vmax, 0));
-    
 }
 
 .dinner-wrapper {
@@ -140,15 +135,13 @@ body {
     justify-content: center;
     text-align: center;
     grid-template-columns: repeat(7, minmax(12vmax, 0));
-    
-    
 }
-
 
 .breakfast {
     border: 1.5px solid rgb(255, 165, 20);
     border-radius: 3px;
     background-color: white;
+    overflow: hidden;
 }
 
 .lunch {
@@ -168,13 +161,12 @@ body {
     background-color: #f19500;
     border: none;
     margin: auto;
-    height: 4.5vh;
+    height: 4.5%;
     margin-top: 1vh;
     border-radius: 3px;
     position: relative;
     width: 86vw;
 }
-
 
 .button-add {
     text-align: center;
@@ -190,8 +182,7 @@ body {
     font-size: 1.5vmax;
     color: white;
     border-style: none;
-}   
-
+}
 
 .complete-btn {
     position: relative;
@@ -206,6 +197,4 @@ body {
     margin-bottom: 2vh;
     margin-left: -85px;
     left: 50%;
-    
 }
-
