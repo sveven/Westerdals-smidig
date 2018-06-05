@@ -131,8 +131,6 @@ const searchOptions = (function ($) {
 
 	function recipeSearch()	{
 		let recipeQuery = $("#recipe-search-text").val();
-		console.log(recipeQuery);
-		
 		$.ajax({
 			url: "/recipes",
 			type: "POST",
@@ -140,14 +138,59 @@ const searchOptions = (function ($) {
 			dataType: "json",
 			cache: "false",
 			data: JSON.stringify({
-        recipeQuery: recipeQuery}),
-
-			success: function(result)	{
-
-
-				recipeWrapper.html(result);
-			}	 
+				recipeQuery: recipeQuery}),
+			success: appendRecipeResult
 		});
+	}
+
+	function appendRecipeResult(returnData)	{
+		
+		let data = returnData;
+		console.log(data);
+		let dataLength = data.length;
+
+		let recipeResultSection = $("<section>", {
+			id: "recipe-result-section"
+		});
+
+		if(data.results)	{
+
+			for (i in data.results)	{
+
+				let recipeWrapper	=	$("<div>",	{
+					class: "recipe-wrapper"
+				});
+				let recipeImg = $("<img>",	{
+					class: "recipe-img",
+					src: data.result[i].feature_image_url
+				});
+				let recipeTitle = $("<h5>", {
+					class: "recipe-title",
+					text: data.results[i].title
+				});
+				let recipeDifficulty = $("<p>",	{
+					class: "recipe-difficulty",
+					text: data.results[i].difficulty_string
+				});
+				let addForm	=$("<form>");
+				let buyButton = $("<input", {
+					class: "buy-button",
+					type: "submit",
+					value: "Legg til"
+				});
+				let recipeDuration = $("<p>",	{
+					class: "recipe-duration",
+					text: data.results[i].cooking_duration_string
+				});
+
+				addForm.append(buyButton);
+				recipeWrapper.append(recipeImg, recipeTitle, recipeDifficulty, addForm, recipeDuration);
+				recipeResultSection.append(recipeWrapper);
+
+			}
+
+		}
+
 	}
 
 })(jQuery);
