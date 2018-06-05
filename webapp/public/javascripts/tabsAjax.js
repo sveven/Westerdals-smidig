@@ -137,8 +137,9 @@ const searchOptions = (function ($) {
 			contentType: "application/json",
 			dataType: "json",
 			cache: "false",
-			search: recipeQuery,
-			success: appendRecipeResult	 
+			data: JSON.stringify({
+				recipeQuery: recipeQuery}),
+			success: appendRecipeResult
 		});
 	}
 
