@@ -1,27 +1,31 @@
 <% layout("layout") -%>
 
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/">Hjem</a></li>
-    <li class="breadcrumb-item active" aria-current="page"><a href="#">Planleggeren</a></li>
-  </ol>
-</div>
-</nav>
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="/">Hjem</a>
+			</li>
+			<li class="breadcrumb-item active" aria-current="page">
+				<a href="#">Planleggeren</a>
+			</li>
+		</ol>
+		</div>
+	</nav>
 
-<div class="progressbar-container">
-      <ul class="steps">
-        <li class="active">Steg 1: Planlegge måltider for uken.</li>
-        <li>Steg 2: Handle andre husholdingsartikler</li>
-        <li>Steg 3: Oversikt og betaling</li>
-      </ul>
-    </div>
+	<div class="progressbar-container">
+		<ul class="steps">
+			<li class="active">Steg 1: Planlegge måltider for uken.</li>
+			<li>Steg 2: Handle andre husholdingsartikler</li>
+			<li>Steg 3: Oversikt og betaling</li>
+		</ul>
+	</div>
 
 	<body id="week-planner-body">
 		<div id="background-week">
 		</div>
 		<div id="title-wrapper">
-		<h1 id="title-text">Ukesplanlegger</h1>
-		<p id="title-two-text">Trykk på plustegnet ... for å starte planleggingen!</p>
+			<h1 id="title-text">Ukesplanlegger</h1>
+			<p id="title-two-text">Trykk på plustegnet ... for å starte planleggingen!</p>
 		</div>
 
 		<div id="wrapper">
@@ -38,6 +42,7 @@
 				<div class="breakfast-wrapper">
 					<div class="breakfast" id="breakfast-monday">
 						<p>Mandag</p>
+						
 						<a href="/searchtabs">
 							<input type="submit" class="button-add" value="+">
 						</a>
@@ -81,61 +86,61 @@
 				</div>
 			</div>
 
-		<!--Lunsj-->
+			<!--Lunsj-->
 
-		<p>
-			<button class="btn btn-primary btn-collapse" type="button" data-toggle="collapse" data-target="#lunch-row" aria-expanded="true"
-			    aria-controls="lunch-row">
-				Lunsj
-			</button>
-		</p>
-		<div class="collapse" id="lunch-row">
-			<div class="lunch-wrapper">
-				<div class="lunch" id="lunch-monday">
-					<p>Mandag</p>
-					<a href="/searchtabs">
-						<input type="submit" class="button-add" value="+">
-					</a>
-				</div>
-				<div class="lunch" id="lunch-tuesday">
-					<p>Tirsdag</p>
-					<a href="/searchtabs">
-						<input type="submit" class="button-add" value="+">
-					</a>
-				</div>
-				<div class="lunch" id="lunch-wednesday">
-					<p>Onsdag</p>
-					<a href="/searchtabs">
-						<input type="submit" class="button-add" value="+">
-					</a>
-				</div>
-				<div class="lunch" id="lunch-thursday">
-					<p>Torsdag</p>
+			<p>
+				<button class="btn btn-primary btn-collapse" type="button" data-toggle="collapse" data-target="#lunch-row" aria-expanded="true"
+				    aria-controls="lunch-row">
+					Lunsj
+				</button>
+			</p>
+			<div class="collapse" id="lunch-row">
+				<div class="lunch-wrapper">
+					<div class="lunch" id="lunch-monday">
+						<p>Mandag</p>
+						<a href="/searchtabs">
+							<input type="submit" class="button-add" value="+">
+						</a>
+					</div>
+					<div class="lunch" id="lunch-tuesday">
+						<p>Tirsdag</p>
+						<a href="/searchtabs">
+							<input type="submit" class="button-add" value="+">
+						</a>
+					</div>
+					<div class="lunch" id="lunch-wednesday">
+						<p>Onsdag</p>
+						<a href="/searchtabs">
+							<input type="submit" class="button-add" value="+">
+						</a>
+					</div>
+					<div class="lunch" id="lunch-thursday">
+						<p>Torsdag</p>
 
-					<a href="/searchtabs">
-						<input type="submit" class="button-add" value="+">
-					</a>
-				</div>
-				<div class="lunch" id="lunch-friday">
-					<p>Fredag</p>
-					<a href="/searchtabs">
-						<input type="submit" class="button-add" value="+">
-					</a>
-				</div>
-				<div class="lunch" id="lunch-saturday">
-					<p>Lørdag</p>
-					<a href="/searchtabs">
-						<input type="submit" class="button-add" value="+">
-					</a>
-				</div>
-				<div class="lunch" id="lunch-sunday">
-					<p>Søndag</p>
-					<a href="/searchtabs">
-						<input type="submit" class="button-add" value="+">
-					</a>
+						<a href="/searchtabs">
+							<input type="submit" class="button-add" value="+">
+						</a>
+					</div>
+					<div class="lunch" id="lunch-friday">
+						<p>Fredag</p>
+						<a href="/searchtabs">
+							<input type="submit" class="button-add" value="+">
+						</a>
+					</div>
+					<div class="lunch" id="lunch-saturday">
+						<p>Lørdag</p>
+						<a href="/searchtabs">
+							<input type="submit" class="button-add" value="+">
+						</a>
+					</div>
+					<div class="lunch" id="lunch-sunday">
+						<p>Søndag</p>
+						<a href="/searchtabs">
+							<input type="submit" class="button-add" value="+">
+						</a>
+					</div>
 				</div>
 			</div>
-		</div>
 		</div>
 
 		<!--Dinner-->
