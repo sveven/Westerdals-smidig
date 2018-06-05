@@ -1,13 +1,11 @@
 <ion-content class="contento" padding>
-  <ion-searchbar (ionInput)="text" (animated)="true" placeholder="Søk i tusenvis av varer"  [(ngModel)]="search"></ion-searchbar>
-    
-  
+  <ion-searchbar  (ionInput)="text" (animated)="true" placeholder="Søk i tusenvis av varer"  [(ngModel)]="search"></ion-searchbar>
     <ion-grid wrap responsive-lg>
       <ion-row>
           <ion-item *ngFor="let item of search">
               <ion-col col-2>
                 <ion-thumbnail>
-                  <img [src]="item.products.thumbnail">
+                  <img [src]="item.products.images.thumbnail">
                 </ion-thumbnail>
                 </ion-col>
                 <ion-col col-5>
