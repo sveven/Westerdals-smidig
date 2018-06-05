@@ -1,19 +1,18 @@
 <ion-content class="contento" padding>
+
   <ion-searchbar (ionInput)="text" (animated)="true" placeholder="Søk i tusenvis av varer" [(ngModel)]="search"></ion-searchbar>
-  <button ion-button icon-only (click)="performSearch(search)">
-    <ion-icon name="search"></ion-icon>
+  <button class="sok" block ion-button icon-only (click)="performSearch(search)">
+    <ion-icon color="light" name="search"></ion-icon>
   </button>
 
 
   <ion-grid wrap responsive-lg>
     <ion-row *ngFor="let item of products[0]">
       <ion-item >
-        <ion-col col-2>
-          <ion-thumbnail>
-            <img [src]="item.thumbnail">
-          </ion-thumbnail>
+        <ion-col col-1>
+            <img class="productImg"[src]="item.thumbnail.url"/>
         </ion-col>
-        <ion-col col-5>
+        <ion-col col-6>
           <p>{{item.full_name}}</p>
         </ion-col>
         <ion-col col-2>
