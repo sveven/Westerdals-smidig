@@ -57,12 +57,16 @@ const searchOptions = (function($) {
 				}
 			);
 
-			$("#search-location").on("keyup", "#search-header #search-form #recipe-search-text", function(e)	{
-				e.preventDefault();
-				if (event.keyCode === 13)	{
-					recipeSearch();
+			$("#search-location").on(
+				"keyup",
+				"#search-header #search-form #recipe-search-text",
+				function(e) {
+					e.preventDefault();
+					if (event.keyCode === 13) {
+						recipeSearch();
+					}
 				}
-			} );
+			);
 
 			$("#search-location").on("click", "div div div #search-icon", function(
 				e
@@ -95,10 +99,16 @@ const searchOptions = (function($) {
 		if (isEmpty($(".search-result"))) {
 			for (var i = 0; i < dataLength; i++) {
 				$(".content .search-result").append(
-					"<li class=\"search-item\" data-toggle='modal' data-target='#exampleModalCenter' id=\"search-item" +
+					"<li class=\"search-item\"  id=\"search-item" +
 						i +
 						"\" <a href=\"itemurl\"></li>"
 				);
+
+				let buyForm = $("<form>", {
+					class: "buy-form",
+					method: "PUT",
+					action: "/database/product-in-week"
+				});
 				let buyButton = $(
 					"<input class='buy-button' type='submit' value='Kjøp' onclick='" +
 						data.products[i].id +
@@ -106,33 +116,42 @@ const searchOptions = (function($) {
 				);
 				let imgUrl = data.products[i].images[0].thumbnail.url;
 				var $image = $(
-					"<img class='img-thumb img-thumbnail img-fluid' src='" +
+					"<img class='img-thumb img-thumbnail img-fluid' data-toggle='modal' data-target='#exampleModalCenter' src='" +
 						imgUrl +
 						"'" +
 						"/>"
 				);
-				let itemName = $("<p id='item-name'></p>").text(data.products[i].name);
-				let itemNameExtra = $("<p id='item-name-extra'></p>").text(
-					data.products[i].name_extra
-				);
-				let itemPrice = $("<p id='item-price'> </p>").text(
-					"kr " + data.products[i].gross_price
-				);
-				let itemGrossPrice = $("<p id='item-gross-price'> </p>").text(
+				let itemName = $(
+					"<p id='item-name' data-toggle='modal' data-target='#exampleModalCenter'></p>"
+				).text(data.products[i].name);
+				let itemNameExtra = $(
+					"<p id='item-name-extra' data-toggle='modal' data-target='#exampleModalCenter'></p>"
+				).text(data.products[i].name_extra);
+				let itemPrice = $(
+					"<p id='item-price' data-toggle='modal' data-target='#exampleModalCenter'> </p>"
+				).text("kr " + data.products[i].gross_price);
+				let itemGrossPrice = $(
+					"<p id='item-gross-price' data-toggle='modal' data-target='#exampleModalCenter'> </p>"
+				).text(
 					"kr " +
 						data.products[i].gross_unit_price +
 						" per " +
 						data.products[i].unit_price_quantity_abbreviation
 				);
-				let imgContainer = $("<div class\"img-container\"></div>");
-				imgContainer.append($image, buyButton);
-				$("#search-item" + i).prepend(
+				let imgContainer = $(
+					"<div class\"img-container\" data-toggle='modal' data-target='#exampleModalCenter'></div>"
+				);
+				buyForm.append(buyButton);
+
+				$("#search-item" + i).append(
+					imgContainer,
+					buyForm,
 					itemName,
 					itemNameExtra,
 					itemPrice,
-					itemGrossPrice,
-					imgContainer
+					itemGrossPrice
 				);
+				imgContainer.append($image);
 			}
 		} else {
 			return false;
