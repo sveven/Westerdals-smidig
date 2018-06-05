@@ -102,7 +102,7 @@ router.post("/", function(req, res) {
 			res.render("search", {
 				title: "K-Planleggeren",
 				search: search,
-        data: list,
+        data: data,
         categories: {}
       });
     }
