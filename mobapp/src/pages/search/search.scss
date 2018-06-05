@@ -2,7 +2,6 @@ page-search {
 
     $grid-columns:         10;
     
-   
     ion-icon {
         position: relative;
         left: 10px;
@@ -13,5 +12,13 @@ page-search {
 
     .contento{
         background-color: #F0F0EC;
+    }
+
+    .productImg{
+        max-width: 120%;
+    }
+
+    .sok{
+        background-color: orange;
     }
 }
