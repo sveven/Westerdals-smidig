@@ -6,7 +6,7 @@
 	let $searchOutput = $("#search-output");
 	let $framework;
 	let $message = $(".message");
-    let searchResult = $(".search-result");
+	let searchResult = $(".search-result");
 
 
 	$btnSearch.on("click", function (e) {
@@ -28,7 +28,7 @@
 			data: JSON.stringify({
 				formsearch: $searchField
 			})
-    }).done(successFunction)  
+		}).done(successFunction)  
 			.fail(failFunction);
 	});
 
