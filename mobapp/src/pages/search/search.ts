@@ -9,9 +9,9 @@ import { Observable } from "rxjs/Observable";
   templateUrl: "search.html"
 })
 export class SearchPage {
-  search: string = "Zalo";
+  search: string = "Ost";
   products: any = [];
-  loading: boolean;
+  
 
   constructor(
     public navCtrl: NavController,
