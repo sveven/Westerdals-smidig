@@ -39,7 +39,22 @@ router.get("/partial", function(req, res) {
 
 
 router.post("/", function(req, res){
-	let search = req.body.formInput;
+  let acceptsJSON = req.accepts('json');
+
+  if(acceptsJSON){
+
+    connection.searchForRecipe(req.params.recipeQuery, function(result){
+
+      res.send(result);
+
+    });
+
+
+  } else {
+ 
+ 
+  let search = req.body.formInput;
+  
 
 	connection.searchForRecipe(search, function(list){
 		res.render("recipes", {
@@ -47,7 +62,9 @@ router.post("/", function(req, res){
 			search: search,
 			data: list});
 
-	});
+  });
+  
+}
 });
 
 
