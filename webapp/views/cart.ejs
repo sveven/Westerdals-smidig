@@ -8,7 +8,7 @@
 		</div>
 	</header>
 	<main class="shopping-cart">
-		<ul>
+		<ul class="cart-list">
 			<li class="cart-item-wrapper">
 				<p class="item-quantity">1</p>
 				<div class="cart-image-wrapper">
@@ -22,8 +22,33 @@
 					<p>100,-</p>
 					<p>15%</p>
 				</div>
+				<form class="cart-delete-form">
+					<input type="hidden" name="" value="">
+					<label class="delete-cart-item-icon far fa-trash-alt" for="delete-item">
+						<input class="delete-input-hidden" type="submit" name="delete-item" value="">
+					</label>
+				</form>
 			</li>
-			
+			<li class="cart-item-wrapper">
+				<p class="item-quantity">1</p>
+				<div class="cart-image-wrapper">
+					<img class="cart-image" src="/images/kjottdeig.jpg" alt="">
+				</div>
+				<div class="cart-item-text">	
+					<p>Kjøttdeig</p>
+					<p>500g, Gilde</p>
+				</div>
+				<div class="item-cost-wrapper">
+					<p>100,-</p>
+					<p>15%</p>
+				</div>
+				<form class="cart-delete-form">
+					<input type="hidden" name="" value="">
+					<label class="delete-cart-item-icon far fa-trash-alt" for="delete-item">
+						<input class="delete-input-hidden" type="submit" name="delete-item" value="">
+					</label>
+				</form>
+			</li>
 		</ul>
 	</main>
 	<footer class="cart-footer">
