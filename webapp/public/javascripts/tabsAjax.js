@@ -28,13 +28,7 @@ const searchOptions = (function($) {
 		const setEvents = (function() {
 			groceriesBtn.on("click", "label", function(e) {
 				e.preventDefault();
-				$.ajax({
-					url: "/search/partial",
-					type: "GET",
-					success: function(result) {
-						searchChoice.html(result);
-					}
-				});
+				getGrocerySearch();
 			});
 
 			recipesBtn.on("click", "label", function(e) {
@@ -90,6 +84,10 @@ const searchOptions = (function($) {
 				searchResult.fadeIn(1200);
 			});
 		})();
+
+		const setAppGUI = (function()	{
+			getGrocerySearch();
+		})();
 	})();
 
 	function successFunction(returnData) {
@@ -107,12 +105,14 @@ const searchOptions = (function($) {
 				let buyForm = $("<form>", {
 					class: "buy-form",
 					method: "PUT",
-					action: "/database/product-in-week"
+					action: "database/product-in-week"
+				});
+				let buyId = $("<input>", {
+					type: "hidden",
+					value: data.products[i].id
 				});
 				let buyButton = $(
-					"<input class='buy-button' type='submit' value='Kjøp' onclick='" +
-						data.products[i].id +
-						"'>"
+					"<input class='buy-button' type='submit' value='Legg til'>"
 				);
 				let imgUrl = data.products[i].images[0].thumbnail.url;
 				var $image = $(
@@ -141,7 +141,7 @@ const searchOptions = (function($) {
 				let imgContainer = $(
 					"<div class\"img-container\" data-toggle='modal' data-target='#exampleModalCenter'></div>"
 				);
-				buyForm.append(buyButton);
+				buyForm.append(buyId, buyButton);
 
 				$("#search-item" + i).append(
 					imgContainer,
@@ -172,6 +172,17 @@ const searchOptions = (function($) {
 	//Checks to see if an element is empty
 	function isEmpty(el) {
 		return !$.trim(el.html());
+	}
+
+	function getGrocerySearch()	{
+		$.ajax({
+			url: "/search/partial",
+			type: "GET",
+			success: function (result) {
+				searchChoice.html(result);
+				$("#groceries-tab").addClass("active");
+			}
+		});
 	}
 
 	function grocerySearch() {
