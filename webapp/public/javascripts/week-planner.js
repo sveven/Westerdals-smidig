@@ -1,6 +1,7 @@
 (function ($) {
 	//variables
 	let getClickedID;
+	let week;
 
 	$(".dinner-wrapper, .lunch-wrapper, .breakfast-wrapper").on("click", "div", function () {
 		getClickedID = this.id;
@@ -18,9 +19,20 @@
 	// "Price":23}}]}
 	// }
 
+	
+	const init = function() {
+		appendMealToPlanner();	
+		
+		
+	}();
+
+
 	function appendMealToPlanner() {
-		let checkData = inputData;
+		let checkData = week;
+		console.log(Object.values(checkData));
+		
 		if (getClickedID == Object.keys(checkData)) {
+
 			for (i in Meals[i]) {
 				let mealUL = $("<ul class='meal-ul'>");
 				let mealTitle = $("<p class='meal-title'>" + Meals[i].Title + "</p>");
