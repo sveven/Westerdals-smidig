@@ -12,3 +12,28 @@
 				<p>No data.</p>
 			<% } %>
 -->*/
+{
+Meals: [
+	{
+		Title: "navn", 
+		RecipeId: 2456, 
+		Products: [
+			{
+				Name: "navn"
+				Price: 25, 
+				Moms: "15%",
+				Amount: 4
+			}
+		]
+	}
+	
+]
+Products: [
+			{
+				Name: "navn"
+				Price: 25, 
+				Moms: "15%",
+				Amount: 4
+			}
+		]
+	}

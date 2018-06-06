@@ -41,6 +41,9 @@ module.exports = {
             { model: models.Meal, include: [{ model: models.Product }] },
             { model: models.Product }
           ]
+        }, 
+        {
+          model: models.Product
         }
       ]
     });
