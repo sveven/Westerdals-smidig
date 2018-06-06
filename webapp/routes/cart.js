@@ -7,7 +7,10 @@ const helper = require("../queries/queriesHelperMethods");
 /* GET cart page. */
 router.get("/", function(req, res) {
   let list;
-  
+  getAllInformationAsJson(req).then(res => {
+    console.log(res);
+    
+  });
   res.render("cart", {
     title: "K-Planleggeren",
     data: list
@@ -17,34 +20,9 @@ router.get("/", function(req, res) {
 router.post("/", function(req, res) {});
 
 function getAllInformationAsJson(req) {
-  // return getDaysInCurrentWeek(req).then(days => {
-  //   return Promise.all(getInformationForAllDays(days));
-  // });
   return getAllInformationOnCurrentWeek(req).then(res => {
-    return formatJsonObject(res);
+    return formatJsonObjectForCartPage(res);
   });
-}
-
-function getDaysInCurrentWeek(req) {
-  return fetch
-    .fetchAllProductsInWeek(req.cookies.ukeId)
-    .then(result => {
-      return result.Days;
-    })
-    .catch(err => {
-      console.log(err);
-    });
-}
-
-function getProductsInCurrentWeek(req) {
-  return fetch
-    .fetchAllProductsInWeek(req.cookies.ukeId)
-    .then(result => {
-      return result.Products;
-    })
-    .catch(err => {
-      console.log(err);
-    });
 }
 
 function getAllInformationOnCurrentWeek(req) {
@@ -64,8 +42,6 @@ function getAllInformationOnCurrentWeek(req) {
 
 function getInformationForAllDays(days) {
   return days.map(day => {
-    // let identifier = day.type + "-" + day.day;
-
     return Promise.all(
       [].concat.apply(
         getAllProductInformationForDay(day),
@@ -98,39 +74,43 @@ function getAllRecipeInformationForDay(day) {
 }
 
 /**
- * TODO: Changed
  * @param {*} day
  */
 function getAllProductInformationForDay(day) {
   return day.Products.map(product => {
-    return getFormattedInformationOnProduct(product.kolonialId);
+    
+    return getFormattedInformationOnProduct(product.kolonialId, product.ProductInDay.productQuantity);
   });
 }
 
 function getAllProductInformationForMeal(meal) {
   return meal.Products.map(product => {
-    return getFormattedInformationOnProduct(product.kolonialId);
+    //TODO: Current rounds up to closest upwards integer, due to limitations in database.
+    let quantity = Math.ceil(meal.portions * product.ProductInMeal.portionQuantity);
+    
+    return getFormattedInformationOnProduct(product.kolonialId, quantity);
   });
 }
 
 function getAllProductInformationForWeek(products) {
   return products.map(product => {
-    return getFormattedInformationOnProduct(product.kolonialId);
+    return getFormattedInformationOnProduct(product.kolonialId, product.ProductInWeek.productQuantity);
   });
 }
 
-function getFormattedInformationOnProduct(kolonialId) {
+function getFormattedInformationOnProduct(kolonialId, quantity) {
   return helper.getInformationOfProduct(kolonialId).then(res => {
     return {
       Name: res.full_name,
       Image: res.images[0].thumbnail.url,
-      Price: res.gross_price,
+      Price: parseInt(res.gross_price),
+      Quantity: quantity,
       ProductId: res.id
     };
   });
 }
 
-function formatJsonObject(currentJsonObject) {
+function formatJsonObjectForCartPage(currentJsonObject) {
   let result = {};
   let meals = [];
   let products = [];
@@ -151,7 +131,23 @@ function formatJsonObject(currentJsonObject) {
     Meals: meals,
     Products: products
   };
+  result["TotalPrice"] = calculateTotalPriceForCart(result);
 
   return result;
 }
+
+function calculateTotalPriceForCart(currentJsonObject) {
+  let totalPrice = 0;
+
+  for(meal of currentJsonObject.Meals){
+    for(product of meal.Products) {
+      totalPrice += (product.Price * product.Quantity);
+    }
+  }
+  for(product of currentJsonObject.Products) {
+    totalPrice += (product.Price * product.Quantity);
+  }
+  return totalPrice;
+}
+
 module.exports = router;
