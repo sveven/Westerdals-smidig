@@ -5,7 +5,7 @@ const create = require("../queries/plannerCreateQueries");
 const destroy = require("../queries/plannerDeleteQueries");
 const fetch = require("../queries/plannerFetchQueries");
 
-router.put("/product-in-meal/:productid/:dayid", function(req, res) {
+router.put("/product-in-day/:productid/:dayid", function(req, res) {
   create
     .createProductInDay(req.params.productid, 1, req.params.dayid)
     .then(result => {
@@ -16,7 +16,7 @@ router.put("/product-in-meal/:productid/:dayid", function(req, res) {
     });
 });
 
-router.delete("/product-in-meal/:productid/:dayid", function(req, res) {
+router.delete("/product-in-day/:productid/:dayid", function(req, res) {
   destroy
     .deleteProductInDay(req.params.dayid, req.params.productid)
     .then(result => {
@@ -60,6 +60,7 @@ router.put("/recipe-in-meal/:recipeid/:dayid", function(req, res) {
     });
 });
 
+
 router.delete("/recipe-in-meal/:recipeid/:dayid", function(req, res) {
   destroy
     .deleteMeal(req.params.recipeid)
@@ -70,6 +71,8 @@ router.delete("/recipe-in-meal/:recipeid/:dayid", function(req, res) {
       res.status(500).send({ error: err });
     });
 });
+
+
 
 router.get("/week", function(req, res) {
   fetch
