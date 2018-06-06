@@ -6,14 +6,28 @@ const destroy = require("../queries/plannerDeleteQueries");
 const fetch = require("../queries/plannerFetchQueries");
 
 router.put("/product-in-day/:productid/:dayid", function(req, res) {
+  
+  
   create
-    .createProductInDay(req.params.productid, 1, req.params.dayid)
-    .then(result => {
-      res.status(204).send();
-    })
-    .catch(err => {
-      res.status(500).send({ error: err });
+    .createDayQuery(req.cookies.ukeId, "monday", "breakfast")
+    .then(result => {  
+      let dayid =  JSON.parse(JSON.stringify(result)).dayId;
+      
+            create
+        .createProductInDay(req.params.productid, 1, dayid)
+        .then(result => {
+          res.status(204).send();
+        })
+        .catch(err => {
+          res.status(500).send({ error: err });
+        });
+          
+      
+    }).catch(err => {
+      res.status(500).send({error: err})
     });
+  
+
 });
 
 router.delete("/product-in-day/:productid/:dayid", function(req, res) {
