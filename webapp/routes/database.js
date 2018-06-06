@@ -6,14 +6,13 @@ const destroy = require("../queries/plannerDeleteQueries");
 const fetch = require("../queries/plannerFetchQueries");
 
 router.put("/product-in-day/:productid/:dayid", function(req, res) {
-  
-  
   create
     .createDayQuery(req.cookies.ukeId, "monday", "breakfast")
-    .then(result => {  
-      let dayid =  JSON.parse(JSON.stringify(result)).dayId;
+    .then(result => {
       
-            create
+      let dayid = result[0].id;
+
+      create
         .createProductInDay(req.params.productid, 1, dayid)
         .then(result => {
           res.status(204).send();
@@ -21,13 +20,10 @@ router.put("/product-in-day/:productid/:dayid", function(req, res) {
         .catch(err => {
           res.status(500).send({ error: err });
         });
-          
-      
-    }).catch(err => {
-      res.status(500).send({error: err})
+    })
+    .catch(err => {
+      res.status(500).send({ error: err });
     });
-  
-
 });
 
 router.delete("/product-in-day/:productid/:dayid", function(req, res) {
@@ -74,7 +70,6 @@ router.put("/recipe-in-meal/:recipeid/:dayid", function(req, res) {
     });
 });
 
-
 router.delete("/recipe-in-meal/:recipeid/:dayid", function(req, res) {
   destroy
     .deleteMeal(req.params.recipeid)
@@ -85,8 +80,6 @@ router.delete("/recipe-in-meal/:recipeid/:dayid", function(req, res) {
       res.status(500).send({ error: err });
     });
 });
-
-
 
 router.get("/week", function(req, res) {
   fetch
@@ -143,7 +136,6 @@ router.get("/meals/:day/:type", function(req, res) {
     });
 });
 
-
 router.get("/products/:day/", function(req, res) {
   fetch
     .fetchProductsOnDay(req.params.day)
@@ -154,6 +146,5 @@ router.get("/products/:day/", function(req, res) {
       res.status(500).send({ error: err });
     });
 });
-
 
 module.exports = router;
