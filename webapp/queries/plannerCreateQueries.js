@@ -39,9 +39,9 @@ module.exports = {
 
   /**
    * Creates and adds a meal
-   * @param {*} recipeId 
-   * @param {*} portions 
-   * @param {*} dayId 
+   * @param {*} recipeId
+   * @param {*} portions
+   * @param {*} dayId
    */
   addMealToDayQuery(recipeId, portions, dayId) {
     return createMealQuery(recipeId, portions, dayId).then(meal => {
