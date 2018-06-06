@@ -9,10 +9,11 @@ const fs = require("fs");
 router.get("/", function(req, res) {
   let search = "";
   let list = [];
+  let week = {};
 
   getAllInformationAsJson(req)
-    .then(res => {
-      let formattedJson = formatJsonObject(res);
+    .then(result => {
+      let formattedJson = formatJsonObject(result);
       res.render("week-planner-current", {
         title: "K-Planleggeren",
         search: search,
