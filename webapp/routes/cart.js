@@ -78,23 +78,30 @@ function getAllRecipeInformationForDay(day) {
  */
 function getAllProductInformationForDay(day) {
   return day.Products.map(product => {
-    
-    return getFormattedInformationOnProduct(product.kolonialId, product.ProductInDay.productQuantity);
+    return getFormattedInformationOnProduct(
+      product.kolonialId,
+      product.ProductInDay.productQuantity
+    );
   });
 }
 
 function getAllProductInformationForMeal(meal) {
   return meal.Products.map(product => {
     //TODO: Current rounds up to closest upwards integer, due to limitations in database.
-    let quantity = Math.ceil(meal.portions * product.ProductInMeal.portionQuantity);
-    
+    let quantity = Math.ceil(
+      meal.portions * product.ProductInMeal.portionQuantity
+    );
+
     return getFormattedInformationOnProduct(product.kolonialId, quantity);
   });
 }
 
 function getAllProductInformationForWeek(products) {
   return products.map(product => {
-    return getFormattedInformationOnProduct(product.kolonialId, product.ProductInWeek.productQuantity);
+    return getFormattedInformationOnProduct(
+      product.kolonialId,
+      product.ProductInWeek.productQuantity
+    );
   });
 }
 
@@ -131,6 +138,7 @@ function formatJsonObjectForCartPage(currentJsonObject) {
     Meals: meals,
     Products: products
   };
+  removeDuplicatesFromJson(result);
   result["TotalPrice"] = calculateTotalPriceForCart(result);
 
   return result;
@@ -139,15 +147,40 @@ function formatJsonObjectForCartPage(currentJsonObject) {
 function calculateTotalPriceForCart(currentJsonObject) {
   let totalPrice = 0;
 
-  for(meal of currentJsonObject.Meals){
-    for(product of meal.Products) {
-      totalPrice += (product.Price * product.Quantity);
+  for (meal of currentJsonObject.Meals) {
+    for (product of meal.Products) {
+      totalPrice += product.Price * product.Quantity;
     }
   }
-  for(product of currentJsonObject.Products) {
-    totalPrice += (product.Price * product.Quantity);
+  for (product of currentJsonObject.Products) {
+    totalPrice += product.Price * product.Quantity;
   }
   return totalPrice;
+}
+
+function removeDuplicatesFromJson(currentJsonObject) {
+  let resultProducts = [];
+
+  for (product of currentJsonObject.Products) {
+    if (resultProducts.length === 0) {
+      resultProducts.push(product);
+    } else {
+      let found = false;
+      for (filteredProduct of resultProducts) {
+        if (filteredProduct.Name === product.Name) {
+          found = true;
+          filteredProduct.Quantity += product.Quantity;
+        }
+      }
+
+      if (!found) {
+        resultProducts.push(product);
+        found = false;
+      }
+    }
+  }
+  currentJsonObject.Products = resultProducts;
+  return currentJsonObject;
 }
 
 module.exports = router;
