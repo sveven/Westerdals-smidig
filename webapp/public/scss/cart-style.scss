@@ -1,23 +1,72 @@
-.cart-container	{
-	display: grid;
-	grid-template-areas:	". header ."
-							". cart ."
-							"footer footer footer";
-	grid-template-columns: 10rem 1fr 10rem;
-	grid-template-rows:	200px
-						1fr
-						100px;
-	min-height: 100vh;
+.cart-container {
+    display: grid;
+    grid-template-areas: ". header ." ". cart ." "footer footer footer";
+    grid-template-columns: 10rem 1fr 10rem;
+    grid-template-rows: 200px 1fr 100px;
+    min-height: 100vh;
 }
 
-.cart-header	{
-	grid-area: header;
+.cart-header {
+    grid-area: header;
+    position: relative;
 }
 
-.shopping-cart	{
-	grid-area: cart;
+.cart-header-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.cart-footer	{
-	grid-area: footer;
+.shopping-cart {
+    grid-area: cart;
+}
+
+.cart-item-wrapper {
+    position: relative;
+    height: 3.5rem;
+    border: 1px solid black;
+}
+
+.cart-image-wrapper img {
+    left: 2rem;
+}
+
+.item-quantity {
+    left: 0.5rem;
+    padding-right: 1rem;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.cart-item-text {
+    position: absolute;
+    left: 8rem;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.item-cost-wrapper	{
+	position: absolute;
+	left: 80%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 150px;
+}
+
+.item-cost-wrapper p	{
+	display: inline;
+	margin: 0 1rem;
+/* 	padding-right: 4rem;
+	padding-left: 4rem; */
+}
+
+.cart-item-text p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.cart-footer {
+    grid-area: footer;
 }

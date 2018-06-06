@@ -1,27 +1,49 @@
 /* TYPOGRAPHY */
 
+
+@font-face {
+    font-family: 'gt_walsheim_pro_trialregular';
+    src: url('gt-walsheim-pro-trial-regular-webfont.woff2') format('woff2'),
+         url('gt-walsheim-pro-trial-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 h1 {
     font-size: 2.2em;
+    font-family: 'Walsheim', Arial, sans-serif;
+
 }
 
 h2 {
     font-size: 2em;
+    font-family: 'Walsheim', Arial, sans-serif;
+
 }
 
 h3 {
     font-size: 1.8em;
+    font-family: 'Walsheim', Arial, sans-serif;
+
 }
 
 h4 {
     font-size: 1.8em;
+    font-family: 'Walsheim', Arial, sans-serif;
+
 }
 
 h5 {
     font-size: 1.4em;
+    font-family: 'Walsheim', Arial, sans-serif;
+
 }
 
 p {
     font-size: 1.2em;
+    font-family: 'Walsheim', Arial, sans-serif;
+
 }
 
 /* END TYPOGRAPHY */
@@ -30,6 +52,8 @@ p {
 
 body {
     overflow-x: hidden;
+    font-family: 'Walsheim', Arial, sans-serif;
+
 }
 
 /* END BODY */

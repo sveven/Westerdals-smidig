@@ -19,32 +19,30 @@
 	// "Price":23}}]}
 	// }
 
-	
+			
 	const init = function() {
-		appendMealToPlanner();	
-		
-		
+		appendMealToPlanner();		
 	}();
-
 
 	function appendMealToPlanner() {
 		let checkData = week;
-		console.log(Object.values(checkData));
+		console.log(week);
 		
-		if (getClickedID == Object.keys(checkData)) {
+		if (getClickedID == checkData) {
 
 			for (i in Meals[i]) {
 				let mealUL = $("<ul class='meal-ul'>");
-				let mealTitle = $("<p class='meal-title'>" + Meals[i].Title + "</p>");
-				let mealImage = $("<img class='meal-img img-thumb img-thumbnail img-fluid' src='" + Meals[i].Image + "'" + "/>");
+				let mealTitle = $("<p class='meal-title'>" + week.Meals[i].Title + "</p>");
+				let mealImage = $("<img class='meal-img img-thumb img-thumbnail img-fluid' src='" + week.Meals[i].Image + "'" + "/>");
 			}
 			for (i in Products[i].indentifier) {
 				let groceryUL = $("<ul class='grocery-ul'>")
 				let groceryTitle = $("<p class='grocery-title'>" + Products[i].identifier.Title + "</p>");
-				let groceryImage = $("<img class='meal-img img-thumb img-thumbnail img-fluid' src='" + Products[i].identifier.Image + "'" + "/>");
+				let groceryImage = $("<img class='meal-img img-thumb img-thumbnail img-fluid' src='" + week.Products[i].identifier.Image + "'" + "/>");
 				let groceryPrice = $("<p class='grocery-price'>" + "Kr " + Products[i].identifier.Price + ",-" + "</p>");
 			}
-		}
-	}
+		} 
+	 }
+	
 
 })(jQuery);
