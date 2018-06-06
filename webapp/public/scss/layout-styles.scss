@@ -43,5 +43,9 @@
 
 #user-info {
     margin: auto;
-    display: inline-block;
+	display: inline-block;
+}
+
+#user-info * {
+	display: inline-block;
 }
