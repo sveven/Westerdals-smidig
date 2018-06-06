@@ -10,18 +10,51 @@ router.get("/", function(req, res) {
   let search = "";
   let list = [];
 
-  //TODO: Continue working with this json file.
-  getAllInformationAsJson(req).then(res => {
-	  console.log();
-	  
-  })
-
-  res.render("week-planner-current", {
-    title: "K-Planleggeren",
-    search: search,
-    data: list
-  });
+  getAllInformationAsJson(req)
+    .then(res => {
+      let formattedJson = formatJsonObject(res);
+      res.render("week-planner-current", {
+        title: "K-Planleggeren",
+        search: search,
+		data: list,
+		week: formattedJson
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.render("week-planner-current", {
+        title: "K-Planleggeren",
+        search: search,
+		data: list,
+		week: err
+      });
+    });
 });
+
+function formatJsonObject(currentJsonObject) {
+  let result = {};
+
+  for (day of currentJsonObject) {
+    let dayObject = {};
+    let meals = [];
+    let products = [];
+
+    let identifier = Object.keys(day)[0];
+
+    for (item of Object.values(day)[0]) {
+      if (item.hasOwnProperty("ProductId")) {
+        products.push(item);
+      } else if (item.hasOwnProperty("RecipeId")) {
+        meals.push(item);
+      }
+    }
+
+    result[identifier] = {
+      Meals: meals,
+      Products: products
+    };
+  }
+}
 
 function getAllInformationAsJson(req) {
   return getDaysInCurrentWeek(req).then(days => {
@@ -57,7 +90,6 @@ function getInformationForAllDays(days) {
   });
 }
 
-
 /**
  * This is a promise which will be put in a promise.all()
  */
@@ -66,7 +98,7 @@ function getAllRecipeInformationForDay(day) {
     return helper.getInformationFromRecipe(meal.recipeId).then(res => {
       return {
         Title: res.title,
-        Image: res.image_url,
+        Image: res.feature_image_url,
         RecipeId: res.id
       };
     });
@@ -79,7 +111,8 @@ function getAllProductInformationForDay(day) {
       return {
         Name: res.full_name,
         Image: res.images[0].thumbnail.url,
-        Price: res.gross_price
+        Price: res.gross_price,
+        ProductId: res.id
       };
     });
   });

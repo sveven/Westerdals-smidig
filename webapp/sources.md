@@ -15,3 +15,6 @@ Hei saft
 
 <https://stackoverflow.com/questions/36094865/how-to-do-promise-all-for-array-of-array-of-promises>
 <https://stackoverflow.com/questions/45082038/wait-for-foreach-with-a-promise-inside-to-finish?rq=1>
+
+### Json
+<https://stackoverflow.com/questions/20804163/check-if-a-key-exists-inside-a-json-object>
