@@ -193,8 +193,8 @@ router.get("/mobile/product-in-week/:productid/:weekid", function(req, res) {
 
 });
 
-router.get("/mobile/recipe-in-day/:dayid/", function(req, res) {
-
+router.get("/mobile/recipe-in-day/:recipeid/:dayid/", function(req, res) {
+	let recipeid = parseInt(req.params.recipeid);
   let dayid = parseInt(req.params.dayid);
 
   create.addMealToDayQuery(recipeid, 1, dayid).then(result => {
