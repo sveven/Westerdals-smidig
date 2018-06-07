@@ -10,10 +10,10 @@
     <ion-row *ngFor="let item of products[0]">
       <ion-item >
         <ion-col col-1>
-            <img class="productImg"[src]="item.thumbnail.url"/>
+            <img class="productImg" [src]="item.images.thumbnail"/>
         </ion-col>
         <ion-col col-6>
-          <p>{{item.full_name}}</p>
+          <p>{{item.name}}</p>
         </ion-col>
         <ion-col col-2>
           <p>{{item.gross_price}}</p>
