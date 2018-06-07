@@ -43,9 +43,6 @@ router.post("/", function(req, res) {
     
 		connection.searchForRecipe(req.body.recipeQuery, function(data) {
       res.send(data);
-      
-      console.log(JSON.stringify(data));
-
     });
     
 	} else {

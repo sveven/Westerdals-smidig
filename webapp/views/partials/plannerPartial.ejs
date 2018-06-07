@@ -1,0 +1,17 @@
+<%if(currentDay){%>
+    <form method="GET" action="/searchTabs">
+        <input type="hidden" name="dayid" >
+        <label for="go-to-planner">
+            <input class="button-add" type="submit" name="go-to-planner" value="+">
+        </label>
+    </form>
+<% include plannerContentPartial.ejs %>
+<%} else {%>
+    <form method="GET" action="/searchTabs">   
+        <input type="hidden" name="dayid" >
+        <label for="go-to-planner"> 
+            <input class="button-add" type="submit" name="go-to-planner" value="+" >
+        </label>
+    </form>
+
+<% } %> 

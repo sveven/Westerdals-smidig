@@ -1,0 +1,26 @@
+
+                <div class="meals">
+            
+            <% if(currentDay.Meals.length > 0) {%>
+                <% for(meal of currentDay.Meals) { %>
+                <div>
+                    <img class="recipe-planner-meal-image" src="<%= meal.Image %>">
+                    <p class="recipe-planner-meal-title"><%= meal.Title %></p>
+                </div>
+                <% }%>
+            <% }%>
+                </div>
+            <% if(currentDay.Products.length > 0) {%>								
+                <div class="products">
+                <% for(product of currentDay.Products) { %>
+                <div>
+                    <img class="planner-product-image" src="<%= product.Image %>">
+                    <p class="planner-product-title"><%= product.Name %></p>
+                    <p class="planner-product-price">kr <%= product.Price %>,-</p>
+                </div>
+                <% }%>
+                </div>
+            <% }%>
+
+                        
+                    

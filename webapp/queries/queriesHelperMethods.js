@@ -1,6 +1,31 @@
 const connection = require("../components/kolonialapi/requestHandler");
 
 module.exports = {
+
+  getInformationFromRecipe(recipeId) {
+    return new Promise(function (resolve, reject) {
+      connection.getRecipeById(recipeId, (recipe, err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(recipe);
+        }
+      });
+    });
+  },
+
+  getInformationOfProduct(productId) {
+    return new Promise(function (resolve, reject) {
+      connection.getExtendedInformationAboutSpecificProduct(productId, (product, err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(product);
+        }
+      });
+    });
+  },
+
   getAllIngredientsFromRecipe(recipeId) {
     return new Promise(function (resolve, reject) {
       connection.getRecipeById(recipeId, (recipe, err) => {

@@ -2,19 +2,13 @@ const models = require("../models");
 const helper = require("./queriesHelperMethods");
 
 module.exports = {
-  /**
-   *  all products
-   */
-  fetchAllProductsQuery() {
-    return models.Product.findAll({});
-  },
 
   /**
    * Fetches all days in a week
    * @param {*} weekId
    */
   fetchDaysInWeek(weekId) {
-    return models.Week.findAll({
+    return models.Week.findOne({
       where: {
         id: weekId
       },
@@ -47,6 +41,9 @@ module.exports = {
             { model: models.Meal, include: [{ model: models.Product }] },
             { model: models.Product }
           ]
+        }, 
+        {
+          model: models.Product
         }
       ]
     });
