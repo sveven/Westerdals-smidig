@@ -11,11 +11,7 @@ router.get("/product-in-day/", function(req, res) {
   let dayid = req.param("dayid");
   let productid = req.param("productid");
 
-  console.log("DAYID: " + productid);
   let dayAndTypeArr = dayAndTypeSplit(dayid);
-
-  console.log("DAYID: " + dayid);
-
 
     create
       .createDayQuery(req.cookies.ukeId, dayAndTypeArr[1], dayAndTypeArr[0])
