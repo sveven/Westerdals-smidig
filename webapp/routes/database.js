@@ -5,7 +5,7 @@ const create = require("../queries/plannerCreateQueries");
 const destroy = require("../queries/plannerDeleteQueries");
 const fetch = require("../queries/plannerFetchQueries");
 
-router.put("/product-in-day/:productid/:dayid", function(req, res) {
+router.post("/product-in-day/:productid/:dayid", function(req, res) {
   create
     .createDayQuery(req.cookies.ukeId, "monday", "breakfast")
     .then(result => {
