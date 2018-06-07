@@ -79,12 +79,14 @@ html {
     border: 1.5px solid rgb(255, 165, 20);
     border-radius: 3px;
     background-color: white;
+    overflow: hidden;
 }
 
 .dinner {
     border: 1.5px solid rgb(255, 165, 20);
     border-radius: 3px;
     background-color: white;
+    overflow: hidden;
 }
 
 .btn-collapse {
@@ -129,3 +131,40 @@ html {
     margin-left: -85px;
     left: 50%;
 }
+
+.meals {
+}
+
+.recipe-planner-meal-title {
+    font-size: 10px;
+}
+
+.recipe-planner-meal-image {
+    width: 50px;
+    margin-top: -12px;
+
+}
+
+.planner-product-image {
+    width: 50px;
+    margin-top: -12px;
+
+}
+
+.planner-product-title {
+    font-size: 10px;
+}
+
+.planner-product-price {
+    font-size: 10px;
+    margin-top: -12px;
+}
+
+.has-content {
+    height: 35px;
+    width: 25px;
+    top: 115px;
+    float: right;
+    border-radius: 3px;
+}
+
