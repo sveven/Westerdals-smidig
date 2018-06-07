@@ -34,20 +34,30 @@ export class DatabaseProvider {
         );
     });
   }
+//TODO: When routes are fixed, switch to other oen
+tempAddRecipeToDatabase(recipeId: number, portions:number) {
+  return new Promise((resolve, reject) => {
+    this.http
+      .get(
+        `http://91.189.170.100:3000/database/mobile/recipe-in-day/${recipeId}/${this.weekId}`)
+      .subscribe(
+        response => {
+          resolve(response);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
 
-  addRecipeToDatabase(recipeId: number) {
-    console.log(recipeId);
-    
+  addRecipeToDatabase(recipeId: number, portions: number) {
     return new Promise((resolve, reject) => {
       this.http
         .get(
-          `http://91.189.170.100:3000/database/mobile/recipe-in-day/${recipeId}/${this.weekId}`)
+          `http://91.189.170.100:3000/database/mobile/recipe-in-day/${recipeId}/${this.weekId}/`)
         .subscribe(
           response => {
-            console.log("################# RECIPE #######################");
-
-
-            
             resolve(response);
           },
           error => {

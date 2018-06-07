@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="oransje">
-    <ion-title text-center>Oversikt</ion-title>
+    <ion-title>Oversikt</ion-title>
     <ion-buttons end>
       <button class="emptyButton">Tøm</button>
     </ion-buttons>
@@ -10,6 +10,53 @@
 
 <ion-content padding>
   <ion-grid wrap responsive-lg>
+    <ion-row *ngFor="let meal of meals">
+
+      <ion-row>
+        <ion-col col-10>{{meal.Title}}</ion-col>
+      </ion-row>
+
+      <ion-row class="productHeader">
+        <ion-col col-6>
+          <p>Produkt</p>
+        </ion-col>
+        <ion-col col-3>
+          <p>Pris</p>
+        </ion-col>
+        <ion-col col-3>
+          <p>Antall</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let item of meal.Products">
+        <ion-col col-1>
+          <img class="productImg" [src]="item.Image" />
+        </ion-col>
+        <ion-col col-8>
+          <p>{{item.Name}}</p>
+        </ion-col>
+        <ion-col col-2>
+          <p>{{item.Price}},-</p>
+        </ion-col>
+        <ion-col col-1>
+          <p>{{item.Quantity}}</p>
+        </ion-col>
+
+      </ion-row>
+    </ion-row>
+
+    <ion-row class="productHeader">
+
+      <ion-col col-6>
+        <p>Produkt</p>
+      </ion-col>
+      <ion-col col-3>
+        <p>Pris</p>
+      </ion-col>
+      <ion-col col-3>
+        <p>Antall</p>
+      </ion-col>
+    </ion-row>
 
     <ion-row *ngFor="let item of products">
       <ion-col col-1>
@@ -22,12 +69,14 @@
         <p>{{item.Price}}</p>
       </ion-col>
       <ion-col col-1>
-        <button ion-button icon-only clear>
-          <ion-icon name="add-circle"></ion-icon>
-        </button>
+        <p>{{item.Quantity}}</p>
       </ion-col>
     </ion-row>
 
 
   </ion-grid>
 </ion-content>
+
+<ion-footer>
+  {{entireWeek.TotalPrice}}
+</ion-footer>

@@ -30,6 +30,8 @@ export class CheckoutPage {
       this.meals = this.entireWeek.Meals;
       this.products = this.entireWeek.Products;
       
+      console.log(this.meals);
+      
     });
   }
 
