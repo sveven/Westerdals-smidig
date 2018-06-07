@@ -7,7 +7,7 @@ const helper = require("../queries/queriesHelperMethods");
 /* GET cart page. */
 router.get("/", function(req, res) {
   let list;
-  getAllInformationAsJson(req).then(res => {
+  getCartOverviewAsJson(req).then(res => {
     console.log(res);
     
   });
@@ -19,13 +19,19 @@ router.get("/", function(req, res) {
 
 router.post("/", function(req, res) {});
 
-function getAllInformationAsJson(req) {
-  return getAllInformationOnCurrentWeek(req).then(res => {
-    return formatJsonObjectForCartPage(res);
+function getWeekOverViewAsJson(req) {
+  return getAllInformationForWeek(req).then(res => {
+    return formatJsonObjectForWeekOverview(res);
   });
 }
 
-function getAllInformationOnCurrentWeek(req) {
+function getCartOverviewAsJson(req) {
+  return getAllInformationForWeek(req).then(res => {
+    return formatJsonObjectForCart(res);
+  })
+}
+
+function getAllInformationForWeek(req) {
   return fetch.fetchAllProductsInWeek(req.cookies.ukeId).then(res => {
     getAllProductInformationForWeek(res.Products);
 
@@ -117,7 +123,7 @@ function getFormattedInformationOnProduct(kolonialId, quantity) {
   });
 }
 
-function formatJsonObjectForCartPage(currentJsonObject) {
+function formatJsonObjectForWeekOverview(currentJsonObject) {
   let result = {};
   let meals = [];
   let products = [];
@@ -138,11 +144,30 @@ function formatJsonObjectForCartPage(currentJsonObject) {
     Meals: meals,
     Products: products
   };
-  removeDuplicatesFromJson(result);
+  
+  result = removeDuplicatesFromJson(result);
   result["TotalPrice"] = calculateTotalPriceForCart(result);
 
   return result;
 }
+
+function formatJsonObjectForCart(currentJsonObject) {
+  let result = {};
+  let products = [];
+  
+  for(obj of currentJsonObject[0]){
+    if(obj.hasOwnProperty("Products")){
+      for(product of obj.Products) {
+        products.push(product);
+      }
+    } else {
+      products.push(obj);
+    }
+  }
+  result["items"] = products;
+  return result;
+}
+
 
 function calculateTotalPriceForCart(currentJsonObject) {
   let totalPrice = 0;
