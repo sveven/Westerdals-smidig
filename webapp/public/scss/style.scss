@@ -142,6 +142,7 @@ html {
 
 .recipe-main-title {
     font-size: 0.9rem;
+    text-decoration: underline;
 }
 
 .recipe-planner-meal-title {
@@ -155,6 +156,7 @@ html {
 
 .product-main-title {
     font-size: 0.9rem;
+    text-decoration: underline;
 }
 
 .planner-product-title {
@@ -175,6 +177,12 @@ html {
     float: right;
     border-radius: 3px;
     display: none;
+}
+
+.see-more-icon {
+    right: 0px;
+    font-size: 2rem;
+    position: relative;
 }
 
 
