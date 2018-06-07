@@ -8,7 +8,7 @@ const helper = require("../queries/queriesHelperMethods");
 router.get("/", function(req, res) {
   let list;
   getWeekOverViewAsJson(req).then(result => {
-    console.log("RESULT: " + JSON.stringify(result));
+    //console.log("RESULT: " + JSON.stringify(result));
 
     res.render("cart", {
       title: "K-Planleggeren",
