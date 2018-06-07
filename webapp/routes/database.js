@@ -8,16 +8,10 @@ const fetch = require("../queries/plannerFetchQueries");
 
 router.get("/product-in-day/", function(req, res) {
 
-  let dayid = req.param('dayid');
-  let productid = req.param('productid');
+  let dayid = req.param("dayid");
+  let productid = req.param("productid");
+
   let dayAndTypeArr = dayAndTypeSplit(dayid);
-  
-  if(dayAndTypeArr !== NULL){
-  
-    res.status(500).send({error: "dayid missing"});
-   
-  } else {
-    
 
     create
       .createDayQuery(req.cookies.ukeId, dayAndTypeArr[1], dayAndTypeArr[0])
@@ -37,7 +31,7 @@ router.get("/product-in-day/", function(req, res) {
       .catch(err => {
         res.status(500).send({ error: err });
       });
-    }
+    
 });
 
 router.delete("/product-in-day/:productid/:dayid", function(req, res) {
