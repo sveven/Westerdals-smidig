@@ -19,7 +19,8 @@
 }
 
 .shopping-cart {
-    grid-area: cart;
+	grid-area: cart;
+	position: relative;
 }
 
 .cart-list {
@@ -90,6 +91,16 @@
 .delete-input-hidden {
     position: absolute;
     left: -99999px;
+}
+
+.cart-summary-wrapper	{
+	position: absolute;
+	left: 80%;
+	width: 200px;
+}
+
+.cart-summary-wrapper p {
+	font-weight: bold;
 }
 
 .cart-footer {
