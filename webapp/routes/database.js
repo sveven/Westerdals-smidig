@@ -221,12 +221,13 @@ router.get("/mobile/week/all/", function(req, res) {
 router.get("/mobile/week/", function(req, res) {
 
   create.createUserQuery().then( result => {
-
-    let userid = result[0].id;
-
+		console.log(result);
+		
+    let userid = result.Id;
+		
     create.createWeekQuery(userid).then( result => {
 
-      res.send({weekId: result[0].id});
+      res.send({weekId: result.id});
 
     }).catch(err => {
         res.status(500).send({error: err})
