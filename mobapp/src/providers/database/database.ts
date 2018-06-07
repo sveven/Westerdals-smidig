@@ -25,6 +25,28 @@ export class DatabaseProvider {
         .subscribe(
           response => {
             console.log(response);
+
+            resolve(response);
+          },
+          error => {
+            reject(error);
+          }
+        );
+    });
+  }
+
+  addRecipeToDatabase(recipeId: number) {
+    console.log(recipeId);
+    
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(
+          `http://91.189.170.100:3000/database/mobile/recipe-in-day/${recipeId}/${this.weekId}`)
+        .subscribe(
+          response => {
+            console.log("################# RECIPE #######################");
+
+
             
             resolve(response);
           },
@@ -36,7 +58,6 @@ export class DatabaseProvider {
   }
 
   getWeekIdFromDatabase() {
-    
     return new Promise((resolve, reject) => {
       this.http
         .get(
@@ -62,8 +83,6 @@ export class DatabaseProvider {
         .get(`http://91.189.170.100:3000/database/mobile/${weekId}/all`, this.options)
         .subscribe(
           response => {
-            console.log("RESPONSE"+ JSON.stringify(response));
-            
             resolve(response);
           },
           error => {
