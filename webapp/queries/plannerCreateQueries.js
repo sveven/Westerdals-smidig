@@ -47,6 +47,7 @@ module.exports = {
     return createMealQuery(recipeId, portions, dayId).then(meal => {
       let mealId = meal.dataValues.Id;
       addAllProductsBasedOnRecipe(mealId, recipeId);
+      return meal;
     });
   },
 
