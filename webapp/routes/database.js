@@ -42,7 +42,7 @@ router.get("/product-in-day/", function(req, res) {
 
 router.delete("/product-in-day/:productid/:dayid", function(req, res) {
 	destroy
-		.deleteProductInDay(req.params.dayid, req.params.productid)
+		.deleteProductInDay(req.params.dayid, 1, req.params.productid)
 		.then(result => {
 			res.status(204).send();
 		})
@@ -53,8 +53,9 @@ router.delete("/product-in-day/:productid/:dayid", function(req, res) {
 
 router.put("/product-in-week/:productid", function(req, res) {
 	create
-		.createProductInWeek(req.params.productid, req.cookies.ukeId)
+		.createProductInWeek(req.params.productid, req.cookies.ukeId, 1)
 		.then(result => {
+			
 			res.status(204).send();
 		})
 		.catch(err => {
@@ -180,10 +181,11 @@ router.get("/products/:day/", function(req, res) {
 
 router.get("/mobile/product-in-week/:productid/:weekid", function(req, res) {
 
-  let productid = req.params.productid
-  let weekid = req.params.weekid;
+  let productid = parseInt(req.params.productid);
+  let weekid = parseInt(req.params.weekid);
 
   create.createProductInWeek(productid, weekid, 1).then( result => {
+		console.log(result);
     res.status(204).send();
   }).catch(err => {
     res.status(500).send({error: err});
@@ -193,7 +195,7 @@ router.get("/mobile/product-in-week/:productid/:weekid", function(req, res) {
 
 router.get("/mobile/recipe-in-day/:dayid/", function(req, res) {
 
-  let dayid = req.params.dayid;
+  let dayid = parseInt(req.params.dayid);
 
   create.addMealToDayQuery(recipeid, 1, dayid).then(result => {
 
@@ -205,7 +207,7 @@ router.get("/mobile/recipe-in-day/:dayid/", function(req, res) {
 
 router.get("/mobile/:weekid/all/", function(req, res) {
 
-  let weekid = req.params.weekid;
+  let weekid = parseInt(req.params.weekid);
 
 	fetch
 		.fetchAllProductsInWeek(weekid)
