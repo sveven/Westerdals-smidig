@@ -7,14 +7,16 @@ const helper = require("../queries/queriesHelperMethods");
 /* GET cart page. */
 router.get("/", function(req, res) {
   let list;
-  getCartOverviewAsJson(req).then(res => {
-    console.log(res);
+  getWeekOverViewAsJson(req).then(result => {
+    console.log(result);
+
+    res.render("cart", {
+      title: "K-Planleggeren",
+      data: result
+    });
     
   });
-  res.render("cart", {
-    title: "K-Planleggeren",
-    data: list
-  });
+
 });
 
 router.post("/", function(req, res) {});
