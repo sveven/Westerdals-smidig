@@ -73,6 +73,7 @@ html {
     border-radius: 3px;
     background-color: white;
     overflow: hidden;
+    padding: 3px;
 }
 
 .lunch {
@@ -80,6 +81,7 @@ html {
     border-radius: 3px;
     background-color: white;
     overflow: hidden;
+    padding: 3px;
 }
 
 .dinner {
@@ -87,6 +89,7 @@ html {
     border-radius: 3px;
     background-color: white;
     overflow: hidden;
+    padding: 3px;
 }
 
 .btn-collapse {
@@ -132,24 +135,26 @@ html {
     left: 50%;
 }
 
+
 .meals {
     margin-top: -30px;
+}
+
+.recipe-main-title {
+    font-size: 0.9rem;
 }
 
 .recipe-planner-meal-title {
     font-size: 10px;
 }
 
-.recipe-planner-meal-image {
-    width: 50px;
-    
-
+.recipe-title {
+    font-size: 1rem;
 }
 
-.planner-product-image {
-    width: 50px;
-    margin-top: -12px;
 
+.product-main-title {
+    font-size: 0.9rem;
 }
 
 .planner-product-title {
@@ -159,13 +164,17 @@ html {
 .planner-product-price {
     font-size: 10px;
     margin-top: -12px;
+    float: right;
+	font-weight: bold;
+	background-color: rgb(240, 240, 240);
 }
 
 .has-content {
     height: 35px;
     width: 25px;
-    top: 115px;
     float: right;
     border-radius: 3px;
+    display: none;
 }
+
 
