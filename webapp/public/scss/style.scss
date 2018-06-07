@@ -137,16 +137,18 @@ html {
 }
 
 .meals {
-    margin-top: -30px;
+    margin-top: -15px;
 }
 
 .recipe-main-title {
-    font-size: 0.9rem;
-    text-decoration: underline;
+    font-size: 1.2rem;
 }
 
+.recipe-planner-meal-image{
+    height: 100px;
+}
 .recipe-planner-meal-title {
-    font-size: 10px;
+    font-size: 1rem;
 }
 
 .recipe-title {
@@ -155,15 +157,18 @@ html {
 
 
 .product-main-title {
-    font-size: 0.9rem;
-    text-decoration: underline;
+    font-size: 1.2rem;
 }
 
-.planner-product-title {
+.modal-planner-product-image {
+    height: 50px;
+}
+
+.modal-planner-product-title {
     font-size: 10px;
 }
 
-.planner-product-price {
+.modal-planner-product-price {
     font-size: 10px;
     margin-top: -12px;
     float: right;
@@ -172,17 +177,26 @@ html {
 }
 
 .has-content {
-    height: 35px;
-    width: 25px;
-    float: right;
-    border-radius: 3px;
-    display: none;
+    position: static;
+    height: 2.02vmax;
+    width: 2vmax;
+    margin: auto;
+    bottom: 0;
+    border-radius: 50%;
+    box-sizing: border-box;
+    padding: 0;
+    
 }
 
 .see-more-icon {
-    right: 0px;
     font-size: 2rem;
     position: relative;
 }
 
-
+.modal-planner-product.price {
+    font-size: 10px;
+    margin-top: -12px;
+    float: right;
+	font-weight: bold;
+	background-color: rgb(240, 240, 240);
+}

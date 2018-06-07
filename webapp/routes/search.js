@@ -91,7 +91,7 @@ router.post("/", function(req, res) {
 */
 router.post("/", function(req, res) {
   let acceptsJSON = req.accepts('json');
-	let search = req.body.formsearch;
+  let search = req.body.formsearch;
 
 	connection.searchForProduct(search, function(data) {
 		if (acceptsJSON) {

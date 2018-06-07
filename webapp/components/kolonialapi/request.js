@@ -1,4 +1,4 @@
-var https = require('https');
+const https = require('https');
 
 module.exports = {
 
@@ -21,8 +21,16 @@ module.exports = {
 
     res.on('end', () => {
       let data = Buffer.concat(chunks);
-      let list = JSON.parse(data);
+      let list;
+      try{
+        list = JSON.parse(data);
+      }catch(e){
+        console.log(e);
+        console.log("LIST: " + data);
+        list = {};
+      }
       
+    
       apicallback(list);
 
       });

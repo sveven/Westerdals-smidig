@@ -10,6 +10,8 @@ router.get("/", function (req, res) {
   console.log(dayid);
 
   
+
+    
   res.render("searchTabs", {
     title: "K-Planleggeren",
     search: search,

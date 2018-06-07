@@ -31,6 +31,7 @@
     left: 49%;
     grid-gap: 0px 5vh;
     margin-right: -50%;
+    max-width: 100%;
     transform: translate(-50%, -50%);
     grid-template-columns: repeat(autofill, minmax(1fr, 1fr));
     grid-template-columns: 33% 33% 33%;
