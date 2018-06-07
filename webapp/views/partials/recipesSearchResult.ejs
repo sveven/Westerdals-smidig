@@ -10,6 +10,7 @@ TODO:
 
     <% for (i in data.results){ %>
 		<div class="recipe-wrapper">
+		<a class="single-recipe-link" href="/singleRecipe/"></a>
 			<img class="recipe-img" src="<%= data.results[i].feature_image_url %>" alt="Bilde av matrett">
 			<h5 class="recipe-title"><%= data.results[i].title %></h5>
 			<p class="recipe-difficulty"><%= data.results[i].difficulty_string %></p>

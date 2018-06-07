@@ -1,7 +1,9 @@
-				<div class="meals">
+	<div class="meals">
+		
+		<i class="see-more-icon fa fa-info-circle" data-toggle="modal" data-target=".planner-modal" name="see-more"></i>
 
-			<% if(currentDay.Meals.length > 0) {%>
-				<h3 class="recipe-main-title">Oppskrifter (<%= currentDay.Meals.length  %>)</h3>
+		<% if(currentDay.Meals.length > 0) {%>
+				<h3 class="recipe-main-title">Oppskrifter (<%= currentDay.Meals.length  %>):</h3>
 
 				<% for(meal of currentDay.Meals) { %>
 				<div>
@@ -12,16 +14,72 @@
 				</div>
 			<% if(currentDay.Products.length > 0) {%>								
 				<div class="products">
-				<h3 class="product-main-title">Enkeltvarer</h3>
-                <h2><%= currentDay.Products.length  %></h2>
+				<h3 class="product-main-title">Enkeltvarer:</h3>
+                <h4>Antall: <%= currentDay.Products.length  %></h4>
 				<% for(product of currentDay.Products) { %>
 
                     
 				<% }%>
+
+
+
 				</div>
-                <i class="see-more-icon fa fa-info-circle" data-toggle="modal" data-target=".bd-example-modal-lg"></i>
+				<div>
+			</div>
 
-			<% }%>
-
-
+				
 			
+			  
+			  <!-- Modal -->
+			  <div class="modal fade planner-modal" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+				  <div class="modal-content">
+					<div class="modal-header">
+					  <h5 class="modal-title" id="exampleModalLongTitle">Dag</h5>
+					  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					  </button>
+					</div>
+					<div class="modal-body">
+							
+						<div class="modal-meals">
+							<% if(currentDay.Meals.length > 0) {%>
+								<h3 class="modal-recipe-main-title">Oppskrifter (<%= currentDay.Meals.length %>)</h3>	
+				
+								<% for(meal of currentDay.Meals) { %>
+								<div>
+									<img class="recipe-planner-meal-image" src="<%= meal.Image %>">
+									<p class="recipe-planner-meal-title"><%= meal.Title %></p>
+								</div>
+								<% }%>
+						
+						<% } %> 
+						<% if(currentDay.Products.length > 0) {%>	
+							
+							
+						<div class="modal-products">
+								<h3 class="modal-product-main-title">Enkeltvarer (<%= currentDay.Products.length  %>)</h3>
+							<% for(product of currentDay.Products) { %>
+							<div>
+								<img class="planner-product-image" src="<%= product.Image %>">
+								<p class="planner-product-title"><%= product.Name %></p>
+								<p class="modal-planner-product-price">kr <%= product.Price %>,-</p>
+							</div>
+							<% }%>
+						</div>
+							<% }%>
+				
+					</div>
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+					</div>
+				  </div>
+				</div>
+			  </div>
+
+
+				
+			<% }%>
+				
+

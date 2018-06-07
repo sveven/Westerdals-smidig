@@ -17,6 +17,10 @@ const searchOptions = (function($) {
 
 	//Recipes
 	let recipeWrapper = $("recipe-result-wrapper");
+	let singleRecipeDayId = $("#single-recipe-dayid");
+	let singleRecipeId = $("#single-recipe-id");
+	let singleRecipeAdd = $("#single-recipe-add");
+
 
 	//init
 	const init = (function() {
@@ -26,6 +30,12 @@ const searchOptions = (function($) {
 			searchChoice = $("#search-location");
 		})();
 		const setEvents = (function() {
+
+			singleRecipeAdd.on("click", function() {
+				let addDayId = getQueryVariable("dayid");	
+				singleRecipeDayId.val(addDayId);
+				alert(addDayId);			
+			});
 			groceriesBtn.on("click", "label", function(e) {
 				e.preventDefault();
 				getGrocerySearch();
@@ -85,7 +95,7 @@ const searchOptions = (function($) {
 			});
 		})();
 
-		const setAppGUI = (function()	{
+		const setAppGUI = (function() {
 			getGrocerySearch();
 		})();
 	})();
@@ -95,8 +105,7 @@ const searchOptions = (function($) {
 		let dataLength = data.products.length;
 
 		let dayIdString = getQueryVariable("dayid");
-		
-		
+
 		//if data exists
 		if (isEmpty($(".search-result"))) {
 			for (var i = 0; i < dataLength; i++) {
@@ -116,7 +125,7 @@ const searchOptions = (function($) {
 					name: "productid",
 					value: data.products[i].id
 				});
-				let dayID = $("<input>",	{
+				let dayID = $("<input>", {
 					type: "hidden",
 					name: "dayid",
 					value: dayIdString
@@ -184,11 +193,11 @@ const searchOptions = (function($) {
 		return !$.trim(el.html());
 	}
 
-	function getGrocerySearch()	{
+	function getGrocerySearch() {
 		$.ajax({
 			url: "/search/partial",
 			type: "GET",
-			success: function (result) {
+			success: function(result) {
 				searchChoice.html(result);
 				$("#groceries-tab").addClass("active");
 			}
@@ -242,6 +251,8 @@ const searchOptions = (function($) {
 
 		if (data.results) {
 			for (let i in data.results) {
+				let singleRecipeUrl = "/recipes/single/" + data.results[i].id;
+
 				let recipeWrapper = $("<div>", {
 					class: "recipe-wrapper"
 				});
@@ -249,15 +260,20 @@ const searchOptions = (function($) {
 					class: "recipe-img",
 					src: data.results[i].feature_image_url
 				});
+
 				let recipeTitle = $("<h5>", {
 					class: "recipe-title",
 					text: data.results[i].title
+				});
+				let singleRecipeLink = $("<a>", {
+					class: "single-recipe-link",
+					href: singleRecipeUrl + "?dayid=" + dayIdString
 				});
 				let recipeDifficulty = $("<p>", {
 					class: "recipe-difficulty",
 					text: data.results[i].difficulty_string
 				});
-				let addForm = $("<form>",	{
+				let addForm = $("<form>", {
 					method: "GET",
 					action: "/database/recipe-in-day/"
 				});
@@ -267,12 +283,12 @@ const searchOptions = (function($) {
 					value: "Legg til"
 				});
 
-				let recipeID = $("<input>",	{
+				let recipeID = $("<input>", {
 					type: "hidden",
 					name: "recipeid",
-					value: data.results[i].id,
+					value: data.results[i].id
 				});
-				let dayID = $("<input>",	{
+				let dayID = $("<input>", {
 					type: "hidden",
 					name: "dayid",
 					value: dayIdString
@@ -283,13 +299,8 @@ const searchOptions = (function($) {
 				});
 
 				addForm.append(recipeID, dayID, buyButton);
-				recipeWrapper.append(
-					recipeImg,
-					recipeTitle,
-					recipeDifficulty,
-					addForm,
-					recipeDuration
-				);
+				singleRecipeLink.append(recipeImg, recipeTitle, recipeDifficulty);
+				recipeWrapper.append(singleRecipeLink, addForm, recipeDuration);
 				recipeResultWrapper.append(recipeWrapper);
 			}
 		}
@@ -300,10 +311,10 @@ const searchOptions = (function($) {
 		var vars = query.split("&");
 		for (var i = 0; i < vars.length; i++) {
 			var pair = vars[i].split("=");
-			if (pair[0] == variable) { return pair[1]; }
+			if (pair[0] == variable) {
+				return pair[1];
+			}
 		}
-		return (false);
+		return false;
 	}
-
-
 })(jQuery);
