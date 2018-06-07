@@ -20,6 +20,7 @@ export class SearchPage {
   ) {}
 
   performSearch(searchWord: string) {
+    this.products = [];
     this.searchProvider
       .searchForProduct(searchWord)
       .then((res: any) => {
@@ -28,5 +29,9 @@ export class SearchPage {
       .catch(err => {
         console.log(err);
       });
+  }
+
+  addProductToDatabase(productId: number) {
+    
   }
 }

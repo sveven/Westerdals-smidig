@@ -1,2 +1,3 @@
-export const username = "BjornOlavSalvesen_Test";
-export const token = "pDDhJfeY2U4ADyjYdrnfjJPdmzUDjiONVvFA1CldLl9TPGoKSo";
+//COPY THIS FILE AND REMOVE -example
+export const username = "INSERT SECRET USERNAME";
+export const token = "INSERT SECRET TOKEN";

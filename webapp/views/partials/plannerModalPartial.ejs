@@ -1,3 +1,39 @@
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  	<div class="modal-dialog modal-lg">
+    	<div class="modal-content">
+      		<div class="meals">
+
+			<% if(currentDay.Meals.length > 0) {%>
+				<h3 class="recipe-main-title">Oppskrifter (<%= currentDay.Meals.length  %>)</h3>
+
+				<% for(meal of currentDay.Meals) { %>
+				<div>
+					<img class="recipe-planner-meal-image" src="<%= meal.Image %>">
+					<p class="recipe-planner-meal-title"><%= meal.Title %></p>
+				</div>
+				<% }%>
+			<% }%>
+		</div>
+		<% if(currentDay.Products.length > 0) {%>								
+		<div class="products">
+			<h3 class="product-main-title">Enkeltvarer (<%= currentDay.Products.length  %>)</h3>
+
+			<% for(product of currentDay.Products) { %>
+			<div>
+				<img class="planner-product-image" src="<%= product.Image %>">
+				<p class="planner-product-title"><%= product.Name %></p>
+				<p class="planner-product-price">kr <%= product.Price %>,-</p>
+			</div>
+			<% }%>
+		</div>
+			<% }%>
+
+    </div>
+  </div>
+</div>
+			
+			
+			
 			<div class="meals">
 
 			<% if(currentDay.Meals.length > 0) {%>
