@@ -14,7 +14,9 @@ console.log(JSON.stringify(req.cookies));
 
   getAllInformationAsJson(req)
     .then(result => {
+		
 	  let formattedJson = formatJsonObject(result);
+	  
 	  
       res.render("week-planner-current", {
         title: "K-Planleggeren",
@@ -99,6 +101,7 @@ function getInformationForAllDays(days) {
  */
 function getAllRecipeInformationForDay(day) {
   return day.Meals.map(meal => {
+	  
     return helper.getInformationFromRecipe(meal.recipeId).then(res => {
       return {
         Title: res.title,

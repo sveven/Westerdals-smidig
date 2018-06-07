@@ -105,6 +105,7 @@ const searchOptions = (function($) {
 		let dataLength = data.products.length;
 
 		let dayIdString = getQueryVariable("dayid");
+		alert(dayIdString);
 
 		//if data exists
 		if (isEmpty($(".search-result"))) {
