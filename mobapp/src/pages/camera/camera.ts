@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
+import { SearchProvider } from "../../providers/search/search";
 
 
 
@@ -11,9 +12,12 @@ import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-sca
   templateUrl: 'camera.html',
 })
 export class CameraPage {
-
+  recipes: any =[];
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private barcodescanner: BarcodeScanner) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              private barcodescanner: BarcodeScanner, 
+              private searchProvider: SearchProvider ) {
   }
 
   scannQr(){
@@ -27,6 +31,16 @@ export class CameraPage {
      });
     }
 
+    searchQr(recipeId: string) {
+      this.searchProvider
+        .searchForProduct(recipeId)
+        .then((res: any) => {
+          this.recipes.push(res.products);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   ionViewDidLoad() {
     console.log('ionViewDidLoad CameraPage');
   }
