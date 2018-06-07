@@ -84,11 +84,11 @@ router.get("/recipe-in-day/", function(req, res) {
     	create
 		.createDayQuery(req.cookies.ukeId, dayAndTypeArr[1], dayAndTypeArr[0])
 		.then(result => {
-      
+			
 			let dayid = result[0].id;
-
+//TODO: missing portion
       	create
-		.addMealToDayQuery(recipeid)
+		.addMealToDayQuery(recipeid, 1, dayid)
 		.then(result => {
         res.status(204).send();
       })
@@ -185,7 +185,6 @@ router.get("/mobile/product-in-week/:productid/:weekid", function(req, res) {
   let weekid = parseInt(req.params.weekid);
 
   create.createProductInWeek(productid, weekid, 1).then( result => {
-		console.log(result);
     res.status(204).send();
   }).catch(err => {
     res.status(500).send({error: err});
@@ -196,7 +195,7 @@ router.get("/mobile/product-in-week/:productid/:weekid", function(req, res) {
 router.get("/mobile/recipe-in-day/:recipeid/:dayid/", function(req, res) {
 	let recipeid = parseInt(req.params.recipeid);
   let dayid = parseInt(req.params.dayid);
-
+	create.createDayQuery()
   create.addMealToDayQuery(recipeid, 1, dayid).then(result => {
 
   }).catch(err => {

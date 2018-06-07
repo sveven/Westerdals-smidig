@@ -10,6 +10,7 @@ router.get("/", function(req, res) {
   let search = "";
   let list = [];
   let week = {};
+console.log(JSON.stringify(req.cookies));
 
   getAllInformationAsJson(req)
     .then(result => {
