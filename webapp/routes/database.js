@@ -178,10 +178,10 @@ router.get("/products/:day/", function(req, res) {
 		});
 });
 
-router.get("/mobile/product-in-week/", function(req, res) {
+router.get("/mobile/product-in-week/:productid/:weekid", function(req, res) {
 
-  let productid = req.param("productid");
-  let weekid = req.param("weekid");
+  let productid = req.params.productid
+  let weekid = req.params.weekid;
 
   create.createProductInWeek(productid, weekid, 1).then( result => {
     res.status(204).send();
@@ -191,10 +191,9 @@ router.get("/mobile/product-in-week/", function(req, res) {
 
 });
 
-router.get("/mobile/recipe-in-day/", function(req, res) {
+router.get("/mobile/recipe-in-day/:dayid/", function(req, res) {
 
-  let dayid = req.param("dayid");
-  let weekid = req.param("weekid");
+  let dayid = req.params.dayid;
 
   create.addMealToDayQuery(recipeid, 1, dayid).then(result => {
 
@@ -204,9 +203,9 @@ router.get("/mobile/recipe-in-day/", function(req, res) {
 
 });
 
-router.get("/mobile/week/all/", function(req, res) {
+router.get("/mobile/:weekid/all/", function(req, res) {
 
-  let weekid = req.param(weekid);
+  let weekid = req.params.weekid;
 
 	fetch
 		.fetchAllProductsInWeek(weekid)
@@ -221,8 +220,6 @@ router.get("/mobile/week/all/", function(req, res) {
 router.get("/mobile/week/", function(req, res) {
 
   create.createUserQuery().then( result => {
-		console.log(result);
-		
     let userid = result.Id;
 		
     create.createWeekQuery(userid).then( result => {
