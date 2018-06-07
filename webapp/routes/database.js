@@ -186,15 +186,20 @@ router.get("/mobile/product-in-week/:productid/:weekid", function(req, res) {
 
 });
 
-router.get("/mobile/recipe-in-day/:recipeid/:dayid/", function(req, res) {
+router.get("/mobile/recipe-in-day/:recipeid/:weekid", function(req, res) {
 	let recipeid = parseInt(req.params.recipeid);
-  let dayid = parseInt(req.params.dayid);
-	create.createDayQuery()
-  create.addMealToDayQuery(recipeid, 1, dayid).then(result => {
+	let weekid = parseInt(req.params.weekid);
+	//TODO: Hardcoded values as still missing values from mobile.
+	create.createDayQuery(weekid, "Monday", "Dinner").then(res => {
+		console.log(res[0]);
+		
+		create.addMealToDayQuery(recipeid, 1, res[0].id).then(result => {
 
-  }).catch(err => {
-    res.status(500).send({error: err});
-  });
+		}).catch(err => {
+			res.status(500).send({error: err});
+		});
+	})
+  
 
 });
 
