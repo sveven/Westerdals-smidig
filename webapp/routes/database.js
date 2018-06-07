@@ -94,7 +94,7 @@ router.get("/recipe-in-day/", function(req, res) {
 		});
 
 
-
+/*
 	create
 		.addMealToDayQuery(req.params.recipeid)
 		.then(result => {
@@ -102,7 +102,8 @@ router.get("/recipe-in-day/", function(req, res) {
 		})
 		.catch(err => {
 			res.status(500).send({ error: err });
-		});
+    });
+    */
 });
 
 router.delete("/recipe-in-day/:recipeid/:dayid", function(req, res) {
