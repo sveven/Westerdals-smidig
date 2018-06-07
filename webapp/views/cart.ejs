@@ -8,19 +8,21 @@
 		</div>
 	</header>
 	<main class="shopping-cart">
+
 		<ul class="cart-list">
+			<% if (data !== 'undefined' && data.Products !== 'undefined')	{	%>
+
+			<% for (i in data.Products)	{ %>
 			<li class="cart-item-wrapper">
-				<p class="item-quantity">1</p>
+				<p class="item-quantity"><%= data.Products[i].Quantity %></p>
 				<div class="cart-image-wrapper">
-					<img class="cart-image" src="/images/kjottdeig.jpg" alt="">
+					<img class="cart-image" src="<%= data.Products[i].Image %>" alt="<%= data.Products[i].Name %>">
 				</div>
 				<div class="cart-item-text">	
-					<p>Kjøttdeig</p>
-					<p>500g, Gilde</p>
+					<p><%= data.Products[i].Name %></p>
 				</div>
 				<div class="item-cost-wrapper">
-					<p>100,-</p>
-					<p>15%</p>
+					<p><%= data.Products[i].Price + ",-" %></p>
 				</div>
 				<form class="cart-delete-form">
 					<input type="hidden" name="" value="">
@@ -29,27 +31,17 @@
 					</label>
 				</form>
 			</li>
-			<li class="cart-item-wrapper">
-				<p class="item-quantity">1</p>
-				<div class="cart-image-wrapper">
-					<img class="cart-image" src="/images/kjottdeig.jpg" alt="">
-				</div>
-				<div class="cart-item-text">	
-					<p>Kjøttdeig</p>
-					<p>500g, Gilde</p>
-				</div>
-				<div class="item-cost-wrapper">
-					<p>100,-</p>
-					<p>15%</p>
-				</div>
-				<form class="cart-delete-form">
-					<input type="hidden" name="" value="">
-					<label class="delete-cart-item-icon far fa-trash-alt" for="delete-item">
-						<input class="delete-input-hidden" type="submit" name="delete-item" value="">
-					</label>
-				</form>
-			</li>
+			<% } %>
+      <% } else { %>
+        
+        <p>Kunne ikke hente data.</p>
+
+      <% } %>
 		</ul>
+		<div>	
+		
+			<p><% data.TotalPrice</p>
+		</div>
 	</main>
 	<footer class="cart-footer">
 		
