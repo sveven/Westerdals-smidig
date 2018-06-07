@@ -5,35 +5,46 @@ const createQueries = require("../queries/plannerCreateQueries");
 
 /* GET search page. */
 router.get("/", function(req, res) {
-  let search = "";
-  let list = [];
+	let search = "";
+	let list = [];
 
-  res.render("singleRecipe", {
-    title: "K-Planleggeren",
-    search: search,
-    data: list
-  });
+	res.render("singleRecipe", {
+		title: "K-Planleggeren",
+		search: search,
+		data: list
+	});
 });
 
 router.get("/:recipe_id", function(req, res) {
-  connection.getRecipeById(req.params.recipe_id, function(list) {
-    res.render("singleRecipe", {
-      title: "K-Planleggeren",
-      data: list
-    });
-  });
+
+	let dayid = req.param("dayid");
+
+	connection.getRecipeById(req.params.recipe_id, function(list) {
+		res.render("singleRecipe", {
+			title: "K-Planleggeren",
+			data: list,
+			dayid: dayid
+		});
+	});
 });
 
 router.post("/:recipe_id/:portions", function(req, res) {
-  let recipeId = req.params.recipe_id;
 
-  let type = req.cookies.type;
-  let portions = req.params.portions;
-  let dayId = req.cookies.dayId;
-  //TODO: requires proper day id
-  createQueries.addMealToDayQuery(recipeId,  portions, dayId);
+	//locahost:3000/recipe/single/?recipeid=2418&dayid=dinner-wednesday
+	let recipeId = req.params.recipe_id;
 
-  res.redirect("/week-planner-current");
+	let type = req.cookies.type;
+	let portions = req.params.portions;
+	let dayId = req.cookies.dayId;
+	//TODO: requires proper day id
+	createQueries.addMealToDayQuery(recipeId,  portions, dayId).then(result => {
+		console.log(result);
+	}).catch(err => {
+		res.status(500).send({error: err});
+	});
+
+	res.redirect("/week-planner-current");
+
 });
 
 module.exports = router;
