@@ -191,10 +191,8 @@ router.get("/mobile/recipe-in-day/:recipeid/:weekid", function(req, res) {
 	let weekid = parseInt(req.params.weekid);
 	//TODO: Hardcoded values as still missing values from mobile.
 	create.createDayQuery(weekid, "Monday", "Dinner").then(res => {
-		console.log(res[0]);
-		
 		create.addMealToDayQuery(recipeid, 1, res[0].id).then(result => {
-
+			res.status(204).send();
 		}).catch(err => {
 			res.status(500).send({error: err});
 		});
