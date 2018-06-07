@@ -11,7 +11,8 @@ router.get("/", function(req, res) {
   
 
   getWeekOverViewAsJson(req).then(result => {
-
+    console.log(result);
+    
     res.render("cart", {
       title: "K-Planleggeren",
       data: result
@@ -125,7 +126,8 @@ function getAllProductInformationForWeek(products) {
 function getFormattedInformationOnProduct(kolonialId, quantity) {
   return helper.getInformationOfProduct(kolonialId).then(res => {
     return {
-      Name: res.full_name,
+      Name: res.name,
+      Name_Extra: res.name_extra,
       Image: res.images[0].thumbnail.url,
       Price: parseInt(res.gross_price),
       Quantity: quantity,
