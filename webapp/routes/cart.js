@@ -15,6 +15,13 @@ router.get("/", function(req, res) {
       data: result
     });
     
+  }).catch(err => {
+
+    res.render("cart", {
+      title: "K-Planleggeren",
+      data: {err}
+    });
+
   });
 
 });
