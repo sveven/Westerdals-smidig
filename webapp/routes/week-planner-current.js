@@ -112,7 +112,7 @@ function getAllProductInformationForDay(day) {
   return day.Products.map(product => {
     return helper.getInformationOfProduct(product.kolonialId).then(res => {
       return {
-        Name: res.full_name,
+        Name: res.name,
         Image: res.images[0].thumbnail.url,
         Price: res.gross_price,
         ProductId: res.id

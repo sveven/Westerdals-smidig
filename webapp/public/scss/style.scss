@@ -73,18 +73,23 @@ html {
     border-radius: 3px;
     background-color: white;
     overflow: hidden;
+    padding: 3px;
 }
 
 .lunch {
     border: 1.5px solid rgb(255, 165, 20);
     border-radius: 3px;
     background-color: white;
+    overflow: hidden;
+    padding: 3px;
 }
 
 .dinner {
     border: 1.5px solid rgb(255, 165, 20);
     border-radius: 3px;
     background-color: white;
+    overflow: hidden;
+    padding: 3px;
 }
 
 .btn-collapse {
@@ -115,6 +120,7 @@ html {
     border-style: none;
 }
 
+
 .complete-btn {
     position: relative;
     background-color: rgb(255, 165, 20);
@@ -129,3 +135,46 @@ html {
     margin-left: -85px;
     left: 50%;
 }
+
+.meals {
+    margin-top: -30px;
+}
+
+.recipe-main-title {
+    font-size: 0.9rem;
+}
+
+.recipe-planner-meal-title {
+    font-size: 10px;
+}
+
+.recipe-title {
+    font-size: 1rem;
+}
+
+
+.product-main-title {
+    font-size: 0.9rem;
+}
+
+.planner-product-title {
+    font-size: 10px;
+}
+
+.planner-product-price {
+    font-size: 10px;
+    margin-top: -12px;
+    float: right;
+	font-weight: bold;
+	background-color: rgb(240, 240, 240);
+}
+
+.has-content {
+    height: 35px;
+    width: 25px;
+    float: right;
+    border-radius: 3px;
+    display: none;
+}
+
+

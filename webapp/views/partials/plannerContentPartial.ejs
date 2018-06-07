@@ -1,28 +1,25 @@
+				<div class="meals">
 
-            <ul class="recipe-planner-items">
-                <div class="meals">
-            
-            <% if(currentDay.Meals.length > 0) {%>
-                <% for(meal of currentDay.Meals) { %>
-                <div>
+			<% if(currentDay.Meals.length > 0) {%>
+				<h3 class="recipe-main-title">Oppskrifter (<%= currentDay.Meals.length  %>)</h3>
+
+				<% for(meal of currentDay.Meals) { %>
+				<div>
                     <p class="recipe-planner-meal-title"><%= meal.Title %></p>
-                    <img class="recipe-planner-meal-image" src="<%= meal.Image %>">
                 </div>
-                <% }%>
-            <% }%>
-                </div>
-            <% if(currentDay.Products.length > 0) {%>								
-                <div class="products">
-                <% for(product of currentDay.Products) { %>
-                <div>
-                    <img class="recipe-planner-product-image" src="<%= product.Image %>">
-                    <p class="recipe-planner-product-title"><%= product.Name %></p>
-                    <p class="recipe-planner-product-price"><%= product.Price %></p>
-                </div>
-                <% }%>
-            </div>
-                
-            <% }%>
+				<% }%>
+			<% }%>
+				</div>
+			<% if(currentDay.Products.length > 0) {%>								
+				<div class="products">
+				<h3 class="product-main-title">Enkeltvarer</h3>
+                <h2><%= currentDay.Products.length  %></h2>
+				<% for(product of currentDay.Products) { %>
 
-                        
                     
+				<% }%>
+				</div>
+			<% }%>
+
+
+			

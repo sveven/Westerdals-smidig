@@ -115,8 +115,8 @@ const searchOptions = (function($) {
 				let dayID = $("<input>",	{
 					type: "hidden",
 					name: "dayid",
-					value: "breakfast-monday"
-				})
+					value: ""
+				});
 				let buyButton = $(
 					"<input class='buy-button' type='submit' value='Legg til'>"
 				);

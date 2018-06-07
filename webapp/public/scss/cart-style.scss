@@ -19,7 +19,8 @@
 }
 
 .shopping-cart {
-    grid-area: cart;
+	grid-area: cart;
+	position: relative;
 }
 
 .cart-list {
@@ -90,6 +91,27 @@
 .delete-input-hidden {
     position: absolute;
     left: -99999px;
+}
+
+.cart-summary-wrapper	{
+	position: absolute;
+	left: 85%;
+	width: 250px;
+}
+
+.cart-summary-wrapper p {
+	font-weight: bold;
+}
+
+.cart-finalize-buttons	{
+	position: absolute;
+	left: 100%;
+	margin-top: 5rem;
+}
+
+.finalize	{
+	height: 40px;
+	font-size: 1.2rem;
 }
 
 .cart-footer {
