@@ -6,12 +6,15 @@ router.get("/", function (req, res) {
   let search = "";
   let data = "";
   let cat = "";
-
+  let dayid = req.param("dayid")
+  console.log(dayid);
+  
   res.render("searchTabs", {
     title: "K-Planleggeren",
     search: search,
     data: data,
-    categories: cat
+    categories: cat, 
+    dayid: dayid
   });
 });
 

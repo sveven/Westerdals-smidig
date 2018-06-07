@@ -1,7 +1,6 @@
 const query = require("../queries/plannerCreateQueries");
 
 module.exports = function(req, res, next) {
-  console.log(req.cookies);
   
   if (!req.cookies.planleggerId || req.cookies.planleggerId === "undefined") {
     query
