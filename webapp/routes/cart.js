@@ -7,7 +7,7 @@ const helper = require("../queries/queriesHelperMethods");
 /* GET cart page. */
 router.get("/", function(req, res) {
   let list;
-  getAllInformationAsJson(req).then(res => {
+  getCartOverviewAsJson(req).then(res => {
     console.log(res);
     
   });
@@ -19,13 +19,19 @@ router.get("/", function(req, res) {
 
 router.post("/", function(req, res) {});
 
-function getAllInformationAsJson(req) {
-  return getAllInformationOnCurrentWeek(req).then(res => {
-    return formatJsonObjectForCartPage(res);
+function getWeekOverViewAsJson(req) {
+  return getAllInformationForWeek(req).then(res => {
+    return formatJsonObjectForWeekOverview(res);
   });
 }
 
-function getAllInformationOnCurrentWeek(req) {
+function getCartOverviewAsJson(req) {
+  return getAllInformationForWeek(req).then(res => {
+    return formatJsonObjectForCart(res);
+  })
+}
+
+function getAllInformationForWeek(req) {
   return fetch.fetchAllProductsInWeek(req.cookies.ukeId).then(res => {
     getAllProductInformationForWeek(res.Products);
 
@@ -117,7 +123,7 @@ function getFormattedInformationOnProduct(kolonialId, quantity) {
   });
 }
 
-function formatJsonObjectForCartPage(currentJsonObject) {
+function formatJsonObjectForWeekOverview(currentJsonObject) {
   let result = {};
   let meals = [];
   let products = [];
@@ -138,11 +144,39 @@ function formatJsonObjectForCartPage(currentJsonObject) {
     Meals: meals,
     Products: products
   };
-  removeDuplicatesFromJson(result);
+  
+  result = removeDuplicatesFromWeekJson(result);
   result["TotalPrice"] = calculateTotalPriceForCart(result);
 
   return result;
 }
+
+function formatJsonObjectForCart(currentJsonObject) {
+  let result = {};
+  let products = [];
+  
+  for(obj of currentJsonObject[0]){
+    if(obj.hasOwnProperty("Products")){
+      for(product of obj.Products) {
+        let formattedProduct = {
+          product_id: product.ProductId,
+          quantity: product.Quantity
+        }
+        products.push(formattedProduct);
+      }
+    } else {
+      let formattedProduct = {
+        product_id: obj.ProductId,
+        quantity: obj.Quantity
+      }
+      products.push(formattedProduct);
+    }
+  }
+  result["items"] = products;
+  result = removeDuplicatesFromCartJson(result);
+  return result;
+}
+
 
 function calculateTotalPriceForCart(currentJsonObject) {
   let totalPrice = 0;
@@ -158,7 +192,7 @@ function calculateTotalPriceForCart(currentJsonObject) {
   return totalPrice;
 }
 
-function removeDuplicatesFromJson(currentJsonObject) {
+function removeDuplicatesFromWeekJson(currentJsonObject) {
   let resultProducts = [];
 
   for (product of currentJsonObject.Products) {
@@ -167,10 +201,10 @@ function removeDuplicatesFromJson(currentJsonObject) {
     } else {
       let found = false;
       for (filteredProduct of resultProducts) {
-        if (filteredProduct.Name === product.Name) {
+        if (filteredProduct.ProductId === product.ProductId) {
           found = true;
           filteredProduct.Quantity += product.Quantity;
-        }
+        } 
       }
 
       if (!found) {
@@ -180,6 +214,31 @@ function removeDuplicatesFromJson(currentJsonObject) {
     }
   }
   currentJsonObject.Products = resultProducts;
+  return currentJsonObject;
+}
+
+function removeDuplicatesFromCartJson(currentJsonObject) {
+  let resultProducts = [];
+  
+  for (product of currentJsonObject.items) {
+    if (resultProducts.length === 0) {
+      resultProducts.push(product);
+    } else {
+      let found = false;
+      for (filteredProduct of resultProducts) {
+        if (filteredProduct.product_id === product.product_id) {
+          found = true;
+          filteredProduct.quantity += product.quantity;
+        } 
+      }
+
+      if (!found) {
+        resultProducts.push(product);
+        found = false;
+      }
+    }
+  }
+  currentJsonObject["items"] = resultProducts;
   return currentJsonObject;
 }
 
