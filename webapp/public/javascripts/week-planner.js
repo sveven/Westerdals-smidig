@@ -5,8 +5,11 @@
 
 	$(".dinner-wrapper, .lunch-wrapper, .breakfast-wrapper").on("click", "div", function () {
 		getClickedID = this.id;
+		console.log(getClickedID);
+		
 		let type = this.id.substring(0, this.id.indexOf("-"));
 		let day = this.id.substring(this.id.indexOf("-") + 1, this.id.length);
+		$("#" + getClickedID).children("form").children("input").val(getClickedID);
 	});
 
 	// {"Breakfast-Monday":
@@ -36,13 +39,11 @@
 				let mealImage = $("<img class='meal-img img-thumb img-thumbnail img-fluid' src='" + week.Meals[i].Image + "'" + "/>");
 			}
 			for (i in Products[i].indentifier) {
-				let groceryUL = $("<ul class='grocery-ul'>")
+				let groceryUL = $("<ul class='grocery-ul'>");
 				let groceryTitle = $("<p class='grocery-title'>" + Products[i].identifier.Title + "</p>");
 				let groceryImage = $("<img class='meal-img img-thumb img-thumbnail img-fluid' src='" + week.Products[i].identifier.Image + "'" + "/>");
 				let groceryPrice = $("<p class='grocery-price'>" + "Kr " + Products[i].identifier.Price + ",-" + "</p>");
 			}
 		} 
-	 }
-	
-
-})
+	}
+})(jQuery);
