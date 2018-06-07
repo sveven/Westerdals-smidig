@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DatabaseProvider } from '../../providers/database/database';
 
 /**
  * Generated class for the CheckoutPage page.
@@ -15,11 +16,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CheckoutPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  entireWeek: JSON[];
+  meals: JSON[];
+  products: JSON[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private databaseProvider: DatabaseProvider) {
+    this.getAllProductsFromWeek();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CheckoutPage');
+  getAllProductsFromWeek() {
+    this.databaseProvider.getAllProductsInWeek(this.databaseProvider.getWeekId()).then((res:any) => {
+      this.entireWeek = res;
+    });
   }
+
 
 }

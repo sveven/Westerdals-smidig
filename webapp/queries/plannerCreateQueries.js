@@ -60,6 +60,7 @@ module.exports = {
     return models.Product.findOrCreate({
       where: { kolonialId: productId }
     }).then(product => {
+      
       fetchWeekQuery(weekId).then(week => {
         return product[0].addWeeks(week, {
           through: { productQuantity: quantity }

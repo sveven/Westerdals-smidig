@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { SearchProvider } from "../../providers/search/search";
 import { Observable } from "rxjs/Observable";
+import { DatabaseProvider } from "../../providers/database/database";
 
 @IonicPage()
 @Component({
@@ -11,12 +12,12 @@ import { Observable } from "rxjs/Observable";
 export class SearchPage {
   search: string = "Ost";
   products: any = [];
-  
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private searchProvider: SearchProvider
+    private searchProvider: SearchProvider,
+    private databaseProvider: DatabaseProvider
   ) {}
 
   performSearch(searchWord: string) {
@@ -32,6 +33,12 @@ export class SearchPage {
   }
 
   addProductToDatabase(productId: number) {
-    
+    this.databaseProvider.addProductToDatabase(productId).then((res : any) => {
+      console.log(res);
+      
+    }).catch(err => {
+      console.log(err);
+      
+    })
   }
 }

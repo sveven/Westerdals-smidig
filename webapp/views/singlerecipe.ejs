@@ -100,8 +100,10 @@
 							<h2><%= priceSummary() %>,-</h2>
 							<p>Nok til <%= data.default_num_portions %> personer</p>
 						</div>
-						<form action="/recipes/single/<%= data.id %>/<%= data.default_num_portions %>" method="POST">
-							<input class="button add-recipe" type="submit" value="Legg til i planlegger">
+						<form action="/database/recipe-in-day/" method="GET">
+							<input id="single-recipe-id" type="hidden" name="recipeid" value="<%= data.id %>">
+							<input id="single-recipe-dayid" type="hidden" name="dayid" value="">
+							<input id="single-recipe-add" class="button add-recipe" type="submit" value="Legg til i planlegger">
 						</form>
 					</div>
 			</aside>
@@ -111,5 +113,5 @@
 		</main>
 
 
-
+s
 		<%}%>
