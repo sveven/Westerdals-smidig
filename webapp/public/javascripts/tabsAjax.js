@@ -93,6 +93,10 @@ const searchOptions = (function($) {
 	function successFunction(returnData) {
 		let data = returnData;
 		let dataLength = data.products.length;
+
+		let dayIdString = getQueryVariable("dayid");
+		
+		
 		//if data exists
 		if (isEmpty($(".search-result"))) {
 			for (var i = 0; i < dataLength; i++) {
@@ -115,7 +119,7 @@ const searchOptions = (function($) {
 				let dayID = $("<input>",	{
 					type: "hidden",
 					name: "dayid",
-					value: ""
+					value: dayIdString
 				});
 				let buyButton = $(
 					"<input class='buy-button' type='submit' value='Legg til'>"
@@ -229,6 +233,8 @@ const searchOptions = (function($) {
 		let data = returnData;
 		let dataLength = data.length;
 
+		let dayIdString = getQueryVariable("dayid");
+
 		let recipeResultWrapper = $(".recipe-result-wrapper");
 		let recipeResultSection = $("<section>", {
 			id: "recipe-result-section"
@@ -269,7 +275,7 @@ const searchOptions = (function($) {
 				let dayID = $("<input>",	{
 					type: "hidden",
 					name: "dayid",
-					value: "breakfast-monday"
+					value: dayIdString
 				});
 				let recipeDuration = $("<p>", {
 					class: "recipe-duration",
@@ -288,4 +294,16 @@ const searchOptions = (function($) {
 			}
 		}
 	}
+
+	function getQueryVariable(variable) {
+		var query = window.location.search.substring(1);
+		var vars = query.split("&");
+		for (var i = 0; i < vars.length; i++) {
+			var pair = vars[i].split("=");
+			if (pair[0] == variable) { return pair[1]; }
+		}
+		return (false);
+	}
+
+
 })(jQuery);

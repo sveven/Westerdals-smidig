@@ -11,26 +11,33 @@ router.get("/product-in-day/", function(req, res) {
   let dayid = req.param('dayid');
   let productid = req.param('productid');
   let dayAndTypeArr = dayAndTypeSplit(dayid);
+  
+  if(dayAndTypeArr !== NULL){
+  
+    res.status(500).send({error: "dayid missing"});
+   
+  } else {
     
 
-	create
-		.createDayQuery(req.cookies.ukeId, dayAndTypeArr[1], dayAndTypeArr[0])
-		.then(result => {
-      
-			let dayid = result[0].id;
+    create
+      .createDayQuery(req.cookies.ukeId, dayAndTypeArr[1], dayAndTypeArr[0])
+      .then(result => {
+        
+        let dayid = result[0].id;
 
-			create
-				.createProductInDay(productid, 1, dayid)
-				.then(result => {
-					res.status(204).send();
-				})
-				.catch(err => {
-					res.status(500).send({ error: err });
-				});
-		})
-		.catch(err => {
-			res.status(500).send({ error: err });
-		});
+        create
+          .createProductInDay(productid, 1, dayid)
+          .then(result => {
+            res.status(204).send();
+          })
+          .catch(err => {
+            res.status(500).send({ error: err });
+          });
+      })
+      .catch(err => {
+        res.status(500).send({ error: err });
+      });
+    }
 });
 
 router.delete("/product-in-day/:productid/:dayid", function(req, res) {
@@ -88,17 +95,6 @@ router.get("/recipe-in-day/", function(req, res) {
         res.status(500).send({ error: err });
       });
 
-		})
-		.catch(err => {
-			res.status(500).send({ error: err });
-		});
-
-
-
-	create
-		.addMealToDayQuery(req.params.recipeid)
-		.then(result => {
-			res.status(204).send();
 		})
 		.catch(err => {
 			res.status(500).send({ error: err });
@@ -182,12 +178,71 @@ router.get("/products/:day/", function(req, res) {
 		});
 });
 
+router.get("/mobile/product-in-week/:productid/:weekid", function(req, res) {
+
+  let productid = req.params.productid
+  let weekid = req.params.weekid;
+
+  create.createProductInWeek(productid, weekid, 1).then( result => {
+    res.status(204).send();
+  }).catch(err => {
+    res.status(500).send({error: err});
+  })
+
+});
+
+router.get("/mobile/recipe-in-day/:dayid/", function(req, res) {
+
+  let dayid = req.params.dayid;
+
+  create.addMealToDayQuery(recipeid, 1, dayid).then(result => {
+
+  }).catch(err => {
+    res.status(500).send({error: err});
+  });
+
+});
+
+router.get("/mobile/:weekid/all/", function(req, res) {
+
+  let weekid = req.params.weekid;
+
+	fetch
+		.fetchAllProductsInWeek(weekid)
+		.then(result => {
+			res.send(result);
+		})
+		.catch(err => {
+			res.status(500).send({ error: err });
+		});
+});
+
+router.get("/mobile/week/", function(req, res) {
+
+  create.createUserQuery().then( result => {
+    let userid = result.Id;
+		
+    create.createWeekQuery(userid).then( result => {
+
+      res.send({weekId: result.id});
+
+    }).catch(err => {
+        res.status(500).send({error: err})
+    });
+
+  }).catch(err => {
+    res.status(500).send({error: err})
+  });
+});
+
+
+
 
 function dayAndTypeSplit(dayAndType){
 
   switch(dayAndType){
 
-    // Brekafast
+    // Breakfast
 
     case "breakfast-monday":
       return ["breakfast", "monday"];

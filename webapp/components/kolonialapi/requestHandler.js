@@ -65,10 +65,10 @@ let options = {
   path: "",
   method: "GET",
   headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-    "User-Agent": config.secretusername,
-    "X-Client-Token": config.secrettoken
+    'accept': 'application/json',
+    'Content-Type': 'application/json',
+    'User-Agent': config.secretusername,
+    'X-Client-Token': config.secrettoken
   }
 };
 
