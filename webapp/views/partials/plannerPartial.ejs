@@ -1,0 +1,10 @@
+<%if(currentDay){%>
+    <a href="/searchtabs">
+        <input type="submit" class="button-add has-content" value="+">
+    </a>
+    <% include plannerContentPartial.ejs %>
+<%} else {%>
+    <a href="/searchtabs">
+        <input type="submit" class="button-add" value="+">
+    </a>
+<% } %>
