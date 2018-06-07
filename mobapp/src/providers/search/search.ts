@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import * as config from "./../../app/env-example";
+import * as config from "./../../app/env";
 
 @Injectable()
 export class SearchProvider {

@@ -18,6 +18,7 @@ import { CameraPage } from '../pages/camera/camera';
 import { SearchPage } from '../pages/search/search';
 import { CheckoutPage } from '../pages/checkout/checkout';
 import { SearchProvider } from '../providers/search/search';
+import { DatabaseProvider } from '../providers/database/database';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { SearchProvider } from '../providers/search/search';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BarcodeScanner,
-    SearchProvider
+    SearchProvider,
+    DatabaseProvider
   ]
 })
 
