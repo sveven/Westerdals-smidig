@@ -13,7 +13,8 @@ router.get("/", function(req, res) {
 
   getAllInformationAsJson(req)
     .then(result => {
-      let formattedJson = formatJsonObject(result);
+	  let formattedJson = formatJsonObject(result);
+	  
       res.render("week-planner-current", {
         title: "K-Planleggeren",
         search: search,
@@ -34,7 +35,7 @@ router.get("/", function(req, res) {
 
 function formatJsonObject(currentJsonObject) {
   let result = {};
-
+	
   for (day of currentJsonObject) {
     let dayObject = {};
     let meals = [];
@@ -55,6 +56,7 @@ function formatJsonObject(currentJsonObject) {
       Products: products
     };
   }
+  return result;
 }
 
 function getAllInformationAsJson(req) {
@@ -76,7 +78,7 @@ function getDaysInCurrentWeek(req) {
 
 function getInformationForAllDays(days) {
   return days.map(day => {
-    let identifier = day.type + "-" + day.day;
+    let identifier = day.type  + day.day;
 
     return Promise.all(
       [].concat.apply(

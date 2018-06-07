@@ -1,5 +1,6 @@
 <% layout("layout") -%>
 
+
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
@@ -33,7 +34,7 @@
 			<!--Frokost-->
 			<p>
 				<button class="btn btn-primary btn-collapse" type="button" data-toggle="collapse" data-target="#breakfast-row" aria-expanded="true"
-				    aria-controls="breakfast-row">
+				 aria-controls="breakfast-row">
 					Frokost
 				</button>
 
@@ -42,46 +43,52 @@
 				<div class="breakfast-wrapper">
 					<div class="breakfast" id="breakfast-monday">
 						<p>Mandag</p>
+
 						
-						<a href="/searchtabs">
-							<input type="submit" class="button-add" value="+">
-						</a>
+						<% let currentDay = week.BreakfastMonday; %>
+						<% include ../views/partials/plannerPartial.ejs %>
+						
 					</div>
 					<div class="breakfast" id="breakfast-tuesday">
 						<p>Tirsdag</p>
-						<a href="/searchtabs">
-							<input type="submit" class="button-add" value="+">
-						</a>
+						<% currentDay = week.BreakfastTuesday;%>
+						<% include ../views/partials/plannerPartial.ejs %>
+						
 					</div>
 					<div class="breakfast" id="breakfast-wednesday">
 						<p>Onsdag</p>
-						<a href="/searchtabs">
-							<input type="submit" class="button-add" value="+">
-						</a>
+						
+						<% currentDay = week.BreakfastWednesday; %>
+						<% include ../views/partials/plannerPartial.ejs %>
+						
 					</div>
 					<div class="breakfast" id="breakfast-thursday">
 						<p>Torsdag</p>
-						<a href="/searchtabs">
-							<input type="submit" class="button-add" value="+">
-						</a>
+					
+						<%  currentDay = week.BreakfastThursday; %>
+						<% include ../views/partials/plannerPartial.ejs %>
+						
 					</div>
 					<div class="breakfast" id="breakfast-friday">
 						<p>Fredag</p>
-						<a href="/searchtabs">
-							<input type="submit" class="button-add" value="+">
-						</a>
+						
+						<%  currentDay = week.BreakfastFriday; %>
+						<% include ../views/partials/plannerPartial.ejs %>
+						
 					</div>
 					<div class="breakfast" id="breakfast-saturday">
 						<p>Lørdag</p>
-						<a href="/searchtabs">
-							<input type="submit" class="button-add" value="+">
-						</a>
+						
+						<%  currentDay = week.BreakfastSaturday; %>
+						<% include ../views/partials/plannerPartial.ejs %>
+						
 					</div>
 					<div class="breakfast" id="breakfast-sunday">
 						<p>Søndag</p>
-						<a href="/searchtabs">
-							<input type="submit" class="button-add" value="+">
-						</a>
+				
+						<%  currentDay = week.BreakfastSunday; %>
+						<% include ../views/partials/plannerPartial.ejs %>
+						
 					</div>
 				</div>
 			</div>
@@ -90,7 +97,7 @@
 
 			<p>
 				<button class="btn btn-primary btn-collapse" type="button" data-toggle="collapse" data-target="#lunch-row" aria-expanded="true"
-				    aria-controls="lunch-row">
+				 aria-controls="lunch-row">
 					Lunsj
 				</button>
 			</p>
@@ -98,46 +105,53 @@
 				<div class="lunch-wrapper">
 					<div class="lunch" id="lunch-monday">
 						<p>Mandag</p>
-						<a href="/searchtabs">
-							<input type="submit" class="button-add" value="+">
-						</a>
+					
+						<%  currentDay = week.LunchMonday; %>
+						<% include ../views/partials/plannerPartial.ejs %>
+						
 					</div>
 					<div class="lunch" id="lunch-tuesday">
 						<p>Tirsdag</p>
-						<a href="/searchtabs">
-							<input type="submit" class="button-add" value="+">
-						</a>
+					
+						<%  currentDay = week.LunchTuesday;  %>
+						<% include ../views/partials/plannerPartial.ejs %>
+						
 					</div>
 					<div class="lunch" id="lunch-wednesday">
 						<p>Onsdag</p>
-						<a href="/searchtabs">
-							<input type="submit" class="button-add" value="+">
-						</a>
+						
+						<%  currentDay = week.LunchWednesday;  %>
+						<% include ../views/partials/plannerPartial.ejs %>
+						
 					</div>
 					<div class="lunch" id="lunch-thursday">
 						<p>Torsdag</p>
 
-						<a href="/searchtabs">
-							<input type="submit" class="button-add" value="+">
-						</a>
+						
+						<%  currentDay = week.LunchThursday;  %>
+						<% include ../views/partials/plannerPartial.ejs %>
+						
 					</div>
 					<div class="lunch" id="lunch-friday">
 						<p>Fredag</p>
-						<a href="/searchtabs">
-							<input type="submit" class="button-add" value="+">
-						</a>
+					
+						<%  currentDay = week.LunchFriday; %>
+						<% include ../views/partials/plannerPartial.ejs %>
+						
 					</div>
 					<div class="lunch" id="lunch-saturday">
 						<p>Lørdag</p>
-						<a href="/searchtabs">
-							<input type="submit" class="button-add" value="+">
-						</a>
+						
+						<%  currentDay = week.LunchSaturday; %>
+						<% include ../views/partials/plannerPartial.ejs %>
+						
 					</div>
 					<div class="lunch" id="lunch-sunday">
 						<p>Søndag</p>
-						<a href="/searchtabs">
-							<input type="submit" class="button-add" value="+">
-						</a>
+					
+						<%  currentDay = week.LunchSunday; %>
+						<% include ../views/partials/plannerPartial.ejs %>
+						
 					</div>
 				</div>
 			</div>
@@ -146,7 +160,7 @@
 		<!--Dinner-->
 		<p>
 			<button class="btn btn-primary btn-collapse" type="button" data-toggle="collapse" data-target="#dinner-row" aria-expanded="true"
-			    aria-controls="dinner-row">
+			 aria-controls="dinner-row">
 				Middag
 			</button>
 		</p>
@@ -154,44 +168,55 @@
 			<div class="dinner-wrapper">
 				<div class="dinner" id="dinner-monday">
 					<p>Mandag</p>
-					<a href="/searchtabs">
-						<input type="submit" class="button-add" value="+">
-					</a>
+					
+					<%  currentDay = week.DinnerMonday; %>
+					<% include ../views/partials/plannerPartial.ejs %>
+					
 				</div>
 				<div class="dinner" id="dinner-tuesday">
 					<p>Tirsdag</p>
-					<a href="/searchtabs">
-						<input type="submit" class="button-add" value="+">
-					</a>
+					
+					<%  currentDay = week.DinnerTuesday; %>
+					<% include ../views/partials/plannerPartial.ejs %>
+					
 				</div>
 				<div class="dinner" id="dinner-wednesday">
 					<p>Onsdag</p>
-					<a href="/searchtabs">
-						<input type="submit" class="button-add" value="+">
-					</a>
+					
+					<%  currentDay = week.DinnerWednesday; %>
+					<% include ../views/partials/plannerPartial.ejs %>
+					
 				</div>
 				<div class="dinner" id="dinner-thursday">
 					<p>Torsdag</p>
-					<a href="/searchtabs">
-						<input type="submit" class="button-add" value="+">
-					</a>
+					
+					<%  currentDay = week.DinnerThursday; %>
+					<% include ../views/partials/plannerPartial.ejs %>
+					
 				</div>
 				<div class="dinner" id="dinner-friday">
 					<p>Fredag</p>
-					<a href="/searchtabs">
-						<input type="submit" class="button-add" value="+">
-					</a>
+					
+					<%  currentDay = week.DinnerFriday; %>
+					<% include ../views/partials/plannerPartial.ejs %>
+					
 				</div>
 				<div class="dinner" id="dinner-saturday">
 					<p>Lørdag</p>
-					<a href="/searchtabs">
-						<input type="submit" class="button-add" value="+">
-					</a>
+					
+					<%  currentDay = week.DinnerSaturday; %>
+					<% include ../views/partials/plannerPartial.ejs %>
+					
 				</div>
 				<div class="dinner" id="dinner-sunday">
 					<p>Søndag</p>
 					<input type="submit" value="+" class="button-add">
+					
+					<%  currentDay = week.DinnerSunday; %>
+					<% include ../views/partials/plannerPartial.ejs %>
+					
 				</div>
+
 			</div>
 
 		</div>
@@ -202,5 +227,6 @@
 			<input class="btn btn-primary complete-btn" type="submit" value="Gå videre">
 		</a>
 		</div>
+
 
 	</body>
