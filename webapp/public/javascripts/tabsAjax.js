@@ -104,13 +104,19 @@ const searchOptions = (function($) {
 
 				let buyForm = $("<form>", {
 					class: "buy-form",
-					method: "PUT",
-					action: "database/product-in-week"
+					method: "GET",
+					action: "/database/product-in-day/"
 				});
-				let buyId = $("<input>", {
+				let itemId = $("<input>", {
 					type: "hidden",
+					name: "productid",
 					value: data.products[i].id
 				});
+				let dayID = $("<input>",	{
+					type: "hidden",
+					name: "dayid",
+					value: "breakfast-monday"
+				})
 				let buyButton = $(
 					"<input class='buy-button' type='submit' value='Legg til'>"
 				);
@@ -141,7 +147,7 @@ const searchOptions = (function($) {
 				let imgContainer = $(
 					"<div class\"img-container\" data-toggle='modal' data-target='#exampleModalCenter'></div>"
 				);
-				buyForm.append(buyId, buyButton);
+				buyForm.append(itemId, dayID, buyButton);
 
 				$("#search-item" + i).append(
 					imgContainer,
@@ -245,18 +251,32 @@ const searchOptions = (function($) {
 					class: "recipe-difficulty",
 					text: data.results[i].difficulty_string
 				});
-				let addForm = $("<form>");
+				let addForm = $("<form>",	{
+					method: "GET",
+					action: "/database/recipe-in-day/"
+				});
 				let buyButton = $("<input>", {
 					class: "buy-button",
 					type: "submit",
 					value: "Legg til"
+				});
+
+				let recipeID = $("<input>",	{
+					type: "hidden",
+					name: "recipeid",
+					value: data.results[i].id,
+				});
+				let dayID = $("<input>",	{
+					type: "hidden",
+					name: "dayid",
+					value: "breakfast-monday"
 				});
 				let recipeDuration = $("<p>", {
 					class: "recipe-duration",
 					text: data.results[i].cooking_duration_string
 				});
 
-				addForm.append(buyButton);
+				addForm.append(recipeID, dayID, buyButton);
 				recipeWrapper.append(
 					recipeImg,
 					recipeTitle,
