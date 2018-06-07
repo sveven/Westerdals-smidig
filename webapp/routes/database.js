@@ -10,10 +10,11 @@ router.get("/product-in-day/", function(req, res) {
 
   let dayid = req.param('dayid');
   let productid = req.param('productid');
+  let dayAndTypeArr = dayAndTypeSplit(dayid);
     
 
 	create
-		.createDayQuery(req.cookies.ukeId, "monday", "breakfast")
+		.createDayQuery(req.cookies.ukeId, dayAndTypeArr[1], dayAndTypeArr[0])
 		.then(result => {
       
 			let dayid = result[0].id;
@@ -69,10 +70,11 @@ router.get("/recipe-in-day/", function(req, res) {
 
     let dayid = req.param('dayid');
     let recipeid = req.param('recipeid');
+    let dayAndTypeArr = dayAndTypeSplit(dayid);
 
 
     	create
-		.createDayQuery(req.cookies.ukeId, "monday", "breakfast")
+		.createDayQuery(req.cookies.ukeId, dayAndTypeArr[1], dayAndTypeArr[0])
 		.then(result => {
       
 			let dayid = result[0].id;
@@ -184,13 +186,81 @@ router.get("/products/:day/", function(req, res) {
 function dayAndTypeSplit(dayAndType){
 
   switch(dayAndType){
+
+    // Brekafast
+
     case "breakfast-monday":
       return ["breakfast", "monday"];
       break;
+    case "breakfast-tuesday":
+      return ["breakfast", "tuesday"];
+      break;
+    case "breakfast-wednesday":
+      return ["breakfast", "wednesday"];
+      break;
+    case "breakfast-thursday":
+      return ["breakfast", "thursday"];
+      break;
+    case "breakfast-friday":
+      return ["breakfast", "friday"];
+      break;
+    case "breakfast-saturday":
+      return ["breakfast", "saturday"];
+      break;
+    case "breakfast-sunday":
+      return ["breakfast", "sunday"];
+      break;
+
+      // Lunch
+
+    case "lunch-monday":
+      return ["lunch", "monday"];
+      break;
+    case "lunch-tuesday":
+      return ["lunch", "tuesday"];
+      break;
+    case "lunch-wednesday":
+      return ["lunch", "wednesday"];
+      break;
+    case "lunch-thursday":
+      return ["lunch", "thursday"];
+      break;
+    case "lunch-friday":
+      return ["lunch", "friday"];
+      break;
+    case "lunch-saturday":
+      return ["lunch", "saturday"];
+      break;
+    case "lunch-sunday":
+      return ["lunch", "sunday"];
+      break;
+      
+    // Dinner
+
+    case "dinner-monday":
+      return ["dinner", "monday"];
+      break;
+    case "dinner-tuesday":
+      return ["dinner", "tuesday"];
+      break;
+    case "dinner-wednesday":
+      return ["dinner", "wednesday"];
+      break;
+    case "dinner-thursday":
+      return ["dinner", "thursday"];
+      break;
+    case "dinner-friday":
+      return ["dinner", "friday"];
+      break;
+    case "dinner-saturday":
+      return ["dinner", "saturday"];
+      break;
+    case "dinner-sunday":
+      return ["dinner", "sunday"];
+      break;
+
     default: NULL;
   }
-
 }
-
 
 module.exports = router;
