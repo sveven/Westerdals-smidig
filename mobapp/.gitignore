@@ -6,3 +6,5 @@
 
 #Environment file
 src/app/env.ts
+
+.sourcemaps

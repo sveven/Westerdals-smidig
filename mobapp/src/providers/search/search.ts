@@ -31,7 +31,7 @@ export class SearchProvider {
     });
   }
 
-  searchForRecipeById(recipeId: string) {
+  getRecipeById(recipeId: string) {
     return new Promise((resolve, reject) => {
       this.http
         .get(`https://kolonial.no/api/v1/recipes/${recipeId}/`, this.options)

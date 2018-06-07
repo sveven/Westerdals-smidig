@@ -1,17 +1,76 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-/*
-  Generated class for the DatabaseProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class DatabaseProvider {
+  private weekId: number;
 
+  private options = {
+  }
   constructor(public http: HttpClient) {
-    console.log('Hello DatabaseProvider Provider');
+  }
+
+
+  getWeekId(): number{
+    return this.weekId
+  }
+
+  addProductToDatabase(productId: number) {
+    
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(
+          `http://91.189.170.100:3000/database/mobile/product-in-week/${productId}/${this.weekId}`)
+        .subscribe(
+          response => {
+            console.log(response);
+            
+            resolve(response);
+          },
+          error => {
+            reject(error);
+          }
+        );
+    });
+  }
+
+  getWeekIdFromDatabase() {
+    
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(
+          `http://91.189.170.100:3000/database/mobile/week/`)
+        .subscribe(
+          (response: any) => {
+            this.weekId = response.weekId;
+            resolve(response.weekId);
+          },
+          error => {
+            reject(error);
+          }
+        );
+    });
+  }
+
+  getAllProductsInWeek(weekId) {
+    this.options = {
+      params: new HttpParams().set("weekid", weekId)
+    }
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(`http://91.189.170.100:3000/database/mobile/${weekId}/all`, this.options)
+        .subscribe(
+          response => {
+            console.log("RESPONSE"+ JSON.stringify(response));
+            
+            resolve(response);
+          },
+          error => {
+            reject(error);
+          }
+        );
+    });
   }
 
 }
