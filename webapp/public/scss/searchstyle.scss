@@ -124,6 +124,14 @@ input:checked ~ .sub {
 .children-categories {
 	margin-left: 1%;
 }
+.child-category-button {
+  margin: 0; 
+  background: none;
+  border: none;
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer; 
+}
 
 .content {
 	margin-top: 0;
