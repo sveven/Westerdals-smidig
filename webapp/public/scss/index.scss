@@ -61,6 +61,7 @@
 
 .steps-image {
     height: 100%;
+    position: relative;
     
 }
 
@@ -82,7 +83,7 @@
     width: 170px;
     height: 70px;
     margin: 0;
-    top: 90%;
+    top: 650px;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%); 
