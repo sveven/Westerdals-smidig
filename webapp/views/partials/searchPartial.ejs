@@ -60,7 +60,11 @@
 
 							<% for (j in categories.results[i].children) { %>
 								<label class="child-cat">
-									<%= categories.results[i].children[j].name%>
+                  <form method="get">
+                    <input type="hidden" value="<%= categories.results[i].children[j].id %>">
+                    <input type="submit" class="child-category-button" value="<%= categories.results[i].children[j].name%>"/>
+                  </form>
+									
 								</label>
 								<br>
 								<%	} %>

@@ -7,7 +7,7 @@ router.get("/", function(req, res) {
 	let search = "";
 	let list = [];
 	let showEntirePage = req.body.ajax;
-	console.log(showEntirePage);
+	console.log(" Her ER DET" + showEntirePage);
 
 	if (showEntirePage !== "undefined" || showEntirePage !== true) {
 		showEntirePage = false;
