@@ -10,7 +10,7 @@ import { SearchProvider } from "../../providers/search/search";
 })
 export class CheckoutPage {
   entireWeek: any = {};
-  meals: JSON[] = [];
+  meals: any = [];
   products: JSON[] = [];
 
   constructor(
@@ -18,7 +18,7 @@ export class CheckoutPage {
     public navParams: NavParams,
     private databaseProvider: DatabaseProvider,
     private searchProvider: SearchProvider
-  ) { }
+  ) {}
 
   ionViewDidEnter() {
     this.getAllInformationForWeek().then((res: any) => {
@@ -26,16 +26,25 @@ export class CheckoutPage {
 
       this.meals = this.removeUndefinedFromMeal(this.entireWeek.Meals);
       this.products = this.entireWeek.Products;
-
-      console.log(this.meals);
+      this.meals = this.addExpandedTagToAllMeals(this.meals);
     });
+  }
+
+  expandMeal(mealToExpand): void {
+    console.log("MEAL", mealToExpand);
+    for (let obj in this.meals) {
+      console.log("First meal: ", obj);
+
+      if (this.meals[obj].meal.RecipeId === mealToExpand.meal.RecipeId) {
+        this.meals[obj].expanded = !this.meals[obj].expanded;
+      }
+    }
   }
 
   getAllInformationForWeek() {
     return this.databaseProvider
       .getAllProductsInWeek(this.databaseProvider.getWeekId())
       .then((res: any) => {
-
         return Promise.all(
           [].concat.apply(
             this.getInformationForAllDays(res.Days),
@@ -185,7 +194,6 @@ export class CheckoutPage {
     let resultProducts = [];
 
     for (let product of currentJsonObject.Products) {
-
       if (resultProducts.length === 0) {
         resultProducts.push(product);
       } else {
@@ -198,7 +206,6 @@ export class CheckoutPage {
         }
 
         if (!found && product !== undefined) {
-          
           resultProducts.push(product);
           found = false;
         }
@@ -210,25 +217,38 @@ export class CheckoutPage {
   }
 
   removeUndefinedFromMeal(meals) {
-    let resultMeals = []
-    console.log("meals before: ", meals);
+    let resultMeals = [];
 
-    for(let meal of meals) {
-     let newMeal = {
+    for (let meal of meals) {
+      let newMeal = {
         Image: meal.Image,
         Products: [],
-        RecipeId: meal.RecipeId, 
+        RecipeId: meal.RecipeId,
         Title: meal.Title
       };
-      
-      for(let product of meal.Products) {
-        if(product !== undefined){
+
+      for (let product of meal.Products) {
+        if (product !== undefined) {
           newMeal.Products.push(product);
         }
       }
       resultMeals.push(newMeal);
     }
-    console.log("newmeal: ", resultMeals);
     return resultMeals;
+  }
+
+  addExpandedTagToAllMeals(meals) {
+    let newMeals = [];
+    meals.forEach(meal => {
+      newMeals.push(this.addExpandedTagToMeal(meal));
+    });
+    return newMeals;
+  }
+
+  addExpandedTagToMeal(meal) {
+    return {
+      expanded: false,
+      meal: meal
+    };
   }
 }
