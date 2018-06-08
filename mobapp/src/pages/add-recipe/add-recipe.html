@@ -10,13 +10,8 @@
   <img [src] = "recipe.feature_image_url" *ngIf="recipe.feature_image_url !== 'undefined'"/>
 
   <p>Du skannet {{recipe.title}}!</p>
-<<<<<<< HEAD
-  <ion-label>Porsjoner</ion-label>
-  <ion-select [(ngModel)]="portions" interface="action-sheet" [selectOptions]="selectOptions" okText="Ok" cancelText="Avbryt" placeholder="Porsjoner">
-=======
-  <ion-label>Velg antall Porsjoner</ion-label>
+  <ion-label>Velg antall porsjoner</ion-label>
   <ion-select [(ngModel)]="portions" interface="popover" [selectOptions]="selectOptions">
->>>>>>> 93cbe414aae34badc3e22234a0eb88a3007bbf41
     <ion-option>1</ion-option>
     <ion-option>2</ion-option>
     <ion-option>3</ion-option>

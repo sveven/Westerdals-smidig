@@ -10,7 +10,7 @@ import { DatabaseProvider } from "../../providers/database/database";
   templateUrl: "search.html"
 })
 export class SearchPage {
-  search: string = "Ost";
+  search: string = "";
   products: any = [];
 
   constructor(
@@ -18,7 +18,9 @@ export class SearchPage {
     public navParams: NavParams,
     private searchProvider: SearchProvider,
     private databaseProvider: DatabaseProvider
-  ) {}
+  ) {
+    this.performSearch("salat");
+  }
 
   performSearch(searchWord: string) {
     this.products = [];
