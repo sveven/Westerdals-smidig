@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { IonicPage, NavController, NavParams, ToastController } from "ionic-angular";
 import { SearchProvider } from "../../providers/search/search";
 import { Observable } from "rxjs/Observable";
 import { DatabaseProvider } from "../../providers/database/database";
@@ -17,7 +17,8 @@ export class SearchPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private searchProvider: SearchProvider,
-    private databaseProvider: DatabaseProvider
+    private databaseProvider: DatabaseProvider,
+    private toastCtrl: ToastController
   ) {
     this.performSearch("salat");
   }
@@ -37,10 +38,19 @@ export class SearchPage {
   addProductToDatabase(productId: number) {
     this.databaseProvider.addProductToDatabase(productId).then((res : any) => {
       console.log(res);
+
+      let message = " er blitt lagt til i oversikten din!" 
+      this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: "top"
+    }).present();
       
     }).catch(err => {
       console.log(err);
       
     })
   }
+
+
 }
