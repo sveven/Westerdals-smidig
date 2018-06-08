@@ -9,7 +9,7 @@ import { DatabaseProvider } from "../../providers/database/database";
 })
 export class AddRecipePage {
   private recipe:any = {}
-  private portions: number = 0;
+  private portions: number = 1;
   private selectOptions = {
     title: 'Velg antall porsjoner'
   }
@@ -23,13 +23,18 @@ export class AddRecipePage {
 
   ionViewWillEnter(): void {
     this.recipe = this.navParams.get("recipe");
+    if (this.recipe.default_num_portions) {
+      this.portions = this.recipe.default_num_portions;
+    }
+    console.log("Portions ", this.portions);
+    
   }
 
   private addToDatabase(): void {
     console.log(this.portions);
-    this.databaseProvider.tempAddRecipeToDatabase(this.recipe.id, this.portions);
+    this.databaseProvider.addRecipeToDatabase(this.recipe.id, this.portions);
     
-    let message = this.recipe.title + " ble lagt til!" 
+    let message = this.recipe.title + " er blitt lagt til i oversikten din!" 
     this.toastCtrl.create({
       message: message,
       duration: 3000,

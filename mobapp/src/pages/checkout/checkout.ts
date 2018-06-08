@@ -3,14 +3,13 @@ import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { DatabaseProvider } from "../../providers/database/database";
 import { SearchProvider } from "../../providers/search/search";
 
-
 @IonicPage()
 @Component({
   selector: "page-checkout",
   templateUrl: "checkout.html"
 })
 export class CheckoutPage {
-  entireWeek:any = {};
+  entireWeek: any = {};
   meals: JSON[] = [];
   products: JSON[] = [];
 
@@ -19,19 +18,16 @@ export class CheckoutPage {
     public navParams: NavParams,
     private databaseProvider: DatabaseProvider,
     private searchProvider: SearchProvider
-  ) {
-    
-  }
+  ) { }
 
   ionViewDidEnter() {
-    this.getAllInformationForWeek().then((res:any)=> {
+    this.getAllInformationForWeek().then((res: any) => {
       this.entireWeek = this.formatJsonObjectForWeekOverview(res);
-      
-      this.meals = this.entireWeek.Meals;
+
+      this.meals = this.removeUndefinedFromMeal(this.entireWeek.Meals);
       this.products = this.entireWeek.Products;
-      
+
       console.log(this.meals);
-      
     });
   }
 
@@ -39,8 +35,6 @@ export class CheckoutPage {
     return this.databaseProvider
       .getAllProductsInWeek(this.databaseProvider.getWeekId())
       .then((res: any) => {
-        
-        this.getAllProductInformationForWeek(res.Products);
 
         return Promise.all(
           [].concat.apply(
@@ -71,8 +65,9 @@ export class CheckoutPage {
     return day.Meals.map(meal => {
       return Promise.all(this.getAllProductInformationForMeal(meal)).then(
         mealProducts => {
-          return this.searchProvider.getRecipeById(meal.recipeId)
-            .then((recipeInformation:any) => {
+          return this.searchProvider
+            .getRecipeById(meal.recipeId)
+            .then((recipeInformation: any) => {
               return {
                 Title: recipeInformation.title,
                 Image: recipeInformation.feature_image_url,
@@ -121,16 +116,22 @@ export class CheckoutPage {
   }
 
   getFormattedInformationOnProduct(kolonialId, quantity) {
-    return this.searchProvider.getInformationOfProduct(kolonialId).then((res:any) => {
-      return {
-        Name: res.name,
-        Name_Extra: res.name_extra,
-        Image: res.images[0].thumbnail.url,
-        Price: parseInt(res.gross_price),
-        Quantity: quantity,
-        ProductId: res.id
-      };
-    });
+    return this.searchProvider
+      .getInformationOfProduct(kolonialId)
+      .then((res: any) => {
+        console.log("result ", res);
+        return {
+          Name: res.name,
+          Name_Extra: res.name_extra,
+          Image: res.images[0].thumbnail.url,
+          Price: parseInt(res.gross_price),
+          Quantity: quantity,
+          ProductId: res.id
+        };
+      })
+      .catch(err => {
+        console.log("Problemer med produkt: ", err);
+      });
   }
 
   formatJsonObjectForWeekOverview(currentJsonObject) {
@@ -142,7 +143,7 @@ export class CheckoutPage {
       if (obj.hasOwnProperty("ProductId")) {
         products.push(obj);
       }
-      
+
       for (let item of obj) {
         if (item.hasOwnProperty("ProductId")) {
           products.push(item);
@@ -158,7 +159,7 @@ export class CheckoutPage {
 
     result = this.removeDuplicatesFromWeekJson(result);
     result["TotalPrice"] = this.calculateTotalPriceForCart(result);
-    
+
     return result;
   }
 
@@ -167,11 +168,15 @@ export class CheckoutPage {
 
     for (let meal of currentJsonObject.Meals) {
       for (let product of meal.Products) {
-        totalPrice += product.Price * product.Quantity;
+        if (product !== undefined && product.hasOwnProperty("Price")) {
+          totalPrice += product.Price * product.Quantity;
+        }
       }
     }
     for (let product of currentJsonObject.Products) {
-      totalPrice += product.Price * product.Quantity;
+      if (product !== undefined && product.hasOwnProperty("Price")) {
+        totalPrice += product.Price * product.Quantity;
+      }
     }
     return totalPrice;
   }
@@ -180,6 +185,7 @@ export class CheckoutPage {
     let resultProducts = [];
 
     for (let product of currentJsonObject.Products) {
+
       if (resultProducts.length === 0) {
         resultProducts.push(product);
       } else {
@@ -191,13 +197,38 @@ export class CheckoutPage {
           }
         }
 
-        if (!found) {
+        if (!found && product !== undefined) {
+          
           resultProducts.push(product);
           found = false;
         }
       }
     }
+
     currentJsonObject.Products = resultProducts;
     return currentJsonObject;
+  }
+
+  removeUndefinedFromMeal(meals) {
+    let resultMeals = []
+    console.log("meals before: ", meals);
+
+    for(let meal of meals) {
+     let newMeal = {
+        Image: meal.Image,
+        Products: [],
+        RecipeId: meal.RecipeId, 
+        Title: meal.Title
+      };
+      
+      for(let product of meal.Products) {
+        if(product !== undefined){
+          newMeal.Products.push(product);
+        }
+      }
+      resultMeals.push(newMeal);
+    }
+    console.log("newmeal: ", resultMeals);
+    return resultMeals;
   }
 }

@@ -1,17 +1,22 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar align-title="center" color="oransje">
     <ion-title>{{recipe.title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="contentBack">
   <img [src] = "recipe.feature_image_url" *ngIf="recipe.feature_image_url !== 'undefined'"/>
 
   <p>Du skannet {{recipe.title}}!</p>
+<<<<<<< HEAD
   <ion-label>Porsjoner</ion-label>
-  <ion-select [(ngModel)]="portions" interface="action-sheet" [selectOptions]="selectOptions">
+  <ion-select [(ngModel)]="portions" interface="action-sheet" [selectOptions]="selectOptions" okText="Ok" cancelText="Avbryt" placeholder="Porsjoner">
+=======
+  <ion-label>Velg antall Porsjoner</ion-label>
+  <ion-select [(ngModel)]="portions" interface="popover" [selectOptions]="selectOptions">
+>>>>>>> 93cbe414aae34badc3e22234a0eb88a3007bbf41
     <ion-option>1</ion-option>
     <ion-option>2</ion-option>
     <ion-option>3</ion-option>
@@ -26,6 +31,6 @@
 </ion-content>
 
 <ion-footer>
-    <button ion-button block (click)="addToDatabase()">Legg til</button>
-    <button ion-button block (click)="closeModal()">Avbryt</button>
+    <button class="button" ion-button short color="dark" (click)="addToDatabase()">Legg til</button>
+    <button class="button" ion-button short color="dark"  (click)="closeModal()">Avbryt</button>
 </ion-footer>
