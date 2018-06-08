@@ -25,16 +25,15 @@ export class CheckoutPage {
       this.entireWeek = this.formatJsonObjectForWeekOverview(res);
 
       this.meals = this.removeUndefinedFromMeal(this.entireWeek.Meals);
+      //TODO: implement check for duplicate meals
+      // this.meals = this.removeDuplicateMealsFromWeekJson(this.meals);
       this.products = this.entireWeek.Products;
       this.meals = this.addExpandedTagToAllMeals(this.meals);
     });
   }
 
   expandMeal(mealToExpand): void {
-    console.log("MEAL", mealToExpand);
     for (let obj in this.meals) {
-      console.log("First meal: ", obj);
-
       if (this.meals[obj].meal.RecipeId === mealToExpand.meal.RecipeId) {
         this.meals[obj].expanded = !this.meals[obj].expanded;
       }
@@ -215,6 +214,36 @@ export class CheckoutPage {
     currentJsonObject.Products = resultProducts;
     return currentJsonObject;
   }
+
+  // removeDuplicateMealsFromWeekJson(meals) {
+  //   console.log(meals);
+    
+  //   let resultMeals = [];
+
+  //   for(let meal of meals) {
+  //     if (resultMeals.length === 0) {
+  //       resultMeals.push(meal);
+  //     } else {
+  //       let found = false;
+  //       for (let filteredMeal of resultMeals) {
+  //         if (filteredMeal.RecipeId === meal.RecipeId) {
+  //           found = true;
+  //          for(let product in filteredMeal.Products) {
+  //           filteredMeal.Products[product].Quantity + product
+  //         }
+  //         }
+  //       }
+
+  //       if (!found && meal !== undefined) {
+  //         resultMeals.push(meal);
+  //         found = false;
+  //       }
+  //     }
+  //   }
+  //   console.log("resultmeals: ", resultMeals);
+    
+  //   return resultMeals;
+  // }
 
   removeUndefinedFromMeal(meals) {
     let resultMeals = [];
