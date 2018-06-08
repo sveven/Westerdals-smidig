@@ -14,8 +14,8 @@
 				</div>
 			<% if(currentDay.Products.length > 0) {%>								
 				<div class="products">
-				<h3 class="product-main-title">Enkeltvarer:</h3>
-                <h4>Antall: <%= currentDay.Products.length  %></h4>
+				<h3 class="product-main-title">Enkeltvarer</h3>
+                <h4 class="grocery-amount">Antall: <%= currentDay.Products.length  %></h4>
 				<% for(product of currentDay.Products) { %>
 
                     
@@ -49,8 +49,11 @@
 								<% for(meal of currentDay.Meals) { %>
 								<div>
 									<img class="recipe-planner-meal-image" src="<%= meal.Image %>">
+									<i class="far fa-times-circle"></i>
 									<p class="recipe-planner-meal-title"><%= meal.Title %></p>
 								</div>
+
+
 								<% }%>
 						
 						<% } %> 
@@ -62,8 +65,9 @@
 							<% for(product of currentDay.Products) { %>
 							<div>
 								<img class="planner-product-image" src="<%= product.Image %>">
+								<i class="modal-remove-icon far fa-times-circle"></i>
 								<p class="planner-product-title"><%= product.Name %></p>
-								<p class="modal-planner-product-price">kr <%= product.Price %>,-</p>
+								<p class="planner-product-price">kr <%= product.Price %>,-</p>
 							</div>
 							<% }%>
 						</div>

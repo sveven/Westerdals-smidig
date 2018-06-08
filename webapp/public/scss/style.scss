@@ -120,6 +120,10 @@ html {
     border-style: none;
 }
 
+.button-add:hover {
+    background-color: rgb(233, 152, 21);
+}
+
 
 .complete-btn {
     position: relative;
@@ -141,14 +145,16 @@ html {
 }
 
 .recipe-main-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: -1px;
 }
 
 .recipe-planner-meal-image{
     height: 100px;
 }
 .recipe-planner-meal-title {
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .recipe-title {
@@ -157,15 +163,23 @@ html {
 
 
 .product-main-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: -3px;
+    margin-top: -3px;
 }
 
-.modal-planner-product-image {
-    height: 50px;
+.planner-product-image {
+    max-height: 100px;
 }
 
-.modal-planner-product-title {
-    font-size: 10px;
+.planner-product-title {
+    font-size: 1rem;
+    
+}
+
+.grocery-amount {
+    font-size: 0.8rem;
 }
 
 .modal-planner-product-price {
@@ -174,6 +188,15 @@ html {
     float: right;
 	font-weight: bold;
 	background-color: rgb(240, 240, 240);
+}
+
+.fa-times-circle:before {
+    content: "\f057";
+    color: red;
+    top: -30px;
+    position: relative;
+    font-size: 1.2rem;
+    cursor: pointer;
 }
 
 .has-content {
@@ -193,10 +216,13 @@ html {
     position: relative;
 }
 
-.modal-planner-product.price {
+.see-more-icon:hover {
+    color: rgb(233, 152, 21);
+}
+
+.planner-product.price {
     font-size: 10px;
     margin-top: -12px;
-    float: right;
 	font-weight: bold;
 	background-color: rgb(240, 240, 240);
 }
