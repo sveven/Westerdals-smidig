@@ -10,12 +10,13 @@
 
 <ion-content>
   <ion-grid wrap responsive-lg>
-    <ion-row *ngFor="let meal of meals">
       <ng-container *ngIf="meals.length > 0">
-        <ion-row>
-          <h1>Oppskrifter</h1>
-        </ion-row>
-      </ng-container>
+          <ion-row>
+            <h1>Oppskrifter</h1>
+          </ion-row>
+        </ng-container>
+         <ion-row *ngFor="let meal of meals">
+     
 
       <ion-row (click)="expandMeal(meal)" class="mealHeader">
         <ion-col col-12>
