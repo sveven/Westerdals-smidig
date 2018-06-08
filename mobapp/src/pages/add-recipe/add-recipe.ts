@@ -34,7 +34,7 @@ export class AddRecipePage {
     console.log(this.portions);
     this.databaseProvider.addRecipeToDatabase(this.recipe.id, this.portions);
     
-    let message = this.recipe.title + " ble lagt til!" 
+    let message = this.recipe.title + " er blitt lagt til i oversikten din!" 
     this.toastCtrl.create({
       message: message,
       duration: 3000,
