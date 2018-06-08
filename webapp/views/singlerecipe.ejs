@@ -7,8 +7,8 @@
 			<li class="breadcrumb-item" aria-current="page">
 				<a href="/week-planner-current">Planleggeren</a>
 			</li>
-			<li class="breadcrumb-item active" aria-current="page">
-				<a href="/searchtabs">Oppskriftssøk</a>
+			<li  class="breadcrumb-item active" aria-current="page">
+				<a id="lol123" href="/searchTabs">Oppskriftssøk</a>
 			</li>
 			<li class="breadcrumb-item active" aria-current="page">
 					<a href="">Oppskrift</a>
@@ -42,8 +42,10 @@
 								<%= data.portion_price %>
 							</h1>
 							<p>per posjon</p>
-							<form action="/recipes/single/<%= data.id %>/<%= data.default_num_portions %>" method="POST">
-								<input class="button add-recipe" type="submit" value="Legg til i planlegger">
+							<form action="/database/recipe-in-day/" method="GET">
+								<input class="single-recipe-id" type="hidden" name="recipeid" value="<%= data.id %>">
+								<input class="single-recipe-dayid" type="hidden" name="dayid" value="">
+								<input class="single-recipe-add button add-recipe" type="submit" value="Legg til i planlegger">
 							</form>
 						</div>
 					</div>
@@ -101,9 +103,9 @@
 							<p>Nok til <%= data.default_num_portions %> personer</p>
 						</div>
 						<form action="/database/recipe-in-day/" method="GET">
-							<input id="single-recipe-id" type="hidden" name="recipeid" value="<%= data.id %>">
-							<input id="single-recipe-dayid" type="hidden" name="dayid" value="">
-							<input id="single-recipe-add" class="button add-recipe" type="submit" value="Legg til i planlegger">
+							<input class="single-recipe-id" type="hidden" name="recipeid" value="<%= data.id %>">
+							<input class="single-recipe-dayid" type="hidden" name="dayid" value="">
+							<input class="single-recipe-add button add-recipe" type="submit" value="Legg til i planlegger">
 						</form>
 					</div>
 			</aside>
