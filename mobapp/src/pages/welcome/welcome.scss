@@ -19,6 +19,7 @@ page-welcome {
         max-height: 50%;
         max-width: 60%;
         margin: 10px;
+        margin-bottom: 40px;
     }
 
     .welcomeButton{
@@ -34,5 +35,10 @@ page-welcome {
 
     .skip{
         margin-left: 250px;
+    }
+    h2{
+        margin-bottom: 9rem;
+        font-weight: 500;
+        line-height: 1.2;
     }
 }

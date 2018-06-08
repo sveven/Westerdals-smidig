@@ -1,34 +1,35 @@
 <ion-header>
-
   <ion-navbar align-title="center" color="oransje">
-    <ion-title>{{recipe.title}}</ion-title>
+    <ion-title>
+        Du har skannet {{recipe.title}}!
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding class="contentBack">
-  <img [src] = "recipe.feature_image_url" *ngIf="recipe.feature_image_url !== 'undefined'"/>
-
-  <p>Du skannet {{recipe.title}}!</p>
-<<<<<<< HEAD
-  <ion-label>Velg antall porsjoner</ion-label>
-=======
-  <ion-label>Velg antall Porsjoner</ion-label>
->>>>>>> 0a32b3af4daed244aa557b098fb3c30750061613
-  <ion-select [(ngModel)]="portions" interface="popover" [selectOptions]="selectOptions">
-    <ion-option>1</ion-option>
-    <ion-option>2</ion-option>
-    <ion-option>3</ion-option>
-    <ion-option>4</ion-option>
-    <ion-option>5</ion-option>
-    <ion-option>6</ion-option>
-    <ion-option>7</ion-option>
-    <ion-option>8</ion-option>
-    <ion-option>9</ion-option>
-    <ion-option>10</ion-option>
-  </ion-select>
-
-    <button class="button" ion-button short large color="dark" (click)="addToDatabase()">Legg til</button>
-    <button class="button" ion-button short large color="dark"  (click)="closeModal()">Avbryt</button>
+  <ion-card>
+      <img [src] = "recipe.feature_image_url" *ngIf="recipe.feature_image_url !== 'undefined'"/>
+        <ion-card-content>
+          <ion-card-title>{{recipe.title}}</ion-card-title>
+          <ion-label>Velg antall porsjoner</ion-label>
+          <ion-select [(ngModel)]="portions" interface="popover" [selectOptions]="selectOptions">
+          <ion-option>1</ion-option>
+          <ion-option>2</ion-option>
+          <ion-option>3</ion-option>
+          <ion-option>4</ion-option>
+          <ion-option>5</ion-option>
+          <ion-option>6</ion-option>
+          <ion-option>7</ion-option>
+          <ion-option>8</ion-option>
+        <ion-option>9</ion-option>
+        <ion-option>10</ion-option>
+        </ion-select>
+      </ion-card-content>
+    </ion-card>
+    <div>
+      <button class="btnAdd" ion-button short large color="dark" (click)="addToDatabase()">Legg til</button>
+      <button class="btnCancel" ion-button short large color="dark"  (click)="closeModal()">Avbryt</button>
+    </div>
 </ion-content>
 
