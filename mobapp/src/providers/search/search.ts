@@ -31,6 +31,22 @@ export class SearchProvider {
     });
   }
 
+  getInformationOfProduct(productId: string) {
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(
+          `https://kolonial.no/api/v1/products/${productId}/`, this.options)
+        .subscribe(
+          response => {
+            resolve(response);
+          },
+          error => {
+            reject(error);
+          }
+        );
+    });
+  }
+
   getRecipeById(recipeId: string) {
     return new Promise((resolve, reject) => {
       this.http

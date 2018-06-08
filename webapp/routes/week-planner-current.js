@@ -10,17 +10,17 @@ router.get("/", function(req, res) {
   let search = "";
   let list = [];
   let week = {};
-console.log(JSON.stringify(req.cookies));
+  console.log(JSON.stringify(req.cookies));
 
   getAllInformationAsJson(req)
     .then(result => {
-	  let formattedJson = formatJsonObject(result);
-	  
+      let formattedJson = formatJsonObject(result);
+
       res.render("week-planner-current", {
         title: "K-Planleggeren",
         search: search,
-		data: list,
-		week: formattedJson
+        data: list,
+        week: formattedJson
       });
     })
     .catch(err => {
@@ -28,15 +28,15 @@ console.log(JSON.stringify(req.cookies));
       res.render("week-planner-current", {
         title: "K-Planleggeren",
         search: search,
-		data: list,
-		week: err
+        data: list,
+        week: err
       });
     });
 });
 
 function formatJsonObject(currentJsonObject) {
   let result = {};
-	
+
   for (day of currentJsonObject) {
     let dayObject = {};
     let meals = [];
@@ -79,7 +79,7 @@ function getDaysInCurrentWeek(req) {
 
 function getInformationForAllDays(days) {
   return days.map(day => {
-    let identifier = day.type  + day.day;
+    let identifier = day.type + day.day;
 
     return Promise.all(
       [].concat.apply(

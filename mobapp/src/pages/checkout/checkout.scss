@@ -1,6 +1,6 @@
 page-checkout {
 
-    .tom{
+    .emptyButton{
         background: orange;
         color: white;
         font-size: 17px;
@@ -8,6 +8,14 @@ page-checkout {
 
     .productImg{
         max-width: 120%;
+    }
+
+    ion-icon {
+        position: relative;
+        left: 10px;
+        bottom: 5px;
+        font-size: 30px;
+        color: #FFA51E; 
     }
 
 }

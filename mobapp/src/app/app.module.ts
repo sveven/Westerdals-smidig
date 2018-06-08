@@ -19,13 +19,14 @@ import { SearchPage } from '../pages/search/search';
 import { CheckoutPage } from '../pages/checkout/checkout';
 import { SearchProvider } from '../providers/search/search';
 import { DatabaseProvider } from '../providers/database/database';
+import { AddRecipePage } from '../pages/add-recipe/add-recipe';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     AuthorizePage,
-   
+    AddRecipePage
 
   ],
   imports: [
@@ -40,7 +41,7 @@ import { DatabaseProvider } from '../providers/database/database';
     MyApp,
     HomePage,
     AuthorizePage,
-   
+    AddRecipePage
   ],
   providers: [
     StatusBar,

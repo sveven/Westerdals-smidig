@@ -25,7 +25,10 @@ export class MyApp {
 
       databaseProvider.getWeekIdFromDatabase().then(res => {
         console.log("WEEK: " + JSON.stringify(res));
-      });
+      }).catch(err => {
+        console.log("UNABLE TO GET WEEK ID:", err);
+        
+      })
 
       statusBar.styleDefault();
       splashScreen.hide();

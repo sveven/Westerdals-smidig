@@ -17,10 +17,10 @@ const searchOptions = (function($) {
 
 	//Recipes
 	let recipeWrapper = $("recipe-result-wrapper");
-	let singleRecipeDayId = $("#single-recipe-dayid");
-	let singleRecipeId = $("#single-recipe-id");
-	let singleRecipeAdd = $("#single-recipe-add");
-
+	let singleRecipeDayId = $(".single-recipe-dayid");
+	let singleRecipeId = $(".single-recipe-id");
+	let singleRecipeAdd = $(".single-recipe-add");
+	let singleRecipeToRecipes = $("#lol123");
 
 	//init
 	const init = (function() {
@@ -30,12 +30,20 @@ const searchOptions = (function($) {
 			searchChoice = $("#search-location");
 		})();
 		const setEvents = (function() {
-
 			singleRecipeAdd.on("click", function() {
-				let addDayId = getQueryVariable("dayid");	
+				let addDayId = getQueryVariable("dayid");
 				singleRecipeDayId.val(addDayId);
-				alert(addDayId);			
 			});
+
+			singleRecipeToRecipes.on("click", function() {
+				let addDayId = getQueryVariable("dayid");
+				singleRecipeToRecipes.attr("href", "/searchTabs?dayid=" + addDayId);
+			});
+
+/* 			$(document).keydown(function (event) {
+				alert("You pressed " + event.keyCode);
+				event.preventDefault();
+			}); */
 			groceriesBtn.on("click", "label", function(e) {
 				e.preventDefault();
 				getGrocerySearch();

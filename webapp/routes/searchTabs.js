@@ -7,7 +7,6 @@ router.get("/", function (req, res) {
   let data = "";
   let cat = "";
   let dayid = req.param("dayid");
-  console.log(dayid);
 
   
 

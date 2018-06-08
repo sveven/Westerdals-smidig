@@ -12,12 +12,12 @@ export class DatabaseProvider {
   }
 
 
-  getWeekId(): number{
+  getWeekId(): number {
     return this.weekId
   }
 
   addProductToDatabase(productId: number) {
-    
+
     return new Promise((resolve, reject) => {
       this.http
         .get(
@@ -25,7 +25,23 @@ export class DatabaseProvider {
         .subscribe(
           response => {
             console.log(response);
-            
+
+            resolve(response);
+          },
+          error => {
+            reject(error);
+          }
+        );
+    });
+  }
+
+  addRecipeToDatabase(recipeId: number, portions: number) {
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(
+          `http://91.189.170.100:3000/database/mobile/recipe-in-day/${recipeId}/${this.weekId}/${portions}`)
+        .subscribe(
+          response => {
             resolve(response);
           },
           error => {
@@ -36,7 +52,6 @@ export class DatabaseProvider {
   }
 
   getWeekIdFromDatabase() {
-    
     return new Promise((resolve, reject) => {
       this.http
         .get(
@@ -62,8 +77,6 @@ export class DatabaseProvider {
         .get(`http://91.189.170.100:3000/database/mobile/${weekId}/all`, this.options)
         .subscribe(
           response => {
-            console.log("RESPONSE"+ JSON.stringify(response));
-            
             resolve(response);
           },
           error => {
