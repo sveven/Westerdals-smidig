@@ -11,7 +11,7 @@
 
   <p>Du skannet {{recipe.title}}!</p>
   <ion-label>Porsjoner</ion-label>
-  <ion-select [(ngModel)]="portions" interface="action-sheet" [selectOptions]="selectOptions">
+  <ion-select [(ngModel)]="portions" interface="action-sheet" [selectOptions]="selectOptions" okText="Ok" cancelText="Avbryt" placeholder="Porsjoner">
     <ion-option>1</ion-option>
     <ion-option>2</ion-option>
     <ion-option>3</ion-option>
