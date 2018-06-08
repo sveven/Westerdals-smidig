@@ -56,12 +56,20 @@
 .index-image {
     grid-area: image-row;
     border: 1px solid black;
+    overflow: hidden;
+}
+
+.steps-image {
+    height: 100%;
+    
 }
 
 .index-image-text {
     grid-area: text-row;
     background-color: rgb(255, 255, 255);
     border: 1px solid black;
+    font-size: 0.9rem;
+    padding: 2px;
     
 }
 .next-btn-index {
