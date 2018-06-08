@@ -1,49 +1,40 @@
 /* TYPOGRAPHY */
 
-
 @font-face {
     font-family: 'gt_walsheim_pro_trialregular';
-    src: url('gt-walsheim-pro-trial-regular-webfont.woff2') format('woff2'),
-         url('gt-walsheim-pro-trial-regular-webfont.woff') format('woff');
+    src: url('gt-walsheim-pro-trial-regular-webfont.woff2') format('woff2'), url('gt-walsheim-pro-trial-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 h1 {
     font-size: 2.2em;
     font-family: 'Walsheim', Arial, sans-serif;
-
 }
 
 h2 {
     font-size: 2em;
     font-family: 'Walsheim', Arial, sans-serif;
-
 }
 
 h3 {
     font-size: 1.8em;
     font-family: 'Walsheim', Arial, sans-serif;
-
 }
 
 h4 {
     font-size: 1.8em;
     font-family: 'Walsheim', Arial, sans-serif;
-
 }
 
 h5 {
     font-size: 1.4em;
     font-family: 'Walsheim', Arial, sans-serif;
-
 }
 
 p {
     font-size: 1.2em;
     font-family: 'Walsheim', Arial, sans-serif;
-
 }
 
 /* END TYPOGRAPHY */
@@ -53,7 +44,6 @@ p {
 body {
     overflow-x: hidden;
     font-family: 'Walsheim', Arial, sans-serif;
-
 }
 
 /* END BODY */
@@ -71,11 +61,11 @@ body {
 
 #search-form {
     position: absolute;
-    top: 35%;
+    top: 40%;
     left: 50%;
     margin-right: -50%;
-	transform: translate(-50%, -50%);
-	z-index: 1000;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
 }
 
 .search-input {
@@ -111,6 +101,7 @@ body {
     padding-left: 45px;
     margin-left: 0;
 }
+
 //Breadcrumbs
 .breadcrumb {
     position: relative;
@@ -130,12 +121,11 @@ body {
 }
 
 .container-for-recipetab {
-    top: 52%;
+    top: 56%;
     position: absolute;
 }
 
 //END ProgressBar
-
 /* END BUTTONS */
 
 .steps {
@@ -186,7 +176,6 @@ body {
     color: black;
     font-weight: bold;
     font-size: 1.1rem;
-    
 }
 
 .steps li.active:before {
@@ -199,4 +188,50 @@ body {
 
 .steps li.active+li:after {
     background-color: black;
+}
+
+#back-to-planner-btn {
+    font-size: 1.2rem;
+    border: none;
+    position: absolute;
+    padding: 0.5rem 0.5rem 0.5rem 3rem;
+    font-weight: bold;
+    bottom: 0;
+    width: 200px;
+    left: 5%;
+    color: white;
+    border-radius: 3px;
+    background-color: rgb(255, 165, 20);
+    z-index: 1000;
+    position: fixed;
+    /* Fixed/sticky position */
+    bottom: 20px;
+    /* Place the button at the bottom of the page */
+    right: 30px;
+    /* Place the button 30px from the right */
+    z-index: 99;
+    /* Make sure it does not overlap */
+}
+
+#go-to-cart-btn {
+    font-size: 1.2rem;
+    border: none;
+    position: absolute;
+    padding: 0.5rem 0.5rem 0.5rem 3rem;
+    font-weight: bold;
+    bottom: 0;
+    width: 200px;
+    right: 5%;
+    color: white;
+    border-radius: 3px;
+    background-color: rgb(255, 165, 20);
+    z-index: 1000;
+    position: fixed;
+    /* Fixed/sticky position */
+    bottom: 20px;
+    /* Place the button at the bottom of the page */
+    right: 30px;
+    /* Place the button 30px from the right */
+    z-index: 99;
+    /* Make sure it does not overlap */
 }
