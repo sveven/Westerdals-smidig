@@ -61,7 +61,7 @@ body {
 
 #search-form {
     position: absolute;
-    top: 35%;
+    top: 40%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
@@ -121,8 +121,8 @@ body {
 }
 
 .container-for-recipetab {
-    top: 52%;
-    position: absolute;
+    top: 100%;
+    position: relative;
 }
 
 //END ProgressBar
