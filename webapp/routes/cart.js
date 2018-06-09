@@ -5,20 +5,20 @@ const fetch = require("../queries/plannerFetchQueries");
 const helper = require("../queries/queriesHelperMethods");
 
 /* GET cart page. */
-router.get("/", function(req, res) {
+router.get("/", function (req, res) {
   let list;
 
-  
+
 
   getWeekOverViewAsJson(req).then(result => {
-    console.log(result);
-    
+
     res.render("cart", {
       title: "K-Planleggeren",
       data: result
     });
-    
+
   }).catch(err => {
+    console.log("error", err);
 
     res.render("cart", {
       title: "K-Planleggeren",
@@ -29,10 +29,12 @@ router.get("/", function(req, res) {
 
 });
 
-router.post("/", function(req, res) {});
+router.post("/", function (req, res) { });
 
 function getWeekOverViewAsJson(req) {
   return getAllInformationForWeek(req).then(res => {
+    console.log("first", res);
+
     return formatJsonObjectForWeekOverview(res);
   });
 }
@@ -125,13 +127,26 @@ function getAllProductInformationForWeek(products) {
 
 function getFormattedInformationOnProduct(kolonialId, quantity) {
   return helper.getInformationOfProduct(kolonialId).then(res => {
-    return {
-      Name: res.name,
-      Name_Extra: res.name_extra,
-      Image: res.images[0].thumbnail.url,
-      Price: parseInt(res.gross_price),
-      Quantity: quantity,
-      ProductId: res.id
+    //TODO: Find fault, is it kolonial.no?
+    if (res.images === undefined) {
+      return {
+        Name: res.name,
+        Name_Extra: res.name_extra,
+        Price: parseInt(res.gross_price),
+        Quantity: quantity,
+        ProductId: res.id
+      };
+
+    } else {
+
+      return {
+        Name: res.name,
+        Name_Extra: res.name_extra,
+        Image: res.images[0].thumbnail.url,
+        Price: parseInt(res.gross_price),
+        Quantity: quantity,
+        ProductId: res.id
+      }
     };
   });
 }
@@ -157,7 +172,7 @@ function formatJsonObjectForWeekOverview(currentJsonObject) {
     Meals: meals,
     Products: products
   };
-  
+
   result = removeDuplicatesFromWeekJson(result);
   result["TotalPrice"] = calculateTotalPriceForCart(result);
 
@@ -167,10 +182,10 @@ function formatJsonObjectForWeekOverview(currentJsonObject) {
 function formatJsonObjectForCart(currentJsonObject) {
   let result = {};
   let products = [];
-  
-  for(obj of currentJsonObject[0]){
-    if(obj.hasOwnProperty("Products")){
-      for(product of obj.Products) {
+
+  for (obj of currentJsonObject) {
+    if (obj.hasOwnProperty("Products")) {
+      for (product of obj.Products) {
         let formattedProduct = {
           product_id: product.ProductId,
           quantity: product.Quantity
@@ -217,7 +232,7 @@ function removeDuplicatesFromWeekJson(currentJsonObject) {
         if (filteredProduct.ProductId === product.ProductId) {
           found = true;
           filteredProduct.Quantity += product.Quantity;
-        } 
+        }
       }
 
       if (!found) {
@@ -232,7 +247,7 @@ function removeDuplicatesFromWeekJson(currentJsonObject) {
 
 function removeDuplicatesFromCartJson(currentJsonObject) {
   let resultProducts = [];
-  
+
   for (product of currentJsonObject.items) {
     if (resultProducts.length === 0) {
       resultProducts.push(product);
@@ -242,7 +257,7 @@ function removeDuplicatesFromCartJson(currentJsonObject) {
         if (filteredProduct.product_id === product.product_id) {
           found = true;
           filteredProduct.quantity += product.quantity;
-        } 
+        }
       }
 
       if (!found) {
