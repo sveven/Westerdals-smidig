@@ -5,33 +5,29 @@ const create = require("../queries/plannerCreateQueries");
 const destroy = require("../queries/plannerDeleteQueries");
 const fetch = require("../queries/plannerFetchQueries");
 
-
 router.get("/product-in-day/", function(req, res) {
+	let dayid = req.param("dayid");
+	let productid = req.param("productid");
 
-  let dayid = req.param("dayid");
-  let productid = req.param("productid");
+	let dayAndTypeArr = dayAndTypeSplit(dayid);
 
-  let dayAndTypeArr = dayAndTypeSplit(dayid);
+	create
+		.createDayQuery(req.cookies.ukeId, dayAndTypeArr[1], dayAndTypeArr[0])
+		.then(result => {
+			let dayid = result[0].id;
 
-    create
-      .createDayQuery(req.cookies.ukeId, dayAndTypeArr[1], dayAndTypeArr[0])
-      .then(result => {
-        
-        let dayid = result[0].id;
-
-        create
-          .createProductInDay(productid, 1, dayid)
-          .then(result => {
-            res.status(204).send();
-          })
-          .catch(err => {
-            res.status(500).send({ error: err });
-          });
-      })
-      .catch(err => {
-        res.status(500).send({ error: err });
-      });
-    
+			create
+				.createProductInDay(productid, 1, dayid)
+				.then(result => {
+					res.status(204).send();
+				})
+				.catch(err => {
+					res.status(500).send({ error: err });
+				});
+		})
+		.catch(err => {
+			res.status(500).send({ error: err });
+		});
 });
 
 router.delete("/product-in-day/:productid/:dayid", function(req, res) {
@@ -45,11 +41,12 @@ router.delete("/product-in-day/:productid/:dayid", function(req, res) {
 		});
 });
 
-router.put("/product-in-week/:productid", function(req, res) {
+router.get("/product-in-week/:productid", function(req, res) {
+	let productid = parseInt(req.params.productid);
+	let weekid = parseInt(req.cookies.ukeId);
 	create
-		.createProductInWeek(req.params.productid, req.cookies.ukeId, 1)
+		.createProductInWeek(productid, weekid , 1)
 		.then(result => {
-			
 			res.status(204).send();
 		})
 		.catch(err => {
@@ -69,27 +66,23 @@ router.delete("/product-in-week/:productid", function(req, res) {
 });
 
 router.get("/recipe-in-day/", function(req, res) {
+	let dayid = req.param("dayid");
+	let recipeid = req.param("recipeid");
+	let dayAndTypeArr = dayAndTypeSplit(dayid);
 
-    let dayid = req.param('dayid');
-    let recipeid = req.param('recipeid');
-    let dayAndTypeArr = dayAndTypeSplit(dayid);
-
-
-    	create
+	create
 		.createDayQuery(req.cookies.ukeId, dayAndTypeArr[1], dayAndTypeArr[0])
 		.then(result => {
-			
 			let dayid = result[0].id;
-//TODO: missing portion
-      	create
-		.addMealToDayQuery(recipeid, 1, dayid)
-		.then(result => {
-        res.status(204).send();
-      })
-      .catch(err => {
-        res.status(500).send({ error: err });
-      });
-
+			//TODO: missing portion
+			create
+				.addMealToDayQuery(recipeid, 1, dayid)
+				.then(result => {
+					res.status(204).send();
+				})
+				.catch(err => {
+					res.status(500).send({ error: err });
+				});
 		})
 		.catch(err => {
 			res.status(500).send({ error: err });
@@ -174,41 +167,44 @@ router.get("/products/:day/", function(req, res) {
 });
 
 router.get("/mobile/product-in-week/:productid/:weekid", function(req, res) {
+	let productid = parseInt(req.params.productid);
+	let weekid = parseInt(req.params.weekid);
 
-  let productid = parseInt(req.params.productid);
-  let weekid = parseInt(req.params.weekid);
-
-  create.createProductInWeek(productid, weekid, 1).then( result => {
-    res.status(204).send();
-  }).catch(err => {
-    res.status(500).send({error: err});
-  })
-
+	create
+		.createProductInWeek(productid, weekid, 1)
+		.then(result => {
+			res.status(204).send();
+		})
+		.catch(err => {
+			res.status(500).send({ error: err });
+		});
 });
 
-router.get("/mobile/recipe-in-day/:recipeid/:weekid/:portions", function(req, res) {
-	
+router.get("/mobile/recipe-in-day/:recipeid/:weekid/:portions", function(
+	req,
+	res
+) {
 	let recipeid = parseInt(req.params.recipeid);
 	let weekid = parseInt(req.params.weekid);
-	let portions = parseInt(req.params.portions)
+	let portions = parseInt(req.params.portions);
 
 	//TODO: Hardcoded values as still missing values from mobile.
 	create.createDayQuery(weekid, "Monday", "Dinner").then(day => {
-		create.addMealToDayQuery(recipeid, portions, day[0].id).then(result => {
-			console.log(result);
-			
-			res.send(result);
-		}).catch(err => {
-			res.status(500).send({error: err});
-		});
-	})
-  
+		create
+			.addMealToDayQuery(recipeid, portions, day[0].id)
+			.then(result => {
+				console.log(result);
 
+				res.send(result);
+			})
+			.catch(err => {
+				res.status(500).send({ error: err });
+			});
+	});
 });
 
 router.get("/mobile/:weekid/all/", function(req, res) {
-
-  let weekid = parseInt(req.params.weekid);
+	let weekid = parseInt(req.params.weekid);
 
 	fetch
 		.fetchAllProductsInWeek(weekid)
@@ -221,104 +217,102 @@ router.get("/mobile/:weekid/all/", function(req, res) {
 });
 
 router.get("/mobile/week/", function(req, res) {
+	create
+		.createUserQuery()
+		.then(result => {
+			let userid = result.Id;
 
-  create.createUserQuery().then( result => {
-    let userid = result.Id;
-		
-    create.createWeekQuery(userid).then( result => {
-
-      res.send({weekId: result.id});
-
-    }).catch(err => {
-        res.status(500).send({error: err})
-    });
-
-  }).catch(err => {
-    res.status(500).send({error: err})
-  });
+			create
+				.createWeekQuery(userid)
+				.then(result => {
+					res.send({ weekId: result.id });
+				})
+				.catch(err => {
+					res.status(500).send({ error: err });
+				});
+		})
+		.catch(err => {
+			res.status(500).send({ error: err });
+		});
 });
 
+function dayAndTypeSplit(dayAndType) {
+	switch (dayAndType) {
+	// Breakfast
 
+	case "breakfast-monday":
+		return ["breakfast", "monday"];
+		break;
+	case "breakfast-tuesday":
+		return ["breakfast", "tuesday"];
+		break;
+	case "breakfast-wednesday":
+		return ["breakfast", "wednesday"];
+		break;
+	case "breakfast-thursday":
+		return ["breakfast", "thursday"];
+		break;
+	case "breakfast-friday":
+		return ["breakfast", "friday"];
+		break;
+	case "breakfast-saturday":
+		return ["breakfast", "saturday"];
+		break;
+	case "breakfast-sunday":
+		return ["breakfast", "sunday"];
+		break;
 
+		// Lunch
 
-function dayAndTypeSplit(dayAndType){
+	case "lunch-monday":
+		return ["lunch", "monday"];
+		break;
+	case "lunch-tuesday":
+		return ["lunch", "tuesday"];
+		break;
+	case "lunch-wednesday":
+		return ["lunch", "wednesday"];
+		break;
+	case "lunch-thursday":
+		return ["lunch", "thursday"];
+		break;
+	case "lunch-friday":
+		return ["lunch", "friday"];
+		break;
+	case "lunch-saturday":
+		return ["lunch", "saturday"];
+		break;
+	case "lunch-sunday":
+		return ["lunch", "sunday"];
+		break;
 
-  switch(dayAndType){
+		// Dinner
 
-    // Breakfast
+	case "dinner-monday":
+		return ["dinner", "monday"];
+		break;
+	case "dinner-tuesday":
+		return ["dinner", "tuesday"];
+		break;
+	case "dinner-wednesday":
+		return ["dinner", "wednesday"];
+		break;
+	case "dinner-thursday":
+		return ["dinner", "thursday"];
+		break;
+	case "dinner-friday":
+		return ["dinner", "friday"];
+		break;
+	case "dinner-saturday":
+		return ["dinner", "saturday"];
+		break;
+	case "dinner-sunday":
+		return ["dinner", "sunday"];
+		break;
 
-    case "breakfast-monday":
-      return ["breakfast", "monday"];
-      break;
-    case "breakfast-tuesday":
-      return ["breakfast", "tuesday"];
-      break;
-    case "breakfast-wednesday":
-      return ["breakfast", "wednesday"];
-      break;
-    case "breakfast-thursday":
-      return ["breakfast", "thursday"];
-      break;
-    case "breakfast-friday":
-      return ["breakfast", "friday"];
-      break;
-    case "breakfast-saturday":
-      return ["breakfast", "saturday"];
-      break;
-    case "breakfast-sunday":
-      return ["breakfast", "sunday"];
-      break;
-
-      // Lunch
-
-    case "lunch-monday":
-      return ["lunch", "monday"];
-      break;
-    case "lunch-tuesday":
-      return ["lunch", "tuesday"];
-      break;
-    case "lunch-wednesday":
-      return ["lunch", "wednesday"];
-      break;
-    case "lunch-thursday":
-      return ["lunch", "thursday"];
-      break;
-    case "lunch-friday":
-      return ["lunch", "friday"];
-      break;
-    case "lunch-saturday":
-      return ["lunch", "saturday"];
-      break;
-    case "lunch-sunday":
-      return ["lunch", "sunday"];
-      break;
-      
-    // Dinner
-
-    case "dinner-monday":
-      return ["dinner", "monday"];
-      break;
-    case "dinner-tuesday":
-      return ["dinner", "tuesday"];
-      break;
-    case "dinner-wednesday":
-      return ["dinner", "wednesday"];
-      break;
-    case "dinner-thursday":
-      return ["dinner", "thursday"];
-      break;
-    case "dinner-friday":
-      return ["dinner", "friday"];
-      break;
-    case "dinner-saturday":
-      return ["dinner", "saturday"];
-      break;
-    case "dinner-sunday":
-      return ["dinner", "sunday"];
-      break;
-
-    default: NULL;
-  }
+	default:
+		NULL;
+	}
 }
 
 module.exports = router;

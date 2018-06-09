@@ -47,7 +47,7 @@
 								<h3 class="modal-recipe-main-title">Oppskrifter (<%= currentDay.Meals.length %>)</h3>	
 				
 								<% for(meal of currentDay.Meals) { %>
-								<div>
+								<div class="modal-meal-wrapper">
 									<img class="recipe-planner-meal-image" src="<%= meal.Image %>">
 									<i class="far fa-times-circle"></i>
 									<p class="recipe-planner-meal-title"><%= meal.Title %></p>
@@ -63,7 +63,7 @@
 						<div class="modal-products">
 								<h3 class="modal-product-main-title">Enkeltvarer (<%= currentDay.Products.length  %>)</h3>
 							<% for(product of currentDay.Products) { %>
-							<div>
+							<div class="product-wrapper">
 								<img class="planner-product-image" src="<%= product.Image %>">
 								<i class="modal-remove-icon far fa-times-circle"></i>
 								<p class="planner-product-title"><%= product.Name %></p>
