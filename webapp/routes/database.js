@@ -67,7 +67,8 @@ router.delete("/product-in-week/:productid", function(req, res) {
 
 router.get("/recipe-in-day/", function(req, res) {
 	let dayid = req.param("dayid");
-	let recipeid = req.param("recipeid");
+	//TODO: temp fix for recipeid. Why is it added as string?
+	let recipeid = parseInt(req.param("recipeid"));
 	let dayAndTypeArr = dayAndTypeSplit(dayid);
 
 	create
