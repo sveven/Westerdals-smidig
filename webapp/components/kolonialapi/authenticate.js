@@ -4,7 +4,7 @@ const request = require("request");
 module.exports = {
 
 	authenticate: function(req, apicallback){
-
+//TODO: Implement adding of kolonialuserId to current planleggerid
 		const options = {
 			uri: "https://kolonial.no/api/v1/user/login/",
 			port: 443,

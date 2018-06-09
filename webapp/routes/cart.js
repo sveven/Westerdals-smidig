@@ -18,7 +18,6 @@ router.get("/", function (req, res) {
     });
 
   }).catch(err => {
-    console.log("error", err);
 
     res.render("cart", {
       title: "K-Planleggeren",
@@ -33,7 +32,6 @@ router.post("/", function (req, res) { });
 
 function getWeekOverViewAsJson(req) {
   return getAllInformationForWeek(req).then(res => {
-    console.log("first", res);
 
     return formatJsonObjectForWeekOverview(res);
   });

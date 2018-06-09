@@ -2,6 +2,14 @@ const models = require("../models");
 const helper = require("./queriesHelperMethods");
 
 module.exports = {
+  fetchUserByKolonialId(kolonialUserId) {
+    return models.User.findOne({
+      where: {
+        kolonialUserId: kolonialUserId
+      },
+      include: models.Week
+    })
+  },
 
   /**
    * Fetches all days in a week
