@@ -80,7 +80,6 @@ router.get("/recipe-in-day/", function(req, res) {
 		.then(result => {
 			
 			let dayid = result[0].id;
-//TODO: missing portion
       	create
 		.addMealToDayQuery(recipeid, 1, dayid)
 		.then(result => {
@@ -187,7 +186,7 @@ router.get("/mobile/product-in-week/:productid/:weekid", function(req, res) {
 });
 
 router.get("/mobile/recipe-in-day/:recipeid/:weekid/:portions", function(req, res) {
-	
+
 	let recipeid = parseInt(req.params.recipeid);
 	let weekid = parseInt(req.params.weekid);
 	let portions = parseInt(req.params.portions)
