@@ -51,7 +51,7 @@ export class DatabaseProvider {
     });
   }
 
-  getWeekIdFromDatabase() {
+  getWeekIdFromServer() {
     return new Promise((resolve, reject) => {
       this.http
         .get(

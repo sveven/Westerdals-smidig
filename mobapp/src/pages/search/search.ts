@@ -18,8 +18,7 @@ export class SearchPage {
     public navParams: NavParams,
     private searchProvider: SearchProvider,
     private databaseProvider: DatabaseProvider,
-    private toastCtrl: ToastController
-  ) {
+    private toastCtrl: ToastController  ) {
     this.performSearch("salat");
   }
 
