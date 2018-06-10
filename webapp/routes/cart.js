@@ -11,7 +11,7 @@ router.get("/", function (req, res) {
 
 
   getWeekOverViewAsJson(req).then(result => {
-
+    
     res.render("cart", {
       title: "K-Planleggeren",
       data: result
@@ -163,7 +163,9 @@ function formatJsonObjectForWeekOverview(currentJsonObject) {
       if (item.hasOwnProperty("ProductId")) {
         products.push(item);
       } else if (item.hasOwnProperty("RecipeId")) {
-        meals.push(item);
+        let meal = item;
+        item["TotalPrice"] = calculateTotalPriceForMeal(item);        
+        meals.push(meal);
       }
     }
   }
@@ -207,6 +209,17 @@ function formatJsonObjectForCart(currentJsonObject) {
   return result;
 }
 
+
+function calculateTotalPriceForMeal(meal) {
+  let totalPrice = 0; 
+
+  for(product of meal.Products) {
+    if(product.Price !== undefined) {
+      totalPrice += product.Price * product.Quantity;
+    }
+  }
+  return totalPrice;
+}
 
 function calculateTotalPriceForCart(currentJsonObject) {
   let totalPrice = 0;
