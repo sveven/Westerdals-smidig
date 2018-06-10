@@ -51,11 +51,11 @@ export class DatabaseProvider {
     });
   }
 
-  getWeekIdFromServer() {
+  getWeekIdFromServer(kolonialUserId:number) {
     return new Promise((resolve, reject) => {
       this.http
         .get(
-          `http://91.189.170.100:3000/database/mobile/week/`)
+          `http://91.189.170.100:3000/database/mobile/week/${kolonialUserId}/latest`)
         .subscribe(
           (response: any) => {
             this.weekId = response.weekId;
