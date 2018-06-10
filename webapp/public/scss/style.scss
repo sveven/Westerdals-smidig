@@ -223,11 +223,13 @@ html {
     position: absolute;
     height: 100%;
     width: 100%;
+    
 }
 
 
 .see-more-icon {
     font-size: 2rem;
+    padding-bottom: 10px;
     position: relative;
     color: rgb(255, 165, 20);
     animation-name: pulsating-see-more-btn;
@@ -235,6 +237,7 @@ html {
     animation-timing-function: ease;
     animation-iteration-count: 4;
     cursor: pointer;
+    
 
 }
 

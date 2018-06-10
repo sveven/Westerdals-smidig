@@ -1,3 +1,17 @@
+// Media Queries
+
+//Midlertidig media query
+@media (max-width: 1028px) {
+    main {
+        display: none;
+    }
+
+    body:after {
+        content: "Last ned vår app for optimal opplevelse på mindre skjermer"
+    }
+}
+
+
 /* TYPOGRAPHY */
 
 @font-face {
