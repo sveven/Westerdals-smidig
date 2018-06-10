@@ -15,16 +15,19 @@
         <h1>Oppskrifter</h1>
       </ion-row>
     </ng-container>
+
     <ion-row *ngFor="let meal of meals">
 
-
       <ion-row (click)="expandMeal(meal)" class="mealHeader">
-        <ion-col col-12>
+        <ion-col col-1>
+          <ion-icon name="arrow-dropdown"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
           <p>{{meal.meal.Title}}</p>
         </ion-col>
       </ion-row>
 
-      <ion-row class="productHeader" [ngClass]="meal.expanded ? '' : 'collapsed'">
+      <ion-row class="productHeader" [ngClass]="meal.expanded ? 'expanded' : 'collapsed'">
         <ion-col col-6>
           <p>Produkt</p>
         </ion-col>
@@ -36,7 +39,7 @@
         </ion-col>
       </ion-row>
 
-      <ion-row *ngFor="let item of meal.meal.Products" [ngClass]="meal.expanded ? '' : 'collapsed'">
+      <ion-row *ngFor="let item of meal.meal.Products" [ngClass]="meal.expanded ? 'expanded' : 'collapsed'">
         <ion-col col-1>
           <img class="productImg" [src]="item.Image" />
         </ion-col>
