@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { AuthorizePage } from '../pages/authorize/authorize';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
@@ -26,7 +25,6 @@ import { LoginProvider } from '../providers/login/login';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     AuthorizePage,
     AddRecipePage
 
@@ -40,7 +38,6 @@ import { LoginProvider } from '../providers/login/login';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     AuthorizePage,
     AddRecipePage
   ],

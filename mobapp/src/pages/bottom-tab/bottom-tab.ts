@@ -19,8 +19,8 @@ export class BottomTabPage {
   searchRoot = 'SearchPage'
   cameraRoot = 'CameraPage'
   checkoutRoot = 'CheckoutPage'
-  calendarRoot= 'CalendarPage'
-  profileRoot= 'ProfilePage'
+  calendarRoot = 'CalendarPage'
+  profileRoot = 'ProfilePage'
 
 
   constructor(public navCtrl: NavController) {}

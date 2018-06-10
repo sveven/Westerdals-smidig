@@ -52,11 +52,12 @@ export class LoginPage {
       this.loginProvider
         .loginToKolonial(this.username, this.password)
         .then((res: any) => {
+          console.log("userinfo", res);
+          
           this.storage.set("kolonialUserId", res.user.id).then(() => {
             this.databaseProvider
               .getWeekIdFromServer(res.user.id)
               .then((res: any) => {
-                console.log("WeekId", res);
                 this.storage.set("weekId", res);
                 this.navCtrl.push("WelcomePage");
               })
