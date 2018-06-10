@@ -9,10 +9,16 @@
 
 <ion-content padding>
 
-    <ion-card>
-        <ion-card-content>
-          <ion-select>Velg uke</ion-select>            
-        </ion-card-content>
-      </ion-card>
+  <ion-item>
+    <ion-label>Velg en uke</ion-label>
+    <ion-select>
+      <!--TODO: fix value maybe-->
+      <ion-option *ngFor="let week of weeks" value="{{week.id}}">{{week.name}}</ion-option>
+    </ion-select>
+
+    <button ion-button>
+      Bytt uke!
+    </button>
+  </ion-item>
 
 </ion-content>
