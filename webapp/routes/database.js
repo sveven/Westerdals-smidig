@@ -260,6 +260,12 @@ router.get("/mobile/week/:kolonialUserId/latest", function(req, res) {
   });
 });
 
+router.get("/mobile/week/all/:kolonialUserId", function(req, res) {
+  fetch.fetchAllWeeksForKolonialUser(req.params.kolonialUserId).then(weeks => {
+    res.send({weeks: weeks})
+  });
+})
+
 /**
  * Drops a week and returns a new one
  */
