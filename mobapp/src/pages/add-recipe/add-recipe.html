@@ -8,7 +8,6 @@
 </ion-header>
 
 <ion-content padding class="contentBack">
-<<<<<<< HEAD
   <ion-card>
       <img [src] = "recipe.feature_image_url" *ngIf="recipe.feature_image_url !== 'undefined'"/>
         <ion-card-content>
@@ -23,8 +22,8 @@
           <ion-option>6</ion-option>
           <ion-option>7</ion-option>
           <ion-option>8</ion-option>
-        <ion-option>9</ion-option>
-        <ion-option>10</ion-option>
+          <ion-option>9</ion-option>
+          <ion-option>10</ion-option>
         </ion-select>
       </ion-card-content>
     </ion-card>
@@ -32,26 +31,5 @@
       <button class="btnAdd" ion-button short large color="dark" (click)="addToDatabase()">Legg til</button>
       <button class="btnCancel" ion-button short large color="dark"  (click)="closeModal()">Avbryt</button>
     </div>
-=======
-  <img [src] = "recipe.feature_image_url" *ngIf="recipe.feature_image_url !== 'undefined'"/>
-
-  <p>Du skannet {{recipe.title}}!</p>
-  <ion-label>Velg antall porsjoner</ion-label>
-  <ion-select [(ngModel)]="portions" interface="popover" [selectOptions]="selectOptions">
-    <ion-option>1</ion-option>
-    <ion-option>2</ion-option>
-    <ion-option>3</ion-option>
-    <ion-option>4</ion-option>
-    <ion-option>5</ion-option>
-    <ion-option>6</ion-option>
-    <ion-option>7</ion-option>
-    <ion-option>8</ion-option>
-    <ion-option>9</ion-option>
-    <ion-option>10</ion-option>
-  </ion-select>
-
-    <button class="button" ion-button short large color="dark" (click)="addToDatabase()">Legg til</button>
-    <button class="button" ion-button short large color="dark"  (click)="closeModal()">Avbryt</button>
->>>>>>> b02dcdf13e65a3ec8018a3740e7a52bfce59768d
 </ion-content>
 

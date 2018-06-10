@@ -3,6 +3,9 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { CameraPage } from '../camera/camera';
 import { SearchPage } from '../search/search';
 import { CheckoutPage } from '../checkout/checkout';
+import { CalendarPage } from '../calendar/calendar';
+import { ProfilePage } from '../profile/profile';
+
 
 
 
@@ -16,6 +19,8 @@ export class BottomTabPage {
   searchRoot = 'SearchPage'
   cameraRoot = 'CameraPage'
   checkoutRoot = 'CheckoutPage'
+  calendarRoot= 'CalendarPage'
+  profileRoot= 'ProfilePage'
 
 
   constructor(public navCtrl: NavController) {}
