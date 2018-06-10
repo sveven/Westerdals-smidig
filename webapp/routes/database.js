@@ -5,7 +5,7 @@ const create = require("../queries/plannerCreateQueries");
 const destroy = require("../queries/plannerDeleteQueries");
 const fetch = require("../queries/plannerFetchQueries");
 
-router.get("/product-in-day/", function(req, res) {
+router.get("/product-in-day/", function (req, res) {
   let dayid = req.param("dayid");
   let productid = req.param("productid");
 
@@ -30,7 +30,7 @@ router.get("/product-in-day/", function(req, res) {
     });
 });
 
-router.delete("/product-in-day/:productid/:dayid", function(req, res) {
+router.delete("/product-in-day/:productid/:dayid", function (req, res) {
   destroy
     .deleteProductInDay(req.params.dayid, 1, req.params.productid)
     .then(result => {
@@ -41,7 +41,7 @@ router.delete("/product-in-day/:productid/:dayid", function(req, res) {
     });
 });
 
-router.get("/product-in-week/:productid", function(req, res) {
+router.get("/product-in-week/:productid", function (req, res) {
   let productid = parseInt(req.params.productid);
   let weekid = parseInt(req.cookies.ukeId);
   create
@@ -54,7 +54,7 @@ router.get("/product-in-week/:productid", function(req, res) {
     });
 });
 
-router.delete("/product-in-week/:productid", function(req, res) {
+router.delete("/product-in-week/:productid", function (req, res) {
   destroy
     .deleteProductInWeek(req.cookies.ukeId, req.params.productid)
     .then(result => {
@@ -65,7 +65,7 @@ router.delete("/product-in-week/:productid", function(req, res) {
     });
 });
 
-router.get("/recipe-in-day/", function(req, res) {
+router.get("/recipe-in-day/", function (req, res) {
   let dayid = req.param("dayid");
   //TODO: temp fix for recipeid. Why is it added as string?
   let recipeid = parseInt(req.param("recipeid"));
@@ -89,7 +89,7 @@ router.get("/recipe-in-day/", function(req, res) {
     });
 });
 
-router.delete("/recipe-in-day/:recipeid/:dayid", function(req, res) {
+router.delete("/recipe-in-day/:recipeid/:dayid", function (req, res) {
   destroy
     .deleteMeal(req.params.recipeid)
     .then(result => {
@@ -100,7 +100,7 @@ router.delete("/recipe-in-day/:recipeid/:dayid", function(req, res) {
     });
 });
 
-router.get("/week", function(req, res) {
+router.get("/week", function (req, res) {
   fetch
     .fetchDaysInWeek(req.cookies.ukeId)
     .then(result => {
@@ -111,7 +111,7 @@ router.get("/week", function(req, res) {
     });
 });
 
-router.get("/week/all", function(req, res) {
+router.get("/week/all", function (req, res) {
   fetch
     .fetchAllProductsInWeek(req.cookies.ukeId)
     .then(result => {
@@ -122,7 +122,7 @@ router.get("/week/all", function(req, res) {
     });
 });
 
-router.get("/all", function(req, res) {
+router.get("/all", function (req, res) {
   fetch
     .fetchProductsInWeek(req.cookies.ukeId)
     .then(result => {
@@ -133,7 +133,7 @@ router.get("/all", function(req, res) {
     });
 });
 
-router.get("/meals/:day", function(req, res) {
+router.get("/meals/:day", function (req, res) {
   fetch
     .fetchAllMealsFromADay(req.params.day)
     .then(result => {
@@ -144,7 +144,7 @@ router.get("/meals/:day", function(req, res) {
     });
 });
 
-router.get("/meals/:day/:type", function(req, res) {
+router.get("/meals/:day/:type", function (req, res) {
   fetch
     .fetchMealFromDayOfType(req.params.day, req.params.type)
     .then(result => {
@@ -155,7 +155,7 @@ router.get("/meals/:day/:type", function(req, res) {
     });
 });
 
-router.get("/products/:day/", function(req, res) {
+router.get("/products/:day/", function (req, res) {
   fetch
     .fetchProductsOnDay(req.params.day)
     .then(result => {
@@ -166,7 +166,7 @@ router.get("/products/:day/", function(req, res) {
     });
 });
 
-router.get("/mobile/product-in-week/:productid/:weekid", function(req, res) {
+router.get("/mobile/product-in-week/:productid/:weekid", function (req, res) {
   let productid = parseInt(req.params.productid);
   let weekid = parseInt(req.params.weekid);
 
@@ -180,7 +180,7 @@ router.get("/mobile/product-in-week/:productid/:weekid", function(req, res) {
     });
 });
 
-router.get("/mobile/recipe-in-day/:recipeid/:weekid/:portions", function(
+router.get("/mobile/recipe-in-day/:recipeid/:weekid/:portions", function (
   req,
   res
 ) {
@@ -203,7 +203,7 @@ router.get("/mobile/recipe-in-day/:recipeid/:weekid/:portions", function(
   });
 });
 
-router.get("/mobile/:weekid/all/", function(req, res) {
+router.get("/mobile/:weekid/all/", function (req, res) {
   let weekid = parseInt(req.params.weekid);
 
   fetch
@@ -216,7 +216,7 @@ router.get("/mobile/:weekid/all/", function(req, res) {
     });
 });
 
-router.get("/mobile/week/", function(req, res) {
+router.get("/mobile/week/", function (req, res) {
   create
     .createUserQuery()
     .then(result => {
@@ -236,7 +236,7 @@ router.get("/mobile/week/", function(req, res) {
     });
 });
 
-router.get("/mobile/week/:kolonialUserId/latest", function(req, res) {
+router.get("/mobile/week/:kolonialUserId/latest", function (req, res) {
   fetch.fetchUserByKolonialId(req.params.kolonialUserId).then(user => {
     if (user !== null) {
       if (user.Weeks.length > 0) {
@@ -260,16 +260,16 @@ router.get("/mobile/week/:kolonialUserId/latest", function(req, res) {
   });
 });
 
-router.get("/mobile/week/all/:kolonialUserId", function(req, res) {
+router.get("/mobile/week/all/:kolonialUserId", function (req, res) {
   fetch.fetchAllWeeksForKolonialUser(req.params.kolonialUserId).then(weeks => {
-    res.send({weeks: weeks})
+    res.send({ plannerUsers: weeks });
   });
-})
+});
 
 /**
  * Drops a week and returns a new one
  */
-router.get("/mobile/:weekId/:kolonialUserId/drop/", function(req, res) {
+router.get("/mobile/:weekId/:kolonialUserId/drop/", function (req, res) {
   destroy.dropWeek(req.params.weekId).then(week => {
     fetch.fetchUserByKolonialId(req.params.kolonialUserId).then(user => {
       create.createWeekQuery(user.Id).then(result => {
