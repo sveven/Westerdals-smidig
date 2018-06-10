@@ -173,11 +173,9 @@ function formatJsonObjectForWeekOverview(currentJsonObject) {
   };
 
   result = removeDuplicatesFromWeekJson(result);
-  console.log("RESULT BEFORE", result.Meals);
   
   result.Meals = removeUndefinedFromMeal(result.Meals);
   
-  console.log("RESULT AFTEr ",result.Meals);
   result["TotalPrice"] = calculateTotalPriceForCart(result);
 
   return result;
@@ -266,7 +264,6 @@ function removeUndefinedFromMeal(meals) {
         newMeal.Products.push(product);
       }
     }
-    console.log(newMeal);
     
     resultMeals.push(newMeal);
   }
