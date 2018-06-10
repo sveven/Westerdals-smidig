@@ -8,14 +8,57 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
   <ion-grid wrap responsive-lg>
+    <ng-container *ngIf="meals.length > 0">
+      <ion-row>
+        <h1>Oppskrifter</h1>
+      </ion-row>
+    </ng-container>
+
     <ion-row *ngFor="let meal of meals">
 
-      <ion-row>
-        <ion-col col-10>{{meal.Title}}</ion-col>
+      <ion-row (click)="expandMeal(meal)" class="mealHeader">
+        <ion-col col-1>
+          <ion-icon name="arrow-dropdown"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <p>{{meal.meal.Title}}</p>
+        </ion-col>
       </ion-row>
 
+      <ion-row class="productHeader" [ngClass]="meal.expanded ? 'expanded' : 'collapsed'">
+        <ion-col col-6>
+          <p>Produkt</p>
+        </ion-col>
+        <ion-col col-3>
+          <p>Pris</p>
+        </ion-col>
+        <ion-col col-3>
+          <p>Antall</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let item of meal.meal.Products" [ngClass]="meal.expanded ? 'expanded' : 'collapsed'">
+        <ion-col col-1>
+          <img class="productImg" [src]="item.Image" />
+        </ion-col>
+        <ion-col col-6>
+          <p>{{item.Name}}</p>
+        </ion-col>
+        <ion-col col-3>
+          <p>{{item.Price}},-</p>
+        </ion-col>
+        <ion-col col-2>
+          <p>{{item.Quantity}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-row>
+
+    <ng-container *ngIf="products.length > 0">
+      <ion-row>
+        <h1>Produkter</h1>
+      </ion-row>
       <ion-row class="productHeader">
         <ion-col col-6>
           <p>Produkt</p>
@@ -28,51 +71,25 @@
         </ion-col>
       </ion-row>
 
-      <ion-row *ngFor="let item of meal.Products">
+      <ion-row *ngFor="let item of products">
         <ion-col col-1>
           <img class="productImg" [src]="item.Image" />
         </ion-col>
-        <ion-col col-8>
+        <ion-col col-6>
           <p>{{item.Name}}</p>
         </ion-col>
         <ion-col col-2>
-          <p>{{item.Price}},-</p>
+          <p>{{item.Price}}</p>
         </ion-col>
         <ion-col col-1>
           <p>{{item.Quantity}}</p>
         </ion-col>
-
       </ion-row>
-    </ion-row>
-
-    <ion-row class="productHeader">
-
-      <ion-col col-6>
-        <p>Produkt</p>
-      </ion-col>
-      <ion-col col-3>
-        <p>Pris</p>
-      </ion-col>
-      <ion-col col-3>
-        <p>Antall</p>
-      </ion-col>
-    </ion-row>
-
-    <ion-row *ngFor="let item of products">
-      <ion-col col-1>
-        <img class="productImg" [src]="item.Image" />
-      </ion-col>
-      <ion-col col-6>
-        <p>{{item.Name}}</p>
-      </ion-col>
-      <ion-col col-2>
-        <p>{{item.Price}}</p>
-      </ion-col>
-      <ion-col col-1>
-        <p>{{item.Quantity}}</p>
-      </ion-col>
-    </ion-row>
+    </ng-container>
 
 
   </ion-grid>
+  <ion-row *ngIf="products.length > 0 || meals.length > 0">
+    <ion-col>Pris: {{entireWeek.TotalPrice}}</ion-col>
+  </ion-row>
 </ion-content>

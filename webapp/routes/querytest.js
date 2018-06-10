@@ -2,13 +2,19 @@ const express = require("express");
 const router = express.Router();
 const connection = require("../components/kolonialapi/requestHandler");
 const create = require("../queries/plannerCreateQueries");
+const fetch = require("../queries/plannerFetchQueries");
 const destroy = require("../queries/plannerDeleteQueries");
 
 router.get("/", function(req, res) {
 
-  create.createDayQuery(1, "Monday", "Lunch").then(res => {
-    console.log(JSON.stringify(res));
-  });
+fetch.fetchUserByKolonialId(353117).then(res=> {
+  console.log(JSON.stringify(res));
+}).catch(err=> {
+  console.log("err",err);
+  
+});
+
+ 
 
   res.render("querytest", {
     title: "K-Planleggeren",

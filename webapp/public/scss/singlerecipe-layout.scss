@@ -205,7 +205,10 @@ input {
 
 .cart-image {
     position: absolute;
-    height: 2.5rem;
+    max-height: 2.5rem;
+	max-width: 70px;
+	height: auto;
+	width: auto;
     display: inline-block;
     top: 50%;
 	transform: translate(0, -50%);

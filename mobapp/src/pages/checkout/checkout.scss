@@ -1,21 +1,35 @@
 page-checkout {
-
-    .emptyButton{
+    .emptyButton {
         background: orange;
         color: white;
         font-size: 17px;
     }
-
-    .productImg{
+    .productImg {
         max-width: 120%;
     }
-
     ion-icon {
-        position: relative;
-        left: 10px;
-        bottom: 5px;
         font-size: 30px;
-        color: #FFA51E; 
+        color: #FFA51E;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
     }
 
+    .mealHeader {
+        width: 100%;
+        font-size: 15px;
+        border-bottom: 1px solid map-get($colors, kolonialmorktransparent);        
+    }
+
+    .productHeader {
+        width: 100%;
+        border-bottom: 1px solid map-get($colors, kolonialmorktransparent);
+    }
+
+    .collapsed {
+        display: none !important;
+    }
 }

@@ -1,8 +1,16 @@
 page-add-recipe {
 
-    .button{
+    div{
+        width: 100%;
+        margin: auto;
+    }
+    .btnAdd{
         background-color: #FFA51E;
-        margin-bottom: 30px;
+        width: 48%;
+    }
+    .btnCancel{
+        background-color: #FFA51E;
+        width: 48%;
     }
 
     ion-title{

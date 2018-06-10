@@ -223,7 +223,30 @@ body {
     /* Place the button at the bottom of the page */
     right: 30px;
     /* Place the button 30px from the right */
-    z-index: 99;
+    z-index: 9999;
+    /* Make sure it does not overlap */
+}
+
+#back-to-search-btn {
+    font-size: 1.2rem;
+    border: none;
+    position: absolute;
+    padding: 0.5rem 0.5rem 0.5rem 3rem;
+    font-weight: bold;
+    bottom: 0;
+    width: 200px;
+    left: 5%;
+    color: white;
+    border-radius: 3px;
+    background-color: rgb(255, 165, 20);
+    z-index: 1000;
+    position: fixed;
+    /* Fixed/sticky position */
+    bottom: 20px;
+    /* Place the button at the bottom of the page */
+    right: 30px;
+    /* Place the button 30px from the right */
+    z-index: 9999;
     /* Make sure it does not overlap */
 }
 
@@ -246,6 +269,6 @@ body {
     /* Place the button at the bottom of the page */
     right: 30px;
     /* Place the button 30px from the right */
-    z-index: 99;
+    z-index: 9999;
     /* Make sure it does not overlap */
 }

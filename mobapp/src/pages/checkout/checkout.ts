@@ -10,7 +10,7 @@ import { SearchProvider } from "../../providers/search/search";
 })
 export class CheckoutPage {
   entireWeek: any = {};
-  meals: JSON[] = [];
+  meals: any = [];
   products: JSON[] = [];
 
   constructor(
@@ -18,24 +18,32 @@ export class CheckoutPage {
     public navParams: NavParams,
     private databaseProvider: DatabaseProvider,
     private searchProvider: SearchProvider
-  ) { }
+  ) {}
 
   ionViewDidEnter() {
     this.getAllInformationForWeek().then((res: any) => {
       this.entireWeek = this.formatJsonObjectForWeekOverview(res);
 
       this.meals = this.removeUndefinedFromMeal(this.entireWeek.Meals);
+      //TODO: implement check for duplicate meals
+      // this.meals = this.removeDuplicateMealsFromWeekJson(this.meals);
       this.products = this.entireWeek.Products;
-
-      console.log(this.meals);
+      this.meals = this.addExpandedTagToAllMeals(this.meals);
     });
+  }
+
+  expandMeal(mealToExpand): void {
+    for (let obj in this.meals) {
+      if (this.meals[obj].meal.RecipeId === mealToExpand.meal.RecipeId) {
+        this.meals[obj].expanded = !this.meals[obj].expanded;
+      }
+    }
   }
 
   getAllInformationForWeek() {
     return this.databaseProvider
       .getAllProductsInWeek(this.databaseProvider.getWeekId())
       .then((res: any) => {
-
         return Promise.all(
           [].concat.apply(
             this.getInformationForAllDays(res.Days),
@@ -185,7 +193,6 @@ export class CheckoutPage {
     let resultProducts = [];
 
     for (let product of currentJsonObject.Products) {
-
       if (resultProducts.length === 0) {
         resultProducts.push(product);
       } else {
@@ -198,7 +205,6 @@ export class CheckoutPage {
         }
 
         if (!found && product !== undefined) {
-          
           resultProducts.push(product);
           found = false;
         }
@@ -209,26 +215,45 @@ export class CheckoutPage {
     return currentJsonObject;
   }
 
-  removeUndefinedFromMeal(meals) {
-    let resultMeals = []
-    console.log("meals before: ", meals);
 
-    for(let meal of meals) {
-     let newMeal = {
+
+  removeUndefinedFromMeal(meals) {
+    let resultMeals = [];
+
+    for (let meal of meals) {
+      let newMeal = {
         Image: meal.Image,
         Products: [],
-        RecipeId: meal.RecipeId, 
+        RecipeId: meal.RecipeId,
         Title: meal.Title
       };
-      
-      for(let product of meal.Products) {
-        if(product !== undefined){
+
+      for (let product of meal.Products) {
+        if (product !== undefined) {
           newMeal.Products.push(product);
         }
       }
       resultMeals.push(newMeal);
     }
-    console.log("newmeal: ", resultMeals);
     return resultMeals;
   }
+
+  addExpandedTagToAllMeals(meals) {
+    let newMeals = [];
+    meals.forEach(meal => {
+      newMeals.push(this.addExpandedTagToMeal(meal));
+    });
+    return newMeals;
+  }
+
+  addExpandedTagToMeal(meal) {
+    return {
+      expanded: false,
+      meal: meal
+    };
+  }
+
+
+
+  //TODO: Add function for dropping week and creating new.
 }

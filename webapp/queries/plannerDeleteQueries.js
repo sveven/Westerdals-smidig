@@ -44,5 +44,19 @@ module.exports = {
       .catch(err => {
         return err;
       });
+  },
+
+  dropWeek(weekId) {
+    return models.Week.findOne({
+      where: {
+        id: weekId
+      }
+    })
+      .then(week => {
+        return week.destroy();
+      })
+      .catch(err => {
+        return err;
+      });
   }
-}; 
+};

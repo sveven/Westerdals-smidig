@@ -25,13 +25,25 @@ router.get("/partial", function(req, res) {
   let categories;
 
   connection.getAllProductCategories(function(cat) {
-    //console.log("ALTSÅ SÅ LANGT VIRKER DET." + __dirname + "../views/partials/searchPartial");
     res.render(searchPartial, {
       search: search,
       data: list,
       categories: cat
     });
   });
+});
+
+
+// Endpoint for ret
+router.get("/get-fruits", function(req, res){
+
+  connection.getAllProductsFromCategory(21, function(fruits){
+  
+    console.log("GET FUITS: " + JSON.stringify(fruits));
+    res.send(fruits);
+
+  });
+
 });
 
 router.post("categories/ajax/:id", function(req, res) {
