@@ -25,8 +25,8 @@ export class CheckoutPage {
       this.entireWeek = this.formatJsonObjectForWeekOverview(res);
 
       this.meals = this.removeUndefinedFromMeal(this.entireWeek.Meals);
-      //TODO: implement check for duplicate meals
-      // this.meals = this.removeDuplicateMealsFromWeekJson(this.meals);
+      console.log(this.products);
+      
       this.products = this.entireWeek.Products;
       this.meals = this.addExpandedTagToAllMeals(this.meals);
     });
