@@ -7,6 +7,7 @@ import {
 } from "ionic-angular";
 import { LoginProvider } from "../../providers/login/login";
 import { Storage } from "@ionic/storage";
+import { DatabaseProvider } from "../../providers/database/database";
 
 @IonicPage()
 @Component({
@@ -23,6 +24,7 @@ export class LoginPage {
     public navParams: NavParams,
     public alertCtrl: AlertController,
     private loginProvider: LoginProvider,
+    private databaseProvider: DatabaseProvider,
     private storage: Storage
   ) { }
 
@@ -30,10 +32,11 @@ export class LoginPage {
     this.storage
       .get("kolonialUserId")
       .then((res: any) => {
-        console.log(res);
-        
         if (res !== null) {
-          this.navCtrl.push("WelcomePage");
+          this.storage.get("weekId").then(res => {
+            this.databaseProvider.setWeekId(res);
+            this.navCtrl.push("WelcomePage");
+          })
         }
       })
       .catch(err => {
@@ -42,7 +45,7 @@ export class LoginPage {
   }
 
   loginPush() {
-    //TODO: If there is a user with the kolonialID, get the weeks, if more than one, get the last one. 
+    //TODO: If there is a user with the kolonialID, get the weeks, if more than one, get the last one.
     if (this.username === "" || this.password === "") {
       this.presentWrongInfoAlert();
     } else {
@@ -50,8 +53,16 @@ export class LoginPage {
         .loginToKolonial(this.username, this.password)
         .then((res: any) => {
           this.storage.set("kolonialUserId", res.user.id).then(() => {
-            
-            this.navCtrl.push("WelcomePage");
+            this.databaseProvider
+              .getWeekIdFromServer(res.user.id)
+              .then((res: any) => {
+                console.log("WeekId", res);
+                this.storage.set("weekId", res);
+                this.navCtrl.push("WelcomePage");
+              })
+              .catch(err => {
+                console.log(err);
+              });
           });
         })
         .catch(err => {

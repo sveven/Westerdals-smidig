@@ -126,6 +126,7 @@ function getAllProductInformationForWeek(products) {
 function getFormattedInformationOnProduct(kolonialId, quantity) {
   return helper.getInformationOfProduct(kolonialId).then(res => {
     //TODO: Find fault, is it kolonial.no?
+
     if (res.images === undefined) {
       return {
         Name: res.name,
@@ -172,6 +173,9 @@ function formatJsonObjectForWeekOverview(currentJsonObject) {
   };
 
   result = removeDuplicatesFromWeekJson(result);
+  
+  result.Meals = removeUndefinedFromMeal(result.Meals);
+  
   result["TotalPrice"] = calculateTotalPriceForCart(result);
 
   return result;
@@ -208,6 +212,7 @@ function calculateTotalPriceForCart(currentJsonObject) {
   let totalPrice = 0;
 
   for (meal of currentJsonObject.Meals) {
+    
     for (product of meal.Products) {
       totalPrice += product.Price * product.Quantity;
     }
@@ -241,6 +246,28 @@ function removeDuplicatesFromWeekJson(currentJsonObject) {
   }
   currentJsonObject.Products = resultProducts;
   return currentJsonObject;
+}
+
+function removeUndefinedFromMeal(meals) {
+  let resultMeals = [];
+
+  for (let meal of meals) {
+    let newMeal = {
+      Image: meal.Image,
+      Products: [],
+      RecipeId: meal.RecipeId,
+      Title: meal.Title
+    };
+
+    for (let product of meal.Products) {
+      if (product !== undefined && product.Name !== undefined ) {
+        newMeal.Products.push(product);
+      }
+    }
+    
+    resultMeals.push(newMeal);
+  }
+  return resultMeals;
 }
 
 function removeDuplicatesFromCartJson(currentJsonObject) {

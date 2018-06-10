@@ -18,7 +18,7 @@ export class SearchPage {
     public navParams: NavParams,
     private searchProvider: SearchProvider,
     private databaseProvider: DatabaseProvider,
-    private toastCtrl: ToastController  ) {
+    private toastCtrl: ToastController) {
     this.performSearch("salat");
   }
 
@@ -27,27 +27,27 @@ export class SearchPage {
     this.searchProvider
       .searchForProduct(searchWord)
       .then((res: any) => {
-        this.products.push(res.products);
+          this.products.push(res.products);
       })
       .catch(err => {
         console.log(err);
       });
   }
 
-  addProductToDatabase(productId: number) {
-    this.databaseProvider.addProductToDatabase(productId).then((res : any) => {
+  addProductToDatabase(productId: number, itemName: string) {
+    this.databaseProvider.addProductToDatabase(productId).then((res: any) => {
       console.log(res);
 
-      let message = " er blitt lagt til i oversikten din!" 
+      let message = itemName + " er blitt lagt til i oversikten din!"
       this.toastCtrl.create({
-      message: message,
-      duration: 3000,
-      position: "top"
-    }).present();
-      
+        message: message,
+        duration: 3000,
+        position: "top"
+      }).present();
+
     }).catch(err => {
       console.log(err);
-      
+
     })
   }
 

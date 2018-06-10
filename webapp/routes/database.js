@@ -236,26 +236,40 @@ router.get("/mobile/week/", function(req, res) {
     });
 });
 
-router.get("/mobile/week/:userid/latest", function(req, res) {
-  fetch.fetchUserByKolonialId(req.params.userid).then(user => {
+router.get("/mobile/week/:kolonialUserId/latest", function(req, res) {
+  fetch.fetchUserByKolonialId(req.params.kolonialUserId).then(user => {
     if (user !== null) {
-
       if (user.Weeks.length > 0) {
-		  console.log(JSON.stringify(user.Weeks));
-		  
-        res.send({weekId: user.Weeks[user.Weeks.length - 1].id});
+        console.log(JSON.stringify(user.Weeks));
+
+        res.send({ weekId: user.Weeks[user.Weeks.length - 1].id });
       } else {
         create.createWeekQuery(user.Id).then(result => {
-          res.send({weekId: result});
+          res.send({ weekId: result });
         });
       }
     } else {
-      create.createUserWithKolonialIdQuery(req.params.userid).then(user => {
-        create.createWeekQuery(user.Id).then(result => {
-          res.send({weekId: result.id});
+      create
+        .createUserWithKolonialIdQuery(req.params.kolonialUserId)
+        .then(user => {
+          create.createWeekQuery(user.Id).then(result => {
+            res.send({ weekId: result.id });
+          });
         });
-      });
     }
+  });
+});
+
+/**
+ * Drops a week and returns a new one
+ */
+router.get("/mobile/:weekId/:kolonialUserId/drop/", function(req, res) {
+  destroy.dropWeek(req.params.weekId).then(week => {
+    fetch.fetchUserByKolonialId(req.params.kolonialUserId).then(user => {
+      create.createWeekQuery(user.Id).then(result => {
+        res.send({ weekId: result });
+      });
+    });
   });
 });
 

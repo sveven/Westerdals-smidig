@@ -215,35 +215,7 @@ export class CheckoutPage {
     return currentJsonObject;
   }
 
-  // removeDuplicateMealsFromWeekJson(meals) {
-  //   console.log(meals);
-    
-  //   let resultMeals = [];
 
-  //   for(let meal of meals) {
-  //     if (resultMeals.length === 0) {
-  //       resultMeals.push(meal);
-  //     } else {
-  //       let found = false;
-  //       for (let filteredMeal of resultMeals) {
-  //         if (filteredMeal.RecipeId === meal.RecipeId) {
-  //           found = true;
-  //          for(let product in filteredMeal.Products) {
-  //           filteredMeal.Products[product].Quantity + product
-  //         }
-  //         }
-  //       }
-
-  //       if (!found && meal !== undefined) {
-  //         resultMeals.push(meal);
-  //         found = false;
-  //       }
-  //     }
-  //   }
-  //   console.log("resultmeals: ", resultMeals);
-    
-  //   return resultMeals;
-  // }
 
   removeUndefinedFromMeal(meals) {
     let resultMeals = [];
@@ -280,4 +252,8 @@ export class CheckoutPage {
       meal: meal
     };
   }
+
+
+
+  //TODO: Add function for dropping week and creating new.
 }

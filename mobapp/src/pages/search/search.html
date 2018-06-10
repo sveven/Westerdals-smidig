@@ -9,7 +9,7 @@
   <ion-grid wrap responsive-lg>
     <ion-row *ngFor="let item of products[0]">
       <ion-col col-2>
-        <img class="productImg" [src]="item.images[0].thumbnail.url" />
+        <img *ngIf="item.images !== null" class="productImg" [src]="item.images[0].thumbnail.url" />
       </ion-col>
       <ion-col col-6>
         <p>{{item.name}}</p>
@@ -18,7 +18,7 @@
         <p>{{item.gross_price}}</p>
       </ion-col>
       <ion-col col-1>
-        <button ion-button icon-only clear (click)="addProductToDatabase(item.id)">
+        <button ion-button icon-only clear (click)="addProductToDatabase(item.id, item.name)">
           <ion-icon name="add-circle"></ion-icon>
         </button>
       </ion-col>
