@@ -2,13 +2,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>ProfilePage</ion-title>
+    <ion-title>Profil</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  
+    <ion-card>
+      <ion-card-title>Hei {{username}}!</ion-card-title>
+      <ion-card-content>Husk at vi leverer til {{location}}. :)</ion-card-content>
+    </ion-card>
     <button class="btnLogout" large ion-button short color="dark" (click)="presentLogoutAlert()">Logg ut</button>
 </ion-content>
