@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const authenticate = require("../components/kolonialapi/authenticate");
 const update = require("../queries/plannerUpdateQueries");
+const fetch = require("../queries/plannerFetchQueries");
 
 router.get("/", function(req, res) {
   let signedin = false;
@@ -33,21 +34,49 @@ router.post("/", function(req, res) {
   var username = req.body.username;
   var password = req.body.pass;
 
-  //   console.log("LOGIN: ");
-  //   console.log(JSON.stringify(req.body));
-
   authenticate.login(username, password, function(data) {
-	  //Updates the current planleggerId with the kolonial user id.
-    update.updateUserWithKolonialId(req.cookies.planleggerId, data.user.id);
+    res.cookie("data", data);
 
-    if (res.cookies) {
-      if (res.cookies.data) {
-        let cookiedata = JSON.parse(res.cookies.data);
-        sessionid = cookiedata.sessionid;
-      }
-    }
+	update.updateUserWithKolonialId(req.cookies.planleggerId, data.user.id);
+	
+	
+    // fetch.fetchAllWeeksForKolonialUser(data.user.id).then(users => {
+    //   let weeks = [];
+    //   for (user of users) {
+    //     for (week of user.Weeks) {
+    //       let newWeek = {
+    //         id: week.id,
+    //         name: week.name
+    //       };
+    //       if (newWeek.name === null) {
+    //         newWeek.name = "Hektisk Uke";
+    //       }
+    //       weeks.push(newWeek);
+    //     }
+    //   }
+	//   res.locals.weeks = weeks;
+	  
 
-    res.send();
+	  if (res.cookies) {
+		if (res.cookies.data) {
+		  let cookiedata = JSON.parse(res.cookies.data);
+		  sessionid = cookiedata.sessionid;
+		}
+	  }
+  
+	  res.send();
+    // }).catch(err => {
+	// 	if (res.cookies) {
+	// 		if (res.cookies.data) {
+	// 		  let cookiedata = JSON.parse(res.cookies.data);
+	// 		  sessionid = cookiedata.sessionid;
+	// 		}
+	// 	  }
+	  
+	// 	  res.send();
+	// })
+
+    
   });
 });
 

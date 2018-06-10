@@ -10,7 +10,7 @@ router.post("/", function(req, res){
 	authenticate.logout(req, function(data){
 		res.clearCookie("data");
 		res.cookie("data", data);
-
+		res.locals.ukeId = null;
     res.send();
     
 	});

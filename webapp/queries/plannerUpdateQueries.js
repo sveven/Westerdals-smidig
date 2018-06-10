@@ -10,5 +10,15 @@ module.exports = {
         kolonialUserId: kolonialUserId
       });
     });
+  },
+
+  updateWeekWithName(weekId, name) {
+    return models.Week.findOne({
+        where: { id: weekId }
+      }).then(week => {
+        week.update({
+          name: name
+        });
+      });
   }
 };

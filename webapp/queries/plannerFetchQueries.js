@@ -8,7 +8,7 @@ module.exports = {
         kolonialUserId: kolonialUserId
       },
       include: models.Week
-    })
+    });
   },
 
   /**
@@ -49,7 +49,7 @@ module.exports = {
             { model: models.Meal, include: [{ model: models.Product }] },
             { model: models.Product }
           ]
-        }, 
+        },
         {
           model: models.Product
         }
@@ -122,6 +122,19 @@ module.exports = {
       include: [
         {
           model: models.Product
+        }
+      ]
+    });
+  },
+
+  fetchAllWeeksForKolonialUser(kolonialUserId) {
+    return models.User.findAll({
+      where: {
+        kolonialUserId: kolonialUserId
+      },
+      include: [
+        {
+          model: models.Week
         }
       ]
     });
