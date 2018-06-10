@@ -37,7 +37,9 @@ const searchOptions = (function($) {
 
 			singleRecipeToRecipes.on("click", function() {
 				let addDayId = getQueryVariable("dayid");
-				singleRecipeToRecipes.attr("href", "/searchTabs?dayid=" + addDayId);
+        singleRecipeToRecipes.attr("href", "/searchTabs?dayid=" + addDayId);
+        
+      
 			});
 
 /* 			$(document).keydown(function (event) {
@@ -104,7 +106,7 @@ const searchOptions = (function($) {
 		})();
 
 		const setAppGUI = (function() {
-			getGrocerySearch();
+      getGrocerySearch();
 		})();
 	})();
 
@@ -206,12 +208,12 @@ const searchOptions = (function($) {
 			url: "/search/partial",
 			type: "GET",
 			success: function(result) {
-				searchChoice.html(result);
+        searchChoice.html(result);
 				$("#groceries-tab").addClass("active");
 			}
-		});
-	}
-
+    });
+  }
+  
 	function grocerySearch() {
 		let $searchField = $("#grocery-search").val();
 		$(".search-result").empty();

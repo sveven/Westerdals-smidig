@@ -18,4 +18,19 @@ page-checkout {
         color: #FFA51E; 
     }
 
+    .mealHeader {
+        width: 100%;
+    }
+
+    .productHeader {
+        width: 100%;
+    }
+
+    .expanded {
+        background-color: blue;
+    }
+
+    .collapsed {
+        display: none !important;
+    }
 }
