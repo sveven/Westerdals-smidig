@@ -15,6 +15,9 @@ module.exports = {
     return models.User.create({ Id: null, kolonialUserId: null });
   },
 
+  createUserWithKolonialIdQuery(kolonialUserId) {
+    return models.User.create({Id: null, kolonialUserId: kolonialUserId});
+  },
   /**
    * Creates a week connected to a user.
    * @param {*} userId

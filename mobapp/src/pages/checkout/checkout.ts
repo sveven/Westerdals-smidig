@@ -25,16 +25,15 @@ export class CheckoutPage {
       this.entireWeek = this.formatJsonObjectForWeekOverview(res);
 
       this.meals = this.removeUndefinedFromMeal(this.entireWeek.Meals);
+      //TODO: implement check for duplicate meals
+      // this.meals = this.removeDuplicateMealsFromWeekJson(this.meals);
       this.products = this.entireWeek.Products;
       this.meals = this.addExpandedTagToAllMeals(this.meals);
     });
   }
 
   expandMeal(mealToExpand): void {
-    console.log("MEAL", mealToExpand);
     for (let obj in this.meals) {
-      console.log("First meal: ", obj);
-
       if (this.meals[obj].meal.RecipeId === mealToExpand.meal.RecipeId) {
         this.meals[obj].expanded = !this.meals[obj].expanded;
       }
@@ -216,6 +215,8 @@ export class CheckoutPage {
     return currentJsonObject;
   }
 
+
+
   removeUndefinedFromMeal(meals) {
     let resultMeals = [];
 
@@ -251,4 +252,8 @@ export class CheckoutPage {
       meal: meal
     };
   }
+
+
+
+  //TODO: Add function for dropping week and creating new.
 }

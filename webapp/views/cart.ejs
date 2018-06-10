@@ -36,11 +36,14 @@
 	<main class="shopping-cart">
 
 		<ul class="cart-list">
-			<% if (data !== 'undefined' && data.Products !== 'undefined')	{	%>
+			<% if (data !== 'undefined' && data.Meals !== undefined && data.Meals.length > 0)	{	%>
 
-			<% for (meal of data.Meals)	{ %>
-				<p><%= meal.Title %></p>
+				<% for (meal of data.Meals)	{ %>
+					<p><%= meal.Title %></p>
+				<% } %>
 			<% } %>
+
+			<% if (data !== undefined && data.Products !== 'undefined')	{	%>
 
 			<% for (i in data.Products)	{ %>
 			<li class="cart-item-wrapper">

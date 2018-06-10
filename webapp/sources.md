@@ -18,3 +18,7 @@ Hei saft
 
 ### Json
 <https://stackoverflow.com/questions/20804163/check-if-a-key-exists-inside-a-json-object>
+
+
+### ionic 
+<https://www.joshmorony.com/creating-an-accordion-list-in-ionic/>

@@ -5,19 +5,18 @@ const fetch = require("../queries/plannerFetchQueries");
 const helper = require("../queries/queriesHelperMethods");
 
 /* GET cart page. */
-router.get("/", function(req, res) {
+router.get("/", function (req, res) {
   let list;
 
-  
+
 
   getWeekOverViewAsJson(req).then(result => {
-    console.log(result);
-    
+
     res.render("cart", {
       title: "K-Planleggeren",
       data: result
     });
-    
+
   }).catch(err => {
 
     res.render("cart", {
@@ -29,10 +28,11 @@ router.get("/", function(req, res) {
 
 });
 
-router.post("/", function(req, res) {});
+router.post("/", function (req, res) { });
 
 function getWeekOverViewAsJson(req) {
   return getAllInformationForWeek(req).then(res => {
+
     return formatJsonObjectForWeekOverview(res);
   });
 }
@@ -125,13 +125,27 @@ function getAllProductInformationForWeek(products) {
 
 function getFormattedInformationOnProduct(kolonialId, quantity) {
   return helper.getInformationOfProduct(kolonialId).then(res => {
-    return {
-      Name: res.name,
-      Name_Extra: res.name_extra,
-      Image: res.images[0].thumbnail.url,
-      Price: parseInt(res.gross_price),
-      Quantity: quantity,
-      ProductId: res.id
+    //TODO: Find fault, is it kolonial.no?
+
+    if (res.images === undefined) {
+      return {
+        Name: res.name,
+        Name_Extra: res.name_extra,
+        Price: parseInt(res.gross_price),
+        Quantity: quantity,
+        ProductId: res.id
+      };
+
+    } else {
+
+      return {
+        Name: res.name,
+        Name_Extra: res.name_extra,
+        Image: res.images[0].thumbnail.url,
+        Price: parseInt(res.gross_price),
+        Quantity: quantity,
+        ProductId: res.id
+      }
     };
   });
 }
@@ -157,8 +171,11 @@ function formatJsonObjectForWeekOverview(currentJsonObject) {
     Meals: meals,
     Products: products
   };
-  
+
   result = removeDuplicatesFromWeekJson(result);
+  
+  result.Meals = removeUndefinedFromMeal(result.Meals);
+  
   result["TotalPrice"] = calculateTotalPriceForCart(result);
 
   return result;
@@ -167,10 +184,10 @@ function formatJsonObjectForWeekOverview(currentJsonObject) {
 function formatJsonObjectForCart(currentJsonObject) {
   let result = {};
   let products = [];
-  
-  for(obj of currentJsonObject[0]){
-    if(obj.hasOwnProperty("Products")){
-      for(product of obj.Products) {
+
+  for (obj of currentJsonObject) {
+    if (obj.hasOwnProperty("Products")) {
+      for (product of obj.Products) {
         let formattedProduct = {
           product_id: product.ProductId,
           quantity: product.Quantity
@@ -195,6 +212,7 @@ function calculateTotalPriceForCart(currentJsonObject) {
   let totalPrice = 0;
 
   for (meal of currentJsonObject.Meals) {
+    
     for (product of meal.Products) {
       totalPrice += product.Price * product.Quantity;
     }
@@ -217,7 +235,7 @@ function removeDuplicatesFromWeekJson(currentJsonObject) {
         if (filteredProduct.ProductId === product.ProductId) {
           found = true;
           filteredProduct.Quantity += product.Quantity;
-        } 
+        }
       }
 
       if (!found) {
@@ -230,9 +248,31 @@ function removeDuplicatesFromWeekJson(currentJsonObject) {
   return currentJsonObject;
 }
 
+function removeUndefinedFromMeal(meals) {
+  let resultMeals = [];
+
+  for (let meal of meals) {
+    let newMeal = {
+      Image: meal.Image,
+      Products: [],
+      RecipeId: meal.RecipeId,
+      Title: meal.Title
+    };
+
+    for (let product of meal.Products) {
+      if (product !== undefined && product.Name !== undefined ) {
+        newMeal.Products.push(product);
+      }
+    }
+    
+    resultMeals.push(newMeal);
+  }
+  return resultMeals;
+}
+
 function removeDuplicatesFromCartJson(currentJsonObject) {
   let resultProducts = [];
-  
+
   for (product of currentJsonObject.items) {
     if (resultProducts.length === 0) {
       resultProducts.push(product);
@@ -242,7 +282,7 @@ function removeDuplicatesFromCartJson(currentJsonObject) {
         if (filteredProduct.product_id === product.product_id) {
           found = true;
           filteredProduct.quantity += product.quantity;
-        } 
+        }
       }
 
       if (!found) {
