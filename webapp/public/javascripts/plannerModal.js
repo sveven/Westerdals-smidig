@@ -34,7 +34,11 @@ const plannerModal = (function () {
 
 
 	const init = (function()	{
-
+		$(".breakfast, .lunch, .dinner").on("click", "div .see-more-icon", function()	{
+			console.log("lol");
+			let elementId = this.parents("div").parents("div").id;
+			
+		})
 	})();
 
 	function appendModal()	{
