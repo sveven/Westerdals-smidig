@@ -18,7 +18,7 @@
         <p>{{item.gross_price}}</p>
       </ion-col>
       <ion-col col-1>
-        <button ion-button icon-only clear (click)="addProductToDatabase(item.id)">
+        <button ion-button icon-only clear (click)="addProductToDatabase(item.id, item.name)">
           <ion-icon name="add-circle"></ion-icon>
         </button>
       </ion-col>

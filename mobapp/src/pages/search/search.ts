@@ -34,11 +34,11 @@ export class SearchPage {
       });
   }
 
-  addProductToDatabase(productId: number) {
+  addProductToDatabase(productId: number, itemName: string) {
     this.databaseProvider.addProductToDatabase(productId).then((res : any) => {
       console.log(res);
 
-      let message = " er blitt lagt til i oversikten din!" 
+      let message = itemName+ " er blitt lagt til i oversikten din!" 
       this.toastCtrl.create({
       message: message,
       duration: 3000,

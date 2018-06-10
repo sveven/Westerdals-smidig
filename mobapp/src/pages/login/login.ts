@@ -26,15 +26,17 @@ export class LoginPage {
     private loginProvider: LoginProvider,
     private databaseProvider: DatabaseProvider,
     private storage: Storage
-  ) {}
+  ) { }
 
   ionViewWillEnter() {
     this.storage
       .get("kolonialUserId")
       .then((res: any) => {
         if (res !== null) {
-         
-          this.navCtrl.push("WelcomePage");
+          this.storage.get("weekId").then(res => {
+            this.databaseProvider.setWeekId(res);
+            this.navCtrl.push("WelcomePage");
+          })
         }
       })
       .catch(err => {
@@ -56,11 +58,11 @@ export class LoginPage {
               .then((res: any) => {
                 console.log("WeekId", res);
                 this.storage.set("weekId", res);
+                this.navCtrl.push("WelcomePage");
               })
               .catch(err => {
                 console.log(err);
               });
-            this.navCtrl.push("WelcomePage");
           });
         })
         .catch(err => {

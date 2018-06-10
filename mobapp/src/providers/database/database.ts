@@ -11,13 +11,15 @@ export class DatabaseProvider {
   constructor(public http: HttpClient) {
   }
 
+  setWeekId(weekId:number) {
+    this.weekId = weekId;
+  }
 
   getWeekId(): number {
     return this.weekId
   }
 
   addProductToDatabase(productId: number) {
-
     return new Promise((resolve, reject) => {
       this.http
         .get(
