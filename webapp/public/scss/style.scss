@@ -136,11 +136,11 @@ html {
     border-style: none;
     color: white;
     font-size: 1.5rem;
-    border-radius: 3px;
     width: 170px;
     height: 70px;
     margin-top: 2vh;
     margin-bottom: 2vh;
+    border-radius: 3px;
     margin-left: -85px;
     left: 50%;
     cursor: pointer;
@@ -161,6 +161,7 @@ html {
 }
 .recipe-planner-meal-title {
     font-size: 0.8rem;
+    margin: 0;
 }
 
 .recipe-title {
@@ -246,7 +247,7 @@ html {
       color:  rgb(255, 165, 20);;
     }
     50% {
-        color: black;
+        color: gray;
     }
     100% {
         color:  rgb(255, 165, 20);
