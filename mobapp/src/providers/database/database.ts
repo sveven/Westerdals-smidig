@@ -130,11 +130,13 @@ export class DatabaseProvider {
     });
   }
 
-  dropAllProductsOfIdFromDatabase() {
+  dropAllProductsOfIdInWeekFromDatabase(productId: number) {
     return new Promise((resolve, reject) => {
       this.http
         .get(
-          `http://91.189.170.100:3000/database/`
+          `http://91.189.170.100:3000/database/mobile/delete/${productId}/${
+            this.weekId
+          }/`
         )
         .subscribe(
           (response: any) => {
@@ -153,6 +155,21 @@ export class DatabaseProvider {
         .get(
           `http://91.189.170.100:3000/database/mobile/${weekId}/${kolonialUserId}/drop/`
         )
+        .subscribe(
+          (response: any) => {
+            resolve(response);
+          },
+          error => {
+            reject(error);
+          }
+        );
+    });
+  }
+
+  deleteMealFromDatabase(mealId: number) {
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(`http://91.189.170.100:3000/database/mobile/delete/${mealId}/`)
         .subscribe(
           (response: any) => {
             resolve(response);
