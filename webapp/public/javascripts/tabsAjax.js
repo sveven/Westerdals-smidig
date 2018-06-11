@@ -24,7 +24,10 @@ const searchOptions = (function($) {
   let backToSearch = $("#back-to-search-btn");
   
   //Categories
-  let childCategoryForm = $("#child-category-form");
+  //let childCategoryForm = $("#child-category-form");
+  let childCategoryFormClass = $(".child-category-form-class");
+  let childCategoryFormButton = $(".child-category-button");
+
 
 
 	//init
@@ -52,6 +55,8 @@ const searchOptions = (function($) {
 
         let url = "/categories/ajax/" + childCategoryValues[0];
 
+          e.preventDefault();
+  
         $.ajax({
           type: "POST",
           url: url,
@@ -61,8 +66,10 @@ const searchOptions = (function($) {
           }
         });
 
-        e.preventDefault();
-      });
+        });
+
+      
+     
 
 			backToSearch.on("click", function() {
 				let addDayId = getQueryVariable("dayid");

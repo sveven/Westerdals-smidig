@@ -44,7 +44,7 @@
 			<h2 id="category-heading">Kategorier</h2>
 			<br>
 		</b>
-		<form>
+		
 			<div id="tree">
 				<% for (i in categories.results){ %>
 					<div>
@@ -60,9 +60,12 @@
 
 							<% for (j in categories.results[i].children) { %>
 								<label class="child-cat">
-                  <form id="child-category-form">
+
+                  
+
+                  <form method="post" action="#" class="child-category-form-class">
                     <input type="hidden" name="productid" value="<%=categories.results[i].children[j].id%>" />
-                    <input type="submit" id="children-category-button" class="child-category-button" value="<%= categories.results[i].children[j].name%>"/>
+                    <input type="button" id="children-category-button" class="child-category-button" value="<%= categories.results[i].children[j].name%>"/>
                   </form>
 									
 								</label>
@@ -75,7 +78,7 @@
 					<% } %>
 
 			</div>
-		</form>
+		
 
 
 
