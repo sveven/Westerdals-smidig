@@ -11,8 +11,8 @@ import { Storage } from "@ionic/storage";
 })
 export class CheckoutPage {
   entireWeek: any = {};
-  meals: any = [];
-  products: JSON[] = [];
+  meals: any[] = [];
+  products: any[] = [];
 
   constructor(
     public navCtrl: NavController,
@@ -20,7 +20,7 @@ export class CheckoutPage {
     private databaseProvider: DatabaseProvider,
     private searchProvider: SearchProvider,
     private storage: Storage
-  ) { }
+  ) {}
 
   ionViewDidEnter() {
     this.updateAllInformationForWeek();
@@ -44,28 +44,39 @@ export class CheckoutPage {
     }
   }
 
-  deleteMeal(mealId: number) {
-    this.databaseProvider.deleteMealFromDatabase(mealId).then(res => {
-      console.log(res);
+  deleteMealAndUpdate(mealId: number) {
+    this.deleteMeal(mealId).then(() => this.updateAllInformationForWeek);
+  }
+
+  deleteProductAndUpdate(productId: number) {
+    this.deleteProduct(productId).then(() => {
       this.updateAllInformationForWeek();
     });
   }
 
   deleteProduct(productId: number) {
-    this.databaseProvider
-      .dropAllProductsOfIdInWeekFromDatabase(productId)
-      .then(res => {
-        console.log(res);
-        this.updateAllInformationForWeek();
-      });
+    return this.databaseProvider.dropAllProductsOfIdInWeekFromDatabase(
+      productId
+    );
   }
 
-  emptyCurrentWeekAndGetNewOne() {
-    this.storage.get("kolonialUserId").then(kolonialUserId => {
-      this.databaseProvider.dropWeekFromDatabaseAndGetNew(
-        this.databaseProvider.getWeekId(),
-        kolonialUserId
-      );
+  deleteMeal(mealId: number) {
+    return this.databaseProvider.deleteMealFromDatabase(mealId);
+  }
+
+  deleteAllProducts() {
+    //TODO: Add alertcontroller here
+    Promise.all(
+      [].concat.apply(
+        this.products.map((product: any) => {
+          return this.deleteProduct(product.ProductId);
+        }),
+        this.meals.map((meal: any) => {
+          return this.deleteMeal(meal.MealId);
+        })
+      )
+    ).then(() => {
+      this.updateAllInformationForWeek();
     });
   }
 
@@ -73,6 +84,8 @@ export class CheckoutPage {
     return this.databaseProvider
       .getAllProductsInWeek(this.databaseProvider.getWeekId())
       .then((res: any) => {
+        console.log(res);
+
         return Promise.all(
           [].concat.apply(
             this.getInformationForAllDays(res.Days),
