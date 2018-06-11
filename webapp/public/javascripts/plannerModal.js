@@ -120,7 +120,7 @@ const plannerModal = (function () {
 		});
 		headerBtnSpan = $("<span>", {
 			"aria-hidden": "true",
-			text: "&times;"
+			text: "\u02DF"
 		});
 
 		modalBody = $("<div>", {
