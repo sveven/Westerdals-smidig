@@ -88,11 +88,12 @@
 				buyForm.append(buyButton);
 				imgContainer.append($image, buyForm);
 				$("#search-item" + i).prepend(
+					imgContainer,
 					itemName,
 					itemNameExtra,
 					itemPrice,
-					itemGrossPrice,
-					imgContainer
+					itemGrossPrice
+					
 				);
 			}
 		} else {
