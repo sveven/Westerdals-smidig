@@ -121,4 +121,24 @@ export class DatabaseProvider {
     });
   }
 
+  dropAllProductsOfIdFromDatabase() {
+
+  }
+
+  dropWeekFromDatabaseAndGetNew(weekId:number, kolonialUserId: number) {
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(
+          `/mobile/${weekId}/${kolonialUserId}/drop/`)
+        .subscribe(
+          (response: any) => {
+            resolve(response);
+          },
+          error => {
+            reject(error);
+          }
+        );
+    });
+  }
+
 }

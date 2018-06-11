@@ -11,7 +11,8 @@ import { Storage } from "@ionic/storage";
 export class CalendarPage {
   weeks = [];
   weekName: string = "";
-  
+  selectedId: number = this.databaseProvider.getWeekId();
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -19,31 +20,34 @@ export class CalendarPage {
     private databaseProvider: DatabaseProvider
   ) {
     this.getAllWeeks();
-    console.log(this.weeks);
-    
   }
 
   getAllWeeks() {
     this.storage.get("kolonialUserId").then(res => {
-      this.databaseProvider
-        .getAllWeeksFromServer(res)
-        .then((plannerUsers: any) => {
-          console.log("users", plannerUsers);
-          this.weeks = [];
-          for (let user of plannerUsers) {
-            for (let week of user.Weeks) {
-              let newWeek = {
-                id: week.id,
-                name: week.name
-              };
-              if (name === null) {
-                newWeek.name = "Hektisk Uke";
-              }
-              this.weeks.push(newWeek);
+      this.databaseProvider.getAllWeeksFromServer(res).then((result: any) => {
+        this.weeks = [];
+        for (let user of result.plannerUsers) {
+          for (let week of user.Weeks) {
+            let newWeek = {
+              id: week.id,
+              name: week.name
+            };
+
+            if (week.name === null) {
+              newWeek.name = "Hektisk Uke";
             }
+            this.weeks.push(newWeek);
           }
-        });
+        }
+      });
     });
   }
 
+  changeSelectedWeek() {
+    this.databaseProvider.setWeekId(this.selectedId);
+    this.selectedId;
+  }
+
+  changeNameOfWeek(){
+  }
 }
