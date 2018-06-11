@@ -47,16 +47,6 @@ h2 {
 	background-color: rgb(240, 156, 21);
 }
 
-
-.buy-button:focus {
-	background-color: rgb(27, 179, 27);
-	content: "\2713";
-}
-
-.buy-button:after {
-	content: "\2713";
-}
-
 .container-fluid {
 	display: grid;
 	overflow: hidden;
