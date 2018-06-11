@@ -57,7 +57,7 @@ const plannerModal = (function() {
 				"div div div #modal-close-btn",
 				function() {
 					/* $("#myModal").modal("close"); */
-					$("#myModal").remove()
+					$("#myModal").remove();
 					$(".modal-backdrop").remove();
 				}
 			);
