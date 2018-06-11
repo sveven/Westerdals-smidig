@@ -64,7 +64,8 @@ module.exports = {
     return models.Product.findOrCreate({
       where: { kolonialId: productId }
     }).then(product => {
-      
+      console.log(product[1]);
+      //TODO: Implement updating of quantity if item already exists.
       fetchWeekQuery(weekId).then(week => {
         return product[0].addWeeks(week, {
           through: { productQuantity: quantity }

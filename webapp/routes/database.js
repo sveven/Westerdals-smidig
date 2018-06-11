@@ -307,7 +307,7 @@ router.get("/mobile/delete/:productId/:weekId/", function(req, res) {
 });
 
 /**
- * Delete
+ * Deletes a meal
  */
 router.get("/mobile/delete/:mealId/", function(req, res) {
   destroy.deleteMeal(req.params.mealId)
