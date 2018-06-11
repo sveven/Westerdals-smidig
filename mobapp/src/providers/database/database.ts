@@ -88,7 +88,7 @@ export class DatabaseProvider {
     });
   }
 
-  getAllWeeksFromServer(kolonialUserId:number) {
+  getLatestWeekFromServer(kolonialUserId:number) {
     return new Promise((resolve, reject) => {
       this.http
         .get(
@@ -97,6 +97,22 @@ export class DatabaseProvider {
           (response: any) => {
             this.weekId = response.weekId;
             resolve(response.weekId);
+          },
+          error => {
+            reject(error);
+          }
+        );
+    });
+  }
+
+  getAllWeeksFromServer(kolonialUserId:number) {
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(
+          `http://91.189.170.100:3000/database/mobile/week/all/${kolonialUserId}`)
+        .subscribe(
+          (response: any) => {
+            resolve(response);
           },
           error => {
             reject(error);

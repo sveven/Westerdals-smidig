@@ -36,7 +36,7 @@ export class LoginPage {
           this.storage.get("weekId").then(res => {
             this.databaseProvider.setWeekId(res);
             this.navCtrl.push("WelcomePage");
-          })
+          });
         }
       })
       .catch(err => {
@@ -45,7 +45,6 @@ export class LoginPage {
   }
 
   loginPush() {
-    //TODO: If there is a user with the kolonialID, get the weeks, if more than one, get the last one.
     if (this.username === "" || this.password === "") {
       this.presentWrongInfoAlert();
     } else {
@@ -53,16 +52,22 @@ export class LoginPage {
         .loginToKolonial(this.username, this.password)
         .then((res: any) => {
           console.log("userinfo", res);
-          
+          //TODO: make this into promise all, now it is sequelized...
           this.storage.set("kolonialUserId", res.user.id).then(() => {
-            this.databaseProvider
-              .getWeekIdFromServer(res.user.id)
-              .then((res: any) => {
-                this.storage.set("weekId", res);
-                this.navCtrl.push("WelcomePage");
-              })
-              .catch(err => {
-                console.log(err);
+            this.storage
+              .set("username", res.user.first_name +" "+ res.user.last_name)
+              .then(() => {
+                this.storage.set("location", res.user.zip_place).then(() => {
+                  this.databaseProvider
+                    .getWeekIdFromServer(res.user.id)
+                    .then((res: any) => {
+                      this.storage.set("weekId", res);
+                      this.navCtrl.push("WelcomePage");
+                    })
+                    .catch(err => {
+                      console.log(err);
+                    });
+                });
               });
           });
         })

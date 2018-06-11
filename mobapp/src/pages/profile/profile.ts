@@ -16,20 +16,27 @@ import { AuthorizePage } from "../authorize/authorize";
   templateUrl: "profile.html"
 })
 export class ProfilePage {
+  private username: string = "";
+  private location: string = "";
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private storage: Storage,
     private alertCtrl: AlertController,
     private appCtrl: App
-  ) {}
+  ) {
+    storage.get("username").then((res:any) => {
+      this.username = res;
+    })
+    storage.get("location").then((res:any) => {
+      this.location = res;
+    })
+  }
 
   logOut() {
-    this.storage.set("kolonialUserId", null).then(() => {
-      this.storage.set("weekId", null).then(() => {
-        this.appCtrl.getRootNav().setRoot(AuthorizePage);
-        // this.navCtrl.popTo( this.navCtrl.getByIndex(1));
-      });
+    this.storage.clear().then(() => {
+      this.appCtrl.getRootNav().setRoot(AuthorizePage);
     });
   }
 
