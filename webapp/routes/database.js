@@ -194,8 +194,6 @@ router.get("/mobile/recipe-in-day/:recipeid/:weekid/:portions", function(
     create
       .addMealToDayQuery(recipeid, portions, day[0].id)
       .then(result => {
-        console.log(result);
-
         res.send(result);
       })
       .catch(err => {
@@ -261,12 +259,18 @@ router.get("/mobile/week/:kolonialUserId/latest", function(req, res) {
   });
 });
 
+/**
+ * Gets all weeks for a user
+ */
 router.get("/mobile/week/all/:kolonialUserId", function(req, res) {
   fetch.fetchAllWeeksForKolonialUser(req.params.kolonialUserId).then(weeks => {
     res.send({ plannerUsers: weeks });
   });
 });
 
+/**
+ * Changes week name
+ */
 router.get("/mobile/week/:weekId/:weekName/", function(req, res) {
   update
     .updateWeekWithName(req.params.weekId, req.params.weekName)
@@ -287,6 +291,33 @@ router.get("/mobile/:weekId/:kolonialUserId/drop/", function(req, res) {
     });
   });
 });
+
+/**
+ * deletes all products of product id in week
+ */
+router.get("/mobile/delete/:productId/:weekId/", function(req, res) {
+  destroy
+    .deleteProductInWeek(req.params.weekId, req.params.productId)
+    .then(product => {
+      res.send({ success: true });
+    })
+    .catch(err => {
+      res.send({ success: false });
+    });
+});
+
+/**
+ * Delete
+ */
+router.get("/mobile/delete/:mealId/", function(req, res) {
+  destroy.deleteMeal(req.params.mealId)
+  .then(meal => {
+    res.send({ success: true });
+  })
+  .catch(err => {
+    res.send({ success: false });
+  });
+})
 
 function dayAndTypeSplit(dayAndType) {
   switch (dayAndType) {

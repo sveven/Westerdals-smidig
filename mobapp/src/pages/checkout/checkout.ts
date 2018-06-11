@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { DatabaseProvider } from "../../providers/database/database";
 import { SearchProvider } from "../../providers/search/search";
+import { Storage } from "@ionic/storage";
 
 @IonicPage()
 @Component({
@@ -17,14 +18,19 @@ export class CheckoutPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private databaseProvider: DatabaseProvider,
-    private searchProvider: SearchProvider
-  ) {}
+    private searchProvider: SearchProvider,
+    private storage: Storage
+  ) { }
 
   ionViewDidEnter() {
+    this.updateAllInformationForWeek();
+  }
+
+  updateAllInformationForWeek() {
     this.getAllInformationForWeek().then((res: any) => {
       this.entireWeek = this.formatJsonObjectForWeekOverview(res);
 
-      this.meals = this.removeUndefinedFromMeal(this.entireWeek.Meals);      
+      this.meals = this.removeUndefinedFromMeal(this.entireWeek.Meals);
       this.products = this.entireWeek.Products;
       this.meals = this.addExpandedTagToAllMeals(this.meals);
     });
@@ -36,6 +42,31 @@ export class CheckoutPage {
         this.meals[obj].expanded = !this.meals[obj].expanded;
       }
     }
+  }
+
+  deleteMeal(mealId: number) {
+    this.databaseProvider.deleteMealFromDatabase(mealId).then(res => {
+      console.log(res);
+      this.updateAllInformationForWeek();
+    });
+  }
+
+  deleteProduct(productId: number) {
+    this.databaseProvider
+      .dropAllProductsOfIdInWeekFromDatabase(productId)
+      .then(res => {
+        console.log(res);
+        this.updateAllInformationForWeek();
+      });
+  }
+
+  emptyCurrentWeekAndGetNewOne() {
+    this.storage.get("kolonialUserId").then(kolonialUserId => {
+      this.databaseProvider.dropWeekFromDatabaseAndGetNew(
+        this.databaseProvider.getWeekId(),
+        kolonialUserId
+      );
+    });
   }
 
   getAllInformationForWeek() {
@@ -78,7 +109,8 @@ export class CheckoutPage {
                 Title: recipeInformation.title,
                 Image: recipeInformation.feature_image_url,
                 RecipeId: recipeInformation.id,
-                Products: mealProducts
+                Products: mealProducts,
+                MealId: meal.Id
               };
             });
         }
@@ -212,8 +244,6 @@ export class CheckoutPage {
     return currentJsonObject;
   }
 
-
-
   removeUndefinedFromMeal(meals) {
     let resultMeals = [];
 
@@ -249,8 +279,6 @@ export class CheckoutPage {
       meal: meal
     };
   }
-
-
 
   //TODO: Add function for dropping week and creating new.
 }

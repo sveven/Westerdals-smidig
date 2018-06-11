@@ -1,5 +1,11 @@
 import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  AlertController,
+  ToastController
+} from "ionic-angular";
 import { DatabaseProvider } from "../../providers/database/database";
 import { Storage } from "@ionic/storage";
 
@@ -11,15 +17,21 @@ import { Storage } from "@ionic/storage";
 export class CalendarPage {
   weeks = [];
   weekName: string = "";
-  selectedId: number = this.databaseProvider.getWeekId();
+  selected: number = -1;
+  newName: string = "";
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private storage: Storage,
-    private databaseProvider: DatabaseProvider
-  ) {
+    private databaseProvider: DatabaseProvider,
+    private alertCtrl: AlertController,
+    private toastCtrl: ToastController
+  ) {}
+
+  ionViewWillEnter() {
     this.getAllWeeks();
+    this.selected = this.databaseProvider.getWeekId();
   }
 
   getAllWeeks() {
@@ -44,10 +56,44 @@ export class CalendarPage {
   }
 
   changeSelectedWeek() {
-    this.databaseProvider.setWeekId(this.selectedId);
-    this.selectedId;
+    console.log(this.selected);
+
+    this.databaseProvider.setWeekId(this.selected);
+    let weekName = "";
+    for (let week of this.weeks) {
+      console.log("week", week);
+      console.log("selected", this.selected);
+
+      if (week.id == this.selected) {
+        weekName = week.name;
+      }
+    }
+    this.presentToastMessage("Endret til uke " + weekName);
   }
 
-  changeNameOfWeek(){
+  changeNameOfWeek() {
+    if (this.newName !== "") {
+      this.databaseProvider.changeNameOfWeek(this.selected, this.newName);
+      this.presentToastMessage("Endret navn på uken til " + this.newName + "!");
+      this.getAllWeeks();
+      this.newName = "";
+    } else {
+      let alert = this.alertCtrl.create({
+        title: "Oops!",
+        subTitle: "Skriv inn et navn hvis du vil bytte.",
+        buttons: ["Ok"]
+      });
+      alert.present();
+    }
+  }
+
+  presentToastMessage(message: string) {
+    this.toastCtrl
+      .create({
+        message: message,
+        duration: 3000,
+        position: "top"
+      })
+      .present();
   }
 }
