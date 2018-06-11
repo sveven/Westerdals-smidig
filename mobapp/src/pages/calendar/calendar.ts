@@ -10,7 +10,8 @@ import { Storage } from "@ionic/storage";
 })
 export class CalendarPage {
   weeks = [];
-
+  weekName: string = "";
+  
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -44,4 +45,5 @@ export class CalendarPage {
         });
     });
   }
+
 }

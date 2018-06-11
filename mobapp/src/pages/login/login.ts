@@ -55,7 +55,7 @@ export class LoginPage {
           //TODO: make this into promise all, now it is sequelized...
           this.storage.set("kolonialUserId", res.user.id).then(() => {
             this.storage
-              .set("username", res.user.first_name + res.user.last_name)
+              .set("username", res.user.first_name +" "+ res.user.last_name)
               .then(() => {
                 this.storage.set("location", res.user.zip_place).then(() => {
                   this.databaseProvider
