@@ -81,6 +81,8 @@ const plannerModal = (function() {
 				appendLocation.length
 			);
 
+			console.log(data);
+			
 		let currentDay = data[appendLocationUpperCase];
 		console.log(currentDay);
 
