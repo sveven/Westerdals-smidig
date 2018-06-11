@@ -2,31 +2,39 @@
   <ion-navbar color="oransje">
     <ion-title>Oversikt</ion-title>
     <ion-buttons end>
-      <button class="emptyButton" (click)="deleteAllProducts()">Tøm</button>
+      <button class="emptyButton" (click)="presentEmptyAlert()">Tøm</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content>
+
+  <ion-card *ngIf="!meals.length > 0 && !products.length > 0">
+    <img class="informationImg" src="assets/imgs/shopping-basket.png"/>
+    <h2 class="infoText">Du har ingen produkter eller oppskrifter i handlekurven din.</h2>
+  </ion-card>
+
+
+
+
   <ion-grid wrap responsive-lg>
     <ng-container *ngIf="meals.length > 0">
       <ion-row>
         <h1>Oppskrifter</h1>
       </ion-row>
     </ng-container>
-
     <ion-row *ngFor="let meal of meals">
 
-      <ion-row (click)="expandMeal(meal)" class="mealHeader">
-        <ion-col col-1>
+      <ion-row class="mealHeader">
+        <ion-col col-1 (click)="expandMeal(meal)">
           <ion-icon name="arrow-dropdown" class="dropdown-icon"></ion-icon>
         </ion-col>
-        <ion-col col-10>
+        <ion-col col-10 (click)="expandMeal(meal)">
           <p>{{meal.meal.Title}}</p>
         </ion-col>
         <ion-col col-1>
-          <button ion-button icon-only clear color="danger" class="removeButton" (click)="deleteMealAndUpdate(meal.meal.MealId)">
+          <button ion-button icon-only clear color="danger" class="removeButton" (click)="deleteMealAndUpdate(meal.meal.MealId, meal.meal.Title)">
             <ion-icon name="trash"></ion-icon>
           </button>
         </ion-col>
@@ -91,7 +99,7 @@
           <p>{{item.Quantity}}</p>
         </ion-col>
         <ion-col col-1>
-          <button ion-button icon-only clear color="danger" class="removeButton" (click)="deleteProductAndUpdate(item.ProductId)">
+          <button ion-button icon-only clear color="danger" class="removeButton" (click)="deleteProductAndUpdate(item.ProductId, item.Name)">
             <ion-icon name="trash"></ion-icon>
           </button>
         </ion-col>
@@ -100,7 +108,7 @@
 
 
   </ion-grid>
-  <ion-row *ngIf="products.length > 0 || meals.length > 0">
-    <ion-col>Pris: {{entireWeek.TotalPrice}}</ion-col>
-  </ion-row>
+  <ion-item *ngIf="products.length > 0 || meals.length > 0">
+    <p class="totalPrice">Pris: {{entireWeek.TotalPrice}}</p>
+  </ion-item>
 </ion-content>
