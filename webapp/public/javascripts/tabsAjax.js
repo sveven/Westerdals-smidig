@@ -24,7 +24,7 @@ const searchOptions = (function($) {
   let backToSearch = $("#back-to-search-btn");
   
   //Categories
-  //let childCategoryForm = $("#child-category-form");
+  let childCategoryForm = $("#child-category-form");
   let childCategoryFormClass = $(".child-category-form-class");
   let childCategoryFormButton = $(".child-category-button");
 
