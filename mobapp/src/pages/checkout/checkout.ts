@@ -23,6 +23,10 @@ export class CheckoutPage {
   ) { }
 
   ionViewDidEnter() {
+    this.updateAllInformationForWeek();
+  }
+
+  updateAllInformationForWeek() {
     this.getAllInformationForWeek().then((res: any) => {
       this.entireWeek = this.formatJsonObjectForWeekOverview(res);
 
@@ -40,10 +44,29 @@ export class CheckoutPage {
     }
   }
 
+  deleteMeal(mealId: number) {
+    this.databaseProvider.deleteMealFromDatabase(mealId).then(res => {
+      console.log(res);
+      this.updateAllInformationForWeek();
+    });
+  }
+
+  deleteProduct(productId: number) {
+    this.databaseProvider
+      .dropAllProductsOfIdInWeekFromDatabase(productId)
+      .then(res => {
+        console.log(res);
+        this.updateAllInformationForWeek();
+      });
+  }
+
   emptyCurrentWeekAndGetNewOne() {
-    this.storage.get("kolonialUserId").then((kolonialUserId) => {
-      this.databaseProvider.dropWeekFromDatabaseAndGetNew(this.databaseProvider.getWeekId(), kolonialUserId);
-    })
+    this.storage.get("kolonialUserId").then(kolonialUserId => {
+      this.databaseProvider.dropWeekFromDatabaseAndGetNew(
+        this.databaseProvider.getWeekId(),
+        kolonialUserId
+      );
+    });
   }
 
   getAllInformationForWeek() {
@@ -81,7 +104,7 @@ export class CheckoutPage {
         mealProducts => {
           return this.searchProvider
             .getRecipeById(meal.recipeId)
-            .then((recipeInformation: any) => {              
+            .then((recipeInformation: any) => {
               return {
                 Title: recipeInformation.title,
                 Image: recipeInformation.feature_image_url,
@@ -221,8 +244,6 @@ export class CheckoutPage {
     return currentJsonObject;
   }
 
-
-
   removeUndefinedFromMeal(meals) {
     let resultMeals = [];
 
@@ -258,8 +279,6 @@ export class CheckoutPage {
       meal: meal
     };
   }
-
-
 
   //TODO: Add function for dropping week and creating new.
 }
