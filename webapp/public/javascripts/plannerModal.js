@@ -1,4 +1,4 @@
-const plannerModal = (function() {
+const plannerModal = (function () {
 	"use strict";
 
 	//HTML Objects
@@ -30,12 +30,12 @@ const plannerModal = (function() {
 	let modalFooter;
 	let closeModalBtn;
 
-	const init = (function() {
-		const setEvents = (function() {
+	const init = (function () {
+		const setEvents = (function () {
 			$(".breakfast, .lunch, .dinner").on(
 				"click",
 				".meals .see-more-icon",
-				function() {
+				function () {
 					let appendLocation = $(this)
 						.closest("div.breakfast")
 						.attr("id");
@@ -45,7 +45,7 @@ const plannerModal = (function() {
 						type: "get",
 						contentType: "application/json",
 						dataType: "json",
-						success: function(result) {
+						success: function (result) {
 							appendModal(appendLocation, result);
 							$("#myModal").modal("show");
 						}
@@ -55,7 +55,7 @@ const plannerModal = (function() {
 			$(".breakfast, .lunch, .dinner").on(
 				"click",
 				"div div div #modal-close-btn",
-				function() {
+				function () {
 					/* $("#myModal").modal("close"); */
 					$("#myModal").remove();
 					$(".modal-backdrop").remove();
@@ -81,10 +81,10 @@ const plannerModal = (function() {
 				appendLocation.length
 			);
 
-			console.log(data);
-			
+
 		let currentDay = data[appendLocationUpperCase];
-		console.log(currentDay);
+		let plannerMealWrappers = [];
+		let plannerProductWrappers = [];
 
 		plannerModal = $("<div>", {
 			class: "modal fade planner-modal",
@@ -130,52 +130,72 @@ const plannerModal = (function() {
 		modalMeals = $("<div>", {
 			class: "modal-meals"
 		});
-		productAmount = $("<h3>", {
+		mealsAmount = $("<h3>", {
 			class: "modal-recipe-main-title",
-			text: "oppskrifter: "
+			text: "Oppskrifter: " + currentDay.Meals.length
 		});
-		mealWrapper = $("<div>", {
-			class: "modal-meal-wrapper"
-		});
-		plannerMealImg = $("<img>", {
-			class: "recipe-planner-meal-image",
-			src: currentDay.Meals[0].Image
-		});
-		mealRemoveIcon = $("<i>", {
-			class: "far fa-time-circle"
-		});
-		mealTitle = $("<p>", {
-			class: "recipe-planner-meal-title",
-			text: currentDay.Meals[0].Title
-		});
+		for (let meal of currentDay.Meals) {
+
+			mealWrapper = $("<div>", {
+				class: "modal-meal-wrapper"
+			});
+			plannerMealImg = $("<img>", {
+				class: "recipe-planner-meal-image",
+				src: meal.Image
+			});
+			mealRemoveIcon = $("<i>", {
+				class: "far fa-time-circle"
+			});
+			mealTitle = $("<p>", {
+				class: "recipe-planner-meal-title",
+				text: meal.Title
+			});
+			mealWrapper.append(plannerMealImg, mealRemoveIcon, mealTitle);
+			plannerMealWrappers.push(mealWrapper);
+
+		}
 
 		modalProducts = $("<div>", {
 			class: "modal-products"
 		});
 		productAmount = $("<h3>", {
 			class: "modal-product-main-title",
-			text: ""
+			text: "Enkeltvarer: " + currentDay.Products.length
 		});
 
-		productWrapper = $("<div>", {
-			class: "product-wrapper"
-		});
-		productImage = $("<img>", {
-			class: "planner-product-image",
-			src: ""
-		});
 
-		productRemoveBtn = $("<i>", {
-			class: "modal-remove-icon far fa-times-circle"
-		});
-		productTitle = $("<p>", {
-			class: "planner-product-title",
-			text: ""
-		});
-		productPrice = $("<p>", {
-			class: "planner-product-price",
-			text: ""
-		});
+		for (let product of currentDay.Products) {
+
+			productWrapper = $("<div>", {
+				class: "product-wrapper"
+			});
+			productImage = $("<img>", {
+				class: "planner-product-image",
+				src: product.Image
+			});
+
+			productRemoveBtn = $("<i>", {
+				class: "modal-remove-icon far fa-times-circle"
+			});
+			productTitle = $("<p>", {
+				class: "planner-product-title",
+				text: product.Name
+			});
+			productPrice = $("<p>", {
+				class: "planner-product-price",
+				text: product.Price
+			});
+
+			productWrapper.append(
+				productImage,
+				productRemoveBtn,
+				productTitle,
+				productPrice
+			);
+			console.log(productWrapper);
+			plannerProductWrappers.push(productWrapper);
+
+		}
 
 		modalFooter = $("<div>", {
 			class: "modal-footer"
@@ -188,15 +208,19 @@ const plannerModal = (function() {
 			text: "Ok"
 		});
 		modalFooter.append(closeModalBtn);
-		mealWrapper.append(plannerMealImg, mealRemoveIcon, mealTitle);
-		modalMeals.append(mealsAmount, mealWrapper);
-		productWrapper.append(
-			productImage,
-			productRemoveBtn,
-			productTitle,
-			productPrice
-		);
-		modalProducts.append(productAmount, productWrapper);
+		if (plannerMealWrappers.length > 0) {
+			modalMeals.append(mealsAmount);
+		}
+		for (let mealWrapper of plannerMealWrappers) {
+			modalMeals.append(mealWrapper);
+		}
+
+		if (plannerProductWrappers.length > 0) {
+			modalProducts.append(productAmount);
+		}
+		for (let productWrapper of plannerProductWrappers) {
+			modalProducts.append(productWrapper)
+		}
 		modalBody.append(modalMeals, modalProducts);
 		modalHeaderBtn.append(headerBtnSpan);
 		modalHeader.append(modalTitle, modalHeaderBtn);
