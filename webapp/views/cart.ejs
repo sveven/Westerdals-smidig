@@ -34,13 +34,60 @@
 		</div>
 	</header>
 	<main class="shopping-cart">
+	
+		<ul class="cart-list" >
+			<% if (data !== 'undefined' && data.Meals !== undefined && data.Meals.length > 0)	{	%>
 
-		<ul class="cart-list">
-			<% if (data !== 'undefined' && data.Products !== 'undefined')	{	%>
+				<% for (meal of data.Meals)	{ %>
+					<li class="cart-item-wrapper accordion" id="<%= meal.RecipeId %>">
+					<div >
+							<p class="item-quantity">1</p>
+							<div class="cart-image-wrapper">
+								<img class="cart-image" src="<%= meal.Image %>" alt="<%= meal.Title %>">
+							</div>
+							<div class="cart-item-text">
+								<p><%= meal.Title %></p>
+							</div>
+							<div class="caret-wrapper">
+								<i class="drop-down-icon fas fa-caret-down"></i>
+							</div>
+							<div class="item-cost-wrapper">
+								<p>Ingredienser: <%= meal.Products.length %></p>
+							</div>
 
-			<% for (meal of data.Meals)	{ %>
-				<p><%= meal.Title %></p>
+						<form class="cart-delete-form">
+							<input type="hidden" name="" value="">
+							<label class="delete-cart-item-icon far fa-trash-alt" for="delete-item">
+							<input class="delete-input-hidden" type="submit" name="delete-item" value="">
+						</label>
+						</form>
+					</div>
+					</li>
+					<% for (product of meal.Products) {	%> 
+					<li class="cart-item-wrapper panel <%= meal.RecipeId %>" id="">
+						<p class="item-quantity"><%= product.Quantity %></p>
+						<div class="cart-image-wrapper">
+							<img class="cart-image" src="<%= product.Image %>" alt="<%= product.Name %>">
+						</div>
+						<div class="cart-item-text">
+							<p><%= product.Name %></p>
+							<p><%= product.Name_Extra %></p>
+						</div>
+						<div class="item-cost-wrapper">
+							<p><%= product.Price %>,-</p>
+						</div>
+						<form class="cart-delete-form">
+							<input type="hidden" name="" value="">
+							<label class="delete-cart-item-icon far fa-trash-alt" for="delete-item">
+								<input class="delete-input-hidden" type="submit" name="delete-item" value="">
+							</label>
+						</form>
+					</li>
+						<% } %>
+				<% } %>
 			<% } %>
+
+			<% if (data !== undefined && data.Products !== 'undefined')	{	%>
 
 			<% for (i in data.Products)	{ %>
 			<li class="cart-item-wrapper">

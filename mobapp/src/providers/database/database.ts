@@ -11,13 +11,15 @@ export class DatabaseProvider {
   constructor(public http: HttpClient) {
   }
 
+  setWeekId(weekId:number) {
+    this.weekId = weekId;
+  }
 
   getWeekId(): number {
     return this.weekId
   }
 
   addProductToDatabase(productId: number) {
-
     return new Promise((resolve, reject) => {
       this.http
         .get(
@@ -51,11 +53,11 @@ export class DatabaseProvider {
     });
   }
 
-  getWeekIdFromDatabase() {
+  getWeekIdFromServer(kolonialUserId:number) {
     return new Promise((resolve, reject) => {
       this.http
         .get(
-          `http://91.189.170.100:3000/database/mobile/week/`)
+          `http://91.189.170.100:3000/database/mobile/week/${kolonialUserId}/latest`)
         .subscribe(
           (response: any) => {
             this.weekId = response.weekId;
@@ -77,6 +79,39 @@ export class DatabaseProvider {
         .get(`http://91.189.170.100:3000/database/mobile/${weekId}/all`, this.options)
         .subscribe(
           response => {
+            resolve(response);
+          },
+          error => {
+            reject(error);
+          }
+        );
+    });
+  }
+
+  getLatestWeekFromServer(kolonialUserId:number) {
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(
+          `http://91.189.170.100:3000/database/mobile/week/${kolonialUserId}/latest`)
+        .subscribe(
+          (response: any) => {
+            this.weekId = response.weekId;
+            resolve(response.weekId);
+          },
+          error => {
+            reject(error);
+          }
+        );
+    });
+  }
+
+  getAllWeeksFromServer(kolonialUserId:number) {
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(
+          `http://91.189.170.100:3000/database/mobile/week/all/${kolonialUserId}`)
+        .subscribe(
+          (response: any) => {
             resolve(response);
           },
           error => {

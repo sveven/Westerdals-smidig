@@ -30,7 +30,6 @@ const searchTabs = require("./routes/searchTabs");
 const database = require("./routes/database");
 
 /*
-const basicProducts = require('./routes/basic-products');
 const introduction = require('./routes/introduction');
 const shoppingCart = require('./routes/shopping-cart');
 */
@@ -79,10 +78,8 @@ app.use("/database", database);
 // testsite for testing queries.
 app.use("/querytest", queryTest);
 
-//TODO: Needs fixing
 app.use("/recipes/single", singleRecipe);
 /*
-app.use('/basic-products', basicProducts);
 app.use('/introduction', introduction);
 app.use('/shopping-cart', shoppingCart);
 */

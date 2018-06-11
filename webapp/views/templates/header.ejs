@@ -1,22 +1,47 @@
 <!--TODO:
-
 	Fix styles for different screens
 	Add feedback to hover and click
 -->
 
 <header>
 	<nav id="navbar-fix" class="navbar navbar-expand-lg navbar-light">
-		<a class="navbar-brand" href="/"><img id="logo-header" src="/images/logo.png" alt=""></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
+		<a class="navbar-brand" href="/">
+			<img id="logo-header" src="/images/logo.png" alt="">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+		 aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+			<div>
+
+				<% if(weeks.length > 0) {%>
+					<select class="weekDropdownSelector">
+						<% for(week of weeks) { %>
+							<%if(ukeId == week.id) {%>
+								<option selected value="<%= week.id %>">
+									<%= week.name %>
+								</option>
+								<% } else {%>
+									<option value="<%= week.id%>">
+										<%= week.name %>
+									</option>
+									<% }%>
+										<% }%>
+					</select>
+					<% }%>
+			</div>
 			<div class="nav-links navbar-nav">
-				<a  class="nav-item nav-link" href="/week-planner-current"><i class="icons far fa-calendar-alt"></i></a>
-				<a  class="nav-item nav-link" href="/cart"><i class="icons fas fa-shopping-cart"></i></i></a>
+				<a class="nav-item nav-link" href="/week-planner-current">
+					<i class="icons far fa-calendar-alt"></i>
+				</a>
+				<a class="nav-item nav-link" href="/cart">
+					<i class="icons fas fa-shopping-cart"></i>
+					</i>
+				</a>
 				<div id="user-info">
 				</div>
 			</div>
 		</div>
-	</nav>	
+	</nav>
 </header>

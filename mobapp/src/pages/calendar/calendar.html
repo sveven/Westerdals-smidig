@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar color="oransje">
+    <ion-title>Kalender</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label>Velg en uke</ion-label>
+    <ion-select>
+      <!--TODO: fix value maybe-->
+      <ion-option *ngFor="let week of weeks" value="{{week.id}}">{{week.name}}</ion-option>
+    </ion-select>
+
+    <button ion-button>
+      Bytt uke!
+    </button>
+    <!-- Add current name of a week here, with the button. -->
+    <ion-input [(ngModel)]=""></ion-input>
+    <button ion-button>
+    </button> 
+  </ion-item>
+
+</ion-content>

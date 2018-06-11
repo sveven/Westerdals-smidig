@@ -205,7 +205,10 @@ input {
 
 .cart-image {
     position: absolute;
-    height: 2.5rem;
+    max-height: 2.5rem;
+	max-width: 70px;
+	height: auto;
+	width: auto;
     display: inline-block;
     top: 50%;
 	transform: translate(0, -50%);
@@ -228,6 +231,7 @@ input {
 	word-wrap: break-word;
 	max-width: 190px;
 	margin-right: 0.5rem;
+	font-size: 1rem;
 }
 
 .price-wrapper {
@@ -235,6 +239,14 @@ input {
 	top: 50%;
 	transform: translate(0, -50%);
 	left: 85%;
+}
+
+.price-wrapper p {
+	font-size: 1rem;
+}
+
+tbody .quantity, .title, .hint	{
+	font-size: 1rem;
 }
 
 .item-price	{

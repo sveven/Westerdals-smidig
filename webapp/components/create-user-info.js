@@ -10,7 +10,6 @@ module.exports = function(req, res, next) {
 
         res.cookie("planleggerId", planleggerId);
 
-        //req.cookies.data.planleggerId = JSON.parse(JSON.stringify(response)).id;
 
         return planleggerId;
       })

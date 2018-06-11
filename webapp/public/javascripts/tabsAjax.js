@@ -21,9 +21,11 @@ const searchOptions = (function($) {
 	let singleRecipeId = $(".single-recipe-id");
 	let singleRecipeAdd = $(".single-recipe-add");
   let singleRecipeToRecipes = $("#lol123");
+  let backToSearch = $("#back-to-search-btn");
   
   //Categories
   let childCategoryForm = $("#child-category-form");
+
 
 	//init
 	const init = (function() {
@@ -62,7 +64,12 @@ const searchOptions = (function($) {
         e.preventDefault();
       });
 
-/* 			$(document).keydown(function (event) {
+			backToSearch.on("click", function() {
+				let addDayId = getQueryVariable("dayid");
+				$("#back-to-search-link").attr("href", "/searchTabs?dayid=" + addDayId);
+			});
+
+			/*$(document).keydown(function (event) {
 				alert("You pressed " + event.keyCode);
 				event.preventDefault();
 			}); */

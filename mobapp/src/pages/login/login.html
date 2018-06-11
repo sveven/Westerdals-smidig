@@ -8,11 +8,11 @@
 
  <ion-item class="container">
    <ion-label color="oransje" floating>Brukernavn</ion-label>
-    <ion-input class="text-input-field" type="text"></ion-input>
+    <ion-input class="text-input-field" type="text" [(ngModel)]="username"></ion-input>
  </ion-item>
  <ion-item class="container">
     <ion-label color="oransje" floating>Passord</ion-label>
-     <ion-input class="text-input-field" type="password"></ion-input>
+     <ion-input class="text-input-field" type="password" [(ngModel)]="password"></ion-input>
   </ion-item>
   
     <button class="authButtons" ion-button short color="dark" (click)="loginPush()">Logg inn</button>
