@@ -34,23 +34,11 @@ router.get("/partial", function(req, res) {
 });
 
 
-// Endpoint for ret
-router.get("/get-fruits", function(req, res){
-
-  connection.getAllProductsFromCategory(21, function(fruits){
-  
-    console.log("GET FUITS: " + JSON.stringify(fruits));
-    res.send(fruits);
-
-  });
-
-});
-
 router.post("categories/ajax/:id", function(req, res) {
   connection.getAllProductsFromCategory(categoriesId, function(
     categoriesItems
   ) {
-    let categoriesId = req.params.id;
+    let categoriesId = req.params.produktid;
     let data = categoriesItems;
 
     res.send(data);

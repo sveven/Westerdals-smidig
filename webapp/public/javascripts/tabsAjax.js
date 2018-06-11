@@ -20,15 +20,19 @@ const searchOptions = (function($) {
 	let singleRecipeDayId = $(".single-recipe-dayid");
 	let singleRecipeId = $(".single-recipe-id");
 	let singleRecipeAdd = $(".single-recipe-add");
-	let singleRecipeToRecipes = $("#lol123");
-	let backToSearch = $("#back-to-search-btn");
+  let singleRecipeToRecipes = $("#lol123");
+  let backToSearch = $("#back-to-search-btn");
+  
+  //Categories
+  let childCategoryForm = $("#child-category-form");
+
 
 	//init
 	const init = (function() {
 		const setHTMLObjects = (function() {
 			groceriesBtn = $("#groceries-btn-wrapper");
 			recipesBtn = $("#recipe-btn-wrapper");
-			searchChoice = $("#search-location");
+      searchChoice = $("#search-location");
 		})();
 		const setEvents = (function() {
 			singleRecipeAdd.on("click", function() {
@@ -39,9 +43,26 @@ const searchOptions = (function($) {
 			singleRecipeToRecipes.on("click", function() {
 				let addDayId = getQueryVariable("dayid");
         singleRecipeToRecipes.attr("href", "/searchTabs?dayid=" + addDayId);
-        
+      });
       
-			});
+
+      childCategoryForm.submit(function(e) {
+        let childCategoryValues = $(this).serialize();
+        alert(childCategoryValues);
+
+        let url = "/categories/ajax/" + childCategoryValues[0];
+
+        $.ajax({
+          type: "POST",
+          url: url,
+          success: function(data)
+          {
+            alert(data);
+          }
+        });
+
+        e.preventDefault();
+      });
 
 			backToSearch.on("click", function() {
 				let addDayId = getQueryVariable("dayid");
