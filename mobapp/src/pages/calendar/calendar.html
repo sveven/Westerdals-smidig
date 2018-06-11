@@ -11,17 +11,24 @@
 
   <ion-item>
     <ion-label>Velg en uke</ion-label>
-    <ion-select [(ngModel)]="selectedId" >
+    <ion-select [(ngModel)]="selected">
       <!--TODO: fix value maybe-->
-      <ion-option *ngFor="let week of weeks" value="{{week.id}}" >{{week.name}}</ion-option>
+      <ion-option *ngFor="let week of weeks" value="{{week.id}}">{{week.name}}</ion-option>
     </ion-select>
+
+
   </ion-item>
+
+  <button ion-button block color="oransje" (click)="changeSelectedWeek()">
+    Bytt til valgt uke
+  </button>
 
   <ion-item>
     <!-- Add current name of a week here, with the button. -->
-    <ion-input></ion-input>
-    <button ion-button (click)="changeSelectedWeek()">
-      Endre navn på valgt uke!
-    </button>
+
+    <ion-input [(ngModel)]="newName" placeholder="Nytt navn"></ion-input>
   </ion-item>
-</ion-content>
+  <button ion-button block color="oransje" (click)="changeNameOfWeek()">
+    Bytt navn
+  </button>
+</ion-content>  
