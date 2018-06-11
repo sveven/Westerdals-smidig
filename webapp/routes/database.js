@@ -354,7 +354,7 @@ function dayAndTypeSplit(dayAndType) {
       break;
 
     default:
-      NULL;
+      return ["dinner", "monday"];
   }
 }
 

@@ -1,13 +1,14 @@
 <%if(currentDay){%>
     <% include plannerContentPartial.ejs %>
-    <div class="has-content-btn-container">
+    <!-- TODO: Commented out to get dayId to work -->
+    <!-- <div class="has-content-btn-container"> -->
     <form class="acb123" method="GET" action="/searchTabs">
         <input type="hidden"  name="dayid" >
         <label for="go-to-planner">
             <input class="button-add has-content" type="submit" value="+" name="go-to-planner">
         </label>
     </form>
-</div>
+<!-- </div> -->
 <%} else {%>
     
     <form method="GET" action="/searchTabs">   
