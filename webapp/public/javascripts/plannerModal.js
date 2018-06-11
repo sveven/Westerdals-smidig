@@ -39,6 +39,7 @@ const plannerModal = (function() {
 					let appendLocation = $(this)
 						.closest("div.breakfast")
 						.attr("id");
+
 					$.ajax({
 						url: "/week-planner-current/all-information/",
 						type: "get",
@@ -46,8 +47,18 @@ const plannerModal = (function() {
 						dataType: "json",
 						success: function(result) {
 							appendModal(appendLocation, result);
+							$("#myModal").modal("show");
 						}
 					});
+				}
+			);
+			$(".breakfast, .lunch, .dinner").on(
+				"click",
+				"div div div #modal-close-btn",
+				function() {
+					/* $("#myModal").modal("close"); */
+					$("#myModal").remove()
+					$(".modal-backdrop").remove();
 				}
 			);
 		})();
@@ -69,18 +80,17 @@ const plannerModal = (function() {
 				appendLocation.indexOf("-") + 2,
 				appendLocation.length
 			);
-	
+
 		let currentDay = data[appendLocationUpperCase];
 		console.log(currentDay);
-		
 
 		plannerModal = $("<div>", {
 			class: "modal fade planner-modal",
-			id: "ModalCenter",
-			tabindex: "-1",
-			role: "dialog",
+			id: "myModal",
+			"tabindex": "-1",
+			"role": "dialog",
 			"aria-labelledby": "exampleModalCenterTitle",
-			"aria-hidden": "true"
+			"aria-hidden": "false"
 		});
 
 		modalDialog = $("<div>", {
@@ -142,7 +152,7 @@ const plannerModal = (function() {
 		});
 		productAmount = $("<h3>", {
 			class: "modal-product-main-title",
-			text: 
+			text: ""
 		});
 
 		productWrapper = $("<div>", {
@@ -170,6 +180,7 @@ const plannerModal = (function() {
 		});
 		closeModalBtn = $("<button>", {
 			type: "button",
+			id: "modal-close-btn",
 			class: "btn btn-primary",
 			"data-dismiss": "modal",
 			text: "Ok"
