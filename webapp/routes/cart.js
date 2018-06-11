@@ -164,7 +164,8 @@ function formatJsonObjectForWeekOverview(currentJsonObject) {
         products.push(item);
       } else if (item.hasOwnProperty("RecipeId")) {
         let meal = item;
-        item["TotalPrice"] = calculateTotalPriceForMeal(item);        
+        meal["TotalPrice"] = calculateTotalPriceForMeal(item);  
+              
         meals.push(meal);
       }
     }
