@@ -278,6 +278,7 @@ function removeUndefinedFromMeal(meals) {
         newMeal.Products.push(product);
       }
     }
+    newMeal["TotalPrice"] = calculateTotalPriceForMeal(newMeal);  
     
     resultMeals.push(newMeal);
   }
