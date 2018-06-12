@@ -14,9 +14,28 @@ h2 {
 	font-size: 3rem;
 	color: white;
 	position: absolute;
-	top: 36%;
+	top: 25%;
 	left: 21%;
-	
+	display: inline-block;
+	background-color: rgba($color: black, $alpha: 0.25);
+}
+
+#h1-search-tabs {
+	font-size: 2.5rem;
+	color: white;
+	position: absolute;
+	top: 37%;
+	left: 21%;
+}
+
+#title-two-basis {
+	font-size: 1rem;
+	display: inline-block;
+	color: white;
+	position: absolute;
+	top: 44.8%;
+	left: 21%;
+	background-color: rgba($color: black, $alpha: 0.25);
 }
 
 #grocery-search-form {
