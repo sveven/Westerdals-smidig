@@ -48,6 +48,7 @@ h2 {
 }
 
 
+
 .container-fluid {
 	display: grid;
 	overflow: hidden;
@@ -71,7 +72,9 @@ h2 {
 }
 
 #category-list:hover {
-	color: rgb(70, 70, 70);
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	font-size: 0.95rem;
 }
 
 .sub {

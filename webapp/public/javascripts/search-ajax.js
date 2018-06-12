@@ -95,6 +95,9 @@
 					itemGrossPrice
 					
 				);
+				buyButton.click(function(){
+					buyButton.val("Lagt til").css("background-color", "rgb(20, 223, 51)");
+				});
 			}
 		} else {
 			return false;

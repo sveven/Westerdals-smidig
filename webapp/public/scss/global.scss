@@ -209,11 +209,12 @@ body {
     font-size: 1.2rem;
     border: none;
     position: absolute;
+    cursor: pointer;
     padding: 0.5rem 0.5rem 0.5rem 3rem;
     font-weight: bold;
     bottom: 0;
     width: 200px;
-    left: 5%;
+    left: 2%;
     color: white;
     border-radius: 3px;
     background-color: rgb(255, 165, 20);
@@ -241,6 +242,7 @@ body {
     border-radius: 3px;
     background-color: rgb(255, 165, 20);
     z-index: 1000;
+    cursor: pointer;
     position: fixed;
     /* Fixed/sticky position */
     bottom: 20px;
@@ -254,6 +256,7 @@ body {
 #go-to-cart-btn {
     font-size: 1.2rem;
     border: none;
+    cursor: pointer;
     position: absolute;
     padding: 0.5rem 0.5rem 0.5rem 3rem;
     font-weight: bold;
