@@ -5,34 +5,28 @@ const fetch = require("../queries/plannerFetchQueries");
 const helper = require("../queries/queriesHelperMethods");
 
 /* GET cart page. */
-router.get("/", function (req, res) {
+router.get("/", function(req, res) {
   let list;
 
-
-
-  getWeekOverViewAsJson(req).then(result => {
-    
-    res.render("cart", {
-      title: "K-Planleggeren",
-      data: result
+  getWeekOverViewAsJson(req)
+    .then(result => {
+      res.render("cart", {
+        title: "K-Planleggeren",
+        data: result
+      });
+    })
+    .catch(err => {
+      res.render("cart", {
+        title: "K-Planleggeren",
+        data: err
+      });
     });
-
-  }).catch(err => {
-
-    res.render("cart", {
-      title: "K-Planleggeren",
-      data: err
-    });
-
-  });
-
 });
 
-router.post("/", function (req, res) { });
+router.post("/", function(req, res) {});
 
 function getWeekOverViewAsJson(req) {
   return getAllInformationForWeek(req).then(res => {
-
     return formatJsonObjectForWeekOverview(res);
   });
 }
@@ -40,7 +34,7 @@ function getWeekOverViewAsJson(req) {
 function getCartOverviewAsJson(req) {
   return getAllInformationForWeek(req).then(res => {
     return formatJsonObjectForCart(res);
-  })
+  });
 }
 
 function getAllInformationForWeek(req) {
@@ -125,8 +119,6 @@ function getAllProductInformationForWeek(products) {
 
 function getFormattedInformationOnProduct(kolonialId, quantity) {
   return helper.getInformationOfProduct(kolonialId).then(res => {
-    //TODO: Find fault, is it kolonial.no?
-
     if (res.images === undefined) {
       return {
         Name: res.name,
@@ -135,9 +127,7 @@ function getFormattedInformationOnProduct(kolonialId, quantity) {
         Quantity: quantity,
         ProductId: res.id
       };
-
     } else {
-
       return {
         Name: res.name,
         Name_Extra: res.name_extra,
@@ -145,8 +135,8 @@ function getFormattedInformationOnProduct(kolonialId, quantity) {
         Price: parseInt(res.gross_price),
         Quantity: quantity,
         ProductId: res.id
-      }
-    };
+      };
+    }
   });
 }
 
@@ -164,8 +154,8 @@ function formatJsonObjectForWeekOverview(currentJsonObject) {
         products.push(item);
       } else if (item.hasOwnProperty("RecipeId")) {
         let meal = item;
-        meal["TotalPrice"] = calculateTotalPriceForMeal(item);  
-              
+        meal["TotalPrice"] = calculateTotalPriceForMeal(item);
+
         meals.push(meal);
       }
     }
@@ -176,9 +166,9 @@ function formatJsonObjectForWeekOverview(currentJsonObject) {
   };
 
   result = removeDuplicatesFromWeekJson(result);
-  
+
   result.Meals = removeUndefinedFromMeal(result.Meals);
-  
+
   result["TotalPrice"] = calculateTotalPriceForCart(result);
 
   return result;
@@ -194,14 +184,14 @@ function formatJsonObjectForCart(currentJsonObject) {
         let formattedProduct = {
           product_id: product.ProductId,
           quantity: product.Quantity
-        }
+        };
         products.push(formattedProduct);
       }
     } else {
       let formattedProduct = {
         product_id: obj.ProductId,
         quantity: obj.Quantity
-      }
+      };
       products.push(formattedProduct);
     }
   }
@@ -210,12 +200,11 @@ function formatJsonObjectForCart(currentJsonObject) {
   return result;
 }
 
-
 function calculateTotalPriceForMeal(meal) {
-  let totalPrice = 0; 
-
-  for(product of meal.Products) {
-    if(product.Price !== undefined) {
+  let totalPrice = 0;
+  
+  for (product of meal.Products) {
+    if (product.Price !== undefined) {
       totalPrice += product.Price * product.Quantity;
     }
   }
@@ -226,7 +215,6 @@ function calculateTotalPriceForCart(currentJsonObject) {
   let totalPrice = 0;
 
   for (meal of currentJsonObject.Meals) {
-    
     for (product of meal.Products) {
       totalPrice += product.Price * product.Quantity;
     }
@@ -274,12 +262,12 @@ function removeUndefinedFromMeal(meals) {
     };
 
     for (let product of meal.Products) {
-      if (product !== undefined && product.Name !== undefined ) {
+      if (product !== undefined && product.Name !== undefined) {
         newMeal.Products.push(product);
       }
     }
-    newMeal["TotalPrice"] = calculateTotalPriceForMeal(newMeal);  
-    
+    newMeal["TotalPrice"] = calculateTotalPriceForMeal(newMeal);
+
     resultMeals.push(newMeal);
   }
   return resultMeals;
