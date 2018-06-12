@@ -61,8 +61,6 @@ export class CalendarPage {
     this.databaseProvider.setWeekId(this.selected);
     let weekName = "";
     for (let week of this.weeks) {
-      console.log("week", week);
-      console.log("selected", this.selected);
 
       if (week.id == this.selected) {
         weekName = week.name;

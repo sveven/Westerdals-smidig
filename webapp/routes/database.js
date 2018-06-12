@@ -181,7 +181,7 @@ router.get("/mobile/product-in-week/:productid/:weekid", function(req, res) {
     });
 });
 
-router.get("/mobile/recipe-in-day/:recipeid/:weekid/:portions", function(
+router.get("/mobile/recipe-in-day/:recipeid/:weekid/:portions/:day/:type", function(
   req,
   res
 ) {
@@ -190,7 +190,7 @@ router.get("/mobile/recipe-in-day/:recipeid/:weekid/:portions", function(
   let portions = parseInt(req.params.portions);
 
   //TODO: Hardcoded values as still missing values from mobile.
-  create.createDayQuery(weekid, "Monday", "Dinner").then(day => {
+  create.createDayQuery(weekid, req.params.day, req.params.type).then(day => {
     create
       .addMealToDayQuery(recipeid, portions, day[0].id)
       .then(result => {
@@ -307,7 +307,7 @@ router.get("/mobile/delete/:productId/:weekId/", function(req, res) {
 });
 
 /**
- * Delete
+ * Deletes a meal
  */
 router.get("/mobile/delete/:mealId/", function(req, res) {
   destroy.deleteMeal(req.params.mealId)

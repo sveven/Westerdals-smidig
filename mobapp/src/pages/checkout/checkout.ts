@@ -1,5 +1,11 @@
 import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  AlertController,
+  ToastController
+} from "ionic-angular";
 import { DatabaseProvider } from "../../providers/database/database";
 import { SearchProvider } from "../../providers/search/search";
 import { Storage } from "@ionic/storage";
@@ -11,15 +17,16 @@ import { Storage } from "@ionic/storage";
 })
 export class CheckoutPage {
   entireWeek: any = {};
-  meals: any = [];
-  products: JSON[] = [];
+  meals: any[] = [];
+  products: any[] = [];
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private databaseProvider: DatabaseProvider,
     private searchProvider: SearchProvider,
-    private storage: Storage
+    private alertCtrl: AlertController,
+    private toastCtrl: ToastController
   ) { }
 
   ionViewDidEnter() {
@@ -44,28 +51,54 @@ export class CheckoutPage {
     }
   }
 
-  deleteMeal(mealId: number) {
-    this.databaseProvider.deleteMealFromDatabase(mealId).then(res => {
-      console.log(res);
+  deleteMealAndUpdate(mealId: number, mealName: string) {
+    this.deleteMeal(mealId).then(() => {
+      this.updateAllInformationForWeek();
+      let message = mealName + " ble fjernet fra oversikten!"
+      this.toastCtrl.create({
+        message: message,
+        duration: 3000,
+        position: "top"
+      }).present();
+    });
+
+  }
+
+  deleteProductAndUpdate(productId: number, productName: string) {
+    this.deleteProduct(productId).then(() => {
       this.updateAllInformationForWeek();
     });
+    let message = productName + " ble fjernet fra oversikten!"
+    this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: "top"
+    }).present();
   }
 
   deleteProduct(productId: number) {
-    this.databaseProvider
-      .dropAllProductsOfIdInWeekFromDatabase(productId)
-      .then(res => {
-        console.log(res);
-        this.updateAllInformationForWeek();
-      });
+    return this.databaseProvider.dropAllProductsOfIdInWeekFromDatabase(
+      productId
+    );
   }
 
-  emptyCurrentWeekAndGetNewOne() {
-    this.storage.get("kolonialUserId").then(kolonialUserId => {
-      this.databaseProvider.dropWeekFromDatabaseAndGetNew(
-        this.databaseProvider.getWeekId(),
-        kolonialUserId
-      );
+  deleteMeal(mealId: number) {
+    return this.databaseProvider.deleteMealFromDatabase(mealId);
+  }
+
+  deleteAllProducts() {
+    //TODO: Add alertcontroller here
+    Promise.all(
+      [].concat.apply(
+        this.products.map((product: any) => {
+          return this.deleteProduct(product.ProductId);
+        }),
+        this.meals.map((meal: any) => {
+          return this.deleteMeal(meal.MealId);
+        })
+      )
+    ).then(() => {
+      this.updateAllInformationForWeek();
     });
   }
 
@@ -73,6 +106,8 @@ export class CheckoutPage {
     return this.databaseProvider
       .getAllProductsInWeek(this.databaseProvider.getWeekId())
       .then((res: any) => {
+        console.log(res);
+
         return Promise.all(
           [].concat.apply(
             this.getInformationForAllDays(res.Days),
@@ -105,6 +140,7 @@ export class CheckoutPage {
           return this.searchProvider
             .getRecipeById(meal.recipeId)
             .then((recipeInformation: any) => {
+              
               return {
                 Title: recipeInformation.title,
                 Image: recipeInformation.feature_image_url,
@@ -220,16 +256,17 @@ export class CheckoutPage {
 
   removeDuplicatesFromWeekJson(currentJsonObject) {
     let resultProducts = [];
-
+    
     for (let product of currentJsonObject.Products) {
       if (resultProducts.length === 0) {
         resultProducts.push(product);
       } else {
         let found = false;
-        for (let filteredProduct of resultProducts) {
-          if (filteredProduct.ProductId === product.ProductId) {
+        for (let i in resultProducts) {
+          if (resultProducts[i].ProductId === product.ProductId) {
             found = true;
-            filteredProduct.Quantity += product.Quantity;
+            resultProducts[i].Quantity += product.Quantity;
+            
           }
         }
 
@@ -252,7 +289,8 @@ export class CheckoutPage {
         Image: meal.Image,
         Products: [],
         RecipeId: meal.RecipeId,
-        Title: meal.Title
+        Title: meal.Title, 
+        MealId: meal.MealId
       };
 
       for (let product of meal.Products) {
@@ -280,5 +318,23 @@ export class CheckoutPage {
     };
   }
 
-  //TODO: Add function for dropping week and creating new.
+  presentEmptyAlert() {
+    let alert = this.alertCtrl.create({
+      title: "Tøm",
+      subTitle: "Er du sikker på at du vil fjerne ALT som er lagt til?",
+      buttons: [
+        {
+          text: "Avbryt",
+          role: "cancel"
+        },
+        {
+          text: "Ok",
+          handler: () => {
+            this.deleteAllProducts();
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
 }

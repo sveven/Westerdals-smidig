@@ -1,12 +1,13 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Storage } from "@ionic/storage";
 
 @Injectable()
 export class DatabaseProvider {
   private weekId: number;
 
   private options = {};
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient, private storage: Storage) {}
 
   setWeekId(weekId: number) {
     this.weekId = weekId;
@@ -37,13 +38,16 @@ export class DatabaseProvider {
     });
   }
 
-  addRecipeToDatabase(recipeId: number, portions: number) {
+  addRecipeToDatabase(
+    recipeId: number,
+    portions: number,
+    day: string,
+    type: string
+  ) {
     return new Promise((resolve, reject) => {
       this.http
         .get(
-          `http://91.189.170.100:3000/database/mobile/recipe-in-day/${recipeId}/${
-            this.weekId
-          }/${portions}`
+          `http://91.189.170.100:3000/database/mobile/recipe-in-day/${recipeId}/${this.weekId}/${portions}/${day}/${type}`
         )
         .subscribe(
           response => {
@@ -74,16 +78,10 @@ export class DatabaseProvider {
     });
   }
 
-  getAllProductsInWeek(weekId) {
-    this.options = {
-      params: new HttpParams().set("weekid", weekId)
-    };
+  getAllProductsInWeek(weekId: number) {
     return new Promise((resolve, reject) => {
       this.http
-        .get(
-          `http://91.189.170.100:3000/database/mobile/${weekId}/all`,
-          this.options
-        )
+        .get(`http://91.189.170.100:3000/database/mobile/${weekId}/all`)
         .subscribe(
           response => {
             resolve(response);
@@ -149,6 +147,7 @@ export class DatabaseProvider {
     });
   }
 
+  //TODO: Does not work. Implement fix?
   dropWeekFromDatabaseAndGetNew(weekId: number, kolonialUserId: number) {
     return new Promise((resolve, reject) => {
       this.http
@@ -157,7 +156,11 @@ export class DatabaseProvider {
         )
         .subscribe(
           (response: any) => {
-            resolve(response);
+            console.log(response);
+            this.weekId = response.id;
+            this.storage.set("weekId", this.weekId).then(res => {
+              resolve(response);
+            });
           },
           error => {
             reject(error);
@@ -167,6 +170,8 @@ export class DatabaseProvider {
   }
 
   deleteMealFromDatabase(mealId: number) {
+    console.log(mealId);
+    
     return new Promise((resolve, reject) => {
       this.http
         .get(`http://91.189.170.100:3000/database/mobile/delete/${mealId}/`)

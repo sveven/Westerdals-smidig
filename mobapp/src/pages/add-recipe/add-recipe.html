@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar align-title="center" color="oransje">
     <ion-title>
-        Du har skannet {{recipe.title}}!
+      Du har skannet {{recipe.title}}!
     </ion-title>
   </ion-navbar>
 
@@ -9,11 +9,12 @@
 
 <ion-content padding class="contentBack">
   <ion-card>
-      <img [src] = "recipe.feature_image_url" *ngIf="recipe.feature_image_url !== 'undefined'"/>
-        <ion-card-content>
-          <ion-card-title>{{recipe.title}}</ion-card-title>
-          <ion-label>Velg antall porsjoner</ion-label>
-          <ion-select [(ngModel)]="portions" interface="popover" [selectOptions]="selectOptions">
+    <img [src]="recipe.feature_image_url" *ngIf="recipe.feature_image_url !== 'undefined'" />
+    <ion-card-content>
+      <ion-card-title>{{recipe.title}}</ion-card-title>
+      <ion-item>
+        <ion-label>Velg antall porsjoner</ion-label>
+        <ion-select [(ngModel)]="portions" [selectOptions]="selectOptions">
           <ion-option>1</ion-option>
           <ion-option>2</ion-option>
           <ion-option>3</ion-option>
@@ -25,11 +26,31 @@
           <ion-option>9</ion-option>
           <ion-option>10</ion-option>
         </ion-select>
-      </ion-card-content>
-    </ion-card>
-    <div>
-      <button class="btnAdd" ion-button short large color="dark" (click)="addToDatabase()">Legg til</button>
-      <button class="btnCancel" ion-button short large color="dark"  (click)="closeModal()">Avbryt</button>
-    </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Velg dag</ion-label>
+        <ion-select [(ngModel)]="day">
+          <ion-option value="Monday">Mandag</ion-option>
+          <ion-option value="Tuesday">Tirsdag</ion-option>
+          <ion-option value="Wednesday">Onsdag</ion-option>
+          <ion-option value="Thursday">Torsdag</ion-option>
+          <ion-option value="Friday">Fredag</ion-option>
+          <ion-option value="Saturday">Lørdag</ion-option>
+          <ion-option value="Sunday">Søndag</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Velg måltid</ion-label>
+        <ion-select [(ngModel)]="type">
+          <ion-option value="Breakfast">Frokost</ion-option>
+          <ion-option value="Lunch">Lunsj</ion-option>
+          <ion-option value="Dinner">Middag</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <div>
+    <button class="btnAdd" ion-button short large color="dark" (click)="addToDatabase()">Legg til</button>
+    <button class="btnCancel" ion-button short large color="dark" (click)="closeModal()">Avbryt</button>
+  </div>
 </ion-content>
-
