@@ -197,14 +197,15 @@ html {
 	background-color: rgb(240, 240, 240);
 }
 
-.fa-times-circle:before {
+.fa-times-circle {
     content: "\f057";
     color: red;
-    top: -135px;
-    left: 120px;
+    top: -40px;
+    left: 50px;
     position: relative;
     font-size: 1.2rem;
     cursor: pointer;
+    z-index: 9999;
 }
 
 .has-content {

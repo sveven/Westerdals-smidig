@@ -139,12 +139,13 @@ const plannerModal = (function () {
 			mealWrapper = $("<div>", {
 				class: "modal-meal-wrapper"
 			});
+			
+			mealRemoveIcon = $("<i>", {
+				class: "far fa-time-circle"
+			});
 			plannerMealImg = $("<img>", {
 				class: "recipe-planner-meal-image",
 				src: meal.Image
-			});
-			mealRemoveIcon = $("<i>", {
-				class: "far fa-time-circle"
 			});
 			mealTitle = $("<p>", {
 				class: "recipe-planner-meal-title",
