@@ -56,9 +56,6 @@ const loginElements = (function ($) {
 			loggedInData = $("<a>", {
 				class: "nav-item nav-link"
 			});
-			usrIcon = $("<i>", {
-				class: "icons far fa-user"
-			});
 			usrData = $("<p>", {
 				class: "usasd"
 			});

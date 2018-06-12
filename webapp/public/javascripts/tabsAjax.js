@@ -41,6 +41,7 @@ const searchOptions = (function($) {
 			singleRecipeAdd.on("click", function() {
 				let addDayId = getQueryVariable("dayid");
 				singleRecipeDayId.val(addDayId);
+				singleRecipeAdd.val("Lagt til i planlegger").css("background-color", "rgb(20, 223, 51)");
 			});
 
 			singleRecipeToRecipes.on("click", function() {
@@ -132,11 +133,6 @@ const searchOptions = (function($) {
 					grocerySearch();
 				}
 			});
-
-			$btnSearch.click(function() {
-				searchResult.toggle();
-				searchResult.fadeIn(1200);
-			});
 		})();
 
 		const setAppGUI = (function() {
@@ -215,6 +211,11 @@ const searchOptions = (function($) {
 					itemGrossPrice
 				);
 				imgContainer.append($image);
+
+			
+				buyButton.click(function(){
+					buyButton.val("Lagt til").css("background-color", "rgb(20, 223, 51)");
+				});
 			}
 		} else {
 			return false;
@@ -280,6 +281,7 @@ const searchOptions = (function($) {
 			}),
 			success: appendRecipeResult
 		});
+		
 	}
 
 	function appendRecipeResult(returnData) {
@@ -346,6 +348,14 @@ const searchOptions = (function($) {
 				singleRecipeLink.append(recipeImg, recipeTitle, recipeDifficulty);
 				recipeWrapper.append(singleRecipeLink, addForm, recipeDuration);
 				recipeResultWrapper.append(recipeWrapper);
+				buyButton.click(function(){
+					
+				});
+
+				
+		buyButton.click(function(){
+			buyButton.val("Lagt til").css("background-color", "rgb(20, 223, 51)");
+		});
 			}
 		}
 	}
