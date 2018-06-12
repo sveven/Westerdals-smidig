@@ -94,7 +94,7 @@ export class CheckoutPage {
           return this.deleteProduct(product.ProductId);
         }),
         this.meals.map((meal: any) => {
-          return this.deleteMeal(meal.MealId);
+          return this.deleteMeal(meal.meal.MealId);
         })
       )
     ).then(() => {
