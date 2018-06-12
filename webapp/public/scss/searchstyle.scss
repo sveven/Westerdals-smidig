@@ -60,6 +60,7 @@ h2 {
 	border-radius: 3px;
 	background-color: rgb(255, 165, 20);
 	z-index: 1000;
+	cursor: pointer;
 }
 
 .buy-button:hover {
@@ -135,6 +136,12 @@ input:checked ~ .sub {
 	margin-top: 35%;
 }
 
+#category-heading {
+	left: -9px;
+	top: -30px;
+	position: absolute;
+} 
+
 .category-list {
 	z-index: 1000;
 	color: black;
@@ -180,6 +187,7 @@ input:checked ~ .sub {
 	max-height: 180px;
 	grid-template-rows: 58% 14% 14% 14%;
 	grid-template-areas: "image" "price" "unitPrice" "item" "item2";
+	cursor: pointer;
 }
 
 .img-container {
