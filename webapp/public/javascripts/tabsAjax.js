@@ -1,4 +1,4 @@
-const searchOptions = (function($) {
+const searchOptions = (function ($) {
 	"use strict";
 
 	//HTML Objects
@@ -20,59 +20,58 @@ const searchOptions = (function($) {
 	let singleRecipeDayId = $(".single-recipe-dayid");
 	let singleRecipeId = $(".single-recipe-id");
 	let singleRecipeAdd = $(".single-recipe-add");
-  let singleRecipeToRecipes = $("#lol123");
-  let backToSearch = $("#back-to-search-btn");
-  
-  //Categories
-  let childCategoryForm = $("#child-category-form");
-  let childCategoryFormClass = $(".child-category-form-class");
-  let childCategoryFormButton = $(".child-category-button");
+	let singleRecipeToRecipes = $("#lol123");
+	let backToSearch = $("#back-to-search-btn");
+
+	//Categories
+	let childCategoryForm = $("#child-category-form");
+	let childCategoryFormClass = $(".child-category-form-class");
+	let childCategoryFormButton = $(".child-category-button");
 
 
 
 	//init
-	const init = (function() {
-		const setHTMLObjects = (function() {
+	const init = (function () {
+		const setHTMLObjects = (function () {
 			groceriesBtn = $("#groceries-btn-wrapper");
 			recipesBtn = $("#recipe-btn-wrapper");
-      searchChoice = $("#search-location");
+			searchChoice = $("#search-location");
 		})();
-		const setEvents = (function() {
-			singleRecipeAdd.on("click", function() {
+		const setEvents = (function () {
+			singleRecipeAdd.on("click", function () {
 				let addDayId = getQueryVariable("dayid");
 				singleRecipeDayId.val(addDayId);
 				singleRecipeAdd.val("Lagt til i planlegger").css("background-color", "rgb(20, 223, 51)");
 			});
 
-			singleRecipeToRecipes.on("click", function() {
+			singleRecipeToRecipes.on("click", function () {
 				let addDayId = getQueryVariable("dayid");
-        singleRecipeToRecipes.attr("href", "/searchTabs?dayid=" + addDayId);
-      });
-      
+				singleRecipeToRecipes.attr("href", "/searchTabs?dayid=" + addDayId);
+			});
 
-      childCategoryForm.submit(function(e) {
-        let childCategoryValues = $(this).serialize();
-        alert(childCategoryValues);
 
-        let url = "/categories/ajax/" + childCategoryValues[0];
+			childCategoryForm.submit(function (e) {
+				let childCategoryValues = $(this).serialize();
+				alert(childCategoryValues);
 
-          e.preventDefault();
-  
-        $.ajax({
-          type: "POST",
-          url: url,
-          success: function(data)
-          {
-            alert(data);
-          }
-        });
+				let url = "/categories/ajax/" + childCategoryValues[0];
 
-        });
+				e.preventDefault();
 
-      
-     
+				$.ajax({
+					type: "POST",
+					url: url,
+					success: function (data) {
+						alert(data);
+					}
+				});
 
-			backToSearch.on("click", function() {
+			});
+
+
+
+
+			backToSearch.on("click", function () {
 				let addDayId = getQueryVariable("dayid");
 				$("#back-to-search-link").attr("href", "/searchTabs?dayid=" + addDayId);
 			});
@@ -81,18 +80,20 @@ const searchOptions = (function($) {
 				alert("You pressed " + event.keyCode);
 				event.preventDefault();
 			}); */
-			groceriesBtn.on("click", "label", function(e) {
+			groceriesBtn.on("click", "label", function (e) {
 				e.preventDefault();
 				getGrocerySearch();
+				grocerySearch("salat")
 			});
 
-			recipesBtn.on("click", "label", function(e) {
+			recipesBtn.on("click", "label", function (e) {
 				e.preventDefault();
 				$.ajax({
 					url: "/recipes/partial",
 					type: "GET",
-					success: function(result) {
+					success: function (result) {
 						searchChoice.html(result);
+						recipeSearch("salat")
 					}
 				});
 			});
@@ -100,43 +101,51 @@ const searchOptions = (function($) {
 			$("#search-location").on(
 				"click",
 				"section #search-form #recipe-search-icon",
-				function(e) {
+				function (e) {
 					e.preventDefault();
-					recipeSearch();
+				
+					let recipeQuery = $("#recipe-search-text").val();
+					
+					recipeSearch(recipeQuery);
+
 				}
 			);
 
 			$("#search-location").on(
 				"keyup",
 				"#search-header #search-form #recipe-search-text",
-				function(e) {
+				function (e) {
 					e.preventDefault();
 					if (event.keyCode === 13) {
-						recipeSearch();
+						let recipeQuery = $("#recipe-search-text").val();
+						recipeSearch(recipeQuery);
 					}
 				}
 			);
 
-			$("#search-location").on("click", "div div div #search-icon", function(
+			$("#search-location").on("click", "div div div #search-icon", function (
 				e
 			) {
 				//Prevent default behaviour
 				e.preventDefault();
-				grocerySearch();
+				let $searchField = $("#grocery-search").val();
+				grocerySearch($searchField);
 			});
 
-			$("#search-location").on("keyup", "div div div #grocery-search", function(
+			$("#search-location").on("keyup", "div div div #grocery-search", function (
 				e
 			) {
 				e.preventDefault();
 				if (event.keyCode === 13) {
-					grocerySearch();
+					let $searchField = $("#grocery-search").val();
+					grocerySearch($searchField);
 				}
 			});
 		})();
 
-		const setAppGUI = (function() {
-      getGrocerySearch();
+		const setAppGUI = (function () {
+			getGrocerySearch();
+			grocerySearch("salat");
 		})();
 	})();
 
@@ -151,8 +160,8 @@ const searchOptions = (function($) {
 			for (var i = 0; i < dataLength; i++) {
 				$(".content .search-result").append(
 					"<li class=\"search-item\"  id=\"search-item" +
-						i +
-						"\" <a href=\"itemurl\"></li>"
+					i +
+					"\" <a href=\"itemurl\"></li>"
 				);
 
 				let buyForm = $("<form>", {
@@ -176,9 +185,9 @@ const searchOptions = (function($) {
 				let imgUrl = data.products[i].images[0].thumbnail.url;
 				var $image = $(
 					"<img class='img-thumb img-thumbnail img-fluid' data-toggle='modal' data-target='#exampleModalCenter' src='" +
-						imgUrl +
-						"'" +
-						"/>"
+					imgUrl +
+					"'" +
+					"/>"
 				);
 				let itemName = $(
 					"<p id='item-name' data-toggle='modal' data-target='#exampleModalCenter'></p>"
@@ -193,9 +202,9 @@ const searchOptions = (function($) {
 					"<p id='item-gross-price' data-toggle='modal' data-target='#exampleModalCenter'> </p>"
 				).text(
 					"kr " +
-						data.products[i].gross_unit_price +
-						" per " +
-						data.products[i].unit_price_quantity_abbreviation
+					data.products[i].gross_unit_price +
+					" per " +
+					data.products[i].unit_price_quantity_abbreviation
 				);
 				let imgContainer = $(
 					"<div class\"img-container\" data-toggle='modal' data-target='#exampleModalCenter'></div>"
@@ -212,8 +221,8 @@ const searchOptions = (function($) {
 				);
 				imgContainer.append($image);
 
-			
-				buyButton.click(function(){
+
+				buyButton.click(function () {
 					buyButton.val("Lagt til").css("background-color", "rgb(20, 223, 51)");
 				});
 			}
@@ -226,11 +235,11 @@ const searchOptions = (function($) {
 		// hide the list and show the corresponding message
 		$message.text(
 			"An error occurred during your request: " +
-				request.status +
-				" " +
-				textStatus +
-				" " +
-				errorThrown
+			request.status +
+			" " +
+			textStatus +
+			" " +
+			errorThrown
 		);
 	}
 	//Checks to see if an element is empty
@@ -242,15 +251,14 @@ const searchOptions = (function($) {
 		$.ajax({
 			url: "/search/partial",
 			type: "GET",
-			success: function(result) {
-        searchChoice.html(result);
+			success: function (result) {
+				searchChoice.html(result);
 				$("#groceries-tab").addClass("active");
 			}
-    });
-  }
-  
-	function grocerySearch() {
-		let $searchField = $("#grocery-search").val();
+		});
+	}
+
+	function grocerySearch($searchField) {
 		$(".search-result").empty();
 		//Ajax request
 		$.ajax({
@@ -268,8 +276,8 @@ const searchOptions = (function($) {
 			.fail(failFunction);
 	}
 
-	function recipeSearch() {
-		let recipeQuery = $("#recipe-search-text").val();
+	function recipeSearch(recipeQuery) {
+		$(".recipe-result-wrapper").empty();
 		$.ajax({
 			url: "/recipes",
 			type: "POST",
@@ -281,7 +289,7 @@ const searchOptions = (function($) {
 			}),
 			success: appendRecipeResult
 		});
-		
+
 	}
 
 	function appendRecipeResult(returnData) {
@@ -348,14 +356,14 @@ const searchOptions = (function($) {
 				singleRecipeLink.append(recipeImg, recipeTitle, recipeDifficulty, recipeDuration);
 				recipeWrapper.append(singleRecipeLink, addForm);
 				recipeResultWrapper.append(recipeWrapper);
-				buyButton.click(function(){
-					
+				buyButton.click(function () {
+
 				});
 
-				
-		buyButton.click(function(){
-			buyButton.val("Lagt til").css("background-color", "rgb(20, 223, 51)");
-		});
+
+				buyButton.click(function () {
+					buyButton.val("Lagt til").css("background-color", "rgb(20, 223, 51)");
+				});
 			}
 		}
 	}
