@@ -25,6 +25,9 @@ const searchOptions = (function($) {
   
   //Categories
   let childCategoryForm = $("#child-category-form");
+  let childCategoryFormClass = $(".child-category-form-class");
+  let childCategoryFormButton = $(".child-category-button");
+
 
 
 	//init
@@ -38,6 +41,7 @@ const searchOptions = (function($) {
 			singleRecipeAdd.on("click", function() {
 				let addDayId = getQueryVariable("dayid");
 				singleRecipeDayId.val(addDayId);
+				singleRecipeAdd.val("Lagt til i planlegger").css("background-color", "rgb(20, 223, 51)");
 			});
 
 			singleRecipeToRecipes.on("click", function() {
@@ -52,6 +56,8 @@ const searchOptions = (function($) {
 
         let url = "/categories/ajax/" + childCategoryValues[0];
 
+          e.preventDefault();
+  
         $.ajax({
           type: "POST",
           url: url,
@@ -61,8 +67,10 @@ const searchOptions = (function($) {
           }
         });
 
-        e.preventDefault();
-      });
+        });
+
+      
+     
 
 			backToSearch.on("click", function() {
 				let addDayId = getQueryVariable("dayid");
@@ -124,11 +132,6 @@ const searchOptions = (function($) {
 				if (event.keyCode === 13) {
 					grocerySearch();
 				}
-			});
-
-			$btnSearch.click(function() {
-				searchResult.toggle();
-				searchResult.fadeIn(1200);
 			});
 		})();
 
@@ -208,6 +211,11 @@ const searchOptions = (function($) {
 					itemGrossPrice
 				);
 				imgContainer.append($image);
+
+			
+				buyButton.click(function(){
+					buyButton.val("Lagt til").css("background-color", "rgb(20, 223, 51)");
+				});
 			}
 		} else {
 			return false;
@@ -273,6 +281,7 @@ const searchOptions = (function($) {
 			}),
 			success: appendRecipeResult
 		});
+		
 	}
 
 	function appendRecipeResult(returnData) {
@@ -336,9 +345,17 @@ const searchOptions = (function($) {
 				});
 
 				addForm.append(recipeID, dayID, buyButton);
-				singleRecipeLink.append(recipeImg, recipeTitle, recipeDifficulty);
-				recipeWrapper.append(singleRecipeLink, addForm, recipeDuration);
+				singleRecipeLink.append(recipeImg, recipeTitle, recipeDifficulty, recipeDuration);
+				recipeWrapper.append(singleRecipeLink, addForm);
 				recipeResultWrapper.append(recipeWrapper);
+				buyButton.click(function(){
+					
+				});
+
+				
+		buyButton.click(function(){
+			buyButton.val("Lagt til").css("background-color", "rgb(20, 223, 51)");
+		});
 			}
 		}
 	}

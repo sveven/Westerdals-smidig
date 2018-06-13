@@ -136,11 +136,11 @@ html {
     border-style: none;
     color: white;
     font-size: 1.5rem;
-    border-radius: 3px;
     width: 170px;
     height: 70px;
     margin-top: 2vh;
     margin-bottom: 2vh;
+    border-radius: 3px;
     margin-left: -85px;
     left: 50%;
     cursor: pointer;
@@ -161,6 +161,7 @@ html {
 }
 .recipe-planner-meal-title {
     font-size: 0.8rem;
+    margin: 0;
 }
 
 .recipe-title {
@@ -196,13 +197,15 @@ html {
 	background-color: rgb(240, 240, 240);
 }
 
-.fa-times-circle:before {
+.fa-times-circle {
     content: "\f057";
     color: red;
-    top: -30px;
+    top: -40px;
+    left: 50px;
     position: relative;
     font-size: 1.2rem;
     cursor: pointer;
+    z-index: 9999;
 }
 
 .has-content {
@@ -230,6 +233,7 @@ html {
 .see-more-icon {
     font-size: 2rem;
     padding-bottom: 10px;
+    margin-top: -15px;
     position: relative;
     color: rgb(255, 165, 20);
     animation-name: pulsating-see-more-btn;
@@ -246,7 +250,7 @@ html {
       color:  rgb(255, 165, 20);;
     }
     50% {
-        color: black;
+        color: gray;
     }
     100% {
         color:  rgb(255, 165, 20);

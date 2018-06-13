@@ -1,7 +1,7 @@
 // Media Queries
 
 //Midlertidig media query
-@media (max-width: 1028px) {
+@media (max-width: 850px) {
     main {
         display: none;
     }
@@ -209,11 +209,12 @@ body {
     font-size: 1.2rem;
     border: none;
     position: absolute;
+    cursor: pointer;
     padding: 0.5rem 0.5rem 0.5rem 3rem;
     font-weight: bold;
     bottom: 0;
     width: 200px;
-    left: 5%;
+    left: 2%;
     color: white;
     border-radius: 3px;
     background-color: rgb(255, 165, 20);
@@ -236,11 +237,12 @@ body {
     font-weight: bold;
     bottom: 0;
     width: 200px;
-    left: 5%;
+    left: 1%;
     color: white;
     border-radius: 3px;
     background-color: rgb(255, 165, 20);
     z-index: 1000;
+    cursor: pointer;
     position: fixed;
     /* Fixed/sticky position */
     bottom: 20px;
@@ -254,6 +256,7 @@ body {
 #go-to-cart-btn {
     font-size: 1.2rem;
     border: none;
+    cursor: pointer;
     position: absolute;
     padding: 0.5rem 0.5rem 0.5rem 3rem;
     font-weight: bold;
@@ -272,4 +275,8 @@ body {
     /* Place the button 30px from the right */
     z-index: 9999;
     /* Make sure it does not overlap */
+}
+
+.fa-sign-out-alt {
+    font-size: 25px;
 }

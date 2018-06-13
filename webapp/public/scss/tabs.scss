@@ -19,7 +19,6 @@
 }
 
 .tab-content {
-    border: 1px solid #ddd;
     border-bottom: 0px;
     position: relative;
 }
@@ -41,30 +40,30 @@
 }
 
 .tab-content .nav-link {
-    background-color: #929292;
+    background-color: rgb(255, 165, 20);
 }
 
 .nav-tabs .nav-link {
-    border: 1px solid #929292;
+    border: 1px solid rgb(255, 165, 20);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
 
 .nav-tabs>li>label {
     padding-top: 8px;
-    border: 1px solid #f1f1f1;
+    border: 1px solid rgb(255, 165, 20);
     color: #f1f1f1;
     padding-bottom: 8px;
     line-height: 20px;
     -moz-border-radius: 0px;
     -webkit-border-radius: 0px;
     border-radius: 0px;
-    -moz-border-radius-bottomright: 5px;
-    -webkit-border-bottom-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    -moz-border-radius-bottomleft: 5px;
-    -webkit-border-bottom-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    border-bottom-left-radius: 3px;
     font-size: 1.5rem;
     font-weight: bold;
     padding: 1rem 3rem;
@@ -73,9 +72,9 @@
 .nav-tabs>.active>label,
 .nav-tabs>.active>label:hover,
 .nav-tabs>.active>label:focus {
-    color: #555555;
+    color: rgb(255, 165, 20);
     cursor: default;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
+    background-color: rgb(255, 165, 20);
+    border: 1px solid rgb(255, 165, 20);
     border-top-color: transparent;
 }

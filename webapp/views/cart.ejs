@@ -1,5 +1,5 @@
 <% layout("layout") -%>
-<nav aria-label="breadcrumb">
+	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
 				<a href="/">Hjem</a>
@@ -8,36 +8,27 @@
 				<a href="/week-planner-current">Planleggeren</a>
 			</li>
 			<li class="breadcrumb-item active" aria-current="page">
-					<a href="/search">Andre husholdningsartikler</a>
-				</li>
-				<li class="breadcrumb-item active" aria-current="page">
-						<a href="/cart">Oversikt</a>
-					</li>
+				<a href="/search">Andre husholdningsartikler</a>
+			</li>
+			<li class="breadcrumb-item active" aria-current="page">
+				<a href="/cart">Oversikt</a>
+			</li>
 		</ol>
 		</div>
 	</nav>
 
 
 	<div class="progressbar-container">
-			<ul class="steps">
-				<li>Steg 1: Planlegge måltider for uken.</li>
-				<li>Steg 2: Handle andre husholdingsartikler</li>
-				<li class="active">Steg 3: Oversikt</li>
-			</ul>
-		</div>
+		<ul class="steps">
+			<li>Steg 1: Planlegge måltider for uken.</li>
+			<li>Steg 2: Handle andre husholdingsartikler</li>
+			<li class="active">Steg 3: Oversikt</li>
+		</ul>
+	</div>
 
-<section class="cart-container">
-	<header class="cart-header">
-		<div class="cart-header-text">
-			<h1>Handlekurv</h1>
-			<h4>Se over handlekurven før du fortsetter til utlevering og betaling</h4>
-		</div>
-	</header>
-	<main class="shopping-cart">
-	
-		<ul class="cart-list" >
-			<% if (data !== 'undefined' && data.Meals !== undefined && data.Meals.length > 0)	{	%>
+	<section class="cart-container">
 
+<<<<<<< HEAD
 				<% for (meal of data.Meals)	{ %>
 					<li class="cart-item-wrapper accordion" id="<%= meal.RecipeId %>">
 					<div >
@@ -54,79 +45,133 @@
 							<div class="item-cost-wrapper">
 								<p>Ingredienser: <%= meal.Products.length %></p>
 								<p>Total pris: <%= meal.TotalPrice %></p>
+=======
+		<header class="cart-header">
+
+			<div class="cart-header-text">
+				<h1>Oversikt</h1>
+				<h4>Se over handlekurven før du fortsetter til betaling og utlevering</h4>
+			</div>
+			<div id="sort-wrapper">
+				<p id="sort-title">Sorter etter:</p>
+				<select id="sort-dropdown">
+					<option value="Dag">Dag</option>
+					<option value="Måltid">Måltid</option>
+					<option value="Vare">Vare</option>
+				</select>
+			</div>
+		</header>
+		<main class="shopping-cart">
+
+			<ul class="cart-list">
+				<% if (data !== 'undefined' && data.Meals !== undefined && data.Meals.length > 0)	{	%>
+
+					<% for (meal of data.Meals)	{ %>
+						<li class="cart-item-wrapper accordion" id="<%= meal.RecipeId %>">
+							<div>
+								<p class="item-quantity">1</p>
+								<div class="cart-image-wrapper">
+									<img class="cart-image" src="<%= meal.Image %>" alt="<%= meal.Title %>">
+								</div>
+								<div class="cart-item-text">
+									<p>
+										<%= meal.Title %>
+									</p>
+								</div>
+								<div class="caret-wrapper">
+									<i class="drop-down-icon fas fa-caret-down"></i>
+								</div>
+								<div class="item-cost-wrapper">
+									<p>Ingredienser:
+										<%= meal.Products.length %>
+									</p>
+								</div>
+
+								<form class="cart-delete-form">
+									<input type="hidden" name="" value="">
+									<label class="delete-cart-item-icon far fa-trash-alt" for="delete-item">
+										<input class="delete-input-hidden" type="submit" name="delete-item" value="">
+									</label>
+								</form>
+>>>>>>> 06e84f091054afe9495c801978a40e1e2a8c512d
 							</div>
+						</li>
+						<% for (product of meal.Products) {	%>
+							<li class="cart-item-wrapper panel <%= meal.RecipeId %>" id="">
+								<p class="item-quantity">
+									<%= product.Quantity %>
+								</p>
+								<div class="cart-image-wrapper">
+									<img class="cart-image" src="<%= product.Image %>" alt="<%= product.Name %>">
+								</div>
+								<div class="cart-item-text">
+									<p>
+										<%= product.Name %>
+									</p>
+									<p>
+										<%= product.Name_Extra %>
+									</p>
+								</div>
+								<div class="item-cost-wrapper">
+									<p>
+										<%= product.Price %>,-</p>
+								</div>
+								<form class="cart-delete-form">
+									<input type="hidden" name="" value="">
+									<label class="delete-cart-item-icon far fa-trash-alt" for="delete-item">
+										<input class="delete-input-hidden" type="submit" name="delete-item" value="">
+									</label>
+								</form>
+							</li>
+							<% } %>
+								<% } %>
+									<% } %>
 
-						<form class="cart-delete-form">
-							<input type="hidden" name="" value="">
-							<label class="delete-cart-item-icon far fa-trash-alt" for="delete-item">
-							<input class="delete-input-hidden" type="submit" name="delete-item" value="">
-						</label>
-						</form>
-					</div>
-					</li>
-					<% for (product of meal.Products) {	%> 
-					<li class="cart-item-wrapper panel <%= meal.RecipeId %>" id="">
-						<p class="item-quantity"><%= product.Quantity %></p>
-						<div class="cart-image-wrapper">
-							<img class="cart-image" src="<%= product.Image %>" alt="<%= product.Name %>">
-						</div>
-						<div class="cart-item-text">
-							<p><%= product.Name %></p>
-							<p><%= product.Name_Extra %></p>
-						</div>
-						<div class="item-cost-wrapper">
-							<p><%= product.Price %>,-</p>
-						</div>
-						<form class="cart-delete-form">
-							<input type="hidden" name="" value="">
-							<label class="delete-cart-item-icon far fa-trash-alt" for="delete-item">
-								<input class="delete-input-hidden" type="submit" name="delete-item" value="">
-							</label>
-						</form>
-					</li>
-						<% } %>
-				<% } %>
-			<% } %>
+										<% if (data !== undefined && data.Products !== 'undefined')	{	%>
 
-			<% if (data !== undefined && data.Products !== 'undefined')	{	%>
+											<% for (i in data.Products)	{ %>
+												<li class="cart-item-wrapper">
+													<p class="item-quantity">
+														<%= data.Products[i].Quantity %>
+													</p>
+													<div class="cart-image-wrapper">
+														<img class="cart-image" src="<%= data.Products[i].Image %>" alt="<%= data.Products[i].Name %>">
+													</div>
+													<div class="cart-item-text">
+														<p>
+															<%= data.Products[i].Name %>
+														</p>
+													</div>
+													<div class="item-cost-wrapper">
+														<p>
+															<%= data.Products[i].Price + ",-" %>
+														</p>
+													</div>
+													<form class="cart-delete-form">
+														<input type="hidden" name="" value="">
+														<label class="delete-cart-item-icon far fa-trash-alt" for="delete-item">
+															<input class="delete-input-hidden" type="submit" name="delete-item" value="">
+														</label>
+													</form>
+												</li>
+												<% } %>
+													<% } else { %>
 
-			<% for (i in data.Products)	{ %>
-			<li class="cart-item-wrapper">
-				<p class="item-quantity"><%= data.Products[i].Quantity %></p>
-				<div class="cart-image-wrapper">
-					<img class="cart-image" src="<%= data.Products[i].Image %>" alt="<%= data.Products[i].Name %>">
-				</div>
-				<div class="cart-item-text">	
-					<p><%= data.Products[i].Name %></p>
-				</div>
-				<div class="item-cost-wrapper">
-					<p><%= data.Products[i].Price + ",-" %></p>
-				</div>
-				<form class="cart-delete-form">
-					<input type="hidden" name="" value="">
-					<label class="delete-cart-item-icon far fa-trash-alt" for="delete-item">
-						<input class="delete-input-hidden" type="submit" name="delete-item" value="">
-					</label>
+														<p>Kunne ikke hente data.</p>
+
+														<% } %>
+			</ul>
+			<div class="cart-summary-wrapper">
+				<p>Total Pris ink MVA:
+					<%= data.TotalPrice %>,-</p>
+			</div>
+			<div class="cart-finalize-buttons">
+				<form method="POST" action="#">
+					<input class="buy-button finalize" type="submit" name="" value="Fullfør planlegging">
 				</form>
-			</li>
-			<% } %>
-      <% } else { %>
-        
-        <p>Kunne ikke hente data.</p>
+			</div>
+		</main>
+		<footer class="cart-footer">
 
-      <% } %>
-		</ul>
-		<div class="cart-summary-wrapper">	
-			<p>Total Pris ink MVA: <%= data.TotalPrice %>,-</p>
-		</div>
-		<div class="cart-finalize-buttons">
-			<form method="POST" action="#">
-				<input class="buy-button finalize" type="submit" name="" value="Fullfør planlegging">
-			</form>
-		</div>
-	</main>
-	<footer class="cart-footer">
-		
-	</footer>
-</section>
-
+		</footer>
+	</section>

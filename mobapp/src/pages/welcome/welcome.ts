@@ -30,10 +30,16 @@ export class WelcomePage {
       image: "assets/imgs/photo-camera.png",
     },
     {
+      title: "Og...",
+      description: "Velge hvilken uke du skal planlegge",
+      image: "assets/imgs/calendar.png"
+    },
+    {
       title: 'Deretter..',
       description: 'Legg til i oversikten din',
       image: "assets/imgs/shopping-cart.png",
-    },
+    }
+   
   ]
 
 

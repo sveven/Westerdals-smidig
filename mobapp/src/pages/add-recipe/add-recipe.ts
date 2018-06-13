@@ -10,6 +10,8 @@ import { DatabaseProvider } from "../../providers/database/database";
 export class AddRecipePage {
   private recipe:any = {}
   private portions: number = 1;
+  private day: string = "Monday";
+  private type: string = "Breakfast"
   private selectOptions = {
     title: 'Velg antall porsjoner'
   }
@@ -26,13 +28,11 @@ export class AddRecipePage {
     if (this.recipe.default_num_portions) {
       this.portions = this.recipe.default_num_portions;
     }
-    console.log("Portions ", this.portions);
     
   }
 
   private addToDatabase(): void {
-    console.log(this.portions);
-    this.databaseProvider.addRecipeToDatabase(this.recipe.id, this.portions);
+    this.databaseProvider.addRecipeToDatabase(this.recipe.id, this.portions, this.day, this.type);
     
     let message = this.recipe.title + " er blitt lagt til i oversikten din!" 
     this.toastCtrl.create({

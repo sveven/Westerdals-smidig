@@ -88,12 +88,16 @@
 				buyForm.append(buyButton);
 				imgContainer.append($image, buyForm);
 				$("#search-item" + i).prepend(
+					imgContainer,
 					itemName,
 					itemNameExtra,
 					itemPrice,
-					itemGrossPrice,
-					imgContainer
+					itemGrossPrice
+					
 				);
+				buyButton.click(function(){
+					buyButton.val("Lagt til").css("background-color", "rgb(20, 223, 51)");
+				});
 			}
 		} else {
 			return false;
