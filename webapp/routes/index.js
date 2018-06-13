@@ -4,16 +4,11 @@ const connection = require("../components/kolonialapi/requestHandler");
 
 
 /* GET home page. */
-router.get("/", function(req, res, next) {
+router.get("/", function (req, res, next) {
 
-	let search = "ost";
-
-	connection.searchForProduct(search, function(list){
-
-		res.render("index", {
-			title: "K-Planleggeren",
-			search: search,
-			data: list });
+	
+	res.render("index", {
+		title: "K-Planleggeren",
 	});
 
 });

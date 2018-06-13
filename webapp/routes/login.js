@@ -17,14 +17,7 @@ router.get("/", function(req, res) {
       signedin: signedin
     });
   } else if (req.cookies.data.is_authenticated === true) {
-    /*
-				res.render("login", {
-					title: "K-Planleggeren",
-					signedin: true,
-					first_name: req.cookies.data.user.first_name,
-					last_name: req.cookies.data.user.last_name
-				});*/
-    //res.redirect(req.cookies.redirectPath);
+
   }
 
   res.send();
@@ -39,23 +32,6 @@ router.post("/", function(req, res) {
 
 	update.updateUserWithKolonialId(req.cookies.planleggerId, data.user.id);
 	
-	
-    // fetch.fetchAllWeeksForKolonialUser(data.user.id).then(users => {
-    //   let weeks = [];
-    //   for (user of users) {
-    //     for (week of user.Weeks) {
-    //       let newWeek = {
-    //         id: week.id,
-    //         name: week.name
-    //       };
-    //       if (newWeek.name === null) {
-    //         newWeek.name = "Hektisk Uke";
-    //       }
-    //       weeks.push(newWeek);
-    //     }
-    //   }
-	//   res.locals.weeks = weeks;
-	  
 
 	  if (res.cookies) {
 		if (res.cookies.data) {
@@ -65,18 +41,7 @@ router.post("/", function(req, res) {
 	  }
   
 	  res.send();
-    // }).catch(err => {
-	// 	if (res.cookies) {
-	// 		if (res.cookies.data) {
-	// 		  let cookiedata = JSON.parse(res.cookies.data);
-	// 		  sessionid = cookiedata.sessionid;
-	// 		}
-	// 	  }
-	  
-	// 	  res.send();
-	// })
 
-    
   });
 });
 

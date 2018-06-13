@@ -161,8 +161,12 @@ router.get("/products/:day/", function(req, res) {
     .fetchProductsOnDay(req.params.day)
     .then(result => {
       res.send(result);
+      console.log("RESULT",result);
+      
     })
     .catch(err => {
+      console.log(err);
+      
       res.status(500).send({ error: err });
     });
 });
@@ -252,7 +256,7 @@ router.get("/mobile/week/:kolonialUserId/latest", function(req, res) {
         .createUserWithKolonialIdQuery(req.params.kolonialUserId)
         .then(user => {
           create.createWeekQuery(user.Id).then(result => {
-            res.send({ weekId: result.id });
+            res.status(200).send({ weekId: result.id });
           });
         });
     }

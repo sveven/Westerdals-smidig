@@ -56,7 +56,7 @@ app.use(express.static(path.join(__dirname, "public")));
 		dest: __dirname + "/public", //where css should go
 		debug: true // obvious
 	})
-); */
+); */	
 
 app.use(createUserInfo);
 app.use(authentication);
@@ -79,10 +79,6 @@ app.use("/database", database);
 app.use("/querytest", queryTest);
 
 app.use("/recipes/single", singleRecipe);
-/*
-app.use('/introduction', introduction);
-app.use('/shopping-cart', shoppingCart);
-*/
 app.use("/week-planner-current", weekPlannerCurrent);
 
 reload(app);

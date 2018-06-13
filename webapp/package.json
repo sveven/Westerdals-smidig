@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "test": "mocha || true",
+    "test": "set NODE_ENV=test&& mocha || true",
     "start-supervisor": "supervisor ./bin/www",
     "start-sass": "node ./tasks/sass.js",
     "start-watch": "node-sass ./public/scss/main.scss  ./public/stylesheets/styles.min.css -wo",
@@ -37,6 +37,7 @@
     "sequelize-cli": "^4.0.0",
     "serve-favicon": "~2.4.5",
     "sqlite3": "^4.0.0",
+    "supertest": "^3.1.0",
     "utf8": "^3.0.0"
   },
   "devDependencies": {
