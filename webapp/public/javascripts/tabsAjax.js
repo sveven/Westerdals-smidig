@@ -345,8 +345,8 @@ const searchOptions = (function($) {
 				});
 
 				addForm.append(recipeID, dayID, buyButton);
-				singleRecipeLink.append(recipeImg, recipeTitle, recipeDifficulty);
-				recipeWrapper.append(singleRecipeLink, addForm, recipeDuration);
+				singleRecipeLink.append(recipeImg, recipeTitle, recipeDifficulty, recipeDuration);
+				recipeWrapper.append(singleRecipeLink, addForm);
 				recipeResultWrapper.append(recipeWrapper);
 				buyButton.click(function(){
 					
