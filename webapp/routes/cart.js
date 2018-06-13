@@ -99,7 +99,7 @@ function getAllProductInformationForDay(day) {
 
 function getAllProductInformationForMeal(meal) {
   return meal.Products.map(product => {
-    //TODO: Current rounds up to closest upwards integer, due to limitations in database.
+    // Current rounds up to closest upwards integer, due to limitations in database.
     let quantity = Math.ceil(
       meal.portions * product.ProductInMeal.portionQuantity
     );

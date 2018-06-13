@@ -4,7 +4,6 @@ const request = require("request");
 module.exports = {
 
 	authenticate: function(req, apicallback){
-//TODO: Implement adding of kolonialuserId to current planleggerid
 		const options = {
 			uri: "https://kolonial.no/api/v1/user/login/",
 			port: 443,
@@ -22,9 +21,6 @@ module.exports = {
 		let token, res;
 
 		function callback(error, response, body){
-			//console.log('error:', error);
-			//console.log('statusCode:', response && response.statusCode);
-			//console.log('body:', body);
 
 			if(!error && response.statusCode == 200){
 				let data = JSON.parse(body);
@@ -57,9 +53,6 @@ module.exports = {
 
 
 		function callback(error, response, body){
-			//console.log('error:', error);
-			//console.log('statusCode:', response && response.statusCode);
-			//console.log('body:', body);
 
 			if(!error && response.statusCode == 200){
 				let data = JSON.parse(body);
@@ -91,9 +84,6 @@ module.exports = {
 		let token, res;
 
 		function callback(error, response, body){
-			//console.log('error:', error);
-			//console.log('statusCode:', response && response.statusCode);
-			//console.log('body:', body);
 
 			if(!error && response.statusCode == 200){
 				let data = JSON.parse(body);

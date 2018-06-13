@@ -68,7 +68,6 @@ router.delete("/product-in-week/:productid", function(req, res) {
 
 router.get("/recipe-in-day/", function(req, res) {
   let dayid = req.param("dayid");
-  //TODO: temp fix for recipeid. Why is it added as string?
   let recipeid = parseInt(req.param("recipeid"));
   let dayAndTypeArr = dayAndTypeSplit(dayid);
 
@@ -193,7 +192,6 @@ router.get("/mobile/recipe-in-day/:recipeid/:weekid/:portions/:day/:type", funct
   let weekid = parseInt(req.params.weekid);
   let portions = parseInt(req.params.portions);
 
-  //TODO: Hardcoded values as still missing values from mobile.
   create.createDayQuery(weekid, req.params.day, req.params.type).then(day => {
     create
       .addMealToDayQuery(recipeid, portions, day[0].id)

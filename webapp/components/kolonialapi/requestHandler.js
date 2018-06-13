@@ -200,7 +200,6 @@ module.exports = {
   },
 
   //Start of endpoint for user specific recipes
-  //TODO add token needed for options so that user auth is OK
   getRecipesLikedByUser: function(callback) {
     options.path = recipesCurrentPlan;
     request.kolonialAPIRequest(options, function(list) {
@@ -222,7 +221,6 @@ module.exports = {
 
   /**
    * Returns the contents in the cart
-   * TODO: Might need changing aas we have changes in sessions
    * @param callback
    */
   getCartContent: function(sessionid, callback) {

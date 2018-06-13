@@ -30,13 +30,11 @@ router.get("/:recipe_id", function(req, res) {
 
 router.post("/:recipe_id/:portions", function(req, res) {
 
-	//locahost:3000/recipe/single/?recipeid=2418&dayid=dinner-wednesday
 	let recipeId = req.params.recipe_id;
 
 	let type = req.cookies.type;
 	let portions = req.params.portions;
 	let dayId = req.cookies.dayId;
-	//TODO: requires proper day id
 	createQueries.addMealToDayQuery(recipeId,  portions, dayId).then(result => {
 		console.log(result);
 	}).catch(err => {
