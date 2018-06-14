@@ -23,7 +23,6 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      //TODO: set root to tabs if logged in
       statusBar.styleDefault();
       splashScreen.hide();
     });

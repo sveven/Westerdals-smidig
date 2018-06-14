@@ -147,27 +147,7 @@ export class DatabaseProvider {
     });
   }
 
-  //TODO: Does not work. Implement fix?
-  dropWeekFromDatabaseAndGetNew(weekId: number, kolonialUserId: number) {
-    return new Promise((resolve, reject) => {
-      this.http
-        .get(
-          `http://91.189.170.100:3000/database/mobile/${weekId}/${kolonialUserId}/drop/`
-        )
-        .subscribe(
-          (response: any) => {
-            console.log(response);
-            this.weekId = response.id;
-            this.storage.set("weekId", this.weekId).then(res => {
-              resolve(response);
-            });
-          },
-          error => {
-            reject(error);
-          }
-        );
-    });
-  }
+  
 
   deleteMealFromDatabase(mealId: number) {
     console.log(mealId);

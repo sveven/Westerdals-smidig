@@ -52,7 +52,6 @@ export class LoginPage {
         .loginToKolonial(this.username, this.password)
         .then((res: any) => {
           console.log("userinfo", res);
-          //TODO: make this into promise all, now it is sequelized...
           this.storage.set("kolonialUserId", res.user.id).then(() => {
             this.storage
               .set("username", res.user.first_name +" "+ res.user.last_name)

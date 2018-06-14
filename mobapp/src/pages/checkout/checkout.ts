@@ -87,7 +87,6 @@ export class CheckoutPage {
   }
 
   deleteAllProducts() {
-    //TODO: Add alertcontroller here
     Promise.all(
       [].concat.apply(
         this.products.map((product: any) => {
