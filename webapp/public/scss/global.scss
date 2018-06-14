@@ -1,13 +1,15 @@
 // Media Queries
 
-//Midlertidig media query
 @media (max-width: 850px) {
     main {
         display: none;
     }
 
-    body:after {
-        content: "Last ned vår app for optimal opplevelse på mindre skjermer"
+    body {
+        background-image: url(../images/DownloadApp.png);
+        background-repeat: no-repeat;
+        background-size: 80%;
+        background-position-x: center;
     }
 }
 
