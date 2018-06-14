@@ -29,10 +29,6 @@ const basis = require("./routes/basis");
 const searchTabs = require("./routes/searchTabs");
 const database = require("./routes/database");
 
-/*
-const introduction = require('./routes/introduction');
-const shoppingCart = require('./routes/shopping-cart');
-*/
 
 const app = express();
 
@@ -48,15 +44,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-//app.use(session({secret: 'kolonial', saveUninitialized: true, resave: false}))
-
-/* app.use(
-	sass.middleware({
-		src: __dirname + "/sass", //where the sass files are 
-		dest: __dirname + "/public", //where css should go
-		debug: true // obvious
-	})
-); */	
 
 app.use(createUserInfo);
 app.use(authentication);

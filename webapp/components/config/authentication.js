@@ -25,7 +25,6 @@ module.exports = function (req, res, next) {
     res.cookie("data", data);
     res.locals.signedin = false;
   } else {
-    // Her er brukeren autentisert
     res.locals.signedin = true;
     if (req.cookies.data.user) {
       fetch.fetchAllWeeksForKolonialUser(req.cookies.data.user.id).then(users => {
@@ -44,12 +43,9 @@ module.exports = function (req, res, next) {
         }
         res.locals.weeks = weeks;
         
-        //Adds the week id to locals
         if (req.cookies.ukeId !== res.locals.ukeId) {
           res.locals.ukeId = req.cookies.ukeId;
         }
-        console.log("Cookies ukeid", req.cookies.ukeId);
-        console.log("Locals ukeid",res.locals.ukeId);
       });
     }
   }

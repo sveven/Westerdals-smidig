@@ -12,12 +12,9 @@ module.exports = {
 
         let chunks = [];
 
-  // Datachunks sent back is incrementally pushed into an array.
     res.on('data', (d) => {
         chunks.push(d);
     });
-
-  // Piece together chunks in array and parse.
 
     res.on('end', () => {
       let data = Buffer.concat(chunks);

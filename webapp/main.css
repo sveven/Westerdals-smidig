@@ -568,7 +568,8 @@ input[type=submit] {
   grid-template-areas: "header header" "sidebar content";
 }
 =======
-  grid-template-areas: "header header" "sidebar content"; }
+  grid-template-areas: "header header"
+ "sidebar content"; }
 >>>>>>> 15f9942e4cf3ba77392971a6ea7454597e6fd1f6:main.css
 
 .header {
@@ -685,15 +686,21 @@ p {
 
 .breakfast {
   border: 1.5px solid #ffa514;
-  border-radius: 3px; }
+  border-radius: 3px; 
+  position: relative;
+}
 
 .lunch {
   border: 1.5px solid #ffa514;
-  border-radius: 3px; }
+  border-radius: 3px;
+  position: relative;
+ }
 
 .dinner {
   border: 1.5px solid #ffa514;
-  border-radius: 3px; }
+  border-radius: 3px; 
+  position: relative;
+}
 
 .btn-collapse {
   display: grid;
