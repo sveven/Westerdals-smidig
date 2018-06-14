@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "test": "set NODE_ENV=test&& mocha || true",
+    "test": "mocha || true",
     "start-supervisor": "supervisor ./bin/www",
     "start-sass": "node ./tasks/sass.js",
     "start-watch": "node-sass ./public/scss/main.scss  ./public/stylesheets/styles.min.css -wo",

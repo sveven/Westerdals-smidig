@@ -28,24 +28,6 @@
 
 	<section class="cart-container">
 
-<<<<<<< HEAD
-				<% for (meal of data.Meals)	{ %>
-					<li class="cart-item-wrapper accordion" id="<%= meal.RecipeId %>">
-					<div >
-							<p class="item-quantity">1</p>
-							<div class="cart-image-wrapper">
-								<img class="cart-image" src="<%= meal.Image %>" alt="<%= meal.Title %>">
-							</div>
-							<div class="cart-item-text">
-								<p><%= meal.Title %></p>
-							</div>
-							<div class="caret-wrapper">
-								<i class="drop-down-icon fas fa-caret-down"></i>
-							</div>
-							<div class="item-cost-wrapper">
-								<p>Ingredienser: <%= meal.Products.length %></p>
-								<p>Total pris: <%= meal.TotalPrice %></p>
-=======
 		<header class="cart-header">
 
 			<div class="cart-header-text">
@@ -93,7 +75,6 @@
 										<input class="delete-input-hidden" type="submit" name="delete-item" value="">
 									</label>
 								</form>
->>>>>>> 06e84f091054afe9495c801978a40e1e2a8c512d
 							</div>
 						</li>
 						<% for (product of meal.Products) {	%>
